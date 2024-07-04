@@ -28,7 +28,7 @@ export const CoreBeliefs = () => {
         {coreBeliefList.map((coreBelief) => (
           <div className="flex flex-col items-center space-y-4">
             <h1 className="text-3xl text-[#bfeb4b]">{coreBelief.subtitle}</h1>
-            <p className="text-4xl text-white">{coreBelief.title}</p>
+            <p className="text-3xl text-white">{coreBelief.title}</p>
           </div>
         ))}
       </div>
