@@ -24,11 +24,13 @@ const coreBeliefList = [
 export const CoreBeliefs = () => {
   return (
     <div>
-      <div className="flex flex-row justify-between bg-[#00262D] px-14">
+      <div className="flex flex-row justify-between bg-neutral-color-2 px-14">
         {coreBeliefList.map((coreBelief) => (
           <div className="flex flex-col items-center space-y-4">
-            <h1 className="text-3xl text-[#bfeb4b]">{coreBelief.subtitle}</h1>
-            <p className="text-4xl text-white">{coreBelief.title}</p>
+            <h1 className="text-3xl text-accent-color-1">
+              {coreBelief.subtitle}
+            </h1>
+            <p className="text-3xl text-neutral-color-1">{coreBelief.title}</p>
           </div>
         ))}
       </div>
