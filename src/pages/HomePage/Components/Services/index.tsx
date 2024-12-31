@@ -29,36 +29,14 @@ export const Services = () => {
   return (
     <div className="bg-[#00262D]">
       <div className="flex flex-row">
-        <div className="flex flex-col items-center space-y-12 py-16">
+        <div className="flex flex-col items-center space-y-12 py-16 w-[50%]"></div>
+        <div className="flex flex-col items-center space-y-12 py-16 w-[50%]">
           <h1 className="text-4xl text-[#bfeb4b]">Our Services</h1>
           <div className="grid p-12">
             {servicesList.map((service) => (
               <div
                 key={service.title}
-                className="flex flex-col items-center space-y-4 px-8 py-12 bg-white rounded-lg shadow-lg"
-              >
-                <img
-                  src={`/images/${service.image}`}
-                  alt={service.title}
-                  className="w-40 h-40 object-cover rounded-full"
-                />
-                <h2 className="text-2xl text-[#00262D] font-semibold">
-                  {service.title}
-                </h2>
-                <p className="text-lg text-[#00262D] text-center">
-                  {service.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="flex flex-col items-center space-y-12 py-16">
-          <h1 className="text-4xl text-[#bfeb4b]">Our Services</h1>
-          <div className="grid p-12">
-            {servicesList.map((service) => (
-              <div
-                key={service.title}
-                className="flex flex-col items-center space-y-4 px-8 py-12 bg-white rounded-lg shadow-lg"
+                className="flex flex-col items-center space-y-4 px-8 py-12 m-4 bg-white rounded-lg shadow-lg"
               >
                 <img
                   src={`/images/${service.image}`}
