@@ -27,16 +27,16 @@ export const servicesList = [
 
 export const Services = () => {
   return (
-    <div className="bg-[#00262D]">
+    <div className="bg-neutral-color-2">
       <div className="flex flex-row">
         <div className="flex flex-col items-center space-y-12 py-16 w-[50%]"></div>
         <div className="flex flex-col items-center space-y-12 py-16 w-[50%]">
-          <h1 className="text-4xl text-[#bfeb4b]">Our Services</h1>
+          <h1 className="text-4xl text-accent-color-1">Our Services</h1>
           <div className="grid p-12">
             {servicesList.map((service) => (
               <div
                 key={service.title}
-                className="flex flex-col items-center space-y-4 px-8 py-12 m-4 bg-white rounded-lg shadow-lg"
+                className="flex flex-col items-center space-y-4 px-8 py-12 m-4 bg-neutral-color-2 rounded-lg shadow-lg"
               >
                 <img
                   src={`/images/${service.image}`}

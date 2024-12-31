@@ -1,8 +1,9 @@
-import computerGIF from "../../../../../assets/computerGraphic.gif";
+import AnimatedCanvas from "./animatedCanvas";
+
 export const Right = () => {
   return (
-    <div className="flex flex-col items-center justify-center bg-[#00262D] text-white w-1/2">
-      <img className="h-auto w-2/3" src={computerGIF} alt="" />
+    <div className="flex flex-col items-center justify-center bg-neutral-color-2 text-neutral-color-1 w-1/2">
+      <AnimatedCanvas />
     </div>
   );
 };

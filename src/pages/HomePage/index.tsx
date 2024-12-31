@@ -5,7 +5,7 @@ import { Services } from "./Components/Services";
 
 export const HomePage = () => {
   return (
-    <div className="h-screen bg-[#00262D]">
+    <div className="h-screen bg-neutral-color-2">
       <Header />
       <HeroBanner />
       <CoreBeliefs />
