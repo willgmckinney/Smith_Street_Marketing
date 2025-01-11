@@ -11,20 +11,12 @@ const coreBeliefList = [
     subtitle: "Belief #03",
     title: "Great demands debate",
   },
-  {
-    subtitle: "Belief #04",
-    title: "To go far, go together",
-  },
-  {
-    subtitle: "Belief #05",
-    title: "Ideas are easy, impact is hard",
-  },
 ];
 
 export const CoreBeliefs = () => {
   return (
     <div>
-      <div className="flex flex-row justify-between bg-neutral-color-2 px-14">
+      <div className="flex flex-row justify-between bg-neutral-color-2 px-[15%]">
         {coreBeliefList.map((coreBelief) => (
           <div className="flex flex-col items-center space-y-4">
             <h1 className="text-3xl text-accent-color-1">
