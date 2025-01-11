@@ -21,7 +21,7 @@ const AnimatedCanvas: React.FC = () => {
     };
 
     const dots = {
-      nb: 500,
+      nb: 0.2 * canvas!.width,
       distance: 100,
       d_radius: 220,
       array: [] as Dot[],
@@ -161,7 +161,7 @@ const AnimatedCanvas: React.FC = () => {
     animateDots();
   }, []);
 
-  return <canvas ref={canvasRef} />;
+  return <canvas className="absolute" ref={canvasRef} />;
 };
 
 export default AnimatedCanvas;
