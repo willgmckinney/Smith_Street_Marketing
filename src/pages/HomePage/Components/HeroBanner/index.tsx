@@ -3,12 +3,10 @@ import AnimatedCanvas from "./Background/animatedCanvas";
 export const HeroBanner = () => {
   return (
     <div className="flex flex-col items-center justify-center bg-neutral-color-2 text-neutral-color-1 h-[90%]">
-      <div className="flex flex-col items-center justify-center justify-items-center bg-transparent space-y-10 z-10 w-[100vw]">
-        <h1 className="text-7xl w-2/3 text-accent-color-1">
-          We Help Connect The Dots
-        </h1>
-        <p className="text-4xl w-2/3">
-          We help businesses grow by leveraging software solutions
+      <div className="flex flex-col items-center justify-center justify-items-center bg-transparent space-y-10 z-10 w-[60%]">
+        <h1 className="text-[6rem] text-accent-color-1">We Connect The Dots</h1>
+        <p className="text-4xl">
+          We leverage software to help passionate entreprenuers
         </p>
       </div>
       <div className="flex flex-col items-center justify-center bg-transparent pt-10 z-10">
