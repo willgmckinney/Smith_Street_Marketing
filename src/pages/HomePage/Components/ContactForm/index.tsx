@@ -35,8 +35,8 @@ const ContactForm = () => {
     e.target.reset();
   };
   return (
-    <div className="flex flex-row border-t-8 border-secondary-color-1">
-      <div className={"flex flex-col items-center bg-neutral-color-2 w-[100%]"}>
+    <div className="flex flex-row border-t-8 border-secondary-color-1 h-[80vh]">
+      <div className={"flex flex-col items-center bg-neutral-color-2 w-[50%]"}>
         <h1>CONTACT US</h1>
         <form
           onSubmit={sendEmail}
@@ -52,22 +52,13 @@ const ContactForm = () => {
           {stateMessage && <p>{stateMessage}</p>}
         </form>
       </div>
-      {/* <div className={"flex flex-col items-center bg-neutral-color-2 w-[50%]"}>
-        <h1>CONTACT US</h1>
-        <form
-          onSubmit={sendEmail}
-          className={"flex flex-col bg-secondary-color-1 w-[80%] p-1 m-5"}
-        >
-          <label>Name</label>
-          <input type="text" name="user_name" />
-          <label>Email</label>
-          <input type="email" name="user_email" />
-          <label>Message</label>
-          <textarea name="message" />
-          <input type="submit" value="Send" disabled={isSubmitting} />
-          {stateMessage && <p>{stateMessage}</p>}
-        </form>
-      </div> */}
+      <div className={"flex flex-col items-center bg-neutral-color-2 w-[50%]"}>
+        <h1>MEET US</h1>
+        <div
+          className="calendly-inline-widget w-[80%] h-[100%]"
+          data-url="https://calendly.com/will-smithaveinsights/30min?hide_gdpr_banner=1"
+        ></div>
+      </div>
     </div>
   );
 };
