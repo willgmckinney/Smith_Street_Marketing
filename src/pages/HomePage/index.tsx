@@ -1,3 +1,4 @@
+import ContactForm from "./Components/ContactForm";
 import { CoreBeliefs } from "./Components/CoreBeliefs";
 import { Header } from "./Components/Header";
 import { HeroBanner } from "./Components/HeroBanner";
@@ -12,6 +13,7 @@ export const HomePage = () => {
       <CoreBeliefs />
       <Services />
       <Team />
+      <ContactForm />
     </div>
   );
 };

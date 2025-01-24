@@ -6,7 +6,7 @@ export const HeroBanner = () => {
       <div className="flex flex-col items-center justify-center justify-items-center bg-transparent space-y-10 z-10 w-[60%]">
         <h1 className="text-[6rem] text-accent-color-1">We Connect The Dots</h1>
         <p className="text-4xl">
-          We leverage software to help passionate entreprenuers
+          We leverage software to increase impactful insights
         </p>
       </div>
       <div className="flex flex-col items-center justify-center bg-transparent pt-10 z-10">
