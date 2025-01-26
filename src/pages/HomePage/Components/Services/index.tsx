@@ -1,29 +1,32 @@
-import logo from "../../../../assets/logo.png";
+import cloudServices from "../../../../assets/cloudServices.webp";
+import customSoftwareDevelopment from "../../../../assets/customSoftwareDevelopment.webp";
+import dataAnalysisBusinessIntelligence from "../../../../assets/dataAnalysisBusinessIntelligence.webp";
+import websiteDevelopment from "../../../../assets/websiteDevelopment.webp";
 
 const servicesList = [
   {
     title: "Data Analysis and Business Intelligence",
     description:
       "Unlock the power of your data with our comprehensive analysis and business intelligence solutions. We transform raw data into actionable insights, enabling you to make informed decisions, streamline operations, and identify new growth opportunities.",
-    image: logo,
+    image: dataAnalysisBusinessIntelligence,
   },
   {
     title: "Cloud Integration and Migration",
     description:
       "Seamlessly transition to the cloud with our expert integration and migration services. We ensure a smooth and secure migration process, optimizing your cloud infrastructure for maximum efficiency and cost savings, while minimizing downtime.",
-    image: logo,
+    image: cloudServices,
   },
   {
     title: "Website Development and Maintenance",
     description:
       "Enhance your online presence with our cutting-edge website development and maintenance services. We create stunning, user-friendly websites that drive traffic and engagement, and provide ongoing support to keep your site secure and up-to-date.",
-    image: logo,
+    image: websiteDevelopment,
   },
   {
     title: "Custom Software Development",
     description:
       "Tailor-made software solutions designed to meet your unique business needs. Our custom software development services deliver robust, scalable, and user-friendly applications that enhance productivity and support your business goals.",
-    image: logo,
+    image: customSoftwareDevelopment,
   },
 ];
 

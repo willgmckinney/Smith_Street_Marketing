@@ -35,8 +35,8 @@ const ContactForm = () => {
     e.target.reset();
   };
   return (
-    <div className="flex flex-row border-t-8 border-secondary-color-1 h-[80vh]">
-      <div className={"flex flex-col items-center bg-neutral-color-2 w-[50%]"}>
+    <div className="flex flex-row border-t-8 border-secondary-color-1 h-[40vh]">
+      <div className={"flex flex-col items-center bg-neutral-color-2 w-[100%]"}>
         <h1>CONTACT US</h1>
         <form
           onSubmit={sendEmail}
@@ -51,13 +51,6 @@ const ContactForm = () => {
           <input type="submit" value="Send" disabled={isSubmitting} />
           {stateMessage && <p>{stateMessage}</p>}
         </form>
-      </div>
-      <div className={"flex flex-col items-center bg-neutral-color-2 w-[50%]"}>
-        <h1>MEET US</h1>
-        <div
-          className="calendly-inline-widget w-[80%] h-[100%]"
-          data-url="https://calendly.com/will-smithaveinsights/30min?hide_gdpr_banner=1"
-        ></div>
       </div>
     </div>
   );
