@@ -1,20 +1,22 @@
-import logo from "../../../../assets/logo.png";
+import duncanMeyerProfilePic from "../../../../assets/duncanMeyerProfile.jpg";
+import dylanMorozowskiProfilePic from "../../../../assets/dylanMorozowskiProfile.jpg";
+import willMcKinneyProfilePic from "../../../../assets/willMckinneyProfile.jpg";
 
 const teamList = [
   {
     name: "William McKinney",
     bio: "William McKinney is a super cool guy. He is an expert at a lot of cool stuff. He is passionate about things and loves doing normal stuff in his free time. William McKinney is a super cool guy. He is an expert at a lot of cool stuff. He is passionate about things and loves doing normal stuff in his free time. William McKinney is a super cool guy. He is an expert at a lot of cool stuff. He is passionate about things and loves doing normal stuff in his free time.",
-    profilePicture: logo,
+    profilePicture: willMcKinneyProfilePic,
   },
   {
     name: "Dylan Morozowski",
     bio: "Dylan Morozowski is a super cool guy. He is an expert at a lot of cool stuff. He is passionate about things and loves doing normal stuff in his free time. Dylan Morozowski is a super cool guy. He is an expert at a lot of cool stuff. He is passionate about things and loves doing normal stuff in his free time. Dylan Morozowski is a super cool guy. He is an expert at a lot of cool stuff. He is passionate about things and loves doing normal stuff in his free time.",
-    profilePicture: logo,
+    profilePicture: dylanMorozowskiProfilePic,
   },
   {
     name: "Duncan Meyer",
     bio: "Duncan Meyer is a super cool guy. He is an expert at a lot of cool stuff. He is passionate about things and loves doing normal stuff in his free time. Duncan Meyer is a super cool guy. He is an expert at a lot of cool stuff. He is passionate about things and loves doing normal stuff in his free time. Duncan Meyer is a super cool guy. He is an expert at a lot of cool stuff. He is passionate about things and loves doing normal stuff in his free time.",
-    profilePicture: logo,
+    profilePicture: duncanMeyerProfilePic,
   },
 ];
 
