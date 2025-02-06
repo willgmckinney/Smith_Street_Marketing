@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import cloudServices from "../../../../assets/cloudServices.webp";
 import customSoftwareDevelopment from "../../../../assets/customSoftwareDevelopment.webp";
 import dataAnalysisBusinessIntelligence from "../../../../assets/dataAnalysisBusinessIntelligence.webp";
 import websiteDevelopment from "../../../../assets/websiteDevelopment.webp";
+import "./services.css";
 
 const servicesList = [
   {
@@ -32,35 +34,35 @@ const servicesList = [
 
 export const Services = () => {
   return (
-    <div className="bg-secondary-color-1">
-      <div className="flex flex-row">
-        <div className="flex flex-col items-center space-y-12 py-16 w-[100%]">
-          <h1 className="text-4xl text-accent-color-1">Our Services</h1>
-          <div className=" flex flex-row">
-            {servicesList.map((service) => (
-              <div
-                key={service.title}
-                className="flex flex-col justify-between items-center text-center space-y-4 px-8 py-12 m-4 bg-neutral-color-2 rounded-lg shadow-lg"
-              >
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="w-40 h-40 object-cover rounded-full"
-                />
-                <h2 className="text-2xl text-[#00262D] font-semibold">
-                  {service.title}
-                </h2>
-                <p className="text-lg text-[#00262D] text-center">
-                  {service.description}
-                </p>
-                <button className="bg-accent-color-1 hover:text-neutral-color-1 text-3xl px-8 py-3 rounded-full">
-                  <h1 className="text-xl">Get Started</h1>
-                </button>
+    <div className="bg-neutral-color-1 pt-10 text-center">
+      <main>
+        <ul className="stack-cards js-stack-cards">
+          <li className="card p-5" id="card_1">
+            <div className="card__content text-[6rem] flex flex-row justify-center items-center align h-[40vh] rounded-xl">
+              <p className={"pr-5 text-neutral-color-1"}>{`Our `}</p>
+              <p className={"pr-5 text-accent-color-1"}>{`Services`}</p>
+            </div>
+          </li>
+          {servicesList.map((service: { [x: string]: any }) => (
+            <li className="card p-5" id="card_1">
+              <div className="card__content">
+                <div>
+                  <h2 className="text-4xl">{service.title}</h2>
+                  <p className="text-xl">{service.description}</p>
+                  <div>
+                    <button className="text-neutral-color-2 bg-neutral-color-1 border-2 border-neutral-color-2 hover:text-neutral-color-1 hover:bg-neutral-color-2 hover:border-neutral-color-1 h-auto p-5 rounded-lg text-xl">
+                      Request Demo
+                    </button>
+                  </div>
+                </div>
+                <figure>
+                  <img src={service.image} alt="Image description" />
+                </figure>
               </div>
-            ))}
-          </div>
-        </div>
-      </div>
+            </li>
+          ))}
+        </ul>
+      </main>
     </div>
   );
 };
