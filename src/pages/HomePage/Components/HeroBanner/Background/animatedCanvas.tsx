@@ -21,7 +21,7 @@ const AnimatedCanvas: React.FC = () => {
     };
 
     const dots = {
-      nb: 0.2 * canvas!.width,
+      nb: 0.25 * canvas!.width,
       distance: 100,
       d_radius: 220,
       array: [] as Dot[],

@@ -25,12 +25,12 @@ export const Team = () => {
     <div className="bg-neutral-color-2">
       <div className="flex flex-row">
         <div className="flex flex-col items-center space-y-12 py-16 w-[100%]">
-          <h1 className="text-4xl text-accent-color-1">Our Team</h1>
+          <h1 className="text-6xl text-accent-color-1">About Us</h1>
           <div className=" flex flex-row">
             {teamList.map((teamMember) => (
               <div
                 key={teamMember.name}
-                className="flex flex-col justify-between items-center text-center space-y-4 px-8 py-12 m-4 bg-secondary-color-1 rounded-lg shadow-lg"
+                className="flex flex-col justify-between items-center text-center space-y-4 px-8 py-12 m-4 bg-tirtiary-color rounded-lg shadow-lg"
               >
                 <img
                   src={teamMember.profilePicture}
