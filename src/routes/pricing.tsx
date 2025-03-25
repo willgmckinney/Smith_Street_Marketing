@@ -1,19 +1,16 @@
 import { createRoute } from "@tanstack/react-router";
 import { rootRoute } from "./__root";
 
-export const aboutRoute = createRoute({
+export const pricingRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: "/about",
-  component: function About() {
+  path: "/pricing",
+  component: function Pricing() {
     return (
       <div className="p-8 pt-24 min-h-screen">
         <div className="flex flex-row">
           <div className="flex flex-col space-y-4">
-            <h1 className="text-3xl font-bold">Our Mission</h1>
-            <p className="text-lg">
-              Our mission is to provide the best possible service to our
-              clients.
-            </p>
+            <h1 className="text-3xl font-bold">Pricing</h1>
+            <p className="text-lg">Pricing Page</p>
           </div>
         </div>
       </div>

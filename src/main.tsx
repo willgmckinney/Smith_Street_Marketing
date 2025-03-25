@@ -5,8 +5,15 @@ import "./index.css";
 import { indexRoute } from "./routes";
 import { rootRoute } from "./routes/__root";
 import { aboutRoute } from "./routes/about";
+import { demoRoute } from "./routes/demo";
+import { pricingRoute } from "./routes/pricing";
 
-const routeTree = rootRoute.addChildren([indexRoute, aboutRoute]);
+const routeTree = rootRoute.addChildren([
+  indexRoute,
+  aboutRoute,
+  pricingRoute,
+  demoRoute,
+]);
 
 // Create a new router instance
 const router = createRouter({ routeTree });
