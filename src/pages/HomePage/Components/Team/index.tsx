@@ -5,17 +5,17 @@ import willMcKinneyProfilePic from "../../../../assets/willMckinneyProfile.jpg";
 const teamList = [
   {
     name: "William McKinney",
-    bio: "William McKinney is a super cool guy. He is an expert at a lot of cool stuff. He is passionate about things and loves doing normal stuff in his free time. William McKinney is a super cool guy. He is an expert at a lot of cool stuff. He is passionate about things and loves doing normal stuff in his free time. William McKinney is a super cool guy. He is an expert at a lot of cool stuff. He is passionate about things and loves doing normal stuff in his free time.",
+    bio: "William McKinney brings extensive expertise in software development and consulting, with a strong focus on building scalable solutions. His experience spans across full-stack development, cloud architecture, and technical leadership. William has successfully delivered complex projects for Fortune 500 companies, demonstrating his ability to transform business requirements into innovative technical solutions.",
     profilePicture: willMcKinneyProfilePic,
   },
   {
     name: "Dylan Morozowski",
-    bio: "Dylan Morozowski is a super cool guy. He is an expert at a lot of cool stuff. He is passionate about things and loves doing normal stuff in his free time. Dylan Morozowski is a super cool guy. He is an expert at a lot of cool stuff. He is passionate about things and loves doing normal stuff in his free time. Dylan Morozowski is a super cool guy. He is an expert at a lot of cool stuff. He is passionate about things and loves doing normal stuff in his free time.",
+    bio: "Dylan Morozowski is a seasoned software developer and AWS certified professional, specializing in cloud architecture and data analytics. With expertise in Amazon QuickSight and cloud development, Dylan has helped numerous organizations optimize their data infrastructure and implement cutting-edge analytics solutions. His technical leadership and innovative approach drive successful digital transformations.",
     profilePicture: dylanMorozowskiProfilePic,
   },
   {
     name: "Duncan Meyer",
-    bio: "Duncan Meyer is a super cool guy. He is an expert at a lot of cool stuff. He is passionate about things and loves doing normal stuff in his free time. Duncan Meyer is a super cool guy. He is an expert at a lot of cool stuff. He is passionate about things and loves doing normal stuff in his free time. Duncan Meyer is a super cool guy. He is an expert at a lot of cool stuff. He is passionate about things and loves doing normal stuff in his free time.",
+    bio: "Duncan Meyer is a skilled software engineer with a proven track record in developing robust applications and leading teams. His expertise in modern development practices and agile methodologies has enabled him to deliver high-quality solutions that drive business growth. Duncan's collaborative approach and technical excellence make him an invaluable asset to any project.",
     profilePicture: duncanMeyerProfilePic,
   },
 ];
@@ -23,28 +23,28 @@ const teamList = [
 export const Team = () => {
   return (
     <div className="bg-neutral-color-2">
-      <div className="flex flex-row">
-        <div className="flex flex-col items-center space-y-12 py-16 w-[100%]">
-          <h1 className="text-6xl text-accent-color-1">About Us</h1>
-          <div className=" flex flex-row">
+      <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col items-center space-y-8 md:space-y-12 py-8 md:py-16 w-[100%]">
+          <h1 className="text-4xl md:text-6xl text-accent-color-1">About Us</h1>
+          <div className="flex flex-col md:flex-row w-full px-4 md:px-0">
             {teamList.map((teamMember) => (
               <div
                 key={teamMember.name}
-                className="flex flex-col justify-between items-center text-center space-y-4 px-8 py-12 m-4 bg-tirtiary-color rounded-lg shadow-lg"
+                className="flex flex-col justify-between items-center text-center space-y-4 px-4 md:px-8 py-8 md:py-12 m-2 md:m-4 bg-tirtiary-color rounded-lg shadow-lg w-full md:w-auto"
               >
                 <img
                   src={teamMember.profilePicture}
                   alt={teamMember.name}
-                  className="w-40 h-40 object-cover rounded-full"
+                  className="w-32 h-32 md:w-40 md:h-40 object-cover rounded-full"
                 />
-                <h2 className="text-2xl text-[#00262D] font-semibold">
+                <h2 className="text-xl md:text-2xl text-[#00262D] font-semibold">
                   {teamMember.name}
                 </h2>
-                <p className="text-lg text-[#00262D] text-center">
+                <p className="text-base md:text-lg text-[#00262D] text-center">
                   {teamMember.bio}
                 </p>
-                <button className="bg-accent-color-1 hover:text-neutral-color-1 text-3xl px-8 py-3 rounded-full">
-                  <h1 className="text-xl">Get Started</h1>
+                <button className="bg-accent-color-1 hover:text-neutral-color-1 text-2xl md:text-3xl px-6 md:px-8 py-2 md:py-3 rounded-full">
+                  <h1 className="text-lg md:text-xl">Get Started</h1>
                 </button>
               </div>
             ))}
