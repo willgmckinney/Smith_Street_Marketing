@@ -17,12 +17,6 @@ export const rootRoute = createRootRoute({
             Pricing
           </Link>
           <Link
-            to="/about"
-            className="text-neutral-color-1 bg-neutral-color-2 hover:bg-neutral-color-1/10 transition-colors duration-200 font-medium py-2 px-4 rounded-lg border-2 border-neutral-color-1 shadow-sm"
-          >
-            About Us
-          </Link>
-          <Link
             to="/demo"
             className="text-neutral-color-2 bg-neutral-color-1 hover:bg-neutral-color-1/90 transition-colors duration-200 font-medium py-2 px-4 rounded-lg border-2 border-neutral-color-1 shadow-sm"
           >
