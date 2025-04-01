@@ -34,29 +34,33 @@ const servicesList = [
 
 export const Services = () => {
   return (
-    <div className="bg-neutral-color-1 pt-10 text-center">
+    <div className="bg-neutral-color-1 pt-5 sm:pt-10 text-center">
       <main>
         <ul className="stack-cards js-stack-cards">
-          <li className="card p-5" id="card_1">
-            <div className="card__content text-[6rem] flex flex-row justify-center items-center align h-[40vh] rounded-xl">
-              <p className={"pr-5 text-neutral-color-1"}>{`Our `}</p>
-              <p className={"pr-5 text-accent-color-1"}>{`Services`}</p>
+          <li className="card p-3 sm:p-5" id="card_1">
+            <div className="card__content text-[2rem] sm:text-[2.5rem] lg:text-[4rem] flex flex-row justify-center items-center align h-[25vh] sm:h-[30vh] lg:h-[40vh] rounded-xl">
+              <p className={"pr-2 sm:pr-5 text-neutral-color-1"}>{`Our `}</p>
+              <p className={"pr-2 sm:pr-5 text-accent-color-1"}>{`Services`}</p>
             </div>
           </li>
           {servicesList.map((service: { [x: string]: any }) => (
-            <li className="card p-5" id="card_1">
+            <li className="card p-3 sm:p-5" id="card_1">
               <div className="card__content">
                 <div>
-                  <h2 className="text-4xl">{service.title}</h2>
-                  <p className="text-xl">{service.description}</p>
+                  <h2 className="text-xl sm:text-2xl lg:text-3xl mb-2 sm:mb-4">
+                    {service.title}
+                  </h2>
+                  <p className="text-sm sm:text-base lg:text-lg mb-4 sm:mb-6">
+                    {service.description}
+                  </p>
                   <div>
-                    <button className="text-neutral-color-2 bg-neutral-color-1 border-2 border-neutral-color-2 hover:text-neutral-color-1 hover:bg-neutral-color-2 hover:border-neutral-color-1 h-auto p-5 rounded-lg text-xl">
+                    <button className="text-neutral-color-2 bg-neutral-color-1 border-2 border-neutral-color-2 hover:text-neutral-color-1 hover:bg-neutral-color-2 hover:border-neutral-color-1 h-auto px-3 py-2 sm:px-4 sm:py-3 lg:px-5 lg:py-4 rounded-lg text-sm sm:text-base lg:text-lg transition-colors duration-200">
                       Request Demo
                     </button>
                   </div>
                 </div>
                 <figure>
-                  <img src={service.image} alt="Image description" />
+                  <img src={service.image} alt={service.title} />
                 </figure>
               </div>
             </li>
