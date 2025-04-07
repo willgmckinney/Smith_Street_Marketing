@@ -38,9 +38,13 @@ export const Services = () => {
       <main>
         <ul className="stack-cards js-stack-cards">
           <li className="card p-3 sm:p-5" id="card_1">
-            <div className="card__content text-[2rem] sm:text-[2.5rem] lg:text-[4rem] flex flex-row justify-center items-center align h-[25vh] sm:h-[30vh] lg:h-[40vh] rounded-xl">
-              <p className={"pr-2 sm:pr-5 text-neutral-color-1"}>{`Our `}</p>
-              <p className={"pr-2 sm:pr-5 text-accent-color-1"}>{`Services`}</p>
+            <div className="card__content flex flex-row items-center justify-center gap-3 h-[25vh] sm:h-[30vh] lg:h-[40vh] rounded-xl">
+              <span className="text-[3rem] sm:text-[3.5rem] lg:text-[6rem] text-neutral-color-1">
+                Our
+              </span>
+              <span className="text-[3rem] sm:text-[3.5rem] lg:text-[6rem] text-accent-color-1">
+                Services
+              </span>
             </div>
           </li>
           {servicesList.map((service: { [x: string]: any }) => (
@@ -53,11 +57,6 @@ export const Services = () => {
                   <p className="text-sm sm:text-base lg:text-lg mb-4 sm:mb-6">
                     {service.description}
                   </p>
-                  <div>
-                    <button className="text-neutral-color-2 bg-neutral-color-1 border-2 border-neutral-color-2 hover:text-neutral-color-1 hover:bg-neutral-color-2 hover:border-neutral-color-1 h-auto px-3 py-2 sm:px-4 sm:py-3 lg:px-5 lg:py-4 rounded-lg text-sm sm:text-base lg:text-lg transition-colors duration-200">
-                      Request Demo
-                    </button>
-                  </div>
                 </div>
                 <figure>
                   <img src={service.image} alt={service.title} />
