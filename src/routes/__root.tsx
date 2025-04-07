@@ -22,7 +22,7 @@ export const rootRoute = createRootRoute({
             to="/demo"
             className="text-neutral-color-2 bg-neutral-color-1 hover:bg-neutral-color-1/90 transition-colors duration-200 font-medium text-sm sm:text-base py-1.5 sm:py-2 px-2 sm:px-4 rounded-lg border-2 border-neutral-color-1 shadow-sm whitespace-nowrap"
           >
-            Request Demo
+            Get Started
           </Link>
         </div>
       </header>

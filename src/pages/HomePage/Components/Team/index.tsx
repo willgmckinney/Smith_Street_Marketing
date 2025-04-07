@@ -43,9 +43,6 @@ export const Team = () => {
                 <p className="text-base md:text-lg text-[#00262D] text-center">
                   {teamMember.bio}
                 </p>
-                <button className="bg-accent-color-1 hover:text-neutral-color-1 text-2xl md:text-3xl px-6 md:px-8 py-2 md:py-3 rounded-full">
-                  <h1 className="text-lg md:text-xl">Get Started</h1>
-                </button>
               </div>
             ))}
           </div>

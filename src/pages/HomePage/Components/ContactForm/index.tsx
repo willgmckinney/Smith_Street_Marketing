@@ -1,6 +1,8 @@
 import emailjs from "@emailjs/browser";
+import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import logo from "../../../../assets/logo.png";
+
 const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [stateMessage, setStateMessage] = useState<string | null>(null);
@@ -9,6 +11,7 @@ const ContactForm = () => {
     e.persist();
     e.preventDefault();
     setIsSubmitting(true);
+    console.log(e.target);
     emailjs
       .sendForm(
         "service_5s10wrs",
@@ -62,7 +65,7 @@ const ContactForm = () => {
             <input
               className="bg-transparent border-b-2 text-neutral-color-2 w-full md:ml-5"
               type="text"
-              name="user_name"
+              name="from_name"
             />
           </div>
           <div className="flex flex-col md:flex-row w-full md:w-[80%] pb-4 md:pb-6">
@@ -72,7 +75,7 @@ const ContactForm = () => {
             <input
               className="bg-transparent border-b-2 text-neutral-color-2 w-full md:ml-5"
               type="email"
-              name="user_email"
+              name="reply_to"
             />
           </div>
           <div className="flex flex-col md:flex-row w-full md:w-[80%] pb-4 md:pb-6">
@@ -105,20 +108,33 @@ const ContactForm = () => {
         <p className="text-lg md:text-xl text-neutral-color-2 font-bold">
           Menu
         </p>
-        <p className="text-lg md:text-xl text-neutral-color-2 pt-4 md:pt-6">
+        <Link
+          to="/company"
+          className="text-lg md:text-xl text-neutral-color-2 pt-4 md:pt-6 hover:text-accent-color-1 transition-colors"
+        >
           Company
-        </p>
-        <p className="text-lg md:text-xl text-neutral-color-2 pt-4 md:pt-6">
+        </Link>
+        <Link
+          to="/support"
+          className="text-lg md:text-xl text-neutral-color-2 pt-4 md:pt-6 hover:text-accent-color-1 transition-colors"
+        >
           Support
-        </p>
-        <p className="text-lg md:text-xl text-neutral-color-2 pt-4 md:pt-6">
+        </Link>
+        <Link
+          to="/accessibility"
+          className="text-lg md:text-xl text-neutral-color-2 pt-4 md:pt-6 hover:text-accent-color-1 transition-colors"
+        >
           Accessibility statement
-        </p>
-        <p className="text-lg md:text-xl text-neutral-color-2 pt-4 md:pt-6">
+        </Link>
+        <Link
+          to="/privacy"
+          className="text-lg md:text-xl text-neutral-color-2 pt-4 md:pt-6 hover:text-accent-color-1 transition-colors"
+        >
           Privacy Policy
-        </p>
+        </Link>
       </div>
     </div>
   );
 };
+
 export default ContactForm;
