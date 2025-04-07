@@ -1,22 +1,22 @@
 import emailjs from "@emailjs/browser";
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import logo from "../../../../assets/logo.png";
+import logo from "../../assets/logo.png";
 
-const ContactForm = () => {
+const Footer = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [stateMessage, setStateMessage] = useState<string | null>(null);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const sendEmail = (e: any) => {
-    e.persist();
+
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    console.log(e.target);
+
+    const form = e.currentTarget;
     emailjs
       .sendForm(
         "service_5s10wrs",
         "template_bsqap0e",
-        e.target,
+        form,
         "bFJ6aPnvS7f_CrnbE"
       )
       .then(
@@ -36,27 +36,24 @@ const ContactForm = () => {
         }
       );
 
-    e.target.reset();
+    form.reset();
   };
+
   return (
-    <div className="flex flex-col md:flex-row border-t-4 border-neutral-color-2 min-h-[40vh]">
-      <div
-        className={
-          "flex flex-col bg-neutral-color-1 border-b-4 md:border-b-0 md:border-r-4 border-neutral-color-2 w-full md:w-[50%]"
-        }
-      >
+    <footer className="flex flex-col md:flex-row border-t-4 border-neutral-color-2">
+      <div className="flex flex-col bg-neutral-color-1 border-b-4 md:border-b-0 md:border-r-4 border-neutral-color-2 w-full md:w-[50%]">
         <div className="flex flex-row items-center p-4">
           <img src={logo} className="h-12 md:h-16 p-1" alt="logo" />
           <p className="text-xl md:text-2xl text-neutral-color-2">
             Smith Avenue Insights
           </p>
         </div>
-        <h1 className="text-xl md:text-2xl text-neutral-color-2 pl-6">
+        <h2 className="text-xl md:text-2xl text-neutral-color-2 pl-6">
           Contact Us
-        </h1>
+        </h2>
         <form
           onSubmit={sendEmail}
-          className={"flex flex-col w-full p-4 md:p-1 md:m-5 md:pl-8"}
+          className="flex flex-col w-full p-4 md:p-1 md:m-5 md:pl-8"
         >
           <div className="flex flex-col md:flex-row w-full md:w-[80%] pb-4 md:pb-6">
             <label className="text-lg md:text-xl text-neutral-color-2 mb-2 md:mb-0 md:w-[70px]">
@@ -66,6 +63,7 @@ const ContactForm = () => {
               className="bg-transparent border-b-2 text-neutral-color-2 w-full md:ml-5"
               type="text"
               name="from_name"
+              required
             />
           </div>
           <div className="flex flex-col md:flex-row w-full md:w-[80%] pb-4 md:pb-6">
@@ -76,35 +74,36 @@ const ContactForm = () => {
               className="bg-transparent border-b-2 text-neutral-color-2 w-full md:ml-5"
               type="email"
               name="reply_to"
+              required
             />
           </div>
           <div className="flex flex-col md:flex-row w-full md:w-[80%] pb-4 md:pb-6">
             <label className="text-lg md:text-xl text-neutral-color-2 mb-2 md:mb-0 md:w-[70px]">
               Message
             </label>
-            <input
+            <textarea
               className="bg-transparent border-b-2 text-neutral-color-2 w-full md:ml-5"
-              type="text"
               name="message"
+              required
+              rows={3}
             />
           </div>
 
           <button
             type="submit"
-            value="Send"
             disabled={isSubmitting}
-            className="bg-accent-color-1 w-full md:w-1/2 rounded-lg py-2 mt-4"
+            className="bg-accent-color-1 w-full md:w-1/2 rounded-lg py-2 mt-4 text-neutral-color-2"
           >
             Submit
           </button>
-          {stateMessage && <p className="mt-4 text-center">{stateMessage}</p>}
+          {stateMessage && (
+            <p className="mt-4 text-center text-neutral-color-2">
+              {stateMessage}
+            </p>
+          )}
         </form>
       </div>
-      <div
-        className={
-          "flex flex-col items-start bg-neutral-color-1 w-full md:w-[50%] p-4"
-        }
-      >
+      <div className="flex flex-col items-start bg-neutral-color-1 w-full md:w-[50%] p-4">
         <p className="text-lg md:text-xl text-neutral-color-2 font-bold">
           Menu
         </p>
@@ -133,8 +132,8 @@ const ContactForm = () => {
           Privacy Policy
         </Link>
       </div>
-    </div>
+    </footer>
   );
 };
 
-export default ContactForm;
+export default Footer;
