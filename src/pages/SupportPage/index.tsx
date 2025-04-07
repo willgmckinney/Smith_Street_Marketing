@@ -27,7 +27,7 @@ export const SupportPage = () => {
   return (
     <div className="min-h-screen bg-neutral-color-2 pt-24">
       {/* Hero Section */}
-      <div className="bg-neutral-color-1 py-16">
+      <div className="bg-tirtiary-color py-16">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl lg:text-6xl text-accent-color-1 font-bold mb-6">
             Support Center
@@ -52,7 +52,7 @@ export const SupportPage = () => {
                   <h3 className="text-xl font-bold text-accent-color-1 mb-4">
                     {item.question}
                   </h3>
-                  <p className="text-neutral-color-1">{item.answer}</p>
+                  <p className="text-tirtiary-color">{item.answer}</p>
                 </div>
               ))}
             </div>
@@ -61,7 +61,7 @@ export const SupportPage = () => {
       </div>
 
       {/* Contact Support Section */}
-      <div className="bg-neutral-color-1 py-16">
+      <div className="bg-tirtiary-color py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl text-accent-color-1 font-bold mb-8">
@@ -80,7 +80,7 @@ export const SupportPage = () => {
               </Link>
               <a
                 href="mailto:support@smithavenueinsights.com"
-                className="inline-block bg-white text-accent-color-1 px-8 py-3 rounded-lg text-lg font-medium hover:bg-neutral-color-1/10 transition-colors border-2 border-accent-color-1"
+                className="inline-block bg-white text-accent-color-1 px-8 py-3 rounded-lg text-lg font-medium hover:bg-tirtiary-color/10 transition-colors border-2 border-accent-color-1"
               >
                 Email Support
               </a>
