@@ -1,3 +1,5 @@
+import { Link } from "@tanstack/react-router";
+
 export const SupportPage = () => {
   const faqItems = [
     {
@@ -70,12 +72,12 @@ export const SupportPage = () => {
               concerns.
             </p>
             <div className="flex flex-col md:flex-row gap-4 justify-center">
-              <a
-                href="/demo"
+              <Link
+                to="/demo"
                 className="inline-block bg-accent-color-1 text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-accent-color-1/90 transition-colors"
               >
                 Schedule a Consultation
-              </a>
+              </Link>
               <a
                 href="mailto:support@smithavenueinsights.com"
                 className="inline-block bg-white text-accent-color-1 px-8 py-3 rounded-lg text-lg font-medium hover:bg-neutral-color-1/10 transition-colors border-2 border-accent-color-1"
