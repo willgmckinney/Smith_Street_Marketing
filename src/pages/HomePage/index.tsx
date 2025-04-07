@@ -9,9 +9,7 @@ export const HomePage = () => {
       <div className="relative z-[1] h-[100vh] min-h-screen">
         <HeroBanner />
       </div>
-      <div className="sticky bottom-0 left-0">
-        <ScreenWideCTA />
-      </div>
+      <ScreenWideCTA />
       <Services />
       <Team />
     </div>

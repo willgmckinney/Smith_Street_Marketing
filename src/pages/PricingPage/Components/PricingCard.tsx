@@ -15,18 +15,18 @@ export const PricingCard = ({
     <div
       className={`flex flex-col p-8 rounded-xl border-2 ${isPopular ? "border-accent-color-1" : "border-neutral-color-1/20"} bg-white shadow-lg w-[350px]`}
     >
-      <h3 className="text-xl font-medium text-neutral-color-1">{title}</h3>
-      <p className="mt-2 text-neutral-color-1/60 text-sm">{description}</p>
+      <h3 className="text-xl font-medium text-tirtiary-color">{title}</h3>
+      <p className="mt-2 text-tirtiary-color/60 text-sm">{description}</p>
       {price ? (
         <div className="mt-4 mb-6">
-          <span className="text-4xl font-bold text-neutral-color-1">
+          <span className="text-4xl font-bold text-tirtiary-color">
             ${price}
           </span>
-          <span className="text-neutral-color-1/60"></span>
+          <span className="text-tirtiary-color/60"></span>
         </div>
       ) : (
         <div className="mt-4 mb-6">
-          <span className="text-4xl font-medium text-neutral-color-1 italic">
+          <span className="text-4xl font-medium text-tirtiary-color italic">
             Custom
           </span>
         </div>
@@ -47,7 +47,7 @@ export const PricingCard = ({
                 d="M5 13l4 4L19 7"
               ></path>
             </svg>
-            <span className="ml-3 text-neutral-color-1/80">{feature}</span>
+            <span className="ml-3 text-tirtiary-color/80">{feature}</span>
           </li>
         ))}
       </ul>
@@ -56,7 +56,7 @@ export const PricingCard = ({
             ${
               isPopular
                 ? "bg-accent-color-1 text-white hover:bg-accent-color-1/90"
-                : "bg-neutral-color-1 text-white hover:bg-neutral-color-1/90"
+                : "bg-tirtiary-color text-white hover:bg-neutral-color-1/90"
             }`}
       >
         Get started

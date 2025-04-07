@@ -30,7 +30,7 @@ export const Team = () => {
             {teamList.map((teamMember) => (
               <div
                 key={teamMember.name}
-                className="flex flex-col justify-between items-center text-center space-y-4 px-4 md:px-8 py-8 md:py-12 m-2 md:m-4 bg-tirtiary-color rounded-lg shadow-lg w-full md:w-auto"
+                className="flex flex-col justify-between items-center text-center space-y-4 px-4 md:px-8 py-8 md:py-12 m-2 md:m-4 bg-neutral-color-1 rounded-lg shadow-lg w-full md:w-auto"
               >
                 <img
                   src={teamMember.profilePicture}
