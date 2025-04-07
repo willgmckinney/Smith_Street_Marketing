@@ -2,7 +2,7 @@ export const PrivacyPage = () => {
   return (
     <div className="min-h-screen bg-neutral-color-2 pt-24">
       {/* Hero Section */}
-      <div className="bg-neutral-color-1 py-16">
+      <div className="bg-tirtiary-color py-16">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl lg:text-6xl text-accent-color-1 font-bold mb-6">
             Privacy Policy
@@ -23,7 +23,7 @@ export const PrivacyPage = () => {
               <h2 className="text-3xl md:text-4xl text-accent-color-1 font-bold mb-6">
                 Introduction
               </h2>
-              <p className="text-lg text-neutral-color-1 mb-4">
+              <p className="text-lg text-tirtiary-color mb-4">
                 At Smith Avenue Insights, we take your privacy seriously. This
                 Privacy Policy explains how we collect, use, disclose, and
                 safeguard your information when you visit our website or use our
@@ -41,7 +41,7 @@ export const PrivacyPage = () => {
                   <h3 className="text-xl font-bold text-accent-color-1 mb-2">
                     Personal Information
                   </h3>
-                  <ul className="list-disc list-inside text-lg text-neutral-color-1 space-y-2">
+                  <ul className="list-disc list-inside text-lg text-tirtiary-color space-y-2">
                     <li>Name and contact information</li>
                     <li>Email address</li>
                     <li>Company information</li>
@@ -52,7 +52,7 @@ export const PrivacyPage = () => {
                   <h3 className="text-xl font-bold text-accent-color-1 mb-2">
                     Usage Information
                   </h3>
-                  <ul className="list-disc list-inside text-lg text-neutral-color-1 space-y-2">
+                  <ul className="list-disc list-inside text-lg text-tirtiary-color space-y-2">
                     <li>Browser type and version</li>
                     <li>Operating system</li>
                     <li>Pages visited</li>
@@ -68,7 +68,7 @@ export const PrivacyPage = () => {
               <h2 className="text-3xl md:text-4xl text-accent-color-1 font-bold mb-6">
                 How We Use Your Information
               </h2>
-              <ul className="list-disc list-inside text-lg text-neutral-color-1 space-y-2">
+              <ul className="list-disc list-inside text-lg text-tirtiary-color space-y-2">
                 <li>To provide and maintain our services</li>
                 <li>To communicate with you about our services</li>
                 <li>To improve our website and services</li>
@@ -84,7 +84,7 @@ export const PrivacyPage = () => {
               <h2 className="text-3xl md:text-4xl text-accent-color-1 font-bold mb-6">
                 Data Protection
               </h2>
-              <p className="text-lg text-neutral-color-1 mb-4">
+              <p className="text-lg text-tirtiary-color mb-4">
                 We implement appropriate technical and organizational measures
                 to protect your personal information against unauthorized
                 access, alteration, disclosure, or destruction.
@@ -96,10 +96,10 @@ export const PrivacyPage = () => {
               <h2 className="text-3xl md:text-4xl text-accent-color-1 font-bold mb-6">
                 Your Rights
               </h2>
-              <p className="text-lg text-neutral-color-1 mb-4">
+              <p className="text-lg text-tirtiary-color mb-4">
                 You have the right to:
               </p>
-              <ul className="list-disc list-inside text-lg text-neutral-color-1 space-y-2">
+              <ul className="list-disc list-inside text-lg text-tirtiary-color space-y-2">
                 <li>Access your personal information</li>
                 <li>Correct inaccurate information</li>
                 <li>Request deletion of your information</li>
@@ -113,7 +113,7 @@ export const PrivacyPage = () => {
               <h2 className="text-3xl md:text-4xl text-accent-color-1 font-bold mb-6">
                 Contact Us
               </h2>
-              <p className="text-lg text-neutral-color-1 mb-4">
+              <p className="text-lg text-tirtiary-color mb-4">
                 If you have any questions about this Privacy Policy or our data
                 practices, please contact us:
               </p>

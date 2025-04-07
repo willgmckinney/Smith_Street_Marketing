@@ -5,7 +5,7 @@ export const CompanyPage = () => {
   return (
     <div className="min-h-screen bg-neutral-color-2 pt-24">
       {/* Hero Section */}
-      <div className="bg-neutral-color-1 py-16">
+      <div className="bg-tirtiary-color py-16">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl lg:text-6xl text-accent-color-1 font-bold mb-6">
             Our Company
@@ -25,7 +25,7 @@ export const CompanyPage = () => {
             <h2 className="text-3xl md:text-4xl text-accent-color-1 font-bold mb-8">
               Our Mission
             </h2>
-            <p className="text-lg md:text-xl text-neutral-color-1 mb-8">
+            <p className="text-lg md:text-xl tirtiary-color mb-8">
               We connect the dots between data and business success, helping
               organizations make informed decisions and drive growth through
               technology innovation.
@@ -35,7 +35,7 @@ export const CompanyPage = () => {
                 <h3 className="text-xl font-bold text-accent-color-1 mb-4">
                   Innovation
                 </h3>
-                <p className="text-neutral-color-1">
+                <p className="tirtiary-color">
                   Pushing boundaries with cutting-edge technology solutions
                 </p>
               </div>
@@ -43,7 +43,7 @@ export const CompanyPage = () => {
                 <h3 className="text-xl font-bold text-accent-color-1 mb-4">
                   Excellence
                 </h3>
-                <p className="text-neutral-color-1">
+                <p className="tirtiary-color">
                   Delivering outstanding results through expertise and
                   dedication
                 </p>
@@ -52,7 +52,7 @@ export const CompanyPage = () => {
                 <h3 className="text-xl font-bold text-accent-color-1 mb-4">
                   Partnership
                 </h3>
-                <p className="text-neutral-color-1">
+                <p className="tirtiary-color">
                   Building lasting relationships with our clients
                 </p>
               </div>
@@ -65,7 +65,7 @@ export const CompanyPage = () => {
       <Team />
 
       {/* Contact Section */}
-      <div className="bg-neutral-color-1 py-16">
+      <div className="bg-tirtiary-color py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl text-accent-color-1 font-bold mb-8">

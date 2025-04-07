@@ -22,9 +22,7 @@ export const CoreBeliefs = () => {
             <h1 className="text-4xl text-accent-color-1">
               {coreBelief.subtitle}
             </h1>
-            <p className="text-4xl text-neutral-color-1 pb-2">
-              {coreBelief.title}
-            </p>
+            <p className="text-4xl tirtiary-color pb-2">{coreBelief.title}</p>
           </div>
         ))}
       </div>

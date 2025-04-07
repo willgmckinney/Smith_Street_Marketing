@@ -2,7 +2,7 @@ export const AccessibilityPage = () => {
   return (
     <div className="min-h-screen bg-neutral-color-2 pt-24">
       {/* Hero Section */}
-      <div className="bg-neutral-color-1 py-16">
+      <div className="bg-tirtiary-color py-16">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl lg:text-6xl text-accent-color-1 font-bold mb-6">
             Accessibility Statement
@@ -23,7 +23,7 @@ export const AccessibilityPage = () => {
               <h2 className="text-3xl md:text-4xl text-accent-color-1 font-bold mb-6">
                 Our Commitment
               </h2>
-              <p className="text-lg text-neutral-color-1 mb-4">
+              <p className="text-lg tirtiary-color mb-4">
                 Smith Avenue Insights is committed to ensuring digital
                 accessibility for people with disabilities. We are continually
                 improving the user experience for everyone and applying the
@@ -36,13 +36,13 @@ export const AccessibilityPage = () => {
               <h2 className="text-3xl md:text-4xl text-accent-color-1 font-bold mb-6">
                 Accessibility Standards
               </h2>
-              <p className="text-lg text-neutral-color-1 mb-4">
+              <p className="text-lg tirtiary-color mb-4">
                 Our website is designed to meet or exceed the Web Content
                 Accessibility Guidelines (WCAG) 2.1 Level AA standards. These
                 guidelines explain how to make web content more accessible for
                 people with disabilities and more user-friendly for everyone.
               </p>
-              <ul className="list-disc list-inside text-lg text-neutral-color-1 space-y-2">
+              <ul className="list-disc list-inside text-lg tirtiary-color space-y-2">
                 <li>
                   Perceivable - Information and user interface components must
                   be presentable to users in ways they can perceive.
@@ -67,7 +67,7 @@ export const AccessibilityPage = () => {
               <h2 className="text-3xl md:text-4xl text-accent-color-1 font-bold mb-6">
                 Accessibility Features
               </h2>
-              <ul className="list-disc list-inside text-lg text-neutral-color-1 space-y-2">
+              <ul className="list-disc list-inside text-lg tirtiary-color space-y-2">
                 <li>Keyboard navigation support</li>
                 <li>Screen reader compatibility</li>
                 <li>High contrast text and background colors</li>
@@ -84,7 +84,7 @@ export const AccessibilityPage = () => {
               <h2 className="text-3xl md:text-4xl text-accent-color-1 font-bold mb-6">
                 Contact Us
               </h2>
-              <p className="text-lg text-neutral-color-1 mb-4">
+              <p className="text-lg tirtiary-color mb-4">
                 We welcome your feedback on the accessibility of our website.
                 Please let us know if you encounter accessibility barriers or if
                 you need assistance with any part of our site.

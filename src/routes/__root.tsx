@@ -15,13 +15,13 @@ export const rootRoute = createRootRoute({
         <div className="flex flex-row items-center gap-2 sm:gap-4">
           <Link
             to="/pricing"
-            className="text-neutral-color-1 bg-neutral-color-2 hover:bg-neutral-color-1/10 transition-colors duration-200 font-medium text-sm sm:text-base py-1.5 sm:py-2 px-2 sm:px-4 rounded-lg border-2 border-neutral-color-1 shadow-sm whitespace-nowrap"
+            className="text-tirtiary-color bg-neutral-color-2 hover:bg-tirtiary-color/10 transition-colors duration-200 font-medium text-sm sm:text-base py-1.5 sm:py-2 px-2 sm:px-4 rounded-lg border-2 border-tirtiary-color shadow-sm whitespace-nowrap"
           >
             Pricing
           </Link>
           <Link
             to="/demo"
-            className="text-neutral-color-2 bg-neutral-color-1 hover:bg-neutral-color-1/90 transition-colors duration-200 font-medium text-sm sm:text-base py-1.5 sm:py-2 px-2 sm:px-4 rounded-lg border-2 border-neutral-color-1 shadow-sm whitespace-nowrap"
+            className="text-neutral-color-2 bg-tirtiary-color hover:bg-tirtiary-color/90 transition-colors duration-200 font-medium text-sm sm:text-base py-1.5 sm:py-2 px-2 sm:px-4 rounded-lg border-2 border-tirtiary-color shadow-sm whitespace-nowrap"
           >
             Get Started
           </Link>

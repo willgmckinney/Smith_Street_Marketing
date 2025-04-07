@@ -36,17 +36,12 @@ export const Services = () => {
   return (
     <div className="bg-neutral-color-1 pt-5 sm:pt-10 text-center">
       <main>
+        <div className="flex flex-row items-center justify-center gap-3 mb-16 sm:mb-20">
+          <span className="text-[3rem] sm:text-[3.5rem] lg:text-[6rem] text-tirtiary-color font-bold">
+            Our Services
+          </span>
+        </div>
         <ul className="stack-cards js-stack-cards">
-          <li className="card p-3 sm:p-5" id="card_1">
-            <div className="card__content flex flex-row items-center justify-center gap-3 h-[25vh] sm:h-[30vh] lg:h-[40vh] rounded-xl">
-              <span className="text-[3rem] sm:text-[3.5rem] lg:text-[6rem] text-neutral-color-1">
-                Our
-              </span>
-              <span className="text-[3rem] sm:text-[3.5rem] lg:text-[6rem] text-accent-color-1">
-                Services
-              </span>
-            </div>
-          </li>
           {servicesList.map((service: { [x: string]: any }) => (
             <li className="card p-3 sm:p-5" id="card_1">
               <div className="card__content">

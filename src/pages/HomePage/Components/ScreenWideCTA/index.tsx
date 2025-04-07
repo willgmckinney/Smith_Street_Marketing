@@ -2,22 +2,36 @@ import { Link } from "@tanstack/react-router";
 
 export const ScreenWideCTA = () => {
   return (
-    <div className="flex flex-col bg-neutral-color-1 text-neutral-color-1 min-h-[85vh] px-4 sm:px-5 pt-6 sm:pt-10">
-      <span className="text-[2rem] sm:text-[3rem] md:text-[4rem] lg:text-[5rem] text-accent-color-1 font-bold leading-tight">
-        We Connect The Dots...
-      </span>
-      <span className="text-[1.25rem] sm:text-[2rem] md:text-[3rem] lg:text-[4rem] text-neutral-color-2 leading-tight mt-4">
-        Transforming Raw Data Into Actionable Insights and Custom Software Into
-        Seamless Solutions, Helping Businesses Thrive With Clarity and
-        Efficiency.
-      </span>
-      <div className="p-4 sm:p-5">
-        <Link
-          to="/demo"
-          className="inline-block text-neutral-color-1 bg-accent-color-1 border-2 border-neutral-color-1 hover:text-neutral-color-1 hover:bg-neutral-color-2 hover:border-neutral-color-1 py-3 px-6 rounded-lg w-full sm:w-auto sm:min-w-[200px] md:min-w-[300px] lg:min-w-[400px] text-xl sm:text-2xl md:text-3xl lg:text-4xl transition-colors duration-200"
-        >
-          Get Started
-        </Link>
+    <div className="flex flex-col justify-center items-center bg-neutral-color-1 text-neutral-color-1 min-h-screen px-4 sm:px-5 py-12 sm:py-16 pt-32 relative">
+      <div
+        className="absolute inset-0"
+        style={{
+          background: `linear-gradient(180deg, 
+            rgba(51, 51, 51, 0) 0%, 
+            rgba(51, 51, 51, 0.2) 50%, 
+            rgba(51, 51, 51, 0) 100%
+          )`,
+        }}
+      />
+      <div className="max-w-7xl mx-auto w-full relative">
+        <div className="space-y-6 sm:space-y-8">
+          <h1 className="text-[2.5rem] sm:text-[3.5rem] md:text-[4.5rem] lg:text-[5.5rem] text-tirtiary-color font-bold leading-tight">
+            We Connect The Dots...
+          </h1>
+          <p className="text-[1.5rem] sm:text-[2.25rem] md:text-[3rem] lg:text-[3.5rem] text-tirtiary-color leading-relaxed max-w-5xl">
+            Transforming Raw Data Into Actionable Insights and Custom Software
+            Into Seamless Solutions, Helping Businesses Thrive With Clarity and
+            Efficiency.
+          </p>
+        </div>
+        <div className="mt-12 sm:mt-16">
+          <Link
+            to="/demo"
+            className="inline-block text-neutral-color-1 bg-accent-color-1 border-2 border-neutral-color-1 hover:text-neutral-color-1 hover:bg-tirtiary-color hover:border-neutral-color-1 py-4 sm:py-5 px-8 sm:px-10 rounded-xl w-full sm:w-auto sm:min-w-[250px] md:min-w-[350px] lg:min-w-[450px] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 text-center"
+          >
+            Get Started
+          </Link>
+        </div>
       </div>
     </div>
   );
