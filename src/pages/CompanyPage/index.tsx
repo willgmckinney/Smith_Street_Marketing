@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { Team } from "../HomePage/Components/Team";
 
 export const CompanyPage = () => {
@@ -74,12 +75,12 @@ export const CompanyPage = () => {
               Ready to transform your business? Let's start a conversation about
               how we can help you achieve your goals.
             </p>
-            <a
-              href="/demo"
+            <Link
+              to="/demo"
               className="inline-block bg-accent-color-1 text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-accent-color-1/90 transition-colors"
             >
               Schedule a Consultation
-            </a>
+            </Link>
           </div>
         </div>
       </div>

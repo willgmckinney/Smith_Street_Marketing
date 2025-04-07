@@ -1,9 +1,10 @@
 import { createRootRoute, Link, Outlet } from "@tanstack/react-router";
 import logo from "../assets/logo.png";
+import Footer from "../components/Footer";
 
 export const rootRoute = createRootRoute({
   component: () => (
-    <>
+    <div className="flex flex-col min-h-screen">
       <header className="flex flex-row justify-between w-full fixed px-3 sm:px-4 md:px-6 lg:px-8 py-2 z-10 bg-neutral-color-2">
         <Link to="/" className="flex flex-row items-center">
           <img src={logo} className="h-12 sm:h-16 p-1" alt="logo" />
@@ -26,8 +27,10 @@ export const rootRoute = createRootRoute({
           </Link>
         </div>
       </header>
+
       <Outlet />
-      {/* <TanStackRouterDevtools /> */}
-    </>
+
+      <Footer />
+    </div>
   ),
 });
