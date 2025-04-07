@@ -4,10 +4,22 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { indexRoute } from "./routes";
 import { rootRoute } from "./routes/__root";
+import { accessibilityRoute } from "./routes/accessibility";
+import { companyRoute } from "./routes/company";
 import { demoRoute } from "./routes/demo";
 import { pricingRoute } from "./routes/pricing";
+import { privacyRoute } from "./routes/privacy";
+import { supportRoute } from "./routes/support";
 
-const routeTree = rootRoute.addChildren([indexRoute, pricingRoute, demoRoute]);
+const routeTree = rootRoute.addChildren([
+  indexRoute,
+  pricingRoute,
+  demoRoute,
+  companyRoute,
+  supportRoute,
+  accessibilityRoute,
+  privacyRoute,
+]);
 
 // Create a new router instance
 const router = createRouter({ routeTree });

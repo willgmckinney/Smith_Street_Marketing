@@ -1,3 +1,5 @@
+import { Link } from "@tanstack/react-router";
+
 export const ScreenWideCTA = () => {
   return (
     <div className="flex flex-col bg-neutral-color-1 text-neutral-color-1 min-h-[85vh] px-4 sm:px-5 pt-6 sm:pt-10">
@@ -10,9 +12,12 @@ export const ScreenWideCTA = () => {
         Efficiency.
       </span>
       <div className="p-4 sm:p-5">
-        <button className="text-neutral-color-1 bg-accent-color-1 border-2 border-neutral-color-1 hover:text-neutral-color-1 hover:bg-neutral-color-2 hover:border-neutral-color-1 py-3 px-6 rounded-lg w-full sm:w-auto sm:min-w-[200px] md:min-w-[300px] lg:min-w-[400px] text-xl sm:text-2xl md:text-3xl lg:text-4xl transition-colors duration-200">
-          Request Demo
-        </button>
+        <Link
+          to="/demo"
+          className="inline-block text-neutral-color-1 bg-accent-color-1 border-2 border-neutral-color-1 hover:text-neutral-color-1 hover:bg-neutral-color-2 hover:border-neutral-color-1 py-3 px-6 rounded-lg w-full sm:w-auto sm:min-w-[200px] md:min-w-[300px] lg:min-w-[400px] text-xl sm:text-2xl md:text-3xl lg:text-4xl transition-colors duration-200"
+        >
+          Get Started
+        </Link>
       </div>
     </div>
   );

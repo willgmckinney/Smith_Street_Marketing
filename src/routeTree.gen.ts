@@ -11,11 +11,27 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as SupportImport } from './routes/support'
+import { Route as PrivacyImport } from './routes/privacy'
 import { Route as PricingImport } from './routes/pricing'
 import { Route as DemoImport } from './routes/demo'
+import { Route as CompanyImport } from './routes/company'
+import { Route as AccessibilityImport } from './routes/accessibility'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
+
+const SupportRoute = SupportImport.update({
+  id: '/support',
+  path: '/support',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const PrivacyRoute = PrivacyImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const PricingRoute = PricingImport.update({
   id: '/pricing',
@@ -26,6 +42,18 @@ const PricingRoute = PricingImport.update({
 const DemoRoute = DemoImport.update({
   id: '/demo',
   path: '/demo',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const CompanyRoute = CompanyImport.update({
+  id: '/company',
+  path: '/company',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const AccessibilityRoute = AccessibilityImport.update({
+  id: '/accessibility',
+  path: '/accessibility',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -46,6 +74,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/accessibility': {
+      id: '/accessibility'
+      path: '/accessibility'
+      fullPath: '/accessibility'
+      preLoaderRoute: typeof AccessibilityImport
+      parentRoute: typeof rootRoute
+    }
+    '/company': {
+      id: '/company'
+      path: '/company'
+      fullPath: '/company'
+      preLoaderRoute: typeof CompanyImport
+      parentRoute: typeof rootRoute
+    }
     '/demo': {
       id: '/demo'
       path: '/demo'
@@ -60,6 +102,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PricingImport
       parentRoute: typeof rootRoute
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyImport
+      parentRoute: typeof rootRoute
+    }
+    '/support': {
+      id: '/support'
+      path: '/support'
+      fullPath: '/support'
+      preLoaderRoute: typeof SupportImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -67,42 +123,84 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/accessibility': typeof AccessibilityRoute
+  '/company': typeof CompanyRoute
   '/demo': typeof DemoRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
+  '/support': typeof SupportRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/accessibility': typeof AccessibilityRoute
+  '/company': typeof CompanyRoute
   '/demo': typeof DemoRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
+  '/support': typeof SupportRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/accessibility': typeof AccessibilityRoute
+  '/company': typeof CompanyRoute
   '/demo': typeof DemoRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
+  '/support': typeof SupportRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/demo' | '/pricing'
+  fullPaths:
+    | '/'
+    | '/accessibility'
+    | '/company'
+    | '/demo'
+    | '/pricing'
+    | '/privacy'
+    | '/support'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/demo' | '/pricing'
-  id: '__root__' | '/' | '/demo' | '/pricing'
+  to:
+    | '/'
+    | '/accessibility'
+    | '/company'
+    | '/demo'
+    | '/pricing'
+    | '/privacy'
+    | '/support'
+  id:
+    | '__root__'
+    | '/'
+    | '/accessibility'
+    | '/company'
+    | '/demo'
+    | '/pricing'
+    | '/privacy'
+    | '/support'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AccessibilityRoute: typeof AccessibilityRoute
+  CompanyRoute: typeof CompanyRoute
   DemoRoute: typeof DemoRoute
   PricingRoute: typeof PricingRoute
+  PrivacyRoute: typeof PrivacyRoute
+  SupportRoute: typeof SupportRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AccessibilityRoute: AccessibilityRoute,
+  CompanyRoute: CompanyRoute,
   DemoRoute: DemoRoute,
   PricingRoute: PricingRoute,
+  PrivacyRoute: PrivacyRoute,
+  SupportRoute: SupportRoute,
 }
 
 export const routeTree = rootRoute
@@ -116,18 +214,34 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/accessibility",
+        "/company",
         "/demo",
-        "/pricing"
+        "/pricing",
+        "/privacy",
+        "/support"
       ]
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/accessibility": {
+      "filePath": "accessibility.tsx"
+    },
+    "/company": {
+      "filePath": "company.tsx"
     },
     "/demo": {
       "filePath": "demo.tsx"
     },
     "/pricing": {
       "filePath": "pricing.tsx"
+    },
+    "/privacy": {
+      "filePath": "privacy.tsx"
+    },
+    "/support": {
+      "filePath": "support.tsx"
     }
   }
 }
