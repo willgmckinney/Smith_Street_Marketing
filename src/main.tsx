@@ -10,6 +10,7 @@ import { demoRoute } from "./routes/demo";
 import { pricingRoute } from "./routes/pricing";
 import { privacyRoute } from "./routes/privacy";
 import { supportRoute } from "./routes/support";
+import { offeringsRoute } from "./routes/offerings";
 
 const routeTree = rootRoute.addChildren([
   indexRoute,
@@ -19,6 +20,7 @@ const routeTree = rootRoute.addChildren([
   supportRoute,
   accessibilityRoute,
   privacyRoute,
+  offeringsRoute,
 ]);
 
 // Create a new router instance

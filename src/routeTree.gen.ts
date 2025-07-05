@@ -14,6 +14,7 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as SupportImport } from './routes/support'
 import { Route as PrivacyImport } from './routes/privacy'
 import { Route as PricingImport } from './routes/pricing'
+import { Route as OfferingsImport } from './routes/offerings'
 import { Route as DemoImport } from './routes/demo'
 import { Route as CompanyImport } from './routes/company'
 import { Route as AccessibilityImport } from './routes/accessibility'
@@ -36,6 +37,12 @@ const PrivacyRoute = PrivacyImport.update({
 const PricingRoute = PricingImport.update({
   id: '/pricing',
   path: '/pricing',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const OfferingsRoute = OfferingsImport.update({
+  id: '/offerings',
+  path: '/offerings',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -95,6 +102,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DemoImport
       parentRoute: typeof rootRoute
     }
+    '/offerings': {
+      id: '/offerings'
+      path: '/offerings'
+      fullPath: '/offerings'
+      preLoaderRoute: typeof OfferingsImport
+      parentRoute: typeof rootRoute
+    }
     '/pricing': {
       id: '/pricing'
       path: '/pricing'
@@ -126,6 +140,7 @@ export interface FileRoutesByFullPath {
   '/accessibility': typeof AccessibilityRoute
   '/company': typeof CompanyRoute
   '/demo': typeof DemoRoute
+  '/offerings': typeof OfferingsRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/support': typeof SupportRoute
@@ -136,6 +151,7 @@ export interface FileRoutesByTo {
   '/accessibility': typeof AccessibilityRoute
   '/company': typeof CompanyRoute
   '/demo': typeof DemoRoute
+  '/offerings': typeof OfferingsRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/support': typeof SupportRoute
@@ -147,6 +163,7 @@ export interface FileRoutesById {
   '/accessibility': typeof AccessibilityRoute
   '/company': typeof CompanyRoute
   '/demo': typeof DemoRoute
+  '/offerings': typeof OfferingsRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/support': typeof SupportRoute
@@ -159,6 +176,7 @@ export interface FileRouteTypes {
     | '/accessibility'
     | '/company'
     | '/demo'
+    | '/offerings'
     | '/pricing'
     | '/privacy'
     | '/support'
@@ -168,6 +186,7 @@ export interface FileRouteTypes {
     | '/accessibility'
     | '/company'
     | '/demo'
+    | '/offerings'
     | '/pricing'
     | '/privacy'
     | '/support'
@@ -177,6 +196,7 @@ export interface FileRouteTypes {
     | '/accessibility'
     | '/company'
     | '/demo'
+    | '/offerings'
     | '/pricing'
     | '/privacy'
     | '/support'
@@ -188,6 +208,7 @@ export interface RootRouteChildren {
   AccessibilityRoute: typeof AccessibilityRoute
   CompanyRoute: typeof CompanyRoute
   DemoRoute: typeof DemoRoute
+  OfferingsRoute: typeof OfferingsRoute
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
   SupportRoute: typeof SupportRoute
@@ -198,6 +219,7 @@ const rootRouteChildren: RootRouteChildren = {
   AccessibilityRoute: AccessibilityRoute,
   CompanyRoute: CompanyRoute,
   DemoRoute: DemoRoute,
+  OfferingsRoute: OfferingsRoute,
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
   SupportRoute: SupportRoute,
@@ -217,6 +239,7 @@ export const routeTree = rootRoute
         "/accessibility",
         "/company",
         "/demo",
+        "/offerings",
         "/pricing",
         "/privacy",
         "/support"
@@ -233,6 +256,9 @@ export const routeTree = rootRoute
     },
     "/demo": {
       "filePath": "demo.tsx"
+    },
+    "/offerings": {
+      "filePath": "offerings.tsx"
     },
     "/pricing": {
       "filePath": "pricing.tsx"
