@@ -1,4 +1,4 @@
-import duncanMeyerProfilePic from "../../../../assets/duncanMeyerProfile.jpg";
+// import duncanMeyerProfilePic from "../../../../assets/duncanMeyerProfile.jpg";
 import dylanMorozowskiProfilePic from "../../../../assets/dylanMorozowskiProfile.jpg";
 import willMcKinneyProfilePic from "../../../../assets/willMckinneyProfile.jpg";
 
@@ -13,11 +13,11 @@ const teamList = [
     bio: "Dylan Morozowski is a seasoned software developer and AWS certified professional, specializing in cloud architecture and data analytics. With expertise in Amazon QuickSight and cloud development, Dylan has helped numerous organizations optimize their data infrastructure and implement cutting-edge analytics solutions. His technical leadership and innovative approach drive successful digital transformations.",
     profilePicture: dylanMorozowskiProfilePic,
   },
-  {
-    name: "Duncan Meyer",
-    bio: "Duncan Meyer is a skilled software engineer with a proven track record in developing robust applications and leading teams. His expertise in modern development practices and agile methodologies has enabled him to deliver high-quality solutions that drive business growth. Duncan's collaborative approach and technical excellence make him an invaluable asset to any project.",
-    profilePicture: duncanMeyerProfilePic,
-  },
+  // {
+  //   name: "Duncan Meyer",
+  //   bio: "Duncan Meyer is a skilled software engineer with a proven track record in developing robust applications and leading teams. His expertise in modern development practices and agile methodologies has enabled him to deliver high-quality solutions that drive business growth. Duncan's collaborative approach and technical excellence make him an invaluable asset to any project.",
+  //   profilePicture: duncanMeyerProfilePic,
+  // },
 ];
 
 export const Team = () => {
