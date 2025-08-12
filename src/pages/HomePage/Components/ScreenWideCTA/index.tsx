@@ -11,6 +11,7 @@ export const ScreenWideCTA = () => {
             rgba(51, 51, 51, 0.2) 50%, 
             rgba(51, 51, 51, 0) 100%
           )`,
+          pointerEvents: "none",
         }}
       />
       <div className="max-w-7xl mx-auto w-full relative">
