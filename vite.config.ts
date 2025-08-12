@@ -6,7 +6,4 @@ import { defineConfig } from "vite";
 export default defineConfig({
   plugins: [TanStackRouterVite({ autoCodeSplitting: true }), react()],
   base: "/",
-  server: {
-    historyApiFallback: true,
-  },
 });
