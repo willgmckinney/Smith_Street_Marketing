@@ -1,3 +1,5 @@
+import { Link } from "@tanstack/react-router";
+
 export const PricingCard = ({
   title,
   price,
@@ -51,8 +53,9 @@ export const PricingCard = ({
           </li>
         ))}
       </ul>
-      <button
-        className={`mt-8 px-6 py-3 rounded-lg font-medium transition-colors
+      <Link
+        to="/demo"
+        className={`mt-8 px-6 py-3 rounded-lg font-medium transition-colors text-center block
             ${
               isPopular
                 ? "bg-accent-color-1 text-white hover:bg-accent-color-1/90"
@@ -60,7 +63,7 @@ export const PricingCard = ({
             }`}
       >
         Get started
-      </button>
+      </Link>
     </div>
   );
 };

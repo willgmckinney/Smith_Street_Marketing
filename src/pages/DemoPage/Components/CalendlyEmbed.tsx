@@ -17,7 +17,7 @@ export const CalendlyEmbed = () => {
   return (
     <div
       className="calendly-inline-widget"
-      data-url="https://calendly.com/will-smithaveinsights/30min"
+      data-url="https://calendly.com/dylan-smithaveinsights/30min"
       style={{ minWidth: "320px", height: "700px" }}
     />
   );
