@@ -14,6 +14,12 @@ export const rootRoute = createRootRoute({
         </Link>
         <div className="flex flex-row items-center gap-2 sm:gap-4">
           <Link
+            to="/portfolio"
+            className="text-tirtiary-color bg-neutral-color-2 hover:bg-tirtiary-color/10 transition-colors duration-200 font-medium text-sm sm:text-base py-1.5 sm:py-2 px-2 sm:px-4 rounded-lg border-2 border-tirtiary-color shadow-sm whitespace-nowrap"
+          >
+            Portfolio
+          </Link>
+          <Link
             to="/pricing"
             className="text-tirtiary-color bg-neutral-color-2 hover:bg-tirtiary-color/10 transition-colors duration-200 font-medium text-sm sm:text-base py-1.5 sm:py-2 px-2 sm:px-4 rounded-lg border-2 border-tirtiary-color shadow-sm whitespace-nowrap"
           >
