@@ -1,0 +1,26 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c9bff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#62e3d6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bgGradient)"/>
+
+  <!-- Lucide-style house - centered and scaled -->
+  <g transform="translate(100, 60) scale(8)">
+    <!-- House roof -->
+    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.9"/>
+    
+    <!-- Door -->
+    <polyline points="9,22 9,12 15,12 15,22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.8"/>
+  </g>
+
+  <!-- Decorative elements -->
+  <circle cx="80" cy="80" r="20" fill="white" opacity="0.1"/>
+  <circle cx="320" cy="220" r="15" fill="white" opacity="0.1"/>
+  <circle cx="350" cy="60" r="10" fill="white" opacity="0.1"/>
+</svg> 

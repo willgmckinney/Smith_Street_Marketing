@@ -6,7 +6,10 @@ import { indexRoute } from "./routes";
 import { rootRoute } from "./routes/__root";
 import { accessibilityRoute } from "./routes/accessibility";
 import { companyRoute } from "./routes/company";
+import { constructionDashboardRoute } from "./routes/construction-dashboard";
 import { demoRoute } from "./routes/demo";
+import { portfolioRoute } from "./routes/portfolio";
+import { realEstateDashboardRoute } from "./routes/real-estate-dashboard";
 import { pricingRoute } from "./routes/pricing";
 import { privacyRoute } from "./routes/privacy";
 import { supportRoute } from "./routes/support";
@@ -16,6 +19,9 @@ const routeTree = rootRoute.addChildren([
   pricingRoute,
   demoRoute,
   companyRoute,
+  portfolioRoute,
+  constructionDashboardRoute,
+  realEstateDashboardRoute,
   supportRoute,
   accessibilityRoute,
   privacyRoute,

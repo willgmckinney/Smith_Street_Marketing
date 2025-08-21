@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Real Estate Broker Dashboard — Fixed Heights (v2)</title>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
+
+  <style>
+    :root{
+      --bg: #0f1221;
+      --panel: #171a2f;
+      --panel-2: #1c2140;
+      --text: #e7eaf6;
+      --muted: #a4add4;
+      --accent: #7c9bff;
+      --accent-2: #62e3d6;
+      --radius: 18px;
+      --shadow: 0 10px 25px rgba(0,0,0,.35);
+      --chart-height: 340px; /* editable via UI slider */
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background: radial-gradient(1200px 800px at 80% -10%, #233060 0%, var(--bg) 45%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+    }
+
+    .container{max-width:1400px;margin:0 auto;padding:28px 20px 40px;display:grid;grid-template-rows:auto auto auto 1fr;gap:18px}
+
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .logo{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.3px;font-size:18px}
+    .logo .mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:var(--shadow);position:relative}
+    .logo .mark::after{content:"";position:absolute;inset:8px;border-radius:8px;background:rgba(255,255,255,.12)}
+
+    .controls{background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px;display:grid;gap:10px;grid-template-columns:repeat(12,1fr);align-items:end}
+    .control{display:grid;gap:8px;grid-column:span 3}
+    .control.wide{grid-column:span 6}
+    label{font-size:12px;letter-spacing:.3px;color:var(--muted)}
+    input[type="date"],select,input[type="number"],input[type="range"]{width:100%;background:#0f1430;color:var(--text);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:10px 12px;outline:none;transition:border .2s,box-shadow .2s}
+    input[type="range"]{padding:6px 0}
+    input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,155,255,.14)}
+    .btn{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#0c1026;font-weight:700;letter-spacing:.3px;border:none;border-radius:12px;padding:10px 14px;cursor:pointer;box-shadow:var(--shadow)}
+
+    .kpis{display:grid;gap:14px;grid-template-columns:repeat(12,1fr)}
+    .kpi-card{grid-column:span 3;min-height:92px;display:grid;grid-template-columns:1fr auto;align-items:center;background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+    .kpi-card h3{margin:0;font-size:12px;color:var(--muted);font-weight:600}
+    .kpi-card .value{font-size:24px;font-weight:800;letter-spacing:.3px;margin-top:6px}
+    .kpi-card .delta{font-size:12px;margin-top:6px}
+
+    .grid{display:grid;gap:14px;grid-template-columns:repeat(12,1fr)}
+
+    /* Panels now use flex column so header and chart area size are stable */
+    .panel{grid-column:span 6;background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
+    .panel.h12{grid-column:span 12}
+    .panel h2{margin:0;font-size:16px;letter-spacing:.2px;display:flex;align-items:center;gap:10px}
+    .panel h2 .badge{font-size:11px;color:#0c1026;background:var(--accent-2);padding:2px 8px;border-radius:999px}
+
+    /* Chart wrapper constrains height and prevents canvas from growing vertically */
+    .chart-wrap{height:var(--chart-height);min-height:220px;max-height:720px;display:flex;align-items:stretch;overflow:hidden;border-radius:12px}
+    /* Make canvas fill the wrapper exactly */
+    .chart-wrap canvas{width:100% !important;height:100% !important;display:block}
+
+    /* When the x-axis has many ticks allow horizontal scrolling but keep height fixed */
+    .chart-scroll{overflow-x:auto}
+    .chart-scroll .chart-inner{min-width:700px}
+
+    .footer-note{color:var(--muted);font-size:12px;opacity:.9;text-align:center;margin-top:10px}
+
+    @media(max-width:1100px){.control{grid-column:span 6}.kpi-card{grid-column:span 6}.panel{grid-column:span 12}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <div class="mark"></div>
+        <div>
+          <div style="opacity:.7;font-size:12px">Broker Command Center</div>
+          <div style="font-size:18px;font-weight:800">Market Intelligence Dashboard</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px">
+        <button id="resetBtn" class="btn" title="Reset filters">Reset Filters</button>
+        <button id="exportBtn" class="btn" title="Export current view as PNG">Export PNG</button>
+      </div>
+    </header>
+
+    <!-- FILTER BAR -->
+    <section class="controls" aria-label="Filters">
+      <div class="control">
+        <label for="dateFrom">From</label>
+        <input type="date" id="dateFrom" />
+      </div>
+      <div class="control">
+        <label for="dateTo">To</label>
+        <input type="date" id="dateTo" />
+      </div>
+      <div class="control">
+        <label for="market">Market</label>
+        <select id="market">
+          <option value="All" selected>All Markets</option>
+          <option>Northside</option>
+          <option>Southside</option>
+          <option>Eastside</option>
+          <option>Westside</option>
+          <option>Downtown</option>
+          <option>Suburbs</option>
+        </select>
+      </div>
+      <div class="control">
+        <label for="propertyType">Property Type</label>
+        <select id="propertyType">
+          <option value="All" selected>All Types</option>
+          <option>Single Family</option>
+          <option>Condo</option>
+          <option>Townhome</option>
+          <option>Multi-Unit</option>
+          <option>Luxury</option>
+        </select>
+      </div>
+      <div class="control">
+        <label for="beds">Bedrooms (min)</label>
+        <input id="beds" type="number" min="0" max="8" value="0" />
+      </div>
+      <div class="control">
+        <label for="baths">Bathrooms (min)</label>
+        <input id="baths" type="number" min="0" max="8" value="0" />
+      </div>
+      <div class="control wide">
+        <label for="priceRange">Max Price: <span id="priceLabel"></span></label>
+        <input type="range" id="priceRange" min="150000" max="2500000" step="25000" value="2500000" />
+      </div>
+
+      <div class="control">
+        <label for="chartHeight">Chart Height</label>
+        <input id="chartHeight" type="range" min="220" max="720" step="10" value="340" />
+      </div>
+
+      <div class="control">
+        <label for="leadSource">Lead Source</label>
+        <select id="leadSource">
+          <option value="All" selected>All Sources</option>
+          <option>Referral</option>
+          <option>Website</option>
+          <option>Open House</option>
+          <option>Ads</option>
+          <option>MLS</option>
+        </select>
+      </div>
+
+      <div class="control">
+        <label>&nbsp;</label>
+        <button id="applyBtn" class="btn">Apply</button>
+      </div>
+    </section>
+
+    <!-- KPIs -->
+    <section class="kpis" aria-label="Key Metrics">
+      <div class="kpi-card" title="Total active listings matching filters">
+        <div>
+          <h3>Active Inventory</h3>
+          <div class="value" id="kpiActive">—</div>
+          <div class="delta" id="kpiActiveDelta">MoM: —</div>
+        </div>
+        <div class="icon">🏠</div>
+      </div>
+      <div class="kpi-card" title="Median closing price in period">
+        <div>
+          <h3>Median Close Price</h3>
+          <div class="value" id="kpiMedianPrice">—</div>
+          <div class="delta" id="kpiPriceDelta">YoY: —</div>
+        </div>
+        <div class="icon">💵</div>
+      </div>
+      <div class="kpi-card" title="Average days on market for sold listings">
+        <div>
+          <h3>Avg Days on Market</h3>
+          <div class="value" id="kpiDOM">—</div>
+          <div class="delta" id="kpiDOMDelta">vs Prev: —</div>
+        </div>
+        <div class="icon">⏱️</div>
+      </div>
+      <div class="kpi-card" title="Ratio of sale price to list price">
+        <div>
+          <h3>List → Sale Ratio</h3>
+          <div class="value" id="kpiLTR">—</div>
+          <div class="delta" id="kpiLTRDelta">Trend: —</div>
+        </div>
+        <div class="icon">📈</div>
+      </div>
+    </section>
+
+    <!-- CHARTS -->
+    <section class="grid" aria-label="Charts">
+      <div class="panel h12">
+        <h2>Closings by Week <span class="badge" id="rangeBadge">Last 6 Months</span></h2>
+        <div class="chart-wrap chart-scroll"><div class="chart-inner" style="flex:1"><canvas id="chartSales"></canvas></div></div>
+      </div>
+
+      <div class="panel">
+        <h2>Average Sale Price by Property Type</h2>
+        <div class="chart-wrap"><canvas id="chartAvgPriceByType"></canvas></div>
+      </div>
+
+      <div class="panel">
+        <h2>Price Distribution (Histogram)</h2>
+        <div class="chart-wrap chart-scroll"><div class="chart-inner" style="flex:1"><canvas id="chartPriceDist"></canvas></div></div>
+      </div>
+
+      <div class="panel">
+        <h2>Days on Market by Neighborhood</h2>
+        <div class="chart-wrap"><canvas id="chartDOMByHood"></canvas></div>
+      </div>
+
+      <div class="panel">
+        <h2>Pipeline Funnel (Leads → Closings)</h2>
+        <div class="chart-wrap"><canvas id="chartFunnel"></canvas></div>
+      </div>
+
+      <div class="panel">
+        <h2>Inventory Status</h2>
+        <div class="chart-wrap"><canvas id="chartStatus"></canvas></div>
+      </div>
+    </section>
+
+    <div class="footer-note">Demo data only. Adjust filters to see dynamic updates. Export creates a PNG of the main sales chart.</div>
+  </div>
+
+  <script>
+    // Utilities & mocks (copied from original demo)
+    const fmt = new Intl.NumberFormat('en-US');
+    const usd = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+
+    function daterangeDays(start, end){ const arr=[]; let d=new Date(start); while(d<=end){arr.push(new Date(d)); d.setDate(d.getDate()+1)} return arr }
+    function weekKey(d){ const date=new Date(d); const onejan=new Date(date.getFullYear(),0,1); const millis=date-onejan+((onejan.getTimezoneOffset()-date.getTimezoneOffset())*60000); const week=Math.floor((millis/86400000+onejan.getDay()+1)/7); return `${date.getFullYear()}-W${String(week).padStart(2,'0')}` }
+    function median(values){ if(!values.length) return 0; const s=[...values].sort((a,b)=>a-b); const mid=Math.floor(s.length/2); return s.length%2? s[mid] : (s[mid-1]+s[mid])/2 }
+
+    const NEIGHBORHOODS=['Northside','Southside','Eastside','Westside','Downtown','Suburbs'];
+    const TYPES=['Single Family','Condo','Townhome','Multi-Unit','Luxury'];
+    const SOURCES=['Referral','Website','Open House','Ads','MLS'];
+
+    function randNorm(mean, sd){ let u=0,v=0; while(u===0) u=Math.random(); while(v===0) v=Math.random(); return mean + sd * Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v) }
+    function seedRandom(seed){ let t = seed >>> 0; return function(){ t += 0x6D2B79F5; let r = Math.imul(t ^ t >>> 15, 1 | t); r ^= r + Math.imul(r ^ r >>> 7, 61 | r); return ((r ^ r >>> 14) >>> 0) / 4294967296 } }
+
+    function generateData(daysBack=365, seed=42){
+      const rnd = seedRandom(seed); const today=new Date(); const start=new Date(); start.setDate(today.getDate()-daysBack);
+      const data = [];
+      for(let i=0;i<daysBack*12;i++){ const d=new Date(start.getTime() + rnd()*daysBack*86400000); const type=TYPES[Math.floor(rnd()*TYPES.length)]; const hood=NEIGHBORHOODS[Math.floor(rnd()*NEIGHBORHOODS.length)]; const beds=Math.max(1, Math.round(randNorm(3,1.2))); const baths=Math.max(1,Math.round(randNorm(2,0.8))); const base={ 'Single Family':520000,'Condo':380000,'Townhome':450000,'Multi-Unit':650000,'Luxury':1200000 }[type]; const price=Math.max(150000, Math.round(randNorm(base, base*0.22))); const listPrice=Math.round(price/(0.97 + rnd()*0.06)); const dom=Math.max(3, Math.round(randNorm(32,18))); const statusPool=['Active','Pending','Sold']; const status=statusPool[Math.floor(rnd()*statusPool.length)]; const leadSource=SOURCES[Math.floor(rnd()*SOURCES.length)]; const sqft=Math.max(600, Math.round(randNorm(2100,700))); const listToSale=Math.round((price/listPrice)*1000)/10; data.push({ date:d, market:hood, neighborhood:hood, type, beds, baths, price, listPrice, dom, status, leadSource, sqft, listToSale }); }
+      const pipeline=[]; for(let d of daterangeDays(start,new Date())){ const ref=d.toISOString().slice(0,10); const leads=10+Math.floor(Math.random()*12); const appts=Math.floor(leads*(0.35+Math.random()*0.15)); const offers=Math.floor(appts*(0.28+Math.random()*0.15)); const closings=Math.floor(offers*(0.45+Math.random()*0.15)); pipeline.push({ date:new Date(d), ref, leads, appts, offers, closings }) }
+      return { listings:data, pipeline }
+    }
+
+    const RAW = generateData(420,1337);
+
+    // State
+    const state = { from:null,to:null,market:'All',type:'All',beds:0,baths:0,maxPrice:2500000,leadSource:'All' };
+
+    function getFiltersFromUI(){
+      const from=document.getElementById('dateFrom').valueAsDate; const to=document.getElementById('dateTo').valueAsDate;
+      state.from = from ? new Date(from) : null; state.to = to ? new Date(to) : null; state.market = document.getElementById('market').value; state.type = document.getElementById('propertyType').value; state.beds = parseInt(document.getElementById('beds').value || '0',10); state.baths = parseInt(document.getElementById('baths').value || '0',10); state.maxPrice = parseInt(document.getElementById('priceRange').value,10); state.leadSource = document.getElementById('leadSource').value;
+    }
+
+    function applyFilters(){
+      getFiltersFromUI(); const from = state.from || new Date(Date.now() - 1000*60*60*24*180); const to = state.to || new Date();
+      const filtered = RAW.listings.filter(r=>{ if(r.date < from || r.date > to) return false; if(state.market!=='All' && r.market!==state.market) return false; if(state.type!=='All' && r.type!==state.type) return false; if(r.beds < state.beds) return false; if(r.baths < state.baths) return false; if(r.price > state.maxPrice) return false; if(state.leadSource!=='All' && r.leadSource!==state.leadSource) return false; return true });
+      const fmtDate=(d)=>d.toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'});
+      document.getElementById('rangeBadge').textContent = `${fmtDate(from)} → ${fmtDate(to)}`;
+      updateKPIs(filtered, from, to); updateCharts(filtered, from, to);
+    }
+
+    function updateKPIs(rows, from, to){
+      const active = rows.filter(r=>r.status==='Active').length; const sold = rows.filter(r=>r.status==='Sold'); const medianPrice = median(sold.map(r=>r.price)); const avgDOM = Math.round(sold.reduce((a,c)=>a+c.dom,0)/Math.max(1,sold.length)); const ltr = Math.round((sold.reduce((a,c)=>a+(c.price/c.listPrice),0)/Math.max(1,sold.length))*1000)/10;
+      document.getElementById('kpiActive').textContent = fmt.format(active); document.getElementById('kpiMedianPrice').textContent = medianPrice ? usd.format(medianPrice) : '—'; document.getElementById('kpiDOM').textContent = isFinite(avgDOM) ? avgDOM + ' days' : '—'; document.getElementById('kpiLTR').textContent = isFinite(ltr) ? ltr + '%' : '—';
+      const spanDays = Math.max(1, Math.round((to - from)/86400000)); const prevFrom = new Date(from.getTime() - spanDays*86400000); const prevTo = new Date(from.getTime() - 1*86400000); const prevRows = RAW.listings.filter(r=>r.date >= prevFrom && r.date <= prevTo); const prevActive = prevRows.filter(r=>r.status==='Active').length; const prevSold = prevRows.filter(r=>r.status==='Sold'); const prevMedian = median(prevSold.map(r=>r.price)); const prevDOM = Math.round(prevSold.reduce((a,c)=>a+c.dom,0)/Math.max(1,prevSold.length)); const prevLTR = Math.round((prevSold.reduce((a,c)=>a + (c.price/c.listPrice),0)/Math.max(1,prevSold.length))*1000)/10;
+      function delta(curr, prev, suffix=''){ if(!isFinite(curr) || !isFinite(prev)) return '—'; const diff = curr - prev; const sign = diff>0 ? '+' : ''; return `${sign}${(diff/Math.max(1,prev)*100).toFixed(1)}%${suffix}` }
+      document.getElementById('kpiActiveDelta').textContent = `MoM: ${delta(active, Math.max(1,prevActive))}`; document.getElementById('kpiPriceDelta').textContent = `YoY: ${delta(medianPrice, Math.max(1,prevMedian))}`; document.getElementById('kpiDOMDelta').textContent = `vs Prev: ${delta(avgDOM, Math.max(1,prevDOM))}`; document.getElementById('kpiLTRDelta').textContent = `Trend: ${delta(ltr, Math.max(1,prevLTR))}`;
+    }
+
+    // Charts
+    const charts = {};
+    function buildCharts(){
+      try {
+        const ctxSales = document.getElementById('chartSales');
+        const ctxAvgType = document.getElementById('chartAvgPriceByType');
+        const ctxPriceDist = document.getElementById('chartPriceDist');
+        const ctxDOMHood = document.getElementById('chartDOMByHood');
+        const ctxFunnel = document.getElementById('chartFunnel');
+        const ctxStatus = document.getElementById('chartStatus');
+        
+        if (!ctxSales || !ctxAvgType || !ctxPriceDist || !ctxDOMHood || !ctxFunnel || !ctxStatus) {
+          console.error('One or more canvas elements not found');
+          return;
+        }
+
+             const commonOptions = { 
+         responsive: true, 
+         maintainAspectRatio: false, 
+         plugins: { 
+           legend: { 
+             labels: { 
+               color: '#dfe3ff' 
+             } 
+           }, 
+           tooltip: { 
+             mode: 'index', 
+             intersect: false 
+           } 
+         }, 
+         scales: { 
+           x: { 
+             ticks: { 
+               color: '#aab3e0', 
+               autoSkip: true, 
+               maxRotation: 0, 
+               minRotation: 0, 
+               maxTicksLimit: 20 
+             }, 
+             grid: { 
+               color: 'rgba(255,255,255,.06)' 
+             } 
+           }, 
+           y: { 
+             ticks: { 
+               color: '#aab3e0' 
+             }, 
+             grid: { 
+               color: 'rgba(255,255,255,.06)' 
+             }, 
+             beginAtZero: true 
+           } 
+         } 
+       };
+
+      charts.sales = new Chart(ctxSales, { type:'bar', data:{ labels:[], datasets:[ { type:'bar', label:'Closings', data:[], borderWidth:1 }, { type:'line', label:'7-wk Moving Avg', data:[], borderWidth:2, tension:0.35 } ] }, options: commonOptions });
+
+             charts.avgType = new Chart(ctxAvgType, { 
+         type: 'bar', 
+         data: { 
+           labels: TYPES, 
+           datasets: [{ 
+             label: 'Avg Sale Price', 
+             data: [] 
+           }] 
+         }, 
+         options: Object.assign({}, commonOptions, { 
+           scales: { 
+             x: { 
+               ticks: { 
+                 color: '#aab3e0' 
+               } 
+             }, 
+             y: { 
+               ticks: { 
+                 color: '#aab3e0' 
+               }, 
+               beginAtZero: true 
+             } 
+           } 
+         }) 
+       });
+
+       charts.priceDist = new Chart(ctxPriceDist, { 
+         type: 'bar', 
+         data: { 
+           labels: [], 
+           datasets: [{ 
+             label: 'Listings', 
+             data: [] 
+           }] 
+         }, 
+         options: Object.assign({}, commonOptions, { 
+           scales: { 
+             x: { 
+               ticks: { 
+                 autoSkip: true, 
+                 maxRotation: 0, 
+                 minRotation: 0, 
+                 maxTicksLimit: 12 
+               } 
+             } 
+           } 
+         }) 
+       });
+
+       charts.domHood = new Chart(ctxDOMHood, { 
+         type: 'bar', 
+         data: { 
+           labels: NEIGHBORHOODS, 
+           datasets: [{ 
+             label: 'Avg DOM', 
+             data: [] 
+           }] 
+         }, 
+         options: Object.assign({}, commonOptions, { 
+           indexAxis: 'y', 
+           scales: { 
+             x: { 
+               ticks: { 
+                 color: '#aab3e0', 
+                 beginAtZero: true 
+               } 
+             }, 
+             y: { 
+               ticks: { 
+                 color: '#aab3e0' 
+               } 
+             } 
+           } 
+         }) 
+       });
+
+       charts.funnel = new Chart(ctxFunnel, { 
+         type: 'bar', 
+         data: { 
+           labels: ['Leads', 'Appts', 'Offers', 'Closings'], 
+           datasets: [{ 
+             label: 'Pipeline', 
+             data: [] 
+           }] 
+         }, 
+         options: Object.assign({}, commonOptions, { 
+           scales: { 
+             x: { 
+               ticks: { 
+                 maxRotation: 0, 
+                 minRotation: 0 
+               } 
+             } 
+           } 
+         }) 
+       });
+
+               charts.status = new Chart(ctxStatus, { 
+          type: 'doughnut', 
+          data: { 
+            labels: ['Active', 'Pending', 'Sold'], 
+            datasets: [{ 
+              label: 'Inventory', 
+              data: [], 
+                             backgroundColor: ['#7c9bff', '#4f6bff', '#2a4bff'],
+               borderColor: ['#7c9bff', '#4f6bff', '#2a4bff'],
+              borderWidth: 2
+            }] 
+          }, 
+          options: Object.assign({}, commonOptions, { 
+            plugins: { 
+              legend: { 
+                labels: { 
+                  color: '#dfe3ff' 
+                } 
+              }, 
+              tooltip: { 
+                callbacks: { 
+                  label: c => `${c.label}: ${fmt.format(c.parsed)}` 
+                } 
+              } 
+            } 
+          }) 
+        });
+      } catch (error) {
+        console.error('Error building charts:', error);
+      }
+    }
+
+    function updateCharts(rows, from, to){
+      const sold = rows.filter(r=>r.status==='Sold').sort((a,b)=>a.date-b.date);
+      const weeks = {};
+      for(let r of sold){ const wk = weekKey(r.date); weeks[wk] = (weeks[wk]||0) + 1 }
+      const labels = Object.keys(weeks).sort(); const counts = labels.map(k=>weeks[k]); const movAvg = counts.map((_,i,arr)=>{ const start=Math.max(0,i-6); const slice = arr.slice(start,i+1); return Math.round(slice.reduce((a,c)=>a+c,0)/slice.length) });
+      charts.sales.data.labels = labels; charts.sales.data.datasets[0].data = counts; charts.sales.data.datasets[1].data = movAvg; charts.sales.update();
+
+      const byType = TYPES.map(t=>{ const set = sold.filter(r=>r.type===t); return Math.round(set.reduce((a,c)=>a+c.price,0)/Math.max(1,set.length)) });
+      charts.avgType.data.datasets[0].data = byType; charts.avgType.update();
+
+      const max = Math.max(2500000, ...rows.map(r=>r.price)); const binSize = 150000; const bins=[]; const labelsH=[]; for(let p=150000;p<=max;p+=binSize){ bins.push(0); labelsH.push(`$${fmt.format(p)}–$${fmt.format(p+binSize-1)}`) }
+      for(let r of rows){ const idx = Math.min(bins.length-1, Math.floor((r.price-150000)/binSize)); if(idx>=0) bins[idx]++ }
+      charts.priceDist.data.labels = labelsH; charts.priceDist.data.datasets[0].data = bins; charts.priceDist.update();
+
+      const domBy = NEIGHBORHOODS.map(h=>{ const set = sold.filter(r=>r.neighborhood===h); if(!set.length) return 0; return Math.round(set.reduce((a,c)=>a+c.dom,0)/set.length) }); charts.domHood.data.datasets[0].data = domBy; charts.domHood.update();
+
+      const pl = RAW.pipeline.filter(p=>p.date>=from && p.date<=to); const sum = k=>pl.reduce((a,c)=>a+(c[k]||0),0); charts.funnel.data.datasets[0].data = [sum('leads'), sum('appts'), sum('offers'), sum('closings')]; charts.funnel.update();
+
+      const statusCounts = ['Active','Pending','Sold'].map(s=>rows.filter(r=>r.status===s).length); charts.status.data.datasets[0].data = statusCounts; charts.status.update();
+    }
+
+    // Init & UI
+    function initUI(){
+      const to = new Date(); const from = new Date(); from.setMonth(to.getMonth()-6); const iso = d=>d.toISOString().slice(0,10); document.getElementById('dateFrom').value = iso(from); document.getElementById('dateTo').value = iso(to);
+      const priceRange = document.getElementById('priceRange'); const priceLabel = document.getElementById('priceLabel'); const syncLabel = ()=> priceLabel.textContent = usd.format(parseInt(priceRange.value,10)); priceRange.addEventListener('input', syncLabel); syncLabel();
+
+      document.getElementById('applyBtn').addEventListener('click', applyFilters);
+      document.getElementById('resetBtn').addEventListener('click', ()=>{ document.getElementById('market').value='All'; document.getElementById('propertyType').value='All'; document.getElementById('beds').value=0; document.getElementById('baths').value=0; document.getElementById('leadSource').value='All'; document.getElementById('priceRange').value=2500000; syncLabel(); const t=new Date(); const f=new Date(); f.setMonth(t.getMonth()-6); document.getElementById('dateFrom').value = iso(f); document.getElementById('dateTo').value = iso(t); applyFilters(); });
+
+      // Chart height slider
+      const chartHeight = document.getElementById('chartHeight'); chartHeight.addEventListener('input', ()=>{ document.documentElement.style.setProperty('--chart-height', chartHeight.value + 'px'); // force resize
+        setTimeout(()=>{ Object.values(charts).forEach(c=>{ try{ c.resize() }catch(e){} }) }, 120); });
+
+      // Export main chart as PNG
+      document.getElementById('exportBtn').addEventListener('click', ()=>{ try{ const url = charts.sales.toBase64Image(); const a=document.createElement('a'); a.href=url; a.download='closings-by-week.png'; a.click(); }catch(e){ alert('Export failed: '+e.message) } });
+    }
+
+    window.addEventListener('load', ()=>{
+      try {
+        console.log('Chart.js loaded:', typeof Chart);
+        buildCharts(); 
+        initUI(); 
+        applyFilters();
+      } catch (error) {
+        console.error('Error initializing dashboard:', error);
+      }
+    });
+  </script>
+</body>
+</html> 
