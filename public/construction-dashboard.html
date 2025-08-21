@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Construction Site Manager — Dashboard (Mock)</title>
+  
+  <!-- Tailwind (CDN) for modern, responsive UI -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Inter font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.js"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <!-- html2canvas for quick export as PNG -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+  <style>
+    :root{
+      --bg: 243 243 245;     /* zinc-100 */
+      --card: 255 255 255;   /* white */
+      --ink:  17 24 39;      /* gray-900 */
+      --muted:107 114 128;   /* gray-500 */
+      --brand:59 130 246;    /* blue-500 */
+      --accent:20 184 166;   /* teal-500 */
+      --warn: 245 158 11;    /* amber-500 */
+      --danger:239 68 68;    /* red-500 */
+    }
+    html,body{font-family: 'Inter',system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial;}
+    .glass{backdrop-filter:saturate(1.2) blur(8px);}
+    .card{background-color: rgb(var(--card)); box-shadow: 0 10px 30px rgba(0,0,0,.06);}
+    .card-border{border:1px solid rgba(0,0,0,0.06)}
+    .btn{transition: all .15s ease;}
+    .btn:active{transform: translateY(1px) scale(.99)}
+    .chart-card canvas{max-height: 340px}
+    .kpi-value{font-variant-numeric: tabular-nums;}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+  </style>
+</head>
+<body class="bg-zinc-100 text-zinc-900">
+  <!-- Page wrapper -->
+  <div class="min-h-screen">
+    <!-- Top Bar -->
+    <header class="sticky top-0 z-40 border-b border-zinc-200 bg-white/70 glass">
+      <div class="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-2xl bg-gradient-to-br from-blue-500 to-teal-500 grid place-content-center text-white shadow-lg">
+              <i data-lucide="hard-hat" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h1 class="text-xl sm:text-2xl font-semibold leading-tight">Construction Site Manager</h1>
+              <p class="text-xs sm:text-sm text-zinc-500">Interactive dashboard (mock) — change dates & inputs to see charts update</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <button id="btnExport" class="btn inline-flex items-center gap-2 rounded-xl bg-zinc-900 px-4 py-2 text-white hover:bg-zinc-800">
+              <i data-lucide="download" class="w-4 h-4"></i>
+              Export PNG
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Controls -->
+    <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+        <div class="lg:col-span-9 card card-border rounded-2xl p-4">
+          <h2 class="font-semibold text-lg mb-3 flex items-center gap-2">
+            <i data-lucide="sliders" class="w-5 h-5"></i> Filters
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Site -->
+            <label class="block">
+              <span class="text-sm font-medium text-zinc-700">Site</span>
+              <select id="siteSelect" class="mt-1 w-full rounded-xl border-zinc-200 focus:border-blue-500 focus:ring-blue-500">
+                <option value="Riverside Tower">Riverside Tower</option>
+                <option value="North Loop Warehouse">North Loop Warehouse</option>
+                <option value="South Campus Renovation">South Campus Renovation</option>
+              </select>
+            </label>
+            <!-- Date range -->
+            <label class="block">
+              <span class="text-sm font-medium text-zinc-700">Start Date</span>
+              <input id="startDate" type="date" class="mt-1 w-full rounded-xl border-zinc-200 focus:border-blue-500 focus:ring-blue-500" />
+            </label>
+            <label class="block">
+              <span class="text-sm font-medium text-zinc-700">End Date</span>
+              <input id="endDate" type="date" class="mt-1 w-full rounded-xl border-zinc-200 focus:border-blue-500 focus:ring-blue-500" />
+            </label>
+            <!-- Simple inputs that influence data generation -->
+            <label class="block">
+              <span class="text-sm font-medium text-zinc-700">Crew Count</span>
+              <input id="crewCount" type="number" min="5" max="500" value="64" class="mt-1 w-full rounded-xl border-zinc-200 focus:border-blue-500 focus:ring-blue-500" />
+            </label>
+            <label class="block">
+              <span class="text-sm font-medium text-zinc-700">Weather Impact (0–100%)</span>
+              <input id="weatherImpact" type="range" min="0" max="100" value="15" class="mt-3 w-full" />
+              <span id="weatherValue" class="text-xs text-zinc-500">15%</span>
+            </label>
+            <label class="block">
+              <span class="text-sm font-medium text-zinc-700">Overtime Policy</span>
+              <select id="overtimePolicy" class="mt-1 w-full rounded-xl border-zinc-200 focus:border-blue-500 focus:ring-blue-500">
+                <option value="conservative">Conservative</option>
+                <option value="balanced" selected>Balanced</option>
+                <option value="aggressive">Aggressive</option>
+              </select>
+            </label>
+          </div>
+          <div class="mt-4 flex flex-wrap items-center gap-2">
+            <button id="btnThisWeek" class="btn rounded-xl bg-zinc-900 px-3 py-2 text-white hover:bg-zinc-800 text-sm">This Week</button>
+            <button id="btnMonth" class="btn rounded-xl bg-white px-3 py-2 border border-zinc-200 hover:bg-zinc-50 text-sm">This Month</button>
+            <button id="btnQuarter" class="btn rounded-xl bg-white px-3 py-2 border border-zinc-200 hover:bg-zinc-50 text-sm">This Quarter</button>
+            <div class="grow"></div>
+            <button id="btnApply" class="btn inline-flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2 text-white hover:bg-blue-500">
+              <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+              Apply Filters
+            </button>
+          </div>
+        </div>
+
+        <!-- Helper panel -->
+        <aside class="lg:col-span-3 card card-border rounded-2xl p-4">
+          <h3 class="font-semibold mb-2 flex items-center gap-2"><i data-lucide="lightbulb" class="w-5 h-5"></i> Tips</h3>
+          <ul class="text-sm text-zinc-600 space-y-2 list-disc list-inside">
+            <li>Pick a <span class="font-medium">date range</span> and a <span class="font-medium">site</span>.</li>
+            <li>Adjust <span class="font-medium">Crew Count</span>, <span class="font-medium">Weather Impact</span>, and <span class="font-medium">Overtime Policy</span> to see the numbers change.</li>
+            <li>Use <span class="font-medium">Export PNG</span> to snapshot the dashboard.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- KPI Cards -->
+    <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-6" id="dashboardRoot">
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div class="card card-border rounded-2xl p-4">
+          <div class="text-xs text-zinc-500">Active Workers</div>
+          <div id="kpiWorkers" class="kpi-value text-2xl font-semibold mt-1">—</div>
+          <div id="kpiWorkersDelta" class="text-xs text-blue-600 mt-2">—</div>
+        </div>
+        <div class="card card-border rounded-2xl p-4">
+          <div class="text-xs text-zinc-500">Tasks Completed</div>
+          <div id="kpiTasks" class="kpi-value text-2xl font-semibold mt-1">—</div>
+          <div id="kpiTasksDelta" class="text-xs text-emerald-600 mt-2">—</div>
+        </div>
+        <div class="card card-border rounded-2xl p-4">
+          <div class="text-xs text-zinc-500">On‑Time %</div>
+          <div id="kpiOnTime" class="kpi-value text-2xl font-semibold mt-1">—</div>
+          <div id="kpiOnTimeDelta" class="text-xs text-emerald-600 mt-2">—</div>
+        </div>
+        <div class="card card-border rounded-2xl p-4">
+          <div class="text-xs text-zinc-500">Safety Index</div>
+          <div class="flex items-center gap-2 mt-1">
+            <div class="grow">
+              <div id="kpiSafety" class="kpi-value text-2xl font-semibold">—</div>
+              <div id="kpiSafetyDelta" class="text-xs text-emerald-600 mt-1">—</div>
+            </div>
+            <div class="w-14 h-14 relative">
+              <canvas id="safetyGauge"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="card card-border rounded-2xl p-4">
+          <div class="text-xs text-zinc-500">Cost to Date</div>
+          <div id="kpiCost" class="kpi-value text-2xl font-semibold mt-1">—</div>
+          <div id="kpiCostDelta" class="text-xs text-amber-600 mt-2">—</div>
+        </div>
+      </div>
+
+      <!-- Charts grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 mt-4">
+        <div class="lg:col-span-7 chart-card card card-border rounded-2xl p-4">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="font-semibold">Productivity — Planned vs Actual</h3>
+            <div class="text-xs text-zinc-500" id="prodSpan">—</div>
+          </div>
+          <canvas id="prodChart" aria-label="Productivity chart" role="img"></canvas>
+        </div>
+        <div class="lg:col-span-5 chart-card card card-border rounded-2xl p-4">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="font-semibold">Equipment Utilization</h3>
+            <div class="text-xs text-zinc-500">Utilization %</div>
+          </div>
+          <canvas id="equipChart"></canvas>
+        </div>
+
+        <div class="lg:col-span-6 chart-card card card-border rounded-2xl p-4">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="font-semibold">Trade Hours (Stacked)</h3>
+            <div class="text-xs text-zinc-500">Carpentry · Electrical · Plumbing · Concrete</div>
+          </div>
+          <canvas id="tradeChart"></canvas>
+        </div>
+        <div class="lg:col-span-6 chart-card card card-border rounded-2xl p-4">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="font-semibold">Deliveries by Vendor</h3>
+            <div class="text-xs text-zinc-500"># Deliveries</div>
+          </div>
+          <canvas id="deliveryChart"></canvas>
+        </div>
+
+        <div class="lg:col-span-12 chart-card card card-border rounded-2xl p-4">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="font-semibold">Cost Burn‑Down vs Budget</h3>
+            <div class="text-xs text-zinc-500" id="costSpan">—</div>
+          </div>
+          <canvas id="costChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Simple Task Table -->
+      <div class="card card-border rounded-2xl p-4 mt-4">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="font-semibold">Today's Work Orders (Mock)</h3>
+          <div class="text-xs text-zinc-500">Click headers to sort</div>
+        </div>
+        <div class="overflow-x-auto">
+          <table id="taskTable" class="min-w-full text-sm">
+            <thead class="text-left text-zinc-600">
+              <tr>
+                <th data-key="id" class="py-2 cursor-pointer">#</th>
+                <th data-key="task" class="py-2 cursor-pointer">Task</th>
+                <th data-key="trade" class="py-2 cursor-pointer">Trade</th>
+                <th data-key="assignee" class="py-2 cursor-pointer">Lead</th>
+                <th data-key="progress" class="py-2 cursor-pointer">Progress</th>
+                <th data-key="eta" class="py-2 cursor-pointer">ETA</th>
+              </tr>
+            </thead>
+            <tbody id="taskBody" class="divide-y divide-zinc-100"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <footer class="text-xs text-zinc-500 my-8 text-center">
+        Mock data for demo only. All numbers are synthetic and change when you adjust inputs.
+      </footer>
+    </section>
+  </div>
+
+  <script>
+    // ===== Utility: tiny deterministic RNG so the same inputs yield the same charts =====
+    function seededRandom(seed){
+      let h = 2166136261 >>> 0;
+      for (let i=0;i<seed.length;i++){
+        h ^= seed.charCodeAt(i);
+        h += (h<<1) + (h<<4) + (h<<7) + (h<<8) + (h<<24);
+      }
+      return function(){ // xorshift-like
+        h += 0x6D2B79F5;
+        let t = Math.imul(h ^ (h >>> 15), 1 | h);
+        t ^= t + Math.imul(t ^ (t >>> 7), 61 | t);
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+      }
+    }
+
+    // ===== Date helpers =====
+    function parseDate(v){ return v ? new Date(v + 'T00:00:00') : new Date(); }
+    function formatDate(d){ return d.toISOString().slice(0,10); }
+    function addDays(d, n){ const x = new Date(d); x.setDate(x.getDate()+n); return x; }
+    function eachDay(start, end){
+      const days=[]; let d = new Date(start);
+      while(d <= end){ days.push(new Date(d)); d.setDate(d.getDate()+1); }
+      return days;
+    }
+
+    // ===== DOM =====
+    const el = (id)=>document.getElementById(id);
+    const siteSelect = el('siteSelect');
+    const startDate = el('startDate');
+    const endDate = el('endDate');
+    const crewCount = el('crewCount');
+    const weatherImpact = el('weatherImpact');
+    const weatherValue = el('weatherValue');
+    const overtimePolicy = el('overtimePolicy');
+
+    const btnThisWeek = el('btnThisWeek');
+    const btnMonth = el('btnMonth');
+    const btnQuarter = el('btnQuarter');
+    const btnApply = el('btnApply');
+    const btnExport = el('btnExport');
+
+    const kpiWorkers = el('kpiWorkers');
+    const kpiWorkersDelta = el('kpiWorkersDelta');
+    const kpiTasks = el('kpiTasks');
+    const kpiTasksDelta = el('kpiTasksDelta');
+    const kpiOnTime = el('kpiOnTime');
+    const kpiOnTimeDelta = el('kpiOnTimeDelta');
+    const kpiSafety = el('kpiSafety');
+    const kpiSafetyDelta = el('kpiSafetyDelta');
+    const kpiCost = el('kpiCost');
+    const kpiCostDelta = el('kpiCostDelta');
+    const prodSpan = el('prodSpan');
+    const costSpan = el('costSpan');
+
+    const taskBody = el('taskBody');
+
+    // ===== Charts =====
+    let prodChart, equipChart, tradeChart, deliveryChart, costChart, safetyGauge;
+
+    // Colors (Chart.js will auto-palette; we only set a couple accents for clarity)
+    const brand = 'rgba(59,130,246,0.9)';
+    const brandSoft = 'rgba(59,130,246,0.25)';
+    const accent = 'rgba(20,184,166,0.9)';
+    const accentSoft = 'rgba(20,184,166,0.25)';
+
+    // ===== Data generator =====
+    function generateData(){
+      const site = siteSelect.value;
+      const start = parseDate(startDate.value);
+      const end = parseDate(endDate.value);
+      const days = eachDay(start, end);
+      const crew = Math.max(5, parseInt(crewCount.value||'50',10));
+      const weather = Math.max(0, Math.min(100, parseInt(weatherImpact.value||'0',10)));
+      const ot = overtimePolicy.value; // conservative|balanced|aggressive
+
+      const seed = `${site}|${formatDate(start)}|${formatDate(end)}|${crew}|${weather}|${ot}`;
+      const rand = seededRandom(seed);
+
+      // productivity
+      const planned = []; const actual = [];
+      let base = crew * (ot==='aggressive'? 10 : ot==='balanced'? 8 : 6);
+      const weatherDrag = 1 - (weather/100)*0.6; // up to -60%
+
+      days.forEach((d,i)=>{
+        const weekday = d.getDay(); // 0 sun ... 6 sat
+        const isWeekend = (weekday===0 || weekday===6);
+        const plan = isWeekend ? 0 : Math.round(base * (0.9 + rand()*0.2));
+        // Actual affected by weather + small noise
+        const act = isWeekend ? 0 : Math.max(0, Math.round(plan * weatherDrag * (0.9 + rand()*0.3)));
+        planned.push(plan);
+        actual.push(act);
+      });
+
+      // equipment utilization
+      const equip = [
+        {label:'Cranes', v: 40 + rand()*50},
+        {label:'Excavators', v: 30 + rand()*60},
+        {label:'Concrete Pumps', v: 20 + rand()*65},
+        {label:'Forklifts', v: 35 + rand()*55}
+      ].map(x=>({...x, v: Math.min(100, Math.round(x.v*(weatherDrag*1.05)))}));
+
+      // trade hours (stacked)
+      const trades = ['Carpentry','Electrical','Plumbing','Concrete'];
+      const tradeSeries = trades.map((t,idx)=>{
+        return days.map((d,i)=>{
+          const w = d.getDay(); const weekend = (w===0||w===6);
+          const baseH = weekend?0: (crew * 0.7) * (0.6 + rand()*0.8);
+          const mod = 0.8 + (idx*0.1) + (ot==='aggressive'?0.2:ot==='conservative'?-0.1:0);
+          return Math.round(baseH * mod * weatherDrag);
+        });
+      });
+
+      // deliveries by vendor
+      const vendors = ['Acme Steel','Skyline Lumber','VoltWire','FlowPlumb','ReadyMix'];
+      const deliveries = vendors.map(v=>({label:v, v: Math.round(2 + rand()*8)}));
+
+      // safety index 0-100
+      const safety = Math.round(70 + (rand()*25) * weatherDrag + (ot==='aggressive'?-5:ot==='conservative'?+5:0));
+
+      // tasks table (today)
+      const today = end; // pretend we show for end date
+      const taskCount = 8 + Math.floor(rand()*6);
+      const taskRows = Array.from({length:taskCount}).map((_,i)=>{
+        const trade = trades[Math.floor(rand()*trades.length)];
+        const progress = Math.round(rand()*100);
+        const etaHrs = Math.max(1, Math.round((100-progress)/ (10 + rand()*40)));
+        return {
+          id: 100+i,
+          task: `${trade} — ${['Framing','Wiring','Piping','Pouring','Inspection'][Math.floor(rand()*5)]}`,
+          trade,
+          assignee: ['Lopez','Patel','Smith','Kim','Nguyen','Johnson'][Math.floor(rand()*6)],
+          progress,
+          eta: `${etaHrs}h`
+        }
+      });
+
+      // cost burn-down vs budget
+      const budget = 1_800_000 + Math.round(rand()*600_000);
+      let cumulative = 0;
+      const dailyCost = days.map((d,i)=>{
+        const w = d.getDay(); const weekend = (w===0||w===6);
+        const spend = weekend? 0 : Math.round( crew * (350 + rand()*200) * (ot==='aggressive'?1.15:ot==='conservative'?0.9:1) * (1 + (100-weather)/100*0.1) );
+        cumulative += spend; return spend;
+      });
+      const cumSeries = dailyCost.map((v,i)=> dailyCost.slice(0,i+1).reduce((a,b)=>a+b,0));
+
+      // KPIs
+      const totalWorkers = crew;
+      const totalTasks = taskRows.length * (0.6 + rand()*1.2) | 0;
+      const onTime = Math.max(50, Math.min(99, Math.round(80 + (rand()*10 - weather/10))));
+      const costToDate = cumSeries[cumSeries.length-1] || 0;
+
+      return {
+        site, start, end, days, planned, actual, equip, trades, tradeSeries, vendors, deliveries, safety, taskRows, budget, dailyCost, cumSeries, totalWorkers, totalTasks, onTime, costToDate
+      };
+    }
+
+    // ===== Rendering =====
+    function fmtMoney(n){ return n.toLocaleString(undefined,{style:'currency', currency:'USD', maximumFractionDigits:0}); }
+
+    function renderKPIs(d){
+      kpiWorkers.textContent = d.totalWorkers.toLocaleString();
+      kpiWorkersDelta.textContent = `Crew stable at ${d.site}`;
+
+      kpiTasks.textContent = d.totalTasks.toLocaleString();
+      kpiTasksDelta.textContent = `+${Math.max(1, Math.round(d.totalTasks*0.08))} vs last period`;
+
+      kpiOnTime.textContent = d.onTime + '%';
+      kpiOnTimeDelta.textContent = d.onTime>85? 'On track' : 'Needs attention';
+
+      kpiSafety.textContent = d.safety;
+      kpiSafetyDelta.textContent = d.safety>85? 'Excellent' : d.safety>70? 'Good' : 'Watchlist';
+
+      kpiCost.textContent = fmtMoney(d.costToDate);
+      const budgetLeft = d.budget - d.costToDate;
+      kpiCostDelta.textContent = (budgetLeft>=0? 'Under budget ' : 'Over budget ') + fmtMoney(Math.abs(budgetLeft));
+    }
+
+    function renderTasks(d){
+      taskBody.innerHTML = '';
+      d.taskRows.forEach(r=>{
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="py-2 pr-4 text-zinc-500">${r.id}</td>
+          <td class="py-2 pr-4">${r.task}</td>
+          <td class="py-2 pr-4">${r.trade}</td>
+          <td class="py-2 pr-4">${r.assignee}</td>
+          <td class="py-2 pr-4 w-48">
+            <div class="w-full bg-zinc-100 rounded-full h-2.5 overflow-hidden">
+              <div class="h-2.5 rounded-full bg-blue-500" style="width:${r.progress}%"></div>
+            </div>
+            <span class="text-xs text-zinc-500">${r.progress}%</span>
+          </td>
+          <td class="py-2">${r.eta}</td>
+        `;
+        taskBody.appendChild(tr);
+      });
+    }
+
+    function buildOrUpdateChart(ctx, cfg, instanceRef){
+      if (instanceRef && instanceRef.data){
+        instanceRef.data = cfg.data; // replace data
+        instanceRef.options = cfg.options; // replace options
+        instanceRef.update();
+        return instanceRef;
+      }
+      return new Chart(ctx, cfg);
+    }
+
+    function renderCharts(d){
+      const labels = d.days.map(x=> x.toLocaleDateString());
+
+      // Productivity
+      prodSpan.textContent = `${d.site} • ${d.days.length} days`;
+      prodChart = buildOrUpdateChart(
+        document.getElementById('prodChart'),
+        {
+          type: 'line',
+          data: {
+            labels,
+            datasets: [
+              {label:'Planned', data: d.planned, fill: true, tension: .35, backgroundColor: brandSoft, borderColor: brand, borderWidth: 2, pointRadius: 0},
+              {label:'Actual', data: d.actual, fill: true, tension: .35, backgroundColor: accentSoft, borderColor: accent, borderWidth: 2, pointRadius: 0},
+            ]
+          },
+          options: {
+            responsive:true, maintainAspectRatio:false,
+            plugins: { legend: {position:'bottom'}, tooltip:{mode:'index', intersect:false} },
+            scales: { x:{ grid:{display:false}}, y:{ beginAtZero:true} }
+          }
+        }, prodChart);
+
+      // Equipment utilization
+      equipChart = buildOrUpdateChart(
+        document.getElementById('equipChart'),
+        {
+          type: 'doughnut',
+          data: {
+            labels: d.equip.map(e=>e.label),
+            datasets: [{ data: d.equip.map(e=>e.v) }]
+          },
+          options: { responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:'bottom'} } }
+        }, equipChart);
+
+      // Trade hours stacked
+      tradeChart = buildOrUpdateChart(
+        document.getElementById('tradeChart'),
+        {
+          type: 'bar',
+          data: {
+            labels,
+            datasets: d.trades.map((t,idx)=>({ label:t, data: d.tradeSeries[idx], stack:'hours' }))
+          },
+          options: {
+            responsive:true, maintainAspectRatio:false,
+            plugins: { legend:{position:'bottom'} },
+            scales: { x:{ stacked:true, grid:{display:false}}, y:{ stacked:true, beginAtZero:true } }
+          }
+        }, tradeChart);
+
+      // Deliveries by vendor
+      deliveryChart = buildOrUpdateChart(
+        document.getElementById('deliveryChart'),
+        {
+          type: 'bar',
+          data: {
+            labels: d.vendors,
+            datasets: [{ label:'Deliveries', data: d.deliveries.map(x=>x.v) }]
+          },
+          options: { responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false} }, scales:{ x:{ grid:{display:false}}, y:{ beginAtZero:true, ticks:{stepSize:1}} } }
+        }, deliveryChart);
+
+      // Cost burn-down
+      costSpan.textContent = `${fmtMoney(d.budget)} budget`;
+      costChart = buildOrUpdateChart(
+        document.getElementById('costChart'),
+        {
+          type: 'line',
+          data: {
+            labels,
+            datasets:[
+              {label:'Daily Spend', data: d.dailyCost, borderWidth:2, pointRadius:0},
+              {label:'Cumulative', data: d.cumSeries, borderWidth:2, pointRadius:0},
+              {label:'Budget', data: Array(d.days.length).fill(d.budget), borderDash:[6,6], borderWidth:2, pointRadius:0}
+            ]
+          },
+          options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:'bottom'} }, scales:{ x:{ grid:{display:false}}, y:{ beginAtZero:true } } }
+        }, costChart);
+
+      // Safety Gauge (semi-circle)
+      const gaugeCfg = {
+        type: 'doughnut',
+        data: {
+          labels:['Score','Remainder'],
+          datasets:[{ data:[d.safety, 100-d.safety], circumference: 180, rotation: 270 }]
+        },
+        options: { plugins:{ legend:{display:false}, tooltip:{enabled:false}}, responsive:true, maintainAspectRatio:false, cutout:'70%'}
+      };
+      safetyGauge = buildOrUpdateChart(document.getElementById('safetyGauge'), gaugeCfg, safetyGauge);
+    }
+
+    // ===== Sorting for table =====
+    let sortKey = 'id'; let sortAsc = true;
+    document.querySelectorAll('#taskTable thead th').forEach(th=>{
+      th.addEventListener('click', ()=>{
+        const key = th.dataset.key; if (!key) return;
+        if (sortKey===key) sortAsc = !sortAsc; else { sortKey=key; sortAsc=true; }
+        const rows = Array.from(taskBody.querySelectorAll('tr'));
+        rows.sort((a,b)=>{
+          const av = a.children[Array.from(th.parentElement.children).indexOf(th)].textContent.trim();
+          const bv = b.children[Array.from(th.parentElement.children).indexOf(th)].textContent.trim();
+          const na = parseFloat(av) || av; const nb = parseFloat(bv) || bv;
+          return (na>nb?1:na<nb?-1:0) * (sortAsc?1:-1);
+        });
+        taskBody.innerHTML=''; rows.forEach(r=>taskBody.appendChild(r));
+      });
+    });
+
+    // ===== Export =====
+    btnExport.addEventListener('click', async ()=>{
+      const root = document.getElementById('dashboardRoot');
+      const btn = btnExport; btn.disabled = true; btn.textContent = 'Rendering…';
+      try{
+        const canvas = await html2canvas(root, {useCORS:true, backgroundColor:'#ffffff'});
+        const link = document.createElement('a');
+        link.download = `dashboard-${Date.now()}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      } finally{
+        btn.disabled = false; btn.textContent = 'Export PNG';
+      }
+    });
+
+    // ===== Presets =====
+    function setRange(daysBack){
+      const end = new Date();
+      const start = addDays(end, -daysBack);
+      startDate.value = formatDate(start);
+      endDate.value = formatDate(end);
+    }
+    btnThisWeek.addEventListener('click', ()=>{ setRange(6); apply(); });
+    btnMonth.addEventListener('click', ()=>{ setRange(29); apply(); });
+    btnQuarter.addEventListener('click', ()=>{ setRange(89); apply(); });
+
+    weatherImpact.addEventListener('input', ()=> weatherValue.textContent = weatherImpact.value + '%');
+
+    // ===== Apply / Refresh =====
+    function apply(){
+      const d = generateData();
+      renderKPIs(d);
+      renderCharts(d);
+      renderTasks(d);
+    }
+    btnApply.addEventListener('click', apply);
+
+    // ===== Init =====
+    (function init(){
+      lucide.createIcons();
+      setRange(29); // default: last 30 days
+      apply();
+    })();
+  </script>
+</body>
+</html>

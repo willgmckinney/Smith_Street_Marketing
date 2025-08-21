@@ -12,9 +12,12 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as SupportImport } from './routes/support'
+import { Route as RealEstateDashboardImport } from './routes/real-estate-dashboard'
 import { Route as PrivacyImport } from './routes/privacy'
 import { Route as PricingImport } from './routes/pricing'
+import { Route as PortfolioImport } from './routes/portfolio'
 import { Route as DemoImport } from './routes/demo'
+import { Route as ConstructionDashboardImport } from './routes/construction-dashboard'
 import { Route as CompanyImport } from './routes/company'
 import { Route as AccessibilityImport } from './routes/accessibility'
 import { Route as IndexImport } from './routes/index'
@@ -24,6 +27,12 @@ import { Route as IndexImport } from './routes/index'
 const SupportRoute = SupportImport.update({
   id: '/support',
   path: '/support',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const RealEstateDashboardRoute = RealEstateDashboardImport.update({
+  id: '/real-estate-dashboard',
+  path: '/real-estate-dashboard',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -39,9 +48,21 @@ const PricingRoute = PricingImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const PortfolioRoute = PortfolioImport.update({
+  id: '/portfolio',
+  path: '/portfolio',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const DemoRoute = DemoImport.update({
   id: '/demo',
   path: '/demo',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ConstructionDashboardRoute = ConstructionDashboardImport.update({
+  id: '/construction-dashboard',
+  path: '/construction-dashboard',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -88,11 +109,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CompanyImport
       parentRoute: typeof rootRoute
     }
+    '/construction-dashboard': {
+      id: '/construction-dashboard'
+      path: '/construction-dashboard'
+      fullPath: '/construction-dashboard'
+      preLoaderRoute: typeof ConstructionDashboardImport
+      parentRoute: typeof rootRoute
+    }
     '/demo': {
       id: '/demo'
       path: '/demo'
       fullPath: '/demo'
       preLoaderRoute: typeof DemoImport
+      parentRoute: typeof rootRoute
+    }
+    '/portfolio': {
+      id: '/portfolio'
+      path: '/portfolio'
+      fullPath: '/portfolio'
+      preLoaderRoute: typeof PortfolioImport
       parentRoute: typeof rootRoute
     }
     '/pricing': {
@@ -107,6 +142,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyImport
+      parentRoute: typeof rootRoute
+    }
+    '/real-estate-dashboard': {
+      id: '/real-estate-dashboard'
+      path: '/real-estate-dashboard'
+      fullPath: '/real-estate-dashboard'
+      preLoaderRoute: typeof RealEstateDashboardImport
       parentRoute: typeof rootRoute
     }
     '/support': {
@@ -125,9 +167,12 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/accessibility': typeof AccessibilityRoute
   '/company': typeof CompanyRoute
+  '/construction-dashboard': typeof ConstructionDashboardRoute
   '/demo': typeof DemoRoute
+  '/portfolio': typeof PortfolioRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
+  '/real-estate-dashboard': typeof RealEstateDashboardRoute
   '/support': typeof SupportRoute
 }
 
@@ -135,9 +180,12 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/accessibility': typeof AccessibilityRoute
   '/company': typeof CompanyRoute
+  '/construction-dashboard': typeof ConstructionDashboardRoute
   '/demo': typeof DemoRoute
+  '/portfolio': typeof PortfolioRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
+  '/real-estate-dashboard': typeof RealEstateDashboardRoute
   '/support': typeof SupportRoute
 }
 
@@ -146,9 +194,12 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/accessibility': typeof AccessibilityRoute
   '/company': typeof CompanyRoute
+  '/construction-dashboard': typeof ConstructionDashboardRoute
   '/demo': typeof DemoRoute
+  '/portfolio': typeof PortfolioRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
+  '/real-estate-dashboard': typeof RealEstateDashboardRoute
   '/support': typeof SupportRoute
 }
 
@@ -158,27 +209,36 @@ export interface FileRouteTypes {
     | '/'
     | '/accessibility'
     | '/company'
+    | '/construction-dashboard'
     | '/demo'
+    | '/portfolio'
     | '/pricing'
     | '/privacy'
+    | '/real-estate-dashboard'
     | '/support'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/accessibility'
     | '/company'
+    | '/construction-dashboard'
     | '/demo'
+    | '/portfolio'
     | '/pricing'
     | '/privacy'
+    | '/real-estate-dashboard'
     | '/support'
   id:
     | '__root__'
     | '/'
     | '/accessibility'
     | '/company'
+    | '/construction-dashboard'
     | '/demo'
+    | '/portfolio'
     | '/pricing'
     | '/privacy'
+    | '/real-estate-dashboard'
     | '/support'
   fileRoutesById: FileRoutesById
 }
@@ -187,9 +247,12 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AccessibilityRoute: typeof AccessibilityRoute
   CompanyRoute: typeof CompanyRoute
+  ConstructionDashboardRoute: typeof ConstructionDashboardRoute
   DemoRoute: typeof DemoRoute
+  PortfolioRoute: typeof PortfolioRoute
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
+  RealEstateDashboardRoute: typeof RealEstateDashboardRoute
   SupportRoute: typeof SupportRoute
 }
 
@@ -197,9 +260,12 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AccessibilityRoute: AccessibilityRoute,
   CompanyRoute: CompanyRoute,
+  ConstructionDashboardRoute: ConstructionDashboardRoute,
   DemoRoute: DemoRoute,
+  PortfolioRoute: PortfolioRoute,
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
+  RealEstateDashboardRoute: RealEstateDashboardRoute,
   SupportRoute: SupportRoute,
 }
 
@@ -216,9 +282,12 @@ export const routeTree = rootRoute
         "/",
         "/accessibility",
         "/company",
+        "/construction-dashboard",
         "/demo",
+        "/portfolio",
         "/pricing",
         "/privacy",
+        "/real-estate-dashboard",
         "/support"
       ]
     },
@@ -231,14 +300,23 @@ export const routeTree = rootRoute
     "/company": {
       "filePath": "company.tsx"
     },
+    "/construction-dashboard": {
+      "filePath": "construction-dashboard.tsx"
+    },
     "/demo": {
       "filePath": "demo.tsx"
+    },
+    "/portfolio": {
+      "filePath": "portfolio.tsx"
     },
     "/pricing": {
       "filePath": "pricing.tsx"
     },
     "/privacy": {
       "filePath": "privacy.tsx"
+    },
+    "/real-estate-dashboard": {
+      "filePath": "real-estate-dashboard.tsx"
     },
     "/support": {
       "filePath": "support.tsx"
