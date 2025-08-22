@@ -9,9 +9,10 @@ import { companyRoute } from "./routes/company";
 import { constructionDashboardRoute } from "./routes/construction-dashboard";
 import { demoRoute } from "./routes/demo";
 import { portfolioRoute } from "./routes/portfolio";
-import { realEstateDashboardRoute } from "./routes/real-estate-dashboard";
 import { pricingRoute } from "./routes/pricing";
 import { privacyRoute } from "./routes/privacy";
+import { realEstateDashboardRoute } from "./routes/real-estate-dashboard";
+import { securitySchedulingDashboardRoute } from "./routes/security-scheduling-dashboard";
 import { supportRoute } from "./routes/support";
 
 const routeTree = rootRoute.addChildren([
@@ -22,6 +23,7 @@ const routeTree = rootRoute.addChildren([
   portfolioRoute,
   constructionDashboardRoute,
   realEstateDashboardRoute,
+  securitySchedulingDashboardRoute,
   supportRoute,
   accessibilityRoute,
   privacyRoute,
