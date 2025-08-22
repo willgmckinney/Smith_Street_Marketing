@@ -1,0 +1,852 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TL Enterprises • Shift Scheduling Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        font-family:
+          Inter,
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Helvetica,
+          Arial,
+          "Apple Color Emoji",
+          "Segoe UI Emoji";
+      }
+      .glass {
+        backdrop-filter: blur(12px);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.06),
+          rgba(255, 255, 255, 0.02)
+        );
+      }
+      .card {
+        border-radius: 1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      }
+      .btn {
+        @apply px-3 py-2 rounded-xl font-medium border border-white/10 hover:border-white/20 transition;
+      }
+      .badge {
+        @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs border;
+      }
+      .grid-auto-rows {
+        grid-auto-rows: minmax(64px, auto);
+      }
+      .scroll-shadow::-webkit-scrollbar {
+        height: 10px;
+      }
+      .scroll-shadow::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 9999px;
+      }
+    </style>
+  </head>
+  <body
+    class="min-h-full bg-gradient-to-b from-slate-950 via-slate-950 to-slate-900 text-slate-100"
+  >
+    <!-- Header -->
+    <header
+      class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/70 glass"
+    >
+      <div
+        class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-3">
+          <!-- Shield logo -->
+          <svg
+            width="36"
+            height="36"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="drop-shadow"
+          >
+            <path
+              d="M12 2l7 3v6c0 5-3.5 9-7 11-3.5-2-7-6-7-11V5l7-3z"
+              fill="#0ea5e9"
+            />
+            <path
+              d="M12 4.5l5 2.1v4.6c0 3.8-2.6 7.1-5 8.8-2.4-1.7-5-5-5-8.8V6.6l5-2.1z"
+              fill="#38bdf8"
+            />
+            <path
+              d="M9 12l3 3 4-6"
+              stroke="#0f172a"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <div>
+            <div class="text-xl font-extrabold tracking-tight">
+              TL Enterprises
+            </div>
+            <div class="text-xs text-slate-400 -mt-0.5">
+              Private Security • Shift Scheduling Demo
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="hidden sm:flex items-center gap-2">
+            <span class="text-xs text-slate-400">View</span>
+            <div
+              class="relative inline-flex items-center bg-white/5 border border-white/10 rounded-xl p-1"
+            >
+              <button
+                id="btnUserView"
+                class="px-3 py-1.5 text-sm rounded-lg font-medium bg-sky-500/20 text-sky-200"
+              >
+                User
+              </button>
+              <button
+                id="btnAdminView"
+                class="px-3 py-1.5 text-sm rounded-lg font-medium text-slate-300 hover:bg-white/5"
+              >
+                Admin
+              </button>
+            </div>
+          </div>
+          <button id="btnReset" class="btn text-xs">Reset Demo</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main -->
+    <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+      <!-- Controls -->
+      <section class="grid md:grid-cols-2 gap-4">
+        <div class="card border border-white/10 p-4 bg-white/5">
+          <div class="flex items-center justify-between">
+            <div>
+              <div class="text-sm text-slate-400">Week</div>
+              <div id="weekLabel" class="text-lg font-semibold">—</div>
+            </div>
+            <div class="flex items-center gap-2">
+              <button id="prevWeek" class="btn text-sm">◀ Prev</button>
+              <button id="thisWeek" class="btn text-sm">This Week</button>
+              <button id="nextWeek" class="btn text-sm">Next ▶</button>
+            </div>
+          </div>
+        </div>
+        <div class="card border border-white/10 p-4 bg-white/5">
+          <div class="flex flex-wrap items-center gap-3">
+            <div class="flex-1 min-w-[220px]">
+              <label class="text-sm text-slate-400">Acting User</label>
+              <select
+                id="actingUser"
+                class="w-full mt-1 bg-white/5 border border-white/10 rounded-xl px-3 py-2"
+              >
+                <!-- filled by JS -->
+              </select>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="badge border-green-500/40 text-green-300">Open</span>
+              <span class="badge border-sky-500/40 text-sky-300">Assigned</span>
+              <span class="badge border-amber-500/40 text-amber-300"
+                >My Shifts</span
+              >
+            </div>
+          </div>
+          <p class="text-xs text-slate-400 mt-2">
+            Tip: switch to <span class="font-semibold">Admin</span> to assign or
+            unassign anyone, add shifts, or filter by site and officer.
+          </p>
+        </div>
+      </section>
+
+      <!-- Admin Panel (filters/actions) -->
+      <section
+        id="adminPanel"
+        class="hidden card border border-white/10 p-4 bg-white/5"
+      >
+        <div class="flex flex-wrap items-end gap-3">
+          <div>
+            <label class="text-sm text-slate-400">Filter: Site</label>
+            <select
+              id="filterSite"
+              class="bg-white/5 border border-white/10 rounded-xl px-3 py-2"
+            >
+              <option value="">All</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-sm text-slate-400">Filter: Officer</label>
+            <select
+              id="filterOfficer"
+              class="bg-white/5 border border-white/10 rounded-xl px-3 py-2"
+            >
+              <option value="">All</option>
+            </select>
+          </div>
+          <div class="ml-auto flex items-center gap-2">
+            <button id="btnAddShift" class="btn">+ Add Shift</button>
+            <button id="btnExport" class="btn">Export CSV</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Schedule Grid -->
+      <section class="card border border-white/10 bg-white/5 overflow-hidden">
+        <div class="overflow-x-auto scroll-shadow">
+          <table class="min-w-full text-sm">
+            <thead class="bg-white/5">
+              <tr id="theadRow" class="divide-x divide-white/10">
+                <!-- Days added dynamically -->
+              </tr>
+            </thead>
+            <tbody id="scheduleBody" class="divide-y divide-white/10">
+              <!-- Rows added dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Mobile Admin/User Toggle -->
+      <div class="sm:hidden flex items-center justify-center gap-2">
+        <button
+          id="btnUserViewSm"
+          class="btn text-sm bg-sky-500/20 text-sky-200"
+        >
+          User View
+        </button>
+        <button id="btnAdminViewSm" class="btn text-sm">Admin View</button>
+      </div>
+    </main>
+
+    <!-- Add Shift Modal -->
+    <div
+      id="modal"
+      class="fixed inset-0 z-50 hidden items-center justify-center"
+    >
+      <div class="absolute inset-0 bg-black/60"></div>
+      <div
+        class="relative w-full max-w-lg mx-4 card bg-slate-900 border border-white/10 p-5"
+      >
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="text-lg font-semibold">Add Shift</h3>
+          <button id="modalClose" class="btn text-xs">✕</button>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-3">
+          <div>
+            <label class="text-sm text-slate-400">Date</label>
+            <input
+              id="modalDate"
+              type="date"
+              class="w-full mt-1 bg-white/5 border border-white/10 rounded-xl px-3 py-2"
+            />
+          </div>
+          <div>
+            <label class="text-sm text-slate-400">Site</label>
+            <select
+              id="modalSite"
+              class="w-full mt-1 bg-white/5 border border-white/10 rounded-xl px-3 py-2"
+            ></select>
+          </div>
+          <div>
+            <label class="text-sm text-slate-400">Start</label>
+            <input
+              id="modalStart"
+              type="time"
+              class="w-full mt-1 bg-white/5 border border-white/10 rounded-xl px-3 py-2"
+            />
+          </div>
+          <div>
+            <label class="text-sm text-slate-400">End</label>
+            <input
+              id="modalEnd"
+              type="time"
+              class="w-full mt-1 bg-white/5 border border-white/10 rounded-xl px-3 py-2"
+            />
+          </div>
+          <div class="sm:col-span-2">
+            <label class="text-sm text-slate-400">Notes (optional)</label>
+            <input
+              id="modalNotes"
+              type="text"
+              placeholder="e.g., Gate 3, radio check at 20:00"
+              class="w-full mt-1 bg-white/5 border border-white/10 rounded-xl px-3 py-2"
+            />
+          </div>
+        </div>
+        <div class="mt-4 flex justify-end gap-2">
+          <button id="modalSave" class="btn bg-sky-500/20 text-sky-100">
+            Save Shift
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      /***************************
+       * Demo Data & Persistence *
+       ***************************/
+      const USERS = [
+        { id: "u1", name: "A. Johnson" },
+        { id: "u2", name: "B. Patel" },
+        { id: "u3", name: "C. Nguyen" },
+        { id: "u4", name: "D. Smith" },
+        { id: "u5", name: "E. Garcia" },
+      ];
+
+      const SITES = [
+        "HQ — Lobby",
+        "South Gate",
+        "Warehouse A",
+        "Dock 12",
+        "R&D Building",
+      ];
+
+      const DEFAULT_SHIFTS = [
+        { start: "06:00", end: "14:00" },
+        { start: "14:00", end: "22:00" },
+        { start: "22:00", end: "06:00" },
+      ];
+
+      function storageKeyForWeek(weekStart) {
+        return `tl_sched_${weekStart.toISOString().slice(0, 10)}`;
+      }
+
+      function loadWeek(weekStart) {
+        const key = storageKeyForWeek(weekStart);
+        const raw = localStorage.getItem(key);
+        if (raw) return JSON.parse(raw);
+
+        // Generate a fresh week: 7 days x sites x default shifts
+        const days = [...Array(7)].map(
+          (_, i) => new Date(weekStart.getTime() + i * 86400000)
+        );
+        let idCounter = 1;
+        const shifts = [];
+        for (const day of days) {
+          for (const site of SITES) {
+            for (const t of DEFAULT_SHIFTS) {
+              shifts.push({
+                id: `s${idCounter++}`,
+                date: day.toISOString().slice(0, 10),
+                site,
+                start: t.start,
+                end: t.end,
+                notes: "",
+                assignedTo: null, // userId
+              });
+            }
+          }
+        }
+        const weekData = { shifts };
+        localStorage.setItem(key, JSON.stringify(weekData));
+        return weekData;
+      }
+
+      function saveWeek(weekStart, data) {
+        localStorage.setItem(
+          storageKeyForWeek(weekStart),
+          JSON.stringify(data)
+        );
+      }
+
+      /********************
+       * Date/Week Helper *
+       ********************/
+      function startOfWeek(d = new Date()) {
+        const date = new Date(
+          Date.UTC(d.getFullYear(), d.getMonth(), d.getDate())
+        );
+        // Make Monday the start of week
+        const day = (date.getUTCDay() + 6) % 7; // 0..6 where 0=Mon
+        date.setUTCDate(date.getUTCDate() - day);
+        return date;
+      }
+
+      function endOfWeek(weekStart) {
+        const e = new Date(weekStart);
+        e.setUTCDate(e.getUTCDate() + 6);
+        return e;
+      }
+
+      function fmtDate(d) {
+        return d.toLocaleDateString(undefined, {
+          month: "short",
+          day: "numeric",
+        });
+      }
+
+      function dayName(d) {
+        return d.toLocaleDateString(undefined, { weekday: "short" });
+      }
+
+      /****************
+       * UI Rendering *
+       ****************/
+      const state = {
+        weekStart: startOfWeek(new Date()),
+        view: "user", // 'user' | 'admin'
+        actingUser: USERS[0].id,
+        filterSite: "",
+        filterOfficer: "",
+        modalOpen: false,
+      };
+
+      const el = (id) => document.getElementById(id);
+
+      function setView(view) {
+        state.view = view;
+        el("adminPanel").classList.toggle("hidden", view !== "admin");
+        // Toggle button styles
+        for (const id of ["btnUserView", "btnUserViewSm"]) {
+          if (!el(id)) continue;
+          el(id).classList.toggle("bg-sky-500/20", view === "user");
+          el(id).classList.toggle("text-sky-200", view === "user");
+        }
+        for (const id of ["btnAdminView", "btnAdminViewSm"]) {
+          if (!el(id)) continue;
+          el(id).classList.toggle("bg-sky-500/20", view === "admin");
+          el(id).classList.toggle("text-sky-200", view === "admin");
+        }
+        renderEverything();
+      }
+
+      function weekLabel() {
+        const s = state.weekStart;
+        const e = endOfWeek(s);
+        return `${fmtDate(s)}–${fmtDate(e)} ${s.getUTCFullYear()}`;
+      }
+
+      function getWeekData() {
+        return loadWeek(state.weekStart);
+      }
+      function setWeekData(data) {
+        saveWeek(state.weekStart, data);
+      }
+
+      function renderHeaderDays() {
+        const thead = el("theadRow");
+        thead.innerHTML = "";
+        const days = [...Array(7)].map(
+          (_, i) => new Date(state.weekStart.getTime() + i * 86400000)
+        );
+        // First corner cell
+        const corner = document.createElement("th");
+        corner.className = "p-3 text-left text-xs font-semibold text-slate-400";
+        corner.textContent = "Site / Shift";
+        thead.appendChild(corner);
+        for (const d of days) {
+          const th = document.createElement("th");
+          th.className = "p-3 text-left text-xs font-semibold text-slate-300";
+          const line1 = document.createElement("div");
+          line1.className = "text-slate-400";
+          line1.textContent = dayName(d);
+          const line2 = document.createElement("div");
+          line2.className = "text-base font-semibold";
+          line2.textContent = fmtDate(d);
+          th.append(line1, line2);
+          thead.appendChild(th);
+        }
+      }
+
+      function groupShiftsBySiteAndTime(shifts) {
+        // return [{ site, start, end, byDate: { 'YYYY-MM-DD': [shift, ...] } }]
+        const map = new Map();
+        for (const s of shifts) {
+          const key = `${s.site}__${s.start}-${s.end}`;
+          if (!map.has(key))
+            map.set(key, {
+              site: s.site,
+              start: s.start,
+              end: s.end,
+              byDate: {},
+            });
+          (map.get(key).byDate[s.date] ||= []).push(s);
+        }
+        return [...map.values()].sort(
+          (a, b) =>
+            a.site.localeCompare(b.site) || a.start.localeCompare(b.start)
+        );
+      }
+
+      function renderSchedule() {
+        const body = el("scheduleBody");
+        body.innerHTML = "";
+        const data = getWeekData();
+
+        // Apply admin filters if any
+        let viewShifts = data.shifts;
+        if (state.view === "admin") {
+          if (state.filterSite)
+            viewShifts = viewShifts.filter((s) => s.site === state.filterSite);
+          if (state.filterOfficer)
+            viewShifts = viewShifts.filter(
+              (s) => s.assignedTo === state.filterOfficer
+            );
+        }
+
+        const groups = groupShiftsBySiteAndTime(viewShifts);
+        const days = [...Array(7)].map(
+          (_, i) => new Date(state.weekStart.getTime() + i * 86400000)
+        );
+
+        for (const g of groups) {
+          const tr = document.createElement("tr");
+          tr.className = "divide-x divide-white/10";
+
+          const first = document.createElement("td");
+          first.className = "p-3 align-top";
+          first.innerHTML = `
+          <div class="font-semibold">${g.site}</div>
+          <div class="text-xs text-slate-400">${g.start}–${g.end}</div>
+        `;
+          tr.appendChild(first);
+
+          for (const d of days) {
+            const iso = d.toISOString().slice(0, 10);
+            const cell = document.createElement("td");
+            cell.className = "p-2 min-w-[180px] align-top";
+
+            const shifts = g.byDate[iso] || [];
+            if (shifts.length === 0) {
+              cell.innerHTML = `<div class="text-xs text-slate-500">—</div>`;
+              tr.appendChild(cell);
+              continue;
+            }
+
+            for (const s of shifts) {
+              const mine = s.assignedTo === state.actingUser;
+              const assigned = Boolean(s.assignedTo);
+              const userName = USERS.find((u) => u.id === s.assignedTo)?.name;
+
+              // Card
+              const wrap = document.createElement("div");
+              wrap.className =
+                "mb-2 last:mb-0 p-3 rounded-xl border bg-slate-900/60";
+              wrap.classList.add(
+                assigned ? "border-sky-500/30" : "border-green-500/30"
+              );
+              if (mine) wrap.classList.add("ring-1", "ring-amber-400/40");
+
+              const top = document.createElement("div");
+              top.className = "flex items-center justify-between gap-2";
+              const title = document.createElement("div");
+              title.className = "text-sm font-semibold";
+              title.textContent = assigned
+                ? mine
+                  ? "Assigned to You"
+                  : `Assigned • ${userName}`
+                : "Open Shift";
+              const status = document.createElement("span");
+              status.className =
+                "badge text-xs " +
+                (assigned
+                  ? "border-sky-500/40 text-sky-300"
+                  : "border-green-500/40 text-green-300");
+              status.textContent = assigned ? "Assigned" : "Open";
+              top.append(title, status);
+
+              const meta = document.createElement("div");
+              meta.className =
+                "mt-2 text-xs text-slate-400 flex flex-wrap gap-x-4 gap-y-1";
+              meta.innerHTML =
+                `<span>Hours: <span class="text-slate-200">${s.start}–${s.end}</span></span><span>Site: <span class="text-slate-200">${s.site}</span></span>` +
+                (s.notes
+                  ? `<span>Notes: <span class="text-slate-200">${s.notes}</span></span>`
+                  : "");
+
+              const actions = document.createElement("div");
+              actions.className = "mt-3 flex flex-wrap gap-2";
+
+              if (state.view === "user") {
+                if (!assigned) {
+                  const btn = document.createElement("button");
+                  btn.className = "btn bg-green-500/20 text-green-100";
+                  btn.textContent = "Take Shift";
+                  btn.onclick = () => takeShift(s.id);
+                  actions.appendChild(btn);
+                } else if (mine) {
+                  const btn = document.createElement("button");
+                  btn.className = "btn bg-amber-500/20 text-amber-100";
+                  btn.textContent = "Drop Shift";
+                  btn.onclick = () => dropShift(s.id);
+                  actions.appendChild(btn);
+                }
+              } else {
+                // Admin actions
+                const assignWrap = document.createElement("div");
+                assignWrap.className = "flex items-center gap-2";
+                const sel = document.createElement("select");
+                sel.className =
+                  "bg-white/5 border border-white/10 rounded-xl px-3 py-2";
+                sel.innerHTML =
+                  `<option value="">Unassigned</option>` +
+                  USERS.map(
+                    (u) =>
+                      `<option value="${u.id}" ${u.id === s.assignedTo ? "selected" : ""}>${u.name}</option>`
+                  ).join("");
+                sel.onchange = (e) => adminAssign(s.id, e.target.value || null);
+                assignWrap.append("Assign →", sel);
+                actions.appendChild(assignWrap);
+
+                const clearBtn = document.createElement("button");
+                clearBtn.className = "btn";
+                clearBtn.textContent = "Clear";
+                clearBtn.onclick = () => adminAssign(s.id, null);
+                actions.appendChild(clearBtn);
+
+                const editBtn = document.createElement("button");
+                editBtn.className = "btn";
+                editBtn.textContent = "Edit Notes";
+                editBtn.onclick = async () => {
+                  const note = prompt("Notes for this shift:", s.notes || "");
+                  if (note !== null) {
+                    s.notes = note.trim();
+                    setWeekData(data);
+                    renderSchedule();
+                  }
+                };
+                actions.appendChild(editBtn);
+              }
+
+              wrap.append(top, meta, actions);
+              cell.appendChild(wrap);
+            }
+
+            tr.appendChild(cell);
+          }
+
+          body.appendChild(tr);
+        }
+      }
+
+      function renderFilters() {
+        const data = getWeekData();
+        const siteSet = new Set(data.shifts.map((s) => s.site));
+        el("filterSite").innerHTML =
+          '<option value="">All</option>' +
+          [...siteSet]
+            .sort()
+            .map((s) => `<option>${s}</option>`)
+            .join("");
+        el("filterOfficer").innerHTML =
+          '<option value="">All</option>' +
+          USERS.map((u) => `<option value="${u.id}">${u.name}</option>`).join(
+            ""
+          );
+        const modalSite = el("modalSite");
+        modalSite.innerHTML = SITES.map((s) => `<option>${s}</option>`).join(
+          ""
+        );
+      }
+
+      function renderEverything() {
+        el("weekLabel").textContent = weekLabel();
+        renderHeaderDays();
+        renderSchedule();
+        renderFilters();
+      }
+
+      /*********************
+       * Actions (User/Admin)
+       *********************/
+      function takeShift(shiftId) {
+        const data = getWeekData();
+        const s = data.shifts.find((x) => x.id === shiftId);
+        if (!s) return;
+        if (s.assignedTo) {
+          alert("This shift has already been taken.");
+          return;
+        }
+        s.assignedTo = state.actingUser;
+        setWeekData(data);
+        renderSchedule();
+      }
+
+      function dropShift(shiftId) {
+        const data = getWeekData();
+        const s = data.shifts.find((x) => x.id === shiftId);
+        if (!s) return;
+        if (s.assignedTo !== state.actingUser) {
+          alert("You can only drop your own shift.");
+          return;
+        }
+        s.assignedTo = null;
+        setWeekData(data);
+        renderSchedule();
+      }
+
+      function adminAssign(shiftId, userIdOrNull) {
+        const data = getWeekData();
+        const s = data.shifts.find((x) => x.id === shiftId);
+        if (!s) return;
+        s.assignedTo = userIdOrNull;
+        setWeekData(data);
+        renderSchedule();
+      }
+
+      function addShift(dateIso, site, start, end, notes) {
+        const data = getWeekData();
+        const newId =
+          "s" +
+          (Math.max(0, ...data.shifts.map((s) => parseInt(s.id.slice(1)))) + 1);
+        data.shifts.push({
+          id: newId,
+          date: dateIso,
+          site,
+          start,
+          end,
+          notes: notes || "",
+          assignedTo: null,
+        });
+        setWeekData(data);
+        renderSchedule();
+      }
+
+      function exportCSV() {
+        const rows = [["Date", "Site", "Start", "End", "Assigned To", "Notes"]];
+        const data = getWeekData();
+        for (const s of data.shifts) {
+          const name = USERS.find((u) => u.id === s.assignedTo)?.name || "";
+          rows.push([
+            s.date,
+            s.site,
+            s.start,
+            s.end,
+            name,
+            (s.notes || "").replace(/\n/g, " "),
+          ]);
+        }
+        const csv = rows
+          .map((r) =>
+            r.map((v) => `"${String(v).replace(/"/g, '\"')}"`).join(",")
+          )
+          .join("\n");
+        const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "tl-enterprises-schedule.csv";
+        a.click();
+        URL.revokeObjectURL(url);
+      }
+
+      /************
+       * Modal UI *
+       ************/
+      function openModal() {
+        state.modalOpen = true;
+        el("modal").classList.remove("hidden", "opacity-0");
+        // Defaults
+        el("modalDate").valueAsDate = new Date(state.weekStart);
+        el("modalStart").value = "06:00";
+        el("modalEnd").value = "14:00";
+        el("modalNotes").value = "";
+      }
+      function closeModal() {
+        state.modalOpen = false;
+        el("modal").classList.add("hidden");
+      }
+
+      /****************
+       * Event Wiring *
+       ****************/
+      function wireEvents() {
+        // View toggles
+        el("btnUserView").onclick = () => setView("user");
+        el("btnAdminView").onclick = () => setView("admin");
+        el("btnUserViewSm").onclick = () => setView("user");
+        el("btnAdminViewSm").onclick = () => setView("admin");
+
+        // Week nav
+        el("prevWeek").onclick = () => {
+          state.weekStart.setUTCDate(state.weekStart.getUTCDate() - 7);
+          renderEverything();
+        };
+        el("nextWeek").onclick = () => {
+          state.weekStart.setUTCDate(state.weekStart.getUTCDate() + 7);
+          renderEverything();
+        };
+        el("thisWeek").onclick = () => {
+          state.weekStart = startOfWeek(new Date());
+          renderEverything();
+        };
+
+        // Acting user
+        const au = el("actingUser");
+        au.innerHTML = USERS.map(
+          (u) => `<option value="${u.id}">${u.name}</option>`
+        ).join("");
+        au.onchange = (e) => {
+          state.actingUser = e.target.value;
+          renderSchedule();
+        };
+
+        // Filters
+        el("filterSite").onchange = (e) => {
+          state.filterSite = e.target.value;
+          renderSchedule();
+        };
+        el("filterOfficer").onchange = (e) => {
+          state.filterOfficer = e.target.value;
+          renderSchedule();
+        };
+
+        // Admin actions
+        el("btnAddShift").onclick = openModal;
+        el("btnExport").onclick = exportCSV;
+
+        // Modal actions
+        el("modalClose").onclick = closeModal;
+        el("modalSave").onclick = () => {
+          const date = el("modalDate").value;
+          const site = el("modalSite").value;
+          const start = el("modalStart").value;
+          const end = el("modalEnd").value;
+          const notes = el("modalNotes").value.trim();
+          if (!date || !site || !start || !end) {
+            alert("Please complete all fields.");
+            return;
+          }
+          addShift(date, site, start, end, notes);
+          closeModal();
+        };
+
+        // Reset demo
+        el("btnReset").onclick = () => {
+          if (!confirm("Reset all demo data for the visible week?")) return;
+          localStorage.removeItem(storageKeyForWeek(state.weekStart));
+          renderEverything();
+        };
+      }
+
+      // Initialize
+      (function init() {
+        // Prepare site list for modal
+        el("modalSite").innerHTML = SITES.map(
+          (s) => `<option>${s}</option>`
+        ).join("");
+        // Render UI
+        renderEverything();
+        // Wire events
+        wireEvents();
+        // Default to user view
+        setView("user");
+      })();
+    </script>
+  </body>
+</html>

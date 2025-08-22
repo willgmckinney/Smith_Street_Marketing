@@ -11,15 +11,16 @@ export const PortfolioPage = () => {
           </h1>
           <div className="max-w-4xl mx-auto">
             <p className="text-lg md:text-xl text-tirtiary-color mb-6 leading-relaxed">
-              At Smith Avenue Insights, we specialize in creating innovative digital solutions 
-              that drive business growth and enhance user experiences. Our approach combines 
-              cutting-edge technology with strategic thinking to deliver projects that not 
-              only meet but exceed expectations.
+              At Smith Avenue Insights, we specialize in creating innovative
+              digital solutions that drive business growth and enhance user
+              experiences. Our approach combines cutting-edge technology with
+              strategic thinking to deliver projects that not only meet but
+              exceed expectations.
             </p>
             <p className="text-lg md:text-xl text-tirtiary-color leading-relaxed">
-              We believe in building solutions that are scalable, maintainable, and user-centric. 
-              Each project reflects our commitment to quality, innovation, and delivering 
-              measurable results for our clients.
+              We believe in building solutions that are scalable, maintainable,
+              and user-centric. Each project reflects our commitment to quality,
+              innovation, and delivering measurable results for our clients.
             </p>
           </div>
         </div>
@@ -40,9 +41,15 @@ export const PortfolioPage = () => {
             linkUrl="/real-estate-dashboard"
             technologies={["HTML5", "JavaScript", "Chart.js", "CSS3"]}
           />
-          {/* Add more ProjectCard components here as needed */}
+          <ProjectCard
+            title="Security Shift Scheduler"
+            description="A comprehensive shift scheduling system for security personnel with user/admin views, real-time assignment management, and export capabilities."
+            imageUrl="/security-shield.svg"
+            linkUrl="/security-scheduling-dashboard"
+            technologies={["HTML5", "JavaScript", "Tailwind", "LocalStorage"]}
+          />
         </div>
       </div>
     </div>
   );
-}; 
+};
