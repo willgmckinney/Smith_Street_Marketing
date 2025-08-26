@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import cloudServices from "../../../../assets/cloudServices.webp";
-import customSoftwareDevelopment from "../../../../assets/customSoftwareDevelopment.webp";
-import dataAnalysisBusinessIntelligence from "../../../../assets/dataAnalysisBusinessIntelligence.webp";
-import websiteDevelopment from "../../../../assets/websiteDevelopment.webp";
+import cloudServices from "../../../../assets/cloudServices.jpg";
+import customSoftwareDevelopment from "../../../../assets/customSoftwareDevelopment.jpg";
+import dataAnalysisBusinessIntelligence from "../../../../assets/dataAnalysisBusinessIntelligence.jpg";
+import websiteDevelopment from "../../../../assets/websiteDevelopment.jpg";
 import "./services.css";
 
 const servicesList = [
