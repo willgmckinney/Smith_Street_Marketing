@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import Skyline from "../../../../assets/skyline.jpg";
+import Skyline from "../../../../assets/Skyline.jpg";
 
 export const ScreenWideCTA = () => {
   return (
