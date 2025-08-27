@@ -25,7 +25,9 @@ export const Team = () => {
     <div className="bg-neutral-color-2">
       <div className="flex flex-col md:flex-row">
         <div className="flex flex-col items-center space-y-8 md:space-y-12 py-8 md:py-16 w-[100%]">
-          <h1 className="text-4xl md:text-6xl text-accent-color-1">About Us</h1>
+          <h1 className="text-4xl md:text-6xl text-accent-color font-bold">
+            About Us
+          </h1>
           <div className="flex flex-col md:flex-row w-full px-4 md:px-0">
             {teamList.map((teamMember) => (
               <div
