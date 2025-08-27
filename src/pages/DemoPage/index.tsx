@@ -1,4 +1,4 @@
-import Skyline from "../../assets/skyline.jpg";
+import Skyline from "../../assets/Skyline.jpg";
 import { CalendlyEmbed } from "./Components/CalendlyEmbed";
 
 export const DemoPage = () => {
@@ -25,7 +25,7 @@ export const DemoPage = () => {
 
             <div className="space-y-8">
               <h2 className="text-3xl font-semibold mb-6">
-                What to expect in your custom solution consultation:
+                What to expect from your custom solution consultation:
               </h2>
 
               <ul className="space-y-4 text-xl">
