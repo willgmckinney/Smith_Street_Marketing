@@ -1,12 +1,24 @@
+import Skyline from "../../assets/skyline.jpg";
 import { CalendlyEmbed } from "./Components/CalendlyEmbed";
 
 export const DemoPage = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#00d8ff] to-[#00c484]">
-      <div className="container mx-auto px-4 py-16">
+    <div className="min-h-screen">
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          pointerEvents: "none",
+          backgroundImage: `url(${Skyline})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          opacity: 0.3,
+        }}
+      />
+      <div className="container mx-auto px-4 py-16 relative z-10">
         <div className="flex flex-col lg:flex-row items-start gap-12">
           {/* Left content section */}
-          <div className="lg:w-1/2 text-white pt-8">
+          <div className="lg:w-1/2 text-black pt-8">
             <h1 className="text-5xl font-bold mb-12">
               Let's discuss your unique requirements
             </h1>
@@ -70,7 +82,7 @@ export const DemoPage = () => {
           </div>
 
           {/* Right calendar section */}
-          <div className="lg:w-1/2 bg-white rounded-lg shadow-xl p-6">
+          <div className="lg:w-1/2 bg-white rounded-lg shadow-xl p-6 sm:mt-0 md:mt-10 z-20">
             <CalendlyEmbed />
           </div>
         </div>
