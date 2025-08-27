@@ -37,7 +37,7 @@ export const Services = () => {
     <div className="bg-neutral-color-1 pt-5 sm:pt-10 text-center">
       <main>
         <div className="flex flex-row items-center justify-center gap-3 mb-16 sm:mb-20">
-          <span className="text-[3rem] sm:text-[3.5rem] lg:text-[6rem] text-tirtiary-color font-bold">
+          <span className="text-[3rem] sm:text-[3.5rem] md:text-6xl text-tirtiary-color font-bold">
             Our Services
           </span>
         </div>
