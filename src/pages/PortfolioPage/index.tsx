@@ -48,6 +48,13 @@ export const PortfolioPage = () => {
             linkUrl="/security-scheduling-dashboard"
             technologies={["HTML5", "JavaScript", "Tailwind", "LocalStorage"]}
           />
+          <ProjectCard
+            title="Trusted Tax Company"
+            description="A comprehensive tax preparation dashboard featuring client management, return tracking, refund analytics, and revenue insights for tax professionals."
+            imageUrl="/tax-calculator.svg"
+            linkUrl="/tax-company-dashboard"
+            technologies={["HTML5", "JavaScript", "Chart.js", "Tailwind CSS"]}
+          />
         </div>
       </div>
     </div>
