@@ -14,6 +14,7 @@ import { privacyRoute } from "./routes/privacy";
 import { realEstateDashboardRoute } from "./routes/real-estate-dashboard";
 import { securitySchedulingDashboardRoute } from "./routes/security-scheduling-dashboard";
 import { supportRoute } from "./routes/support";
+import { taxCompanyDashboardRoute } from "./routes/tax-company-dashboard";
 
 const routeTree = rootRoute.addChildren([
   indexRoute,
@@ -27,6 +28,7 @@ const routeTree = rootRoute.addChildren([
   supportRoute,
   accessibilityRoute,
   privacyRoute,
+  taxCompanyDashboardRoute,
 ]);
 
 // Create a new router instance

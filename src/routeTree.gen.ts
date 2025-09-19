@@ -11,6 +11,7 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as TaxCompanyDashboardImport } from './routes/tax-company-dashboard'
 import { Route as SupportImport } from './routes/support'
 import { Route as SecuritySchedulingDashboardImport } from './routes/security-scheduling-dashboard'
 import { Route as RealEstateDashboardImport } from './routes/real-estate-dashboard'
@@ -24,6 +25,12 @@ import { Route as AccessibilityImport } from './routes/accessibility'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
+
+const TaxCompanyDashboardRoute = TaxCompanyDashboardImport.update({
+  id: '/tax-company-dashboard',
+  path: '/tax-company-dashboard',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const SupportRoute = SupportImport.update({
   id: '/support',
@@ -173,6 +180,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SupportImport
       parentRoute: typeof rootRoute
     }
+    '/tax-company-dashboard': {
+      id: '/tax-company-dashboard'
+      path: '/tax-company-dashboard'
+      fullPath: '/tax-company-dashboard'
+      preLoaderRoute: typeof TaxCompanyDashboardImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -190,6 +204,7 @@ export interface FileRoutesByFullPath {
   '/real-estate-dashboard': typeof RealEstateDashboardRoute
   '/security-scheduling-dashboard': typeof SecuritySchedulingDashboardRoute
   '/support': typeof SupportRoute
+  '/tax-company-dashboard': typeof TaxCompanyDashboardRoute
 }
 
 export interface FileRoutesByTo {
@@ -204,6 +219,7 @@ export interface FileRoutesByTo {
   '/real-estate-dashboard': typeof RealEstateDashboardRoute
   '/security-scheduling-dashboard': typeof SecuritySchedulingDashboardRoute
   '/support': typeof SupportRoute
+  '/tax-company-dashboard': typeof TaxCompanyDashboardRoute
 }
 
 export interface FileRoutesById {
@@ -219,6 +235,7 @@ export interface FileRoutesById {
   '/real-estate-dashboard': typeof RealEstateDashboardRoute
   '/security-scheduling-dashboard': typeof SecuritySchedulingDashboardRoute
   '/support': typeof SupportRoute
+  '/tax-company-dashboard': typeof TaxCompanyDashboardRoute
 }
 
 export interface FileRouteTypes {
@@ -235,6 +252,7 @@ export interface FileRouteTypes {
     | '/real-estate-dashboard'
     | '/security-scheduling-dashboard'
     | '/support'
+    | '/tax-company-dashboard'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -248,6 +266,7 @@ export interface FileRouteTypes {
     | '/real-estate-dashboard'
     | '/security-scheduling-dashboard'
     | '/support'
+    | '/tax-company-dashboard'
   id:
     | '__root__'
     | '/'
@@ -261,6 +280,7 @@ export interface FileRouteTypes {
     | '/real-estate-dashboard'
     | '/security-scheduling-dashboard'
     | '/support'
+    | '/tax-company-dashboard'
   fileRoutesById: FileRoutesById
 }
 
@@ -276,6 +296,7 @@ export interface RootRouteChildren {
   RealEstateDashboardRoute: typeof RealEstateDashboardRoute
   SecuritySchedulingDashboardRoute: typeof SecuritySchedulingDashboardRoute
   SupportRoute: typeof SupportRoute
+  TaxCompanyDashboardRoute: typeof TaxCompanyDashboardRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -290,6 +311,7 @@ const rootRouteChildren: RootRouteChildren = {
   RealEstateDashboardRoute: RealEstateDashboardRoute,
   SecuritySchedulingDashboardRoute: SecuritySchedulingDashboardRoute,
   SupportRoute: SupportRoute,
+  TaxCompanyDashboardRoute: TaxCompanyDashboardRoute,
 }
 
 export const routeTree = rootRoute
@@ -312,7 +334,8 @@ export const routeTree = rootRoute
         "/privacy",
         "/real-estate-dashboard",
         "/security-scheduling-dashboard",
-        "/support"
+        "/support",
+        "/tax-company-dashboard"
       ]
     },
     "/": {
@@ -347,6 +370,9 @@ export const routeTree = rootRoute
     },
     "/support": {
       "filePath": "support.tsx"
+    },
+    "/tax-company-dashboard": {
+      "filePath": "tax-company-dashboard.tsx"
     }
   }
 }

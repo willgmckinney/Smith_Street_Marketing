@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trusted Tax Company</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9fdfb;
+        color: #333;
+      }
+      header {
+        background-color: #e6f7f2;
+        padding: 2rem;
+        text-align: center;
+      }
+      header h1 {
+        margin: 0;
+        font-size: 2rem;
+        color: #2a6049;
+      }
+      section {
+        padding: 3rem 1rem;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      h2 {
+        color: #2a6049;
+        margin-bottom: 1rem;
+      }
+      .faq-item {
+        margin-bottom: 1rem;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 1rem;
+      }
+      .faq-item h3 {
+        margin: 0;
+        font-size: 1.1rem;
+        color: #333;
+      }
+      .faq-item p {
+        margin: 0.5rem 0 0;
+        color: #555;
+      }
+      .about,
+      .services,
+      .testimonials {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: center;
+      }
+      .graphic {
+        width: 100%;
+        height: 250px;
+        background: linear-gradient(135deg, #b2f2e4, #d6f5ee);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        color: #2a6049;
+      }
+      .testimonial-card {
+        background: #fff;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1rem;
+      }
+      form {
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
+      form input,
+      form textarea {
+        width: 100%;
+        padding: 0.75rem;
+        margin: 0.5rem 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      form button {
+        background-color: #2a6049;
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+      form button:hover {
+        background-color: #24503d;
+      }
+      footer {
+        text-align: center;
+        padding: 1rem;
+        font-size: 0.9rem;
+        background-color: #e6f7f2;
+        color: #2a6049;
+      }
+      @media (max-width: 768px) {
+        .about,
+        .services,
+        .testimonials {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Trusted Tax Company</h1>
+      <p>Where Experience Meets Family Values</p>
+    </header>
+
+    <section id="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>How do I get started with filing my taxes?</h3>
+        <p>
+          Simply reach out through our contact form below or give us a call.
+          We’ll walk you through each step.
+        </p>
+      </div>
+      <div class="faq-item">
+        <h3>Do you handle small businesses?</h3>
+        <p>
+          Yes, we have decades of experience working with individuals and small
+          businesses alike.
+        </p>
+      </div>
+      <div class="faq-item">
+        <h3>What makes your company different?</h3>
+        <p>
+          Our blend of professional expertise and strong family values ensures
+          you get reliable, personal service.
+        </p>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About Us</h2>
+      <div class="about">
+        <div>
+          <p>
+            With over 20 years of experience in accounting, we’ve guided
+            countless families and businesses through the tax process. Our firm
+            is built on honesty, trust, and dedication to community. We know
+            that finances are personal, which is why we treat every client like
+            family.
+          </p>
+        </div>
+        <div class="graphic">[Graphic: Accountant & Family]</div>
+      </div>
+    </section>
+
+    <section id="services">
+      <h2>Our Services</h2>
+      <div class="services">
+        <div>
+          <ul>
+            <li>Personal Tax Preparation</li>
+            <li>Small Business Accounting</li>
+            <li>Tax Planning & Strategy</li>
+            <li>Bookkeeping Services</li>
+            <li>IRS Representation</li>
+          </ul>
+        </div>
+        <div class="graphic">[Graphic: Services Illustration]</div>
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <h2>What Our Clients Say</h2>
+      <div class="testimonials">
+        <div class="testimonial-card">
+          <p>
+            “Trusted Tax Company made filing simple and stress-free. They truly
+            care about their clients.”
+          </p>
+          <p><strong>- Sarah J.</strong></p>
+        </div>
+        <div class="testimonial-card">
+          <p>
+            “Excellent service for my small business. I finally feel confident
+            about my books.”
+          </p>
+          <p><strong>- David R.</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Get In Touch</h2>
+      <form>
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea rows="5" placeholder="How can we help?" required></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Trusted Tax Company. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
