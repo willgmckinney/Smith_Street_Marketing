@@ -1,0 +1,903 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ascent Pharmaceuticals — Innovating Access</title>
+    <style>
+      :root {
+        --nav-height: 76px;
+        --bg: #f4f9ff;
+        --ink: #0b2340;
+        --muted: #5f6b78;
+        --accent-blue: #0b63d1;
+        --accent-green: #0aa37a;
+        --card: rgba(255, 255, 255, 0.96);
+        --glass: rgba(255, 255, 255, 0.75);
+        font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+          Roboto, "Helvetica Neue", Arial, sans-serif;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(12px);
+        background: rgba(244, 249, 255, 0.9);
+        box-shadow: 0 10px 30px rgba(9, 30, 66, 0.08);
+      }
+      .nav {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 18px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        text-decoration: none;
+      }
+      .brand img {
+        width: 52px;
+        height: 52px;
+        border-radius: 12px;
+        object-fit: cover;
+      }
+      .brand span {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--accent-blue);
+      }
+      nav ul {
+        display: flex;
+        gap: 22px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      nav a {
+        text-decoration: none;
+        font-weight: 600;
+        color: var(--muted);
+        transition: color 0.2s ease;
+      }
+      nav a:hover,
+      nav a:focus-visible {
+        color: var(--accent-blue);
+      }
+
+      main {
+        overflow: hidden;
+      }
+
+      .hero {
+        position: relative;
+        min-height: calc(100vh - var(--nav-height));
+        display: grid;
+        place-items: center;
+        padding: 0 24px 80px;
+        color: #fff;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            120deg,
+            rgba(11, 35, 64, 0.92),
+            rgba(11, 99, 209, 0.72)
+          ),
+          url("/ascent_pharma/hero-image.JPEG") center/cover no-repeat;
+        z-index: -2;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at 20% 20%,
+          rgba(255, 255, 255, 0.18),
+          transparent 55%
+        );
+        z-index: -1;
+      }
+      .hero-content {
+        max-width: 720px;
+        text-align: center;
+      }
+      .hero-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        border-radius: 999px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        background: rgba(255, 255, 255, 0.16);
+      }
+      .hero h1 {
+        font-size: clamp(2.8rem, 8vw, 4rem);
+        margin: 20px 0;
+        line-height: 1.1;
+      }
+      .hero p {
+        font-size: clamp(1.05rem, 2vw, 1.25rem);
+        margin: 0 auto 32px;
+        color: rgba(255, 255, 255, 0.85);
+      }
+      .hero-actions {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .btn {
+        border: none;
+        padding: 14px 24px;
+        border-radius: 999px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        text-decoration: none;
+      }
+      .btn-primary {
+        background: linear-gradient(135deg, #0b63d1, #2fa1d6);
+        color: #fff;
+        box-shadow: 0 18px 40px rgba(11, 99, 209, 0.35);
+      }
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.28);
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 18px 40px rgba(9, 30, 66, 0.2);
+      }
+
+      section {
+        padding: 90px 24px;
+      }
+      .section-inner {
+        max-width: 1180px;
+        margin: 0 auto;
+      }
+      .section-headline {
+        margin-bottom: 48px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .section-kicker {
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        font-size: 0.78rem;
+        color: var(--accent-green);
+        font-weight: 700;
+      }
+      .section-headline h2 {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 3rem);
+        color: var(--ink);
+      }
+      .section-headline p {
+        max-width: 620px;
+        color: var(--muted);
+        font-size: 1rem;
+      }
+
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 28px;
+      }
+      .team-card {
+        background: var(--card);
+        border-radius: 18px;
+        padding: 22px;
+        box-shadow: 0 20px 45px rgba(9, 30, 66, 0.08);
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .team-card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 14px;
+      }
+      .team-card h3 {
+        margin: 0;
+        font-size: 1.25rem;
+        color: var(--ink);
+      }
+      .team-role {
+        font-weight: 600;
+        color: var(--accent-blue);
+      }
+      .team-bio {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .facility-grid {
+        display: grid;
+        gap: 26px;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      }
+      .facility-card {
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        min-height: 320px;
+        box-shadow: 0 18px 40px rgba(9, 30, 66, 0.12);
+      }
+      .facility-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .facility-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(11, 35, 64, 0.75),
+          rgba(11, 99, 209, 0.6)
+        );
+        color: #fff;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        opacity: 0;
+        transition: opacity 0.25s ease;
+      }
+      .facility-card:hover .facility-overlay,
+      .facility-card:focus-within .facility-overlay {
+        opacity: 1;
+      }
+      .facility-overlay h3 {
+        margin: 0 0 10px;
+      }
+
+      .facility-details {
+        margin-top: 32px;
+        display: grid;
+        gap: 22px;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+      .detail-card {
+        background: var(--card);
+        border-radius: 18px;
+        padding: 24px;
+        box-shadow: 0 16px 30px rgba(9, 30, 66, 0.08);
+      }
+      .detail-card h4 {
+        margin: 0 0 8px;
+        color: var(--accent-blue);
+      }
+
+      .drugs-section {
+        background: linear-gradient(160deg, rgba(11, 99, 209, 0.1), transparent);
+      }
+      .drug-search-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        background: var(--card);
+        padding: 18px;
+        border-radius: 16px;
+        box-shadow: 0 16px 30px rgba(9, 30, 66, 0.08);
+        margin-bottom: 32px;
+      }
+      .drug-search-bar input {
+        flex: 1;
+        min-width: 220px;
+        border: 1px solid rgba(11, 99, 209, 0.2);
+        border-radius: 999px;
+        padding: 12px 18px;
+        font-size: 1rem;
+        color: #111;
+        background-color: #fff;
+      }
+      .drug-search-bar input::placeholder {
+        color: rgba(17, 17, 17, 0.45);
+      }
+      .chip-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .chip {
+        padding: 10px 18px;
+        border-radius: 999px;
+        background: rgba(11, 99, 209, 0.12);
+        color: var(--accent-blue);
+        font-weight: 600;
+        font-size: 0.9rem;
+        cursor: pointer;
+        border: none;
+        transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+      }
+      .chip.active {
+        background: var(--accent-blue);
+        color: #fff;
+        box-shadow: 0 10px 24px rgba(11, 99, 209, 0.26);
+      }
+      .drug-grid {
+        display: grid;
+        gap: 24px;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+      .drug-card {
+        background: #fff;
+        border-radius: 18px;
+        padding: 24px;
+        box-shadow: 0 16px 30px rgba(9, 30, 66, 0.08);
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .drug-card[hidden] {
+        display: none;
+      }
+      .status-pill {
+        align-self: flex-start;
+        padding: 6px 14px;
+        border-radius: 999px;
+        font-weight: 600;
+        font-size: 0.8rem;
+        background: rgba(10, 163, 122, 0.12);
+        color: var(--accent-green);
+      }
+      .drug-card h3 {
+        margin: 0;
+        font-size: 1.3rem;
+      }
+      .drug-meta {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      .contact-section {
+        background: #0b2340;
+        color: #fff;
+        position: relative;
+      }
+      .contact-section::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at 30% 20%,
+          rgba(47, 161, 214, 0.35),
+          transparent 55%
+        );
+        z-index: 0;
+      }
+      .contact-grid {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        gap: 36px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .contact-info h2 {
+        margin: 0;
+        font-size: clamp(2rem, 3vw, 2.6rem);
+      }
+      .contact-highlight {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.08);
+        padding: 14px 18px;
+        border-radius: 12px;
+      }
+      .contact-highlight span:first-child {
+        font-weight: 700;
+        color: var(--accent-green);
+      }
+      form {
+        background: rgba(255, 255, 255, 0.08);
+        padding: 28px;
+        border-radius: 18px;
+        display: grid;
+        gap: 16px;
+      }
+      label span {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+      input,
+      textarea {
+        width: 100%;
+        border-radius: 12px;
+        border: none;
+        padding: 13px 16px;
+        font-size: 1rem;
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+      }
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+      input:focus-visible,
+      textarea:focus-visible {
+        outline: 2px solid rgba(47, 161, 214, 0.6);
+        outline-offset: 2px;
+      }
+
+      footer {
+        background: #07172c;
+        color: rgba(255, 255, 255, 0.78);
+        padding: 48px 24px 32px;
+      }
+      .footer-inner {
+        max-width: 1180px;
+        margin: 0 auto;
+        display: grid;
+        gap: 36px;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+      .footer-brand img {
+        width: 160px;
+      }
+      .footer-links ul {
+        list-style: none;
+        padding: 0;
+        margin: 10px 0 0;
+        display: grid;
+        gap: 10px;
+      }
+      .footer-links a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .footer-links a:hover {
+        color: #fff;
+      }
+      .social {
+        display: flex;
+        gap: 14px;
+      }
+      .social a {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.12);
+        display: grid;
+        place-items: center;
+        text-decoration: none;
+        color: #fff;
+        font-weight: 700;
+      }
+      .footer-bottom {
+        max-width: 1180px;
+        margin: 32px auto 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 12px;
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.65);
+      }
+
+      @media (max-width: 900px) {
+        header {
+          position: fixed;
+          width: 100%;
+        }
+        .hero {
+          padding-top: calc(var(--nav-height) + 40px);
+        }
+        nav ul {
+          display: none;
+        }
+        .hero-actions {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="nav">
+        <a class="brand" href="#hero">
+          <img src="/ascent_pharma/logo-no-name.png" alt="Ascent Pharmaceuticals logo" />
+          <span>Ascent Pharmaceuticals</span>
+        </a>
+        <nav aria-label="Primary navigation">
+          <ul>
+            <li><a href="#team">Leadership</a></li>
+            <li><a href="#facility">Facilities</a></li>
+            <li><a href="#drugs">Therapeutics</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="hero" class="hero" aria-labelledby="hero-heading">
+        <div class="hero-content">
+          <span class="hero-kicker">Global Impact</span>
+          <h1 id="hero-heading">Unwavering access to affordable, life-saving medicines</h1>
+          <p>
+            We develop and manufacture reliable therapeutics that shorten the distance
+            between scientific breakthroughs and the patients who need them most. Our teams
+            combine regulatory mastery, digital manufacturing, and responsible sourcing to
+            scale treatments without compromise.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#drugs">Explore therapeutics</a>
+            <a class="btn btn-secondary" href="#contact">Partner with us</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="team" aria-labelledby="team-heading">
+        <div class="section-inner">
+          <div class="section-headline">
+            <span class="section-kicker">Leadership</span>
+            <h2 id="team-heading">A multidisciplinary team built for rapid delivery</h2>
+            <p>
+              Our leadership blends experience in formulation science, digital operations,
+              commercialization, and patient advocacy. Together, they champion a culture of
+              safety, integrity, and relentless innovation.
+            </p>
+          </div>
+
+          <div class="team-grid">
+            <article class="team-card">
+              <img src="/ascent_pharma/team_member_images/team1.jpg" alt="Portrait of Dr. Maya Chen" />
+              <div>
+                <h3>Dr. Maya Chen</h3>
+                <div class="team-role">Chief Executive Officer</div>
+                <p class="team-bio">
+                  Former regulatory affairs lead at a top-10 global pharma. Maya drives
+                  Ascent’s long-term vision and partnerships to accelerate affordable access
+                  worldwide.
+                </p>
+              </div>
+            </article>
+            <article class="team-card">
+              <img src="/ascent_pharma/team_member_images/team2.jpg" alt="Portrait of Javier Morales" />
+              <div>
+                <h3>Javier Morales</h3>
+                <div class="team-role">Head of Digital Manufacturing</div>
+                <p class="team-bio">
+                  Specializing in cGMP automation, Javier orchestrates real-time production
+                  monitoring, ensuring each batch exceeds quality expectations.
+                </p>
+              </div>
+            </article>
+            <article class="team-card">
+              <img src="/ascent_pharma/team_member_images/team3.jpg" alt="Portrait of Dr. Priya Sethi" />
+              <div>
+                <h3>Dr. Priya Sethi</h3>
+                <div class="team-role">Chief Scientific Officer</div>
+                <p class="team-bio">
+                  Priya leads R&amp;D with a focus on biosimilars and rare disease therapies,
+                  mentoring agile lab squads that translate data into breakthrough molecules.
+                </p>
+              </div>
+            </article>
+            <article class="team-card">
+              <img src="/ascent_pharma/team_member_images/team4.jpg" alt="Portrait of Aaron Blake" />
+              <div>
+                <h3>Aaron Blake</h3>
+                <div class="team-role">VP, Market Access</div>
+                <p class="team-bio">
+                  Aaron connects health systems and payers with transparent pricing and
+                  distribution models that keep treatment accessible without sacrificing speed.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="facility" aria-labelledby="facility-heading">
+        <div class="section-inner">
+          <div class="section-headline">
+            <span class="section-kicker">Operations</span>
+            <h2 id="facility-heading">Digitally harmonized facilities engineered for compliance</h2>
+            <p>
+              Our U.S.-based manufacturing campus blends modular clean rooms, robotics, and
+              a validated digital twin. Every unit operation streams telemetry to ensure
+              flawless execution and audit readiness.
+            </p>
+          </div>
+
+          <div class="facility-grid">
+            <figure class="facility-card">
+              <img src="/ascent_pharma/facility_images/IMG_7466.JPEG" alt="Sterile equipment inside Ascent facility" />
+              <figcaption class="facility-overlay">
+                <h3>Automated Tableting Suite</h3>
+                <p>
+                  Robotic loading, in-line weight checks, and HEPA isolated enclosures keep
+                  product purity intact.
+                </p>
+              </figcaption>
+            </figure>
+            <figure class="facility-card">
+              <img src="/ascent_pharma/facility_images/IMG_7457.JPEG" alt="Cleanroom corridor with monitoring equipment" />
+              <figcaption class="facility-overlay">
+                <h3>Cleanroom Grade C Corridor</h3>
+                <p>
+                  Sensor-rich environment logs temperature, humidity, and particulate counts
+                  to our central dashboard.
+                </p>
+              </figcaption>
+            </figure>
+            <figure class="facility-card">
+              <img src="/ascent_pharma/facility_images/IMG_7480.JPEG" alt="Packaging and serialization line" />
+              <figcaption class="facility-overlay">
+                <h3>Serialization &amp; Packaging</h3>
+                <p>
+                  Cloud-tracked serialization ensures downstream traceability and authenticates
+                  every lot shipped.
+                </p>
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="facility-details">
+            <div class="detail-card">
+              <h4>Continuous quality monitoring</h4>
+              <p>
+                Over 1,200 sensors feed our predictive maintenance models, enabling near-zero
+                downtime and rapid deviation response.
+              </p>
+            </div>
+            <div class="detail-card">
+              <h4>cGMP certified &amp; inspection ready</h4>
+              <p>
+                Separate containment suites, redundant filtration, and validated cleaning
+                protocols exceed FDA and EMA expectations.
+              </p>
+            </div>
+            <div class="detail-card">
+              <h4>Flexible capacity</h4>
+              <p>
+                Modular lines shift from high-volume generics to customized therapies in
+                days—without sacrificing compliance.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="drugs" class="drugs-section" aria-labelledby="drugs-heading">
+        <div class="section-inner">
+          <div class="section-headline">
+            <span class="section-kicker">Pipeline &amp; Portfolio</span>
+            <h2 id="drugs-heading">Therapeutics advancing patient access</h2>
+            <p>
+              Filter by indication or clinical phase to explore how Ascent delivers reliable,
+              affordable medicines. Our digital release process brings market-ready quality
+              weeks faster than legacy approaches.
+            </p>
+          </div>
+
+          <div class="drug-search-bar" role="search">
+            <input type="search" name="drug-search" placeholder="Search by indication, compound, or code" aria-label="Search therapeutic portfolio" />
+            <div class="chip-group" role="group" aria-label="Therapeutic filters">
+              <button class="chip active" type="button" data-filter="all">All</button>
+              <button class="chip" type="button" data-filter="oncology">Oncology</button>
+              <button class="chip" type="button" data-filter="respiratory">Respiratory</button>
+              <button class="chip" type="button" data-filter="rare-disease">Rare Disease</button>
+              <button class="chip" type="button" data-filter="commercial">Commercial</button>
+            </div>
+          </div>
+
+          <div class="drug-grid">
+            <article class="drug-card" data-tags="oncology,phase-iii,oral,commercial">
+              <span class="status-pill">Phase III</span>
+              <h3>AP-317</h3>
+              <p>
+                Targeted oncology therapy leveraging adaptive dosing analytics to reduce
+                toxicity and improve adherence.
+              </p>
+              <div class="drug-meta">
+                <span>Indication: Oncology</span>
+                <span>Oral capsule</span>
+              </div>
+            </article>
+
+            <article class="drug-card" data-tags="respiratory,commercial,biologic">
+              <span class="status-pill" style="background: rgba(11,99,209,0.12); color: var(--accent-blue);">Commercial</span>
+              <h3>AP-482</h3>
+              <p>
+                Inhaled biologic improving pulmonary function for chronic respiratory patients
+                with home delivery support.
+              </p>
+              <div class="drug-meta">
+                <span>Indication: Respiratory</span>
+                <span>Biologic</span>
+              </div>
+            </article>
+
+            <article class="drug-card" data-tags="rare-disease,phase-ii,infusion">
+              <span class="status-pill">Phase II</span>
+              <h3>AP-205</h3>
+              <p>
+                Enzyme replacement therapy paired with companion diagnostics for ultra-rare
+                metabolic disorders.
+              </p>
+              <div class="drug-meta">
+                <span>Indication: Rare disease</span>
+                <span>IV infusion</span>
+              </div>
+            </article>
+
+            <article class="drug-card" data-tags="infectious,early-access,tablet,commercial">
+              <span class="status-pill" style="background: rgba(117,79,254,0.14); color: #754ffe;">Early Access</span>
+              <h3>AP-121</h3>
+              <p>
+                Low-cost antiretroviral with stabilized shelf life and pooled purchasing
+                programs for emerging markets.
+              </p>
+              <div class="drug-meta">
+                <span>Indication: Infectious disease</span>
+                <span>Tablet</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact-section" aria-labelledby="contact-heading">
+        <div class="section-inner contact-grid">
+          <div class="contact-info">
+            <span class="section-kicker" style="color: var(--accent-green);">Partnerships</span>
+            <h2 id="contact-heading">Let’s bring therapies to patients faster</h2>
+            <p>
+              Whether you’re a health system leader, emerging biotech, or policy advocate,
+              our partnership team can design the right engagement model and capacity plan.
+            </p>
+            <div class="contact-highlight">
+              <span>24 hrs</span>
+              <span>Average response time from our collaboration office</span>
+            </div>
+            <div class="contact-highlight">
+              <span>+1 (718) 555-2500</span>
+              <span>Global command center, Holbrook, NY</span>
+            </div>
+          </div>
+          <form>
+            <label>
+              <span>Full name</span>
+              <input type="text" name="name" placeholder="Dr. Alex Morgan" />
+            </label>
+            <label>
+              <span>Organization</span>
+              <input type="text" name="organization" placeholder="Health System / Biotech" />
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" placeholder="name@company.com" />
+            </label>
+            <label>
+              <span>Project needs</span>
+              <textarea name="message" placeholder="Describe how we can support your next milestone"></textarea>
+            </label>
+            <button class="btn btn-primary" type="submit">Submit inquiry</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="/ascent_pharma/logo-name.jpg" alt="Ascent Pharmaceuticals logo" />
+          <p>
+            Delivering dependable, affordable therapeutics through digital-first manufacturing
+            and patient-centered partnerships.
+          </p>
+        </div>
+        <div class="footer-links">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#hero">Mission</a></li>
+            <li><a href="#facility">Facilities</a></li>
+            <li><a href="#drugs">Therapeutics</a></li>
+            <li><a href="#contact">Partner with Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Regulatory updates</a></li>
+            <li><a href="#">Investor relations</a></li>
+            <li><a href="#">Media kit</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Follow</h4>
+          <div class="social" aria-label="Social media links">
+            <a href="#" aria-label="LinkedIn">in</a>
+            <a href="#" aria-label="Twitter / X">X</a>
+            <a href="#" aria-label="YouTube">YT</a>
+            <a href="#" aria-label="Instagram">IG</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Ascent Pharmaceuticals, Inc. All rights reserved.</span>
+        <span>Privacy • Terms • Ethics &amp; Compliance</span>
+      </div>
+    </footer>
+
+    <script>
+      const yearEl = document.getElementById("year");
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+
+      const searchInput = document.querySelector('input[name="drug-search"]');
+      const filterChips = document.querySelectorAll(".chip");
+      const drugCards = document.querySelectorAll(".drug-card");
+      let activeFilter = "all";
+
+      function applyDrugFilters() {
+        const query = (searchInput?.value || "").trim().toLowerCase();
+        drugCards.forEach((card) => {
+          const tags = (card.dataset.tags || "").split(",").map((t) => t.trim().toLowerCase());
+          const matchesFilter =
+            activeFilter === "all" || (activeFilter && tags.includes(activeFilter));
+          const textMatch = query === "" || card.textContent.toLowerCase().includes(query);
+          card.hidden = !(matchesFilter && textMatch);
+        });
+      }
+
+      searchInput?.addEventListener("input", applyDrugFilters);
+
+      filterChips.forEach((chip) => {
+        chip.addEventListener("click", () => {
+          filterChips.forEach((c) => c.classList.remove("active"));
+          chip.classList.add("active");
+          activeFilter = chip.dataset.filter || "all";
+          applyDrugFilters();
+        });
+      });
+
+      applyDrugFilters();
+    </script>
+  </body>
+</html>
+

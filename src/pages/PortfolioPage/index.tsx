@@ -55,6 +55,13 @@ export const PortfolioPage = () => {
             linkUrl="/tax-company-dashboard"
             technologies={["HTML5", "JavaScript", "Chart.js", "Tailwind CSS"]}
           />
+          <ProjectCard
+            title="Ascent Pharmaceuticals Landing"
+            description="A modern, conversion-focused landing experience for pharmaceutical manufacturers showcasing facilities, product portfolio, and partnership opportunities."
+            imageUrl="/ascent-pharmaceuticals.jpg"
+            linkUrl="/ascent-pharmaceuticals-landing"
+            technologies={["HTML5", "CSS3", "Accessibility", "Brand Strategy"]}
+          />
         </div>
       </div>
     </div>
