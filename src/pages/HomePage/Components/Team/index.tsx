@@ -1,7 +1,7 @@
 import duncanMeyerProfilePic from "../../../../assets/duncanMeyerProfile.jpg";
 import dylanMorozowskiProfilePic from "../../../../assets/dylanMorozowskiProfile.jpg";
+import GermayneCurryProfilePic from "../../../../assets/GermayneCurryProfile.jpg";
 import willMcKinneyProfilePic from "../../../../assets/willMckinneyProfile.jpg";
-import GermayneCurryProfilePic from "../../../../assets/GermayneCurryProfile.png";
 
 const teamList = [
   {
@@ -44,7 +44,9 @@ export const Team = () => {
                   src={teamMember.profilePicture}
                   alt={teamMember.name}
                   className={`w-32 h-32 md:w-40 md:h-40 object-cover rounded-full ${
-                    teamMember.name === "Germayne Curry" ? "object-[center_10%]" : "object-center"
+                    teamMember.name === "Germayne Curry"
+                      ? "object-[center_10%]"
+                      : "object-center"
                   }`}
                 />
                 <h2 className="text-xl md:text-2xl text-[#00262D] font-semibold">
