@@ -8,7 +8,7 @@ export const rootRoute = createRootRoute({
       <header className="flex flex-row justify-between w-full fixed px-3 sm:px-4 md:px-6 lg:px-8 py-2 z-10 bg-neutral-color-2">
         <Link to="/" className="flex flex-row items-center">
           <img src={logo} className="h-12 sm:h-16 p-1" alt="logo" />
-          <p className="text-lg sm:text-xl md:text-2xl text-netural-color-1 hidden sm:block">
+          <p className="text-lg sm:text-xl md:text-2xl text-black hidden sm:block">
             Smith Avenue Insights
           </p>
         </Link>
