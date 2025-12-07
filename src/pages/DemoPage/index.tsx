@@ -3,86 +3,69 @@ import { CalendlyEmbed } from "./Components/CalendlyEmbed";
 
 export const DemoPage = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-deep-horizon pt-24 relative overflow-hidden">
+      {/* Background Overlay */}
       <div
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-0 opacity-20"
         style={{
           pointerEvents: "none",
           backgroundImage: `url(${Skyline})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          opacity: 0.3,
         }}
       />
+      <div className="absolute inset-0 bg-gradient-to-b from-deep-horizon via-transparent to-deep-horizon z-0 pointer-events-none" />
+
       <div className="container mx-auto px-4 py-16 relative z-10">
-        <div className="flex flex-col lg:flex-row items-start gap-12">
+        <div className="flex flex-col lg:flex-row items-start gap-12 lg:gap-20">
           {/* Left content section */}
-          <div className="lg:w-1/2 text-black pt-8">
-            <h1 className="text-5xl font-bold mb-12">
-              Let's discuss your unique requirements
+          <div className="lg:w-1/2 pt-8">
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-white leading-tight">
+              Let's discuss your{" "}
+              <span className="text-golden-hour-start">
+                unique requirements
+              </span>
             </h1>
 
-            <div className="space-y-8">
-              <h2 className="text-3xl font-semibold mb-6">
-                What to expect from your custom solution consultation:
+            <div className="space-y-10">
+              <h2 className="font-display text-2xl font-semibold text-white/90">
+                What to expect from your consultation:
               </h2>
 
-              <ul className="space-y-4 text-xl">
-                <li className="flex items-start">
-                  <svg
-                    className="w-6 h-6 mt-1 mr-3"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                  Tailored discussion of your specific needs and goals
-                </li>
-                <li className="flex items-start">
-                  <svg
-                    className="w-6 h-6 mt-1 mr-3"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                  Explore flexible engagement models that work for you
-                </li>
-                <li className="flex items-start">
-                  <svg
-                    className="w-6 h-6 mt-1 mr-3"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                  Learn about our enterprise-grade support options
-                </li>
+              <ul className="space-y-6">
+                {[
+                  "Tailored discussion of your specific needs and goals",
+                  "Explore flexible engagement models that work for you",
+                  "Learn about our enterprise-grade support options",
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start">
+                    <div className="bg-golden-gradient p-1 rounded-full mr-4 mt-1">
+                      <svg
+                        className="w-4 h-4 text-deep-horizon"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="3"
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                    </div>
+                    <span className="text-xl text-granite/80 font-sans">
+                      {item}
+                    </span>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
 
           {/* Right calendar section */}
-          <div className="lg:w-1/2 bg-white rounded-lg shadow-xl p-6 sm:mt-0 md:mt-10 z-20">
+          <div className="lg:w-1/2 w-full bg-white rounded-card shadow-2xl p-4 sm:p-6 border border-white/10 overflow-hidden">
             <CalendlyEmbed />
           </div>
         </div>

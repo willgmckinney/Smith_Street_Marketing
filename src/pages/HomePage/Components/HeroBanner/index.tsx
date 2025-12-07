@@ -3,7 +3,6 @@ import goatVideo from "../../../../assets/Animated_Goat_Climbs_Mountain_Sunrise.
 
 export const HeroBanner = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [showText, setShowText] = useState(false);
   const [visibleWords, setVisibleWords] = useState<boolean[]>([
     false,
     false,
@@ -17,12 +16,11 @@ export const HeroBanner = () => {
     const handleTimeUpdate = () => {
       if (video.currentTime >= 6.0) {
         video.pause();
-        setShowText(true);
 
         // Fade in words one at a time with delays
         setTimeout(() => setVisibleWords([true, false, false]), 0);
-        setTimeout(() => setVisibleWords([true, true, false]), 300);
-        setTimeout(() => setVisibleWords([true, true, true]), 600);
+        setTimeout(() => setVisibleWords([true, true, false]), 600);
+        setTimeout(() => setVisibleWords([true, true, true]), 1200);
       }
     };
 
@@ -36,10 +34,11 @@ export const HeroBanner = () => {
   const words = ["Climb", "New", "Peaks"];
 
   return (
-    <div className="relative flex flex-col items-center justify-center bg-neutral-color-2 text-tirtiary-color h-[100%] px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <div className="relative flex flex-col items-center justify-center h-screen w-full overflow-hidden bg-deep-horizon">
+      {/* Video Background */}
       <video
         ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover z-0"
         autoPlay
         muted
         playsInline
@@ -47,27 +46,26 @@ export const HeroBanner = () => {
       >
         <source src={goatVideo} type="video/mp4" />
       </video>
-      <div className="relative flex flex-col items-center justify-center justify-items-center bg-transparent space-y-40 sm:space-y-32 z-10">
+
+      {/* Gradient Overlay (Bottom-up, subtle dark gradient) */}
+      <div className="absolute inset-0 bg-gradient-to-t from-deep-horizon via-deep-horizon/40 to-transparent z-1 pointer-events-none" />
+
+      {/* Content */}
+      <div className="relative z-10 flex flex-col items-center justify-center space-y-8 sm:space-y-12 px-4">
         <h1
-          className="text-[2.5rem] sm:text-[4rem] md:text-[6rem] lg:text-[9rem] text-white text-center leading-tight"
+          className="font-display font-extrabold text-granite text-center leading-tight drop-shadow-2xl"
           style={{
-            textShadow:
-              "3px 3px 6px rgba(0, 0, 0, 0.9), -3px -3px 6px rgba(0, 0, 0, 0.9), 3px -3px 6px rgba(0, 0, 0, 0.9), -3px 3px 6px rgba(0, 0, 0, 0.9), 0 0 10px rgba(0, 0, 0, 0.8)",
+            textShadow: "0 4px 20px rgba(0,0,0,0.5)", // Soft, deep shadow
           }}
         >
-          <div
-            className={`transition-opacity duration-1000 ${
-              showText ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            Smith Avenue Insights
-          </div>
-          <div className="text-[3rem] sm:text-[4.75rem] md:text-[7.5rem] lg:text-[11rem] flex flex-wrap justify-center gap-4">
+          <div className="text-[3.5rem] sm:text-[5rem] md:text-[7rem] lg:text-[10rem] flex flex-wrap justify-center gap-x-4 gap-y-2">
             {words.map((word, index) => (
               <span
                 key={index}
-                className={`transition-opacity duration-500 ${
-                  visibleWords[index] ? "opacity-100" : "opacity-0"
+                className={`transition-all duration-1000 ease-bouncy ${
+                  visibleWords[index]
+                    ? "opacity-100 translate-y-0 scale-100"
+                    : "opacity-0 translate-y-10 scale-90"
                 }`}
               >
                 {word}
@@ -75,6 +73,8 @@ export const HeroBanner = () => {
             ))}
           </div>
         </h1>
+
+        {/* Subtitle / Additional Text could go here to enhance the "Expansive" feel */}
       </div>
     </div>
   );

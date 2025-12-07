@@ -1,42 +1,97 @@
 import { createRootRoute, Link, Outlet } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
 import Footer from "../components/Footer";
+import { SummitButton } from "../components/Summit/SummitButton";
 
 export const rootRoute = createRootRoute({
-  component: () => (
-    <div className="flex flex-col min-h-screen">
-      <header className="flex flex-row justify-between w-full fixed px-3 sm:px-4 md:px-6 lg:px-8 py-2 z-10 bg-neutral-color-2">
-        <Link to="/" className="flex flex-row items-center">
-          <img src={logo} className="h-12 sm:h-16 p-1" alt="logo" />
-          <p className="text-lg sm:text-xl md:text-2xl text-black hidden sm:block">
-            Smith Avenue Insights
-          </p>
-        </Link>
-        <div className="flex flex-row items-center gap-2 sm:gap-4">
-          <Link
-            to="/portfolio"
-            className="text-tirtiary-color bg-neutral-color-2 hover:bg-tirtiary-color/10 transition-colors duration-200 font-medium text-sm sm:text-base py-1.5 sm:py-2 px-2 sm:px-4 rounded-lg border-2 border-tirtiary-color shadow-sm whitespace-nowrap"
-          >
-            Portfolio
-          </Link>
-          <Link
-            to="/pricing"
-            className="text-tirtiary-color bg-neutral-color-2 hover:bg-tirtiary-color/10 transition-colors duration-200 font-medium text-sm sm:text-base py-1.5 sm:py-2 px-2 sm:px-4 rounded-lg border-2 border-tirtiary-color shadow-sm whitespace-nowrap"
-          >
-            Pricing
-          </Link>
-          <Link
-            to="/demo"
-            className="text-neutral-color-2 bg-tirtiary-color hover:bg-tirtiary-color/90 transition-colors duration-200 font-medium text-sm sm:text-base py-1.5 sm:py-2 px-2 sm:px-4 rounded-lg border-2 border-tirtiary-color shadow-sm whitespace-nowrap"
-          >
-            Get Started
-          </Link>
-        </div>
-      </header>
+  component: () => {
+    const [scrolled, setScrolled] = useState(false);
 
-      <Outlet />
+    useEffect(() => {
+      const handleScroll = () => {
+        setScrolled(window.scrollY > 20);
+      };
 
-      <Footer />
-    </div>
-  ),
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    return (
+      <div className="flex flex-col min-h-screen bg-deep-horizon text-granite font-sans">
+        <header
+          className={`
+            fixed top-0 left-0 right-0 z-50 transition-all duration-300
+            px-4 sm:px-6 lg:px-8 py-4
+            flex items-center justify-between
+            ${scrolled ? "bg-deep-horizon/80 backdrop-blur-md border-b border-white/10 shadow-lg" : "bg-transparent"}
+          `}
+        >
+          <Link to="/" className="flex flex-row items-center gap-3 group">
+            <img
+              src={logo}
+              className="h-10 sm:h-12 w-auto transition-transform duration-300 group-hover:scale-110"
+              alt="Smith Avenue Insights Logo"
+            />
+            <p className="font-display font-bold text-lg sm:text-xl md:text-2xl text-white hidden sm:block tracking-tight">
+              Smith Avenue Insights
+            </p>
+          </Link>
+
+          <nav className="flex items-center gap-2 sm:gap-4">
+            <Link to="/portfolio">
+              {({ isActive }) => (
+                <SummitButton
+                  variant="secondary"
+                  size="sm"
+                  className={`bg-transparent border-transparent shadow-none hover:bg-white/10 ${isActive ? "text-golden-hour-start" : "text-granite"}`}
+                >
+                  Portfolio
+                </SummitButton>
+              )}
+            </Link>
+
+            <Link to="/pricing">
+              {({ isActive }) => (
+                <SummitButton
+                  variant="secondary"
+                  size="sm"
+                  className={`bg-transparent border-transparent shadow-none hover:bg-white/10 ${isActive ? "text-golden-hour-start" : "text-granite"}`}
+                >
+                  Pricing
+                </SummitButton>
+              )}
+            </Link>
+
+            <Link to="/demo">
+              <SummitButton size="sm" className="hidden sm:flex">
+                Get Started
+              </SummitButton>
+              {/* Mobile Icon Button */}
+              <div className="sm:hidden bg-golden-gradient p-2 rounded-full text-deep-horizon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
+            </Link>
+          </nav>
+        </header>
+
+        <main className="flex-grow">
+          <Outlet />
+        </main>
+
+        <Footer />
+      </div>
+    );
+  },
 });
