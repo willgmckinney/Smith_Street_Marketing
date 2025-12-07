@@ -1,10 +1,9 @@
-import { Link } from "@tanstack/react-router";
 import Skyline from "../../assets/Skyline.jpg";
 import { CalendlyEmbed } from "./Components/CalendlyEmbed";
 
 export const DemoPage = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <div
         className="absolute inset-0 z-0"
         style={{
@@ -79,21 +78,6 @@ export const DemoPage = () => {
                   Learn about our enterprise-grade support options
                 </li>
               </ul>
-              <div className="bg-white/80 backdrop-blur-sm border border-white/60 rounded-xl p-6 shadow-lg shadow-black/5">
-                <h3 className="text-2xl font-semibold text-tirtiary-color mb-3">
-                  Featured interactive experience
-                </h3>
-                <p className="text-lg text-gray-700 mb-4">
-                  Preview our Ascent Pharmaceuticals landing page to see how we blend
-                  storytelling, compliance, and conversion-focused design for life sciences teams.
-                </p>
-                <Link
-                  to="/ascent-pharmaceuticals-landing"
-                  className="inline-flex items-center justify-center rounded-lg border-2 border-tirtiary-color px-4 py-2 text-base font-semibold text-tirtiary-color hover:bg-tirtiary-color hover:text-neutral-color-2 transition-colors duration-200"
-                >
-                  Launch Ascent Pharmaceuticals demo
-                </Link>
-              </div>
             </div>
           </div>
 
