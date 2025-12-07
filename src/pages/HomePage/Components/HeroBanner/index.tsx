@@ -13,6 +13,18 @@ export const HeroBanner = () => {
     const video = videoRef.current;
     if (!video) return;
 
+    // Ensure video is muted for mobile autoplay
+    video.muted = true;
+
+    // Attempt to play if it hasn't started
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Auto-play was prevented
+        console.log("Autoplay prevented");
+      });
+    }
+
     const handleTimeUpdate = () => {
       if (video.currentTime >= 6.0) {
         video.pause();
