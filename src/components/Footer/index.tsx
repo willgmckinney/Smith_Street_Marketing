@@ -2,6 +2,7 @@ import emailjs from "@emailjs/browser";
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import logo from "../../assets/logo.png";
+import { SummitButton } from "../Summit/SummitButton";
 
 const Footer = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -40,95 +41,112 @@ const Footer = () => {
   };
 
   return (
-    <footer className="flex flex-col md:flex-row border-t-4 border-tirtiary-color">
-      <div className="flex flex-col bg-neutral-color-1 border-b-4 md:border-b-0 md:border-r-4 border-tirtiary-color w-full md:w-[50%]">
-        <div className="flex flex-row items-center p-4">
-          <img src={logo} className="h-12 md:h-16 p-1" alt="logo" />
-          <p className="text-xl md:text-2xl text-tirtiary-color">
-            Smith Avenue Insights
-          </p>
-        </div>
-        <h2 className="text-xl md:text-2xl text-tirtiary-color pl-6">
-          Contact Us
-        </h2>
-        <form
-          onSubmit={sendEmail}
-          className="flex flex-col w-full p-4 md:p-1 md:m-5 md:pl-8"
-        >
-          <div className="flex flex-col md:flex-row w-full md:w-[80%] pb-4 md:pb-6">
-            <label className="text-lg md:text-xl text-tirtiary-color mb-2 md:mb-0 md:w-[70px]">
-              Name
-            </label>
-            <input
-              className="bg-transparent border-b-2 text-tirtiary-color w-full md:ml-5"
-              type="text"
-              name="from_name"
-              required
+    <footer className="bg-atmospheric-haze border-t border-white/10 text-granite">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row">
+        {/* Contact Form Section */}
+        <div className="w-full lg:w-1/2 p-8 sm:p-12 border-b lg:border-b-0 lg:border-r border-white/10">
+          <div className="flex items-center gap-4 mb-8">
+            <img
+              src={logo}
+              className="h-12 w-auto"
+              alt="Smith Avenue Insights Logo"
             />
-          </div>
-          <div className="flex flex-col md:flex-row w-full md:w-[80%] pb-4 md:pb-6">
-            <label className="text-lg md:text-xl text-tirtiary-color mb-2 md:mb-0 md:w-[70px]">
-              Email
-            </label>
-            <input
-              className="bg-transparent border-b-2 text-tirtiary-color w-full md:ml-5"
-              type="email"
-              name="reply_to"
-              required
-            />
-          </div>
-          <div className="flex flex-col md:flex-row w-full md:w-[80%] pb-4 md:pb-6">
-            <label className="text-lg md:text-xl text-tirtiary-color mb-2 md:mb-0 md:w-[70px]">
-              Message
-            </label>
-            <textarea
-              className="bg-transparent border-b-2 text-tirtiary-color w-full md:ml-5"
-              name="message"
-              required
-              rows={3}
-            />
+            <span className="font-display font-bold text-2xl text-white">
+              Smith Avenue Insights
+            </span>
           </div>
 
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="bg-accent-color-1 w-full md:w-1/2 rounded-lg py-2 mt-4 text-tirtiary-color"
-          >
-            Submit
-          </button>
-          {stateMessage && (
-            <p className="mt-4 text-center text-tirtiary-color">
-              {stateMessage}
-            </p>
-          )}
-        </form>
-      </div>
-      <div className="flex flex-col items-start bg-neutral-color-1 w-full md:w-[50%] p-4">
-        <p className="text-lg md:text-xl text-tirtiary-color font-bold">Menu</p>
-        <Link
-          to="/company"
-          className="text-lg md:text-xl text-tirtiary-color pt-4 md:pt-6 hover:text-accent-color-1 transition-colors"
-        >
-          Company
-        </Link>
-        <Link
-          to="/support"
-          className="text-lg md:text-xl text-tirtiary-color pt-4 md:pt-6 hover:text-accent-color-1 transition-colors"
-        >
-          Support
-        </Link>
-        <Link
-          to="/accessibility"
-          className="text-lg md:text-xl text-tirtiary-color pt-4 md:pt-6 hover:text-accent-color-1 transition-colors"
-        >
-          Accessibility statement
-        </Link>
-        <Link
-          to="/privacy"
-          className="text-lg md:text-xl text-tirtiary-color pt-4 md:pt-6 hover:text-accent-color-1 transition-colors"
-        >
-          Privacy Policy
-        </Link>
+          <h3 className="font-display font-bold text-xl text-golden-hour-start mb-6">
+            Contact Us
+          </h3>
+
+          <form onSubmit={sendEmail} className="space-y-6 max-w-md">
+            <div className="space-y-2">
+              <label className="block text-sm font-medium text-granite/80">
+                Name
+              </label>
+              <input
+                className="w-full bg-deep-horizon/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-golden-hour-start focus:ring-1 focus:ring-golden-hour-start transition-all"
+                type="text"
+                name="from_name"
+                required
+                placeholder="Your Name"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <label className="block text-sm font-medium text-granite/80">
+                Email
+              </label>
+              <input
+                className="w-full bg-deep-horizon/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-golden-hour-start focus:ring-1 focus:ring-golden-hour-start transition-all"
+                type="email"
+                name="reply_to"
+                required
+                placeholder="you@company.com"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <label className="block text-sm font-medium text-granite/80">
+                Message
+              </label>
+              <textarea
+                className="w-full bg-deep-horizon/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-golden-hour-start focus:ring-1 focus:ring-golden-hour-start transition-all"
+                name="message"
+                required
+                rows={4}
+                placeholder="How can we help you ascend?"
+              />
+            </div>
+
+            <div className="pt-2">
+              <SummitButton
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full sm:w-auto"
+              >
+                {isSubmitting ? "Sending..." : "Send Message"}
+              </SummitButton>
+            </div>
+
+            {stateMessage && (
+              <p
+                className={`text-sm mt-4 ${stateMessage.includes("wrong") ? "text-red-400" : "text-alpine-flora"}`}
+              >
+                {stateMessage}
+              </p>
+            )}
+          </form>
+        </div>
+
+        {/* Navigation Section */}
+        <div className="w-full lg:w-1/2 p-8 sm:p-12 bg-deep-horizon/30">
+          <h3 className="font-display font-bold text-xl text-white mb-8">
+            Menu
+          </h3>
+          <nav className="flex flex-col space-y-4">
+            {[
+              { to: "/company", label: "Company" },
+              { to: "/support", label: "Support" },
+              { to: "/accessibility", label: "Accessibility Statement" },
+              { to: "/privacy", label: "Privacy Policy" },
+            ].map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                className="text-lg text-granite/70 hover:text-golden-hour-start hover:translate-x-2 transition-all duration-300 w-fit"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="mt-16 pt-8 border-t border-white/10 text-sm text-granite/40">
+            &copy; {new Date().getFullYear()} Smith Avenue Insights. All rights
+            reserved.
+          </div>
+        </div>
       </div>
     </footer>
   );

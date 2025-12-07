@@ -2,29 +2,25 @@ import { ProjectCard } from "./Components/ProjectCard";
 
 export const PortfolioPage = () => {
   return (
-    <div className="bg-neutral-color-2 min-h-screen pt-24">
-      <div className="container mx-auto px-4 py-12">
-        {/* Introduction Section */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-tirtiary-color mb-6">
+    <div className="min-h-screen bg-deep-horizon pt-24">
+      <div className="bg-atmospheric-haze py-20 border-b border-white/5">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-golden-hour-start to-golden-hour-end font-bold mb-6">
             Our Portfolio
           </h1>
           <div className="max-w-4xl mx-auto">
-            <p className="text-lg md:text-xl text-tirtiary-color mb-6 leading-relaxed">
+            <p className="font-sans text-xl text-granite leading-relaxed mb-6">
               At Smith Avenue Insights, we specialize in creating innovative
-              digital solutions that drive business growth and enhance user
-              experiences. Our approach combines cutting-edge technology with
-              strategic thinking to deliver projects that not only meet but
-              exceed expectations.
+              digital solutions that drive business growth.
             </p>
-            <p className="text-lg md:text-xl text-tirtiary-color leading-relaxed">
-              We believe in building solutions that are scalable, maintainable,
-              and user-centric. Each project reflects our commitment to quality,
-              innovation, and delivering measurable results for our clients.
+            <p className="font-sans text-lg text-granite/70 leading-relaxed">
+              Scalable. Maintainable. User-centric.
             </p>
           </div>
         </div>
+      </div>
 
+      <div className="container mx-auto px-4 py-20">
         {/* Projects Grid */}
         <div className="flex flex-wrap justify-center gap-8">
           <ProjectCard
@@ -58,7 +54,7 @@ export const PortfolioPage = () => {
           <ProjectCard
             title="Ascent Pharmaceuticals Landing"
             description="A modern, conversion-focused landing experience for pharmaceutical manufacturers showcasing facilities, product portfolio, and partnership opportunities."
-            imageUrl="/ascent-pharmaceuticals.jpg"
+            imageUrl="/ascent-pharmaceuticals.svg"
             linkUrl="/ascent-pharmaceuticals-landing"
             technologies={["HTML5", "CSS3", "Accessibility", "Brand Strategy"]}
           />

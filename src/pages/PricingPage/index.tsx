@@ -17,55 +17,48 @@ const pricingFeatures = {
 
 export const PricingPage = () => {
   return (
-    <div className="p-8 pt-24 min-h-screen bg-neutral-color-2">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <svg
-              className="w-6 h-6 text-accent-color-1"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-              ></path>
-            </svg>
-            <h2 className="text-xl font-medium tirtiary-color">
-              Direct, upfront pricing
-            </h2>
-          </div>
-          <p className="text-tirtiary-color">
-            No guesswork or hidden fees. Just transparent pricing plans.
+    <div className="min-h-screen bg-deep-horizon pt-24">
+      <div className="bg-atmospheric-haze py-20 border-b border-white/5">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-golden-hour-start to-golden-hour-end font-bold mb-6">
+            Transparent Pricing
+          </h1>
+          <p className="font-sans text-xl text-granite max-w-2xl mx-auto leading-relaxed">
+            No guesswork or hidden fees. Just clear paths to your summit.
           </p>
         </div>
+      </div>
 
-        <div className="flex justify-center gap-8 flex-wrap">
-          <PricingCard
-            title="Data Analytics Jumpstart Package"
-            price="15,000"
-            features={pricingFeatures.analytics}
-            description="A fully customized AWS QuickSight dashboard for actionable insights in under 2 weeks."
-          />
-          <PricingCard
-            title="Full-Stack Application MVP Accelerator"
-            price="30,000"
-            features={pricingFeatures.mvp}
-            description="Get your Minimum Viable Product (MVP) live in 30 days using TypeScript and AWS."
-            isPopular={true}
-          />
-          <PricingCard
-            title="Custom Solutions"
-            features={[
-              "Tailored to your specific needs",
-              "Flexible engagement models",
-              "Enterprise-grade support",
-            ]}
-            description="Let's discuss your unique requirements and create a custom solution together."
-          />
+      <div className="container mx-auto px-4 py-20">
+        <div className="flex justify-center gap-8 flex-wrap items-center md:items-stretch">
+          <div className="flex h-100">
+            <PricingCard
+              title="Data Analytics Jumpstart"
+              price="15,000"
+              features={pricingFeatures.analytics}
+              description="A fully customized AWS QuickSight dashboard for actionable insights in under 2 weeks."
+            />
+          </div>
+          <div className="flex h-100">
+            <PricingCard
+              title="Full-Stack MVP Accelerator"
+              price="30,000"
+              features={pricingFeatures.mvp}
+              description="Get your Minimum Viable Product (MVP) live in 30 days using TypeScript and AWS."
+              isPopular={true}
+            />
+          </div>
+          <div className="flex h-100">
+            <PricingCard
+              title="Custom Solutions"
+              features={[
+                "Tailored to your specific needs",
+                "Flexible engagement models",
+                "Enterprise-grade support",
+              ]}
+              description="Let's discuss your unique requirements and create a custom solution together."
+            />
+          </div>
         </div>
       </div>
     </div>

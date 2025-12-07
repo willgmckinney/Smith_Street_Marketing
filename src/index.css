@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  /* Legacy vars - keeping for safety */
   --primary-color-Cyan: #00d8ff;
   --primary-color-Green: #00c484;
   --secondary-color-deep-teal: #007c66;
@@ -12,4 +13,30 @@
   --tirtiary-color-gray: #232325;
   --accent-color-vibrant-blue: #0091ff;
   --accent-color-lime-green: #32e875;
+}
+
+body {
+  @apply bg-deep-horizon text-granite font-sans antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-display font-bold;
+}
+
+/* Scrollbar styling for that premium feel */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-deep-horizon;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-atmospheric-haze rounded-full border-2 border-deep-horizon;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-600;
 }

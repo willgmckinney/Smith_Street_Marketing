@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import cloudServices from "../../../../assets/cloudServices.jpg";
-import customSoftwareDevelopment from "../../../../assets/customSoftwareDevelopment.jpg";
-import dataAnalysisBusinessIntelligence from "../../../../assets/dataAnalysisBusinessIntelligence.jpg";
-import websiteDevelopment from "../../../../assets/websiteDevelopment.jpg";
-import "./services.css";
+import cloudServices from "../../../../assets/cloudServices.png";
+import customSoftwareDevelopment from "../../../../assets/customSoftwareDevelopment.png";
+import dataAnalysisBusinessIntelligence from "../../../../assets/dataAnalysisBusinessIntelligence.png";
+import websiteDevelopment from "../../../../assets/websiteDevelopment.png";
+import { SummitCard } from "../../../../components/Summit/SummitCard";
+// import "./services.css"; // Removing old CSS in favor of Tailwind/Summit styles
 
 const servicesList = [
   {
@@ -34,33 +35,40 @@ const servicesList = [
 
 export const Services = () => {
   return (
-    <div className="bg-neutral-color-1 pt-5 sm:pt-10 text-center">
-      <main>
-        <div className="flex flex-row items-center justify-center gap-3 mb-16 sm:mb-20">
-          <span className="text-[3rem] sm:text-[3.5rem] md:text-6xl text-tirtiary-color font-bold">
+    <section className="bg-deep-horizon py-20 sm:py-32 px-4 sm:px-8 relative overflow-hidden">
+      {/* Atmospheric background elements could be added here */}
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="text-center mb-20">
+          <h2 className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70 mb-4">
             Our Services
-          </span>
+          </h2>
+          <div className="h-1 w-24 bg-golden-gradient mx-auto rounded-full" />
         </div>
-        <ul className="stack-cards js-stack-cards">
-          {servicesList.map((service: { [x: string]: any }) => (
-            <li className="card p-3 sm:p-5" id="card_1">
-              <div className="card__content">
-                <div>
-                  <h2 className="text-xl sm:text-2xl lg:text-3xl mb-2 sm:mb-4">
-                    {service.title}
-                  </h2>
-                  <p className="text-sm sm:text-base lg:text-lg mb-4 sm:mb-6">
-                    {service.description}
-                  </p>
-                </div>
-                <figure>
-                  <img src={service.image} alt={service.title} />
-                </figure>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+          {servicesList.map((service, index) => (
+            <SummitCard key={index} className="flex flex-col h-full group">
+              <div className="h-64 overflow-hidden relative bg-deep-horizon">
+                <div className="absolute inset-0 bg-deep-horizon/20 z-10 group-hover:bg-transparent transition-colors duration-500" />
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-full object-contain transition-transform duration-700 ease-out group-hover:scale-110"
+                />
               </div>
-            </li>
+              <div className="p-8 flex-1 flex flex-col">
+                <h3 className="font-display font-bold text-2xl text-white mb-4 group-hover:text-golden-hour-start transition-colors">
+                  {service.title}
+                </h3>
+                <p className="font-sans text-granite/80 text-lg leading-relaxed flex-1">
+                  {service.description}
+                </p>
+              </div>
+            </SummitCard>
           ))}
-        </ul>
-      </main>
-    </div>
+        </div>
+      </div>
+    </section>
   );
 };
