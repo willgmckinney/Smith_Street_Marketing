@@ -5,10 +5,12 @@ import "./index.css";
 import { indexRoute } from "./routes";
 import { rootRoute } from "./routes/__root";
 import { accessibilityRoute } from "./routes/accessibility";
+import { ascentPharmaceuticalsLandingRoute } from "./routes/ascent-pharmaceuticals-landing";
+import { blogRoute } from "./routes/blog";
+import { blogPostRoute } from "./routes/blog/$postId";
 import { companyRoute } from "./routes/company";
 import { constructionDashboardRoute } from "./routes/construction-dashboard";
 import { demoRoute } from "./routes/demo";
-import { ascentPharmaceuticalsLandingRoute } from "./routes/ascent-pharmaceuticals-landing";
 import { portfolioRoute } from "./routes/portfolio";
 import { pricingRoute } from "./routes/pricing";
 import { privacyRoute } from "./routes/privacy";
@@ -31,6 +33,8 @@ const routeTree = rootRoute.addChildren([
   privacyRoute,
   taxCompanyDashboardRoute,
   ascentPharmaceuticalsLandingRoute,
+  blogRoute,
+  blogPostRoute,
 ]);
 
 // Create a new router instance

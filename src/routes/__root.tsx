@@ -63,6 +63,18 @@ export const rootRoute = createRootRoute({
               )}
             </Link>
 
+            <Link to="/blog">
+              {({ isActive }) => (
+                <SummitButton
+                  variant="secondary"
+                  size="sm"
+                  className={`bg-transparent border-transparent shadow-none hover:bg-white/10 ${isActive ? "text-golden-hour-start" : "text-granite"}`}
+                >
+                  Insights
+                </SummitButton>
+              )}
+            </Link>
+
             <Link to="/demo">
               <SummitButton size="sm" className="hidden sm:flex">
                 Get Started
