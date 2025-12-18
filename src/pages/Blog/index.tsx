@@ -1,4 +1,3 @@
-import { SummitButton } from "../../components/Summit/SummitButton";
 import { blogPosts } from "../../data/blogPosts";
 import { BlogCard } from "./Components/BlogCard";
 
@@ -25,7 +24,7 @@ export default function BlogPage() {
         ))}
       </div>
 
-      {/* Newsletter / CTA Section */}
+      {/* Newsletter / CTA Section
       <div className="max-w-4xl mx-auto mt-24 text-center bg-atmospheric-haze/50 rounded-card p-12 border border-white/5">
         <h2 className="text-3xl font-display font-bold mb-4">
           Stay in the Loop
@@ -42,7 +41,7 @@ export default function BlogPage() {
           />
           <SummitButton>Subscribe</SummitButton>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
