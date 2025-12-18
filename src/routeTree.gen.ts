@@ -24,6 +24,8 @@ import { Route as CompanyImport } from './routes/company'
 import { Route as AscentPharmaceuticalsLandingImport } from './routes/ascent-pharmaceuticals-landing'
 import { Route as AccessibilityImport } from './routes/accessibility'
 import { Route as IndexImport } from './routes/index'
+import { Route as BlogIndexImport } from './routes/blog/index'
+import { Route as BlogPostIdImport } from './routes/blog/$postId'
 
 // Create/Update Routes
 
@@ -104,6 +106,18 @@ const AccessibilityRoute = AccessibilityImport.update({
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const BlogIndexRoute = BlogIndexImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const BlogPostIdRoute = BlogPostIdImport.update({
+  id: '/blog/$postId',
+  path: '/blog/$postId',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -202,6 +216,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TaxCompanyDashboardImport
       parentRoute: typeof rootRoute
     }
+    '/blog/$postId': {
+      id: '/blog/$postId'
+      path: '/blog/$postId'
+      fullPath: '/blog/$postId'
+      preLoaderRoute: typeof BlogPostIdImport
+      parentRoute: typeof rootRoute
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogIndexImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -221,6 +249,8 @@ export interface FileRoutesByFullPath {
   '/security-scheduling-dashboard': typeof SecuritySchedulingDashboardRoute
   '/support': typeof SupportRoute
   '/tax-company-dashboard': typeof TaxCompanyDashboardRoute
+  '/blog/$postId': typeof BlogPostIdRoute
+  '/blog': typeof BlogIndexRoute
 }
 
 export interface FileRoutesByTo {
@@ -237,6 +267,8 @@ export interface FileRoutesByTo {
   '/security-scheduling-dashboard': typeof SecuritySchedulingDashboardRoute
   '/support': typeof SupportRoute
   '/tax-company-dashboard': typeof TaxCompanyDashboardRoute
+  '/blog/$postId': typeof BlogPostIdRoute
+  '/blog': typeof BlogIndexRoute
 }
 
 export interface FileRoutesById {
@@ -254,6 +286,8 @@ export interface FileRoutesById {
   '/security-scheduling-dashboard': typeof SecuritySchedulingDashboardRoute
   '/support': typeof SupportRoute
   '/tax-company-dashboard': typeof TaxCompanyDashboardRoute
+  '/blog/$postId': typeof BlogPostIdRoute
+  '/blog/': typeof BlogIndexRoute
 }
 
 export interface FileRouteTypes {
@@ -272,6 +306,8 @@ export interface FileRouteTypes {
     | '/security-scheduling-dashboard'
     | '/support'
     | '/tax-company-dashboard'
+    | '/blog/$postId'
+    | '/blog'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -287,6 +323,8 @@ export interface FileRouteTypes {
     | '/security-scheduling-dashboard'
     | '/support'
     | '/tax-company-dashboard'
+    | '/blog/$postId'
+    | '/blog'
   id:
     | '__root__'
     | '/'
@@ -302,6 +340,8 @@ export interface FileRouteTypes {
     | '/security-scheduling-dashboard'
     | '/support'
     | '/tax-company-dashboard'
+    | '/blog/$postId'
+    | '/blog/'
   fileRoutesById: FileRoutesById
 }
 
@@ -319,6 +359,8 @@ export interface RootRouteChildren {
   SecuritySchedulingDashboardRoute: typeof SecuritySchedulingDashboardRoute
   SupportRoute: typeof SupportRoute
   TaxCompanyDashboardRoute: typeof TaxCompanyDashboardRoute
+  BlogPostIdRoute: typeof BlogPostIdRoute
+  BlogIndexRoute: typeof BlogIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -335,6 +377,8 @@ const rootRouteChildren: RootRouteChildren = {
   SecuritySchedulingDashboardRoute: SecuritySchedulingDashboardRoute,
   SupportRoute: SupportRoute,
   TaxCompanyDashboardRoute: TaxCompanyDashboardRoute,
+  BlogPostIdRoute: BlogPostIdRoute,
+  BlogIndexRoute: BlogIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -359,7 +403,9 @@ export const routeTree = rootRoute
         "/real-estate-dashboard",
         "/security-scheduling-dashboard",
         "/support",
-        "/tax-company-dashboard"
+        "/tax-company-dashboard",
+        "/blog/$postId",
+        "/blog/"
       ]
     },
     "/": {
@@ -400,6 +446,12 @@ export const routeTree = rootRoute
     },
     "/tax-company-dashboard": {
       "filePath": "tax-company-dashboard.tsx"
+    },
+    "/blog/$postId": {
+      "filePath": "blog/$postId.tsx"
+    },
+    "/blog/": {
+      "filePath": "blog/index.tsx"
     }
   }
 }
