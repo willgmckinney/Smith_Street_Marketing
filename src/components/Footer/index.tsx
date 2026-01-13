@@ -13,6 +13,18 @@ const Footer = () => {
     setIsSubmitting(true);
 
     const form = e.currentTarget;
+    const formData = new FormData(form);
+    const userEmail = formData.get("reply_to") as string;
+    const originalMessage = formData.get("message") as string;
+    
+    // Append the user's email to the message body
+    const messageWithEmail = `${originalMessage}\n\n---\nFrom: ${userEmail}`;
+    
+    // Create a temporary input to hold the modified message
+    const messageInput = form.querySelector('textarea[name="message"]') as HTMLTextAreaElement;
+    const originalValue = messageInput.value;
+    messageInput.value = messageWithEmail;
+
     emailjs
       .sendForm(
         "service_5s10wrs",
@@ -27,6 +39,9 @@ const Footer = () => {
           setTimeout(() => {
             setStateMessage(null);
           }, 5000);
+          // Restore original message value before resetting
+          messageInput.value = originalValue;
+          form.reset();
         },
         () => {
           setStateMessage("Something went wrong, please try again later");
@@ -34,10 +49,10 @@ const Footer = () => {
           setTimeout(() => {
             setStateMessage(null);
           }, 5000);
+          // Restore original message value on error
+          messageInput.value = originalValue;
         }
       );
-
-    form.reset();
   };
 
   return (
