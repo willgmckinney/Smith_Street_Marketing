@@ -69,7 +69,10 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ postId }) => {
                 prose-p:text-gray-300 prose-p:leading-relaxed
                 prose-a:text-golden-hour-start prose-a:no-underline hover:prose-a:underline
                 prose-strong:text-white
-                prose-blockquote:border-l-golden-hour-start prose-blockquote:bg-white/5 prose-blockquote:p-4 prose-blockquote:rounded-r-lg"
+                prose-blockquote:border-l-golden-hour-start prose-blockquote:bg-white/5 prose-blockquote:p-4 prose-blockquote:rounded-r-lg
+                prose-table:text-gray-300 prose-th:text-white prose-td:text-gray-300
+                prose-ul:text-gray-300 prose-ol:text-gray-300 prose-li:text-gray-300
+                prose-h2:text-white prose-h3:text-white prose-h2:mt-8 prose-h3:mt-6"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
 
