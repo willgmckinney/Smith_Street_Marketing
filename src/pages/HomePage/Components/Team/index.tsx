@@ -50,7 +50,7 @@ export const Team = () => {
               key={teamMember.name}
               className="flex flex-col items-center text-center p-6 h-full hover:bg-atmospheric-haze/90 transition-colors"
             >
-              <div className="w-32 h-32 mb-6 rounded-full p-1 bg-gradient-to-br from-golden-hour-start to-golden-hour-end shadow-lg">
+              <div className="w-32 h-32 mb-6 rounded-full p-1 bg-white shadow-lg">
                 <img
                   src={teamMember.profilePicture}
                   alt={teamMember.name}

@@ -4,7 +4,6 @@ import { CalendlyEmbed } from "../DemoPage/Components/CalendlyEmbed";
 
 export const ShopifyProfitRecovery = () => {
   const [annualRevenue, setAnnualRevenue] = useState<number>(5000000);
-  const [showCalendly, setShowCalendly] = useState(false);
 
   // Calculate Shopify fees
   const calculateShopifyFees = (revenue: number) => {
@@ -61,7 +60,6 @@ export const ShopifyProfitRecovery = () => {
   };
 
   const scrollToCalendly = () => {
-    setShowCalendly(true);
     setTimeout(() => {
       const element = document.getElementById("calendly-section");
       element?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -209,7 +207,7 @@ export const ShopifyProfitRecovery = () => {
                 That's <strong className="text-white">{percentageRecovered.toFixed(1)}%</strong> of your revenue back in your pocket
               </div>
               <div className="mt-6">
-                <SummitButton size="lg" onClick={scrollToCalendly}>
+                <SummitButton className="mx-auto" size="lg" onClick={scrollToCalendly}>
                   Get My Free Audit
                 </SummitButton>
               </div>
@@ -498,15 +496,7 @@ export const ShopifyProfitRecovery = () => {
             </div>
 
             <div className="bg-white rounded-card shadow-2xl p-4 sm:p-6 border border-white/10 overflow-hidden">
-              {showCalendly ? (
-                <CalendlyEmbed />
-              ) : (
-                <div className="text-center py-20">
-                  <SummitButton size="lg" onClick={() => setShowCalendly(true)}>
-                    Show Calendar
-                  </SummitButton>
-                </div>
-              )}
+            <CalendlyEmbed />
             </div>
           </div>
         </div>

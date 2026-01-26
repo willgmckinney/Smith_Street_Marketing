@@ -5,8 +5,8 @@ export default {
     extend: {
       colors: {
         // Summit Prime Palette
-        "golden-hour-start": "#FFB800",
-        "golden-hour-end": "#FF8A00",
+        "golden-hour-start": "#00c484",
+        "golden-hour-end": "#32e875",
         "rim-light": "#FFECC2",
         "deep-horizon": "#0F172A",
         "atmospheric-haze": "#1E293B",
@@ -30,9 +30,9 @@ export default {
       },
       boxShadow: {
         "rim-card":
-          "inset 0 1px 0 0 rgba(255, 255, 255, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+        "inset 0 1px 0 0 rgba(255, 255, 255, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
         "rim-card-inner": "inset 0 1px 0 0 rgba(255, 255, 255, 0.2)",
-        "button-glow": "0 10px 20px -10px #FF8A00",
+        "button-glow": "0 10px 20px -10px #32e875",
       },
       borderRadius: {
         card: "24px",
@@ -42,7 +42,7 @@ export default {
         bouncy: "cubic-bezier(0.34, 1.56, 0.64, 1)",
       },
       backgroundImage: {
-        "golden-gradient": "linear-gradient(to right, #FFB800, #FF8A00)",
+        "golden-gradient": "linear-gradient(to right, #32e875, #00c484)",
       },
     },
   },
