@@ -4,7 +4,6 @@ import { CalendlyEmbed } from "../DemoPage/Components/CalendlyEmbed";
 
 export const ShopifyProfitRecovery = () => {
   const [annualRevenue, setAnnualRevenue] = useState<number>(5000000);
-  const [showCalendly, setShowCalendly] = useState(false);
 
   // Calculate Shopify fees
   const calculateShopifyFees = (revenue: number) => {
@@ -61,7 +60,6 @@ export const ShopifyProfitRecovery = () => {
   };
 
   const scrollToCalendly = () => {
-    setShowCalendly(true);
     setTimeout(() => {
       const element = document.getElementById("calendly-section");
       element?.scrollIntoView({ behavior: "smooth", block: "start" });
