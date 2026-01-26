@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { SummitButton } from "../../components/Summit/SummitButton";
 import { CalendlyEmbed } from "../DemoPage/Components/CalendlyEmbed";
 
