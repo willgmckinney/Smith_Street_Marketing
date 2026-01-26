@@ -16,6 +16,7 @@ import { pricingRoute } from "./routes/pricing";
 import { privacyRoute } from "./routes/privacy";
 import { realEstateDashboardRoute } from "./routes/real-estate-dashboard";
 import { securitySchedulingDashboardRoute } from "./routes/security-scheduling-dashboard";
+import { shopifyProfitRecoveryRoute } from "./routes/shopify-profit-recovery";
 import { supportRoute } from "./routes/support";
 import { taxCompanyDashboardRoute } from "./routes/tax-company-dashboard";
 
@@ -28,6 +29,7 @@ const routeTree = rootRoute.addChildren([
   constructionDashboardRoute,
   realEstateDashboardRoute,
   securitySchedulingDashboardRoute,
+  shopifyProfitRecoveryRoute,
   supportRoute,
   accessibilityRoute,
   privacyRoute,
