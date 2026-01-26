@@ -1,6 +1,7 @@
 import awsArchitecture from "../assets/awsArchitecture.jpg";
 import awsSecurity from "../assets/awsSecurityLock.png";
 import cloudServices from "../assets/cloudServices.png";
+import dataAnalysisBusinessIntelligence from "../assets/dataAnalysisBusinessIntelligence.png";
 
 export interface BlogPost {
   id: string;
@@ -309,5 +310,169 @@ export const blogPosts: BlogPost[] = [
     category: "Cloud Platforms",
     readTime: "20 min read",
     imageUrl: cloudServices,
+  },
+  {
+    id: "making-decisions-under-uncertainty",
+    title: "Making Decisions Under Uncertainty: A Consultant's Playbook",
+    excerpt:
+      "Six principles for making defensible decisions when information is incomplete, based on decision science and practical consulting experience.",
+    content: `
+      <p>One of the most persistent challenges in consulting is making recommendations when information is incomplete. Clients expect clear guidance, but real-world decisions often involve ambiguity, missing data, and competing priorities.</p>
+
+      <p>Decision science research provides a framework for navigating uncertainty systematically. By applying these principles deliberately, consultants can make decisions that are defensible—even when information is incomplete.</p>
+
+      <h2>Principle 1: Frame the Decision Before You Solve the Problem</h2>
+      <p>Before evaluating alternatives, clearly define the type of decision you are making:</p>
+
+      <ul class="list-disc pl-6 space-y-2 my-4">
+        <li>Is this decision reversible?</li>
+        <li>Which risks can be tolerated and which cannot?</li>
+        <li>Who is impacted by downside outcomes?</li>
+        <li>What would "success" look like in a way that stakeholders agree on?</li>
+      </ul>
+
+      <p>In decision science, explicitly framing the decision helps reduce cognitive biases and clarify whether you're operating under risk, uncertainty, or ignorance.</p>
+
+      <p>Clear framing prevents a common consulting mistake: over-engineering solutions for poorly articulated problems.</p>
+
+      <div class="mt-6 p-6 bg-white/5 rounded-lg border border-white/10">
+        <h3 class="text-lg font-bold mb-2">Tactical Action:</h3>
+        <p class="mb-2">Write a Decision Statement at the start of every engagement document that states the hypothesis you are testing or the problem you are resolving.</p>
+        <p class="mt-4"><strong>Example:</strong></p>
+        <p class="italic text-gray-300">"We are selecting a data architecture that balances short-term delivery with mid-term adaptability. We acknowledge current data constraints and define success as aligning extract reliability with measurable business outcomes."</p>
+      </div>
+
+      <h2>Principle 2: Surface and Document Assumptions</h2>
+      <p>One of the most powerful ways to manage incomplete information is to make assumptions explicit. Assumptions act as placeholders for missing data and help you communicate uncertainty without paralysis.</p>
+
+      <p>Research on organizational decision-making shows that effective execution under uncertainty involves clearly identifying what you know, what you don't know, and the assumptions bridging those gaps.</p>
+
+      <div class="mt-6 p-6 bg-white/5 rounded-lg border border-white/10">
+        <h3 class="text-lg font-bold mb-2">Tactical Action:</h3>
+        <p class="mb-4">For every major decision point, create a table with:</p>
+        <div class="overflow-x-auto my-4">
+          <table class="w-full border-collapse">
+            <thead>
+              <tr class="border-b border-white/20">
+                <th class="text-left p-4 font-bold text-white">Assumption</th>
+                <th class="text-left p-4 font-bold text-white">Source</th>
+                <th class="text-left p-4 font-bold text-white">Confidence Level</th>
+                <th class="text-left p-4 font-bold text-white">Test Plan</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-white/10">
+                <td class="p-4">…</td>
+                <td class="p-4">…</td>
+                <td class="p-4">…</td>
+                <td class="p-4">…</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>This table becomes a live artifact in your architecture doc, engagement plan, or workshop outputs.</p>
+      </div>
+
+      <h2>Principle 3: Use Iterative Learning to Reduce Uncertainty</h2>
+      <p>When information is lacking, prioritize actions that produce knowledge rather than actions that assume knowledge you don't have.</p>
+
+      <p>In domains like engineering and project management, frameworks recommend structuring work into iterative exploration and validation cycles to refine estimates and decisions under uncertainty.</p>
+
+      <p>This is exactly what good consultants do intuitively: break down decisions into smaller steps that clarify unknowns as part of solution delivery.</p>
+
+      <div class="mt-6 p-6 bg-white/5 rounded-lg border border-white/10">
+        <h3 class="text-lg font-bold mb-2">Tactical Action:</h3>
+        <p class="mb-4">Split decisions between:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>Exploratory Decisions</strong> — hypotheses to test (two-way doors)</li>
+          <li><strong>Commitment Decisions</strong> — bounded by known constraints (one-way doors)</li>
+        </ul>
+        <p class="mt-4">Then sequence work so exploratory decisions feed information into commitment decisions.</p>
+      </div>
+
+      <h2>Principle 4: Make Risk Explicit and Communicable</h2>
+      <p>Risk isn't inherently negative. In decision science, risk is distinguished from uncertainty by whether probabilities are known or estimable.</p>
+
+      <p>Your job is to make risk and uncertainty understandable and communicable. Clients struggle most not with risk itself, but with ambiguity, situations where they can't see the contours of uncertainty.</p>
+
+      <div class="mt-6 p-6 bg-white/5 rounded-lg border border-white/10">
+        <h3 class="text-lg font-bold mb-2">Tactical Action:</h3>
+        <p class="mb-4">When presenting options, tie them to risks in plain language:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>What is unknown</li>
+          <li>What harm could occur</li>
+          <li>What mitigation or monitoring we propose</li>
+          <li>When we should revisit this assumption</li>
+        </ul>
+        <p class="mt-4">This both builds trust and reduces anxiety around decisions that must be made without perfect certainty.</p>
+      </div>
+
+      <h2>Principle 5: Leverage Heuristics and Simple Decision Tools</h2>
+      <p>When probabilistic data is unavailable, heuristics, simple decision rules based on experience, can be useful. While they are not perfect, they provide structure in ambiguity.</p>
+
+      <p>In cognitive psychology research, heuristics are recognized as effective rules of thumb when full information is unavailable and speed is necessary.</p>
+
+      <div class="mt-6 p-6 bg-white/5 rounded-lg border border-white/10">
+        <h3 class="text-lg font-bold mb-2">Tactical Actions:</h3>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>Pareto Prioritization:</strong> Focus first on components contributing ~80% of observed impacts</li>
+          <li><strong>IWIK ("I Wish I Knew") Questions:</strong> Identify the information that would most influence your choice and prioritize gathering it first.</li>
+          <li><strong>Scenario Matrixing:</strong> Develop 3–4 plausible futures and test which options hold up across them</li>
+        </ul>
+        <p class="mt-4">These tools help convert ambiguity into structured thought.</p>
+      </div>
+
+      <h2>Principle 6: Align Decision Style With Decision Context</h2>
+      <p>Decision science research shows that different types of tasks and uncertainty require different decision styles—analytical, intuitive, or blended.</p>
+
+      <p>As a consultant, you should be explicit about your decision style and why you chose it.</p>
+
+      <ul class="list-disc pl-6 space-y-2 my-4">
+        <li>Use analytical approaches when you have data or proxies for outcomes</li>
+        <li>Use heuristic / experience-based reasoning where data is weak</li>
+        <li>Use inclusive stakeholder dialogue when social ambiguity dominates technical clarity</li>
+      </ul>
+
+      <h2>Summary: An Operational Playbook</h2>
+      <p>Here's how the principles above translate into practice across a typical engagement:</p>
+
+      <ol class="list-decimal pl-6 space-y-2 my-4">
+        <li>Define the decision with a Decision Statement</li>
+        <li>List assumptions and confidence levels</li>
+        <li>Structure work into exploratory validation cycles</li>
+        <li>Communicate risks in unambiguous terms</li>
+        <li>Apply heuristics when data lacks precision</li>
+        <li>Match decision style to context</li>
+      </ol>
+
+      <p>By approaching uncertainty deliberately and transparently, you make decisions that are defensible—even when information is incomplete.</p>
+
+      <h2>Recommended Reading</h2>
+      <p>If you'd like to go deeper into how humans and organizations make better decisions under uncertainty, these sources are valuable starting points:</p>
+
+      <ul class="list-disc pl-6 space-y-2 my-4">
+        <li>Daniel Ellsberg's work on ambiguity aversion, showing people prefer calculable risks over ambiguous ones.</li>
+        <li><strong>Farsighted: How We Make the Decisions That Matter the Most</strong> — explores decision processes in high-stakes contexts.</li>
+        <li><strong>The Journal of Risk and Uncertainty</strong> — a longstanding venue on risk and decision science.</li>
+      </ul>
+
+      <div class="mt-8 p-6 bg-white/5 rounded-lg border border-white/10">
+        <h3 class="text-lg font-bold mb-4">Sources</h3>
+        <p class="mb-4 text-sm text-gray-300">This article draws from research in decision science, organizational behavior, and consulting practice. Key references include:</p>
+        <ul class="space-y-2 text-sm text-gray-300">
+          <li>Springer Link: Uncertainty, Risk, and Decision-Making</li>
+          <li>ScienceDirect: Making Evidence-Based Organizational Decisions in an Uncertain World</li>
+          <li>OUP Academic: Decision-Making with Uncertainty</li>
+          <li>Wikipedia: Ellsberg paradox</li>
+          <li>Frontiers in Psychology: Decision Making under Uncertainty</li>
+          <li>Academic research on decision-making frameworks in medicine, infrastructure, and professional contexts</li>
+        </ul>
+      </div>
+    `,
+    author: "William McKinney",
+    date: "Jan 26, 2026",
+    category: "Consulting",
+    readTime: "12 min read",
+    imageUrl: dataAnalysisBusinessIntelligence,
   },
 ];

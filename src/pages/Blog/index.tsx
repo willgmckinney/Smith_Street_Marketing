@@ -11,7 +11,7 @@ export default function BlogPage() {
         </h1>
         <p className="text-xl text-gray-300 max-w-2xl mx-auto">
           Thoughts on marketing, technology, and the future of digital business
-          from the team at Smith Street Marketing.
+          from the team at SAI.
         </p>
       </div>
 
