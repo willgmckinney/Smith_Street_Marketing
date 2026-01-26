@@ -1,4 +1,4 @@
-import { createRootRoute, Link, Outlet } from "@tanstack/react-router";
+import { createRootRoute, Link, Outlet, useLocation } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
 import Footer from "../components/Footer";
@@ -7,6 +7,9 @@ import { SummitButton } from "../components/Summit/SummitButton";
 export const rootRoute = createRootRoute({
   component: () => {
     const [scrolled, setScrolled] = useState(false);
+    const [solutionsOpen, setSolutionsOpen] = useState(false);
+    const location = useLocation();
+    const isShopifyPage = location.pathname === "/shopify-profit-recovery";
 
     useEffect(() => {
       const handleScroll = () => {
@@ -16,6 +19,23 @@ export const rootRoute = createRootRoute({
       window.addEventListener("scroll", handleScroll);
       return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    useEffect(() => {
+      const handleClickOutside = (event: MouseEvent) => {
+        const target = event.target as HTMLElement;
+        if (!target.closest('.solutions-dropdown')) {
+          setSolutionsOpen(false);
+        }
+      };
+
+      if (solutionsOpen) {
+        document.addEventListener("mousedown", handleClickOutside);
+      }
+
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [solutionsOpen]);
 
     return (
       <div className="flex flex-col min-h-screen bg-deep-horizon text-granite font-sans">
@@ -39,6 +59,54 @@ export const rootRoute = createRootRoute({
           </Link>
 
           <nav className="flex items-center gap-2 sm:gap-4">
+            <div className="relative solutions-dropdown">
+              <SummitButton
+                variant="secondary"
+                size="sm"
+                className={`bg-transparent border-transparent shadow-none hover:bg-white/10 ${
+                  isShopifyPage ? "text-golden-hour-start" : "text-granite"
+                }`}
+                onClick={() => setSolutionsOpen(!solutionsOpen)}
+                onMouseEnter={() => setSolutionsOpen(true)}
+              >
+                Solutions
+                <svg
+                  className={`ml-1 h-4 w-4 inline-block transition-transform duration-200 ${
+                    solutionsOpen ? "rotate-180" : ""
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </SummitButton>
+
+              {solutionsOpen && (
+                <div
+                  className="absolute top-full left-0 mt-2 w-48 bg-atmospheric-haze rounded-lg border border-white/10 shadow-lg overflow-hidden z-50"
+                  onMouseLeave={() => setSolutionsOpen(false)}
+                >
+                  <Link
+                    to="/shopify-profit-recovery"
+                    className={`block px-4 py-3 transition-colors duration-200 ${
+                      isShopifyPage
+                        ? "bg-white/10 text-golden-hour-start"
+                        : "text-granite hover:bg-white/10 hover:text-golden-hour-start"
+                    }`}
+                    onClick={() => setSolutionsOpen(false)}
+                  >
+                    Shopify
+                  </Link>
+                </div>
+              )}
+            </div>
+
             <Link to="/portfolio">
               {({ isActive }) => (
                 <SummitButton

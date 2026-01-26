@@ -13,6 +13,7 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as TaxCompanyDashboardImport } from './routes/tax-company-dashboard'
 import { Route as SupportImport } from './routes/support'
+import { Route as ShopifyProfitRecoveryImport } from './routes/shopify-profit-recovery'
 import { Route as SecuritySchedulingDashboardImport } from './routes/security-scheduling-dashboard'
 import { Route as RealEstateDashboardImport } from './routes/real-estate-dashboard'
 import { Route as PrivacyImport } from './routes/privacy'
@@ -38,6 +39,12 @@ const TaxCompanyDashboardRoute = TaxCompanyDashboardImport.update({
 const SupportRoute = SupportImport.update({
   id: '/support',
   path: '/support',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ShopifyProfitRecoveryRoute = ShopifyProfitRecoveryImport.update({
+  id: '/shopify-profit-recovery',
+  path: '/shopify-profit-recovery',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -202,6 +209,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SecuritySchedulingDashboardImport
       parentRoute: typeof rootRoute
     }
+    '/shopify-profit-recovery': {
+      id: '/shopify-profit-recovery'
+      path: '/shopify-profit-recovery'
+      fullPath: '/shopify-profit-recovery'
+      preLoaderRoute: typeof ShopifyProfitRecoveryImport
+      parentRoute: typeof rootRoute
+    }
     '/support': {
       id: '/support'
       path: '/support'
@@ -247,6 +261,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/real-estate-dashboard': typeof RealEstateDashboardRoute
   '/security-scheduling-dashboard': typeof SecuritySchedulingDashboardRoute
+  '/shopify-profit-recovery': typeof ShopifyProfitRecoveryRoute
   '/support': typeof SupportRoute
   '/tax-company-dashboard': typeof TaxCompanyDashboardRoute
   '/blog/$postId': typeof BlogPostIdRoute
@@ -265,6 +280,7 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/real-estate-dashboard': typeof RealEstateDashboardRoute
   '/security-scheduling-dashboard': typeof SecuritySchedulingDashboardRoute
+  '/shopify-profit-recovery': typeof ShopifyProfitRecoveryRoute
   '/support': typeof SupportRoute
   '/tax-company-dashboard': typeof TaxCompanyDashboardRoute
   '/blog/$postId': typeof BlogPostIdRoute
@@ -284,6 +300,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/real-estate-dashboard': typeof RealEstateDashboardRoute
   '/security-scheduling-dashboard': typeof SecuritySchedulingDashboardRoute
+  '/shopify-profit-recovery': typeof ShopifyProfitRecoveryRoute
   '/support': typeof SupportRoute
   '/tax-company-dashboard': typeof TaxCompanyDashboardRoute
   '/blog/$postId': typeof BlogPostIdRoute
@@ -304,6 +321,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/real-estate-dashboard'
     | '/security-scheduling-dashboard'
+    | '/shopify-profit-recovery'
     | '/support'
     | '/tax-company-dashboard'
     | '/blog/$postId'
@@ -321,6 +339,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/real-estate-dashboard'
     | '/security-scheduling-dashboard'
+    | '/shopify-profit-recovery'
     | '/support'
     | '/tax-company-dashboard'
     | '/blog/$postId'
@@ -338,6 +357,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/real-estate-dashboard'
     | '/security-scheduling-dashboard'
+    | '/shopify-profit-recovery'
     | '/support'
     | '/tax-company-dashboard'
     | '/blog/$postId'
@@ -357,6 +377,7 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   RealEstateDashboardRoute: typeof RealEstateDashboardRoute
   SecuritySchedulingDashboardRoute: typeof SecuritySchedulingDashboardRoute
+  ShopifyProfitRecoveryRoute: typeof ShopifyProfitRecoveryRoute
   SupportRoute: typeof SupportRoute
   TaxCompanyDashboardRoute: typeof TaxCompanyDashboardRoute
   BlogPostIdRoute: typeof BlogPostIdRoute
@@ -375,6 +396,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   RealEstateDashboardRoute: RealEstateDashboardRoute,
   SecuritySchedulingDashboardRoute: SecuritySchedulingDashboardRoute,
+  ShopifyProfitRecoveryRoute: ShopifyProfitRecoveryRoute,
   SupportRoute: SupportRoute,
   TaxCompanyDashboardRoute: TaxCompanyDashboardRoute,
   BlogPostIdRoute: BlogPostIdRoute,
@@ -402,6 +424,7 @@ export const routeTree = rootRoute
         "/privacy",
         "/real-estate-dashboard",
         "/security-scheduling-dashboard",
+        "/shopify-profit-recovery",
         "/support",
         "/tax-company-dashboard",
         "/blog/$postId",
@@ -440,6 +463,9 @@ export const routeTree = rootRoute
     },
     "/security-scheduling-dashboard": {
       "filePath": "security-scheduling-dashboard.tsx"
+    },
+    "/shopify-profit-recovery": {
+      "filePath": "shopify-profit-recovery.tsx"
     },
     "/support": {
       "filePath": "support.tsx"
