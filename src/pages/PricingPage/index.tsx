@@ -20,7 +20,7 @@ export const PricingPage = () => {
     <div className="min-h-screen bg-deep-horizon pt-24">
       <div className="bg-atmospheric-haze py-20 border-b border-white/5">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-golden-hour-start to-golden-hour-end font-bold mb-6">
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-golden-hour-start to-golden-hour-end font-bold mb-10">
             Transparent Pricing
           </h1>
           <p className="font-sans text-xl text-granite max-w-2xl mx-auto leading-relaxed">
@@ -36,7 +36,7 @@ export const PricingPage = () => {
               title="Data Analytics Jumpstart"
               price="15,000"
               features={pricingFeatures.analytics}
-              description="A fully customized AWS QuickSight dashboard for actionable insights in under 2 weeks."
+              description="A customized AWS QuickSight dashboard for actionable insights in 2 weeks."
             />
           </div>
           <div className="flex h-100">
