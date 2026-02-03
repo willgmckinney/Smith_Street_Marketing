@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { SummitButton } from "../../components/Summit/SummitButton";
-import { CalendlyEmbed } from "../DemoPage/Components/CalendlyEmbed";
+import { ApolloContactForm } from "../DemoPage/Components/ApolloContactForm";
 
 export const ShopifyProfitRecovery = () => {
   const [annualRevenue, setAnnualRevenue] = useState<number>(5000000);
@@ -59,9 +59,9 @@ export const ShopifyProfitRecovery = () => {
     }).format(amount);
   };
 
-  const scrollToCalendly = () => {
+  const scrollToBooking = () => {
     setTimeout(() => {
-      const element = document.getElementById("calendly-section");
+      const element = document.getElementById("booking-section");
       element?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 100);
   };
@@ -97,7 +97,7 @@ export const ShopifyProfitRecovery = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <SummitButton size="lg" onClick={scrollToCalendly} className="text-lg px-10 py-4">
+            <SummitButton size="lg" onClick={scrollToBooking} className="text-lg px-10 py-4">
               Get My Free Profit Recovery Audit
             </SummitButton>
           </div>
@@ -207,7 +207,7 @@ export const ShopifyProfitRecovery = () => {
                 That's <strong className="text-white">{percentageRecovered.toFixed(1)}%</strong> of your revenue back in your pocket
               </div>
               <div className="mt-6">
-                <SummitButton className="mx-auto" size="lg" onClick={scrollToCalendly}>
+                <SummitButton className="mx-auto" size="lg" onClick={scrollToBooking}>
                   Get My Free Audit
                 </SummitButton>
               </div>
@@ -374,7 +374,7 @@ export const ShopifyProfitRecovery = () => {
               We're that confident in our analysis. The audit is free, and if we can't
               demonstrate clear ROI, we'll compensate you for the 30 minutes it takes to review it.
             </p>
-            <SummitButton className="mx-auto" size="lg" onClick={scrollToCalendly}>
+            <SummitButton className="mx-auto" size="lg" onClick={scrollToBooking}>
               Get My Free Audit
             </SummitButton>
           </div>
@@ -436,8 +436,8 @@ export const ShopifyProfitRecovery = () => {
         </div>
       </section>
 
-      {/* Final CTA with Calendly */}
-      <section id="calendly-section" className="py-20 px-4 sm:px-6 lg:px-8 bg-deep-horizon">
+      {/* Final CTA with booking form */}
+      <section id="booking-section" className="py-20 px-4 sm:px-6 lg:px-8 bg-deep-horizon">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
@@ -496,7 +496,7 @@ export const ShopifyProfitRecovery = () => {
             </div>
 
             <div className="bg-white rounded-card shadow-2xl p-4 sm:p-6 border border-white/10 overflow-hidden">
-            <CalendlyEmbed />
+              <ApolloContactForm />
             </div>
           </div>
         </div>

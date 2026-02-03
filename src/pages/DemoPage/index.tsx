@@ -1,5 +1,5 @@
 import Skyline from "../../assets/Skyline.jpg";
-import { CalendlyEmbed } from "./Components/CalendlyEmbed";
+import { ApolloContactForm } from "./Components/ApolloContactForm";
 
 export const DemoPage = () => {
   return (
@@ -64,9 +64,9 @@ export const DemoPage = () => {
             </div>
           </div>
 
-          {/* Right calendar section */}
-          <div className="lg:w-1/2 w-full bg-white rounded-card shadow-2xl p-4 sm:p-6 border border-white/10 overflow-hidden">
-            <CalendlyEmbed />
+          {/* Right contact form section */}
+          <div className="lg:w-1/2 w-full bg-white rounded-card shadow-2xl p-0 border border-white/10 overflow-hidden">
+            <ApolloContactForm />
           </div>
         </div>
       </div>
