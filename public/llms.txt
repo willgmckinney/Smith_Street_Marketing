@@ -1,0 +1,25 @@
+# Smith Ave Insights
+
+Smith Ave Insights (Smith Street Marketing) is a consulting and software development company. We provide custom software development, cloud architecture (AWS), data analysis, business intelligence, and digital strategy services.
+
+## Main pages
+- Home: https://smithaveinsights.com/
+- Company: https://smithaveinsights.com/company
+- Portfolio: https://smithaveinsights.com/portfolio
+- Pricing: https://smithaveinsights.com/pricing
+- Blog: https://smithaveinsights.com/blog
+- Demo / Contact: https://smithaveinsights.com/demo
+- Support: https://smithaveinsights.com/support
+- Accessibility: https://smithaveinsights.com/accessibility
+- Privacy: https://smithaveinsights.com/privacy
+
+## Portfolio / case studies
+- Ascent Pharmaceuticals Landing: https://smithaveinsights.com/ascent-pharmaceuticals-landing
+- Construction Dashboard: https://smithaveinsights.com/construction-dashboard
+- Real Estate Dashboard: https://smithaveinsights.com/real-estate-dashboard
+- Security Scheduling Dashboard: https://smithaveinsights.com/security-scheduling-dashboard
+- Tax Company Dashboard: https://smithaveinsights.com/tax-company-dashboard
+- Shopify Profit Recovery: https://smithaveinsights.com/shopify-profit-recovery
+
+## Contact
+For business inquiries, use the demo/contact form at https://smithaveinsights.com/demo

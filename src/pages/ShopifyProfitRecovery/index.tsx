@@ -495,7 +495,7 @@ export const ShopifyProfitRecovery = () => {
               </div>
             </div>
 
-            <div className="bg-white rounded-card shadow-2xl p-4 sm:p-6 border border-white/10 overflow-hidden">
+            <div className="bg-white rounded-card shadow-2xl p-0 border border-white/10 overflow-hidden">
               <ApolloContactForm />
             </div>
           </div>
