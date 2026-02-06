@@ -23,6 +23,7 @@ import { Route as DemoImport } from './routes/demo'
 import { Route as ConstructionDashboardImport } from './routes/construction-dashboard'
 import { Route as CompanyImport } from './routes/company'
 import { Route as AscentPharmaceuticalsLandingImport } from './routes/ascent-pharmaceuticals-landing'
+import { Route as AgenticBiImport } from './routes/agentic-bi'
 import { Route as AccessibilityImport } from './routes/accessibility'
 import { Route as IndexImport } from './routes/index'
 import { Route as BlogIndexImport } from './routes/blog/index'
@@ -104,6 +105,12 @@ const AscentPharmaceuticalsLandingRoute =
     getParentRoute: () => rootRoute,
   } as any)
 
+const AgenticBiRoute = AgenticBiImport.update({
+  id: '/agentic-bi',
+  path: '/agentic-bi',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const AccessibilityRoute = AccessibilityImport.update({
   id: '/accessibility',
   path: '/accessibility',
@@ -144,6 +151,13 @@ declare module '@tanstack/react-router' {
       path: '/accessibility'
       fullPath: '/accessibility'
       preLoaderRoute: typeof AccessibilityImport
+      parentRoute: typeof rootRoute
+    }
+    '/agentic-bi': {
+      id: '/agentic-bi'
+      path: '/agentic-bi'
+      fullPath: '/agentic-bi'
+      preLoaderRoute: typeof AgenticBiImport
       parentRoute: typeof rootRoute
     }
     '/ascent-pharmaceuticals-landing': {
@@ -252,6 +266,7 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/accessibility': typeof AccessibilityRoute
+  '/agentic-bi': typeof AgenticBiRoute
   '/ascent-pharmaceuticals-landing': typeof AscentPharmaceuticalsLandingRoute
   '/company': typeof CompanyRoute
   '/construction-dashboard': typeof ConstructionDashboardRoute
@@ -271,6 +286,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/accessibility': typeof AccessibilityRoute
+  '/agentic-bi': typeof AgenticBiRoute
   '/ascent-pharmaceuticals-landing': typeof AscentPharmaceuticalsLandingRoute
   '/company': typeof CompanyRoute
   '/construction-dashboard': typeof ConstructionDashboardRoute
@@ -291,6 +307,7 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/accessibility': typeof AccessibilityRoute
+  '/agentic-bi': typeof AgenticBiRoute
   '/ascent-pharmaceuticals-landing': typeof AscentPharmaceuticalsLandingRoute
   '/company': typeof CompanyRoute
   '/construction-dashboard': typeof ConstructionDashboardRoute
@@ -312,6 +329,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/accessibility'
+    | '/agentic-bi'
     | '/ascent-pharmaceuticals-landing'
     | '/company'
     | '/construction-dashboard'
@@ -330,6 +348,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/accessibility'
+    | '/agentic-bi'
     | '/ascent-pharmaceuticals-landing'
     | '/company'
     | '/construction-dashboard'
@@ -348,6 +367,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/accessibility'
+    | '/agentic-bi'
     | '/ascent-pharmaceuticals-landing'
     | '/company'
     | '/construction-dashboard'
@@ -368,6 +388,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AccessibilityRoute: typeof AccessibilityRoute
+  AgenticBiRoute: typeof AgenticBiRoute
   AscentPharmaceuticalsLandingRoute: typeof AscentPharmaceuticalsLandingRoute
   CompanyRoute: typeof CompanyRoute
   ConstructionDashboardRoute: typeof ConstructionDashboardRoute
@@ -387,6 +408,7 @@ export interface RootRouteChildren {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AccessibilityRoute: AccessibilityRoute,
+  AgenticBiRoute: AgenticBiRoute,
   AscentPharmaceuticalsLandingRoute: AscentPharmaceuticalsLandingRoute,
   CompanyRoute: CompanyRoute,
   ConstructionDashboardRoute: ConstructionDashboardRoute,
@@ -415,6 +437,7 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/accessibility",
+        "/agentic-bi",
         "/ascent-pharmaceuticals-landing",
         "/company",
         "/construction-dashboard",
@@ -436,6 +459,9 @@ export const routeTree = rootRoute
     },
     "/accessibility": {
       "filePath": "accessibility.tsx"
+    },
+    "/agentic-bi": {
+      "filePath": "agentic-bi.tsx"
     },
     "/ascent-pharmaceuticals-landing": {
       "filePath": "ascent-pharmaceuticals-landing.tsx"
