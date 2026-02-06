@@ -1,4 +1,9 @@
-import { createRootRoute, Link, Outlet, useLocation } from "@tanstack/react-router";
+import {
+  createRootRoute,
+  Link,
+  Outlet,
+  useLocation,
+} from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
 import Footer from "../components/Footer";
@@ -8,8 +13,12 @@ export const rootRoute = createRootRoute({
   component: () => {
     const [scrolled, setScrolled] = useState(false);
     const [solutionsOpen, setSolutionsOpen] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [mobileSolutionsOpen, setMobileSolutionsOpen] = useState(false);
     const location = useLocation();
     const isShopifyPage = location.pathname === "/shopify-profit-recovery";
+    const isAgenticBIPage = location.pathname === "/agentic-bi";
+    const isSolutionsPage = isShopifyPage || isAgenticBIPage;
 
     useEffect(() => {
       const handleScroll = () => {
@@ -20,10 +29,28 @@ export const rootRoute = createRootRoute({
       return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    // Close mobile menu on route change
+    useEffect(() => {
+      setMobileMenuOpen(false);
+      setMobileSolutionsOpen(false);
+    }, [location.pathname]);
+
+    // Lock body scroll when mobile menu is open
+    useEffect(() => {
+      if (mobileMenuOpen) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "";
+      }
+      return () => {
+        document.body.style.overflow = "";
+      };
+    }, [mobileMenuOpen]);
+
     useEffect(() => {
       const handleClickOutside = (event: MouseEvent) => {
         const target = event.target as HTMLElement;
-        if (!target.closest('.solutions-dropdown')) {
+        if (!target.closest(".solutions-dropdown")) {
           setSolutionsOpen(false);
         }
       };
@@ -44,7 +71,7 @@ export const rootRoute = createRootRoute({
             fixed top-0 left-0 right-0 z-50 transition-all duration-300
             px-4 sm:px-6 lg:px-8 py-4
             flex items-center justify-between
-            ${scrolled ? "bg-deep-horizon/80 backdrop-blur-md border-b border-white/10 shadow-lg" : "bg-transparent"}
+            ${scrolled || mobileMenuOpen ? "bg-deep-horizon/80 backdrop-blur-md border-b border-white/10 shadow-lg" : "bg-transparent"}
           `}
         >
           <Link to="/" className="flex flex-row items-center gap-3 group">
@@ -58,13 +85,14 @@ export const rootRoute = createRootRoute({
             </p>
           </Link>
 
-          <nav className="flex items-center gap-2 sm:gap-4">
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-2 sm:gap-4">
             <div className="relative solutions-dropdown">
               <SummitButton
                 variant="secondary"
                 size="sm"
                 className={`bg-transparent border-transparent shadow-none hover:bg-white/10 ${
-                  isShopifyPage ? "text-golden-hour-start" : "text-granite"
+                  isSolutionsPage ? "text-golden-hour-start" : "text-granite"
                 }`}
                 onClick={() => setSolutionsOpen(!solutionsOpen)}
                 onMouseEnter={() => setSolutionsOpen(true)}
@@ -89,7 +117,7 @@ export const rootRoute = createRootRoute({
 
               {solutionsOpen && (
                 <div
-                  className="absolute top-full left-0 mt-2 w-48 bg-atmospheric-haze rounded-lg border border-white/10 shadow-lg overflow-hidden z-50"
+                  className="absolute top-full left-0 mt-2 w-56 bg-atmospheric-haze rounded-lg border border-white/10 shadow-lg overflow-hidden z-50"
                   onMouseLeave={() => setSolutionsOpen(false)}
                 >
                   <Link
@@ -101,7 +129,18 @@ export const rootRoute = createRootRoute({
                     }`}
                     onClick={() => setSolutionsOpen(false)}
                   >
-                    Shopify
+                    Shopify Profit Recovery
+                  </Link>
+                  <Link
+                    to="/agentic-bi"
+                    className={`block px-4 py-3 transition-colors duration-200 ${
+                      isAgenticBIPage
+                        ? "bg-white/10 text-golden-hour-start"
+                        : "text-granite hover:bg-white/10 hover:text-golden-hour-start"
+                    }`}
+                    onClick={() => setSolutionsOpen(false)}
+                  >
+                    Agentic BI Migration
                   </Link>
                 </div>
               )}
@@ -144,27 +183,191 @@ export const rootRoute = createRootRoute({
             </Link>
 
             <Link to="/demo">
-              <SummitButton size="sm" className="hidden sm:flex">
-                Get Started
-              </SummitButton>
-              {/* Mobile Icon Button */}
-              <div className="sm:hidden bg-golden-gradient p-2 rounded-full text-deep-horizon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
+              <SummitButton size="sm">Get Started</SummitButton>
             </Link>
           </nav>
+
+          {/* Mobile Hamburger Button */}
+          <button
+            className="md:hidden relative z-50 p-2 rounded-lg text-white hover:bg-white/10 transition-colors duration-200"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+          >
+            <svg
+              className="h-6 w-6 transition-transform duration-300"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              {mobileMenuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
         </header>
+
+        {/* Mobile Menu Overlay */}
+        <div
+          className={`
+            fixed inset-0 z-40 md:hidden transition-opacity duration-300
+            ${mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
+          `}
+        >
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-deep-horizon/60 backdrop-blur-sm"
+            onClick={() => setMobileMenuOpen(false)}
+          />
+
+          {/* Panel */}
+          <nav
+            className={`
+              absolute top-0 right-0 h-full w-72 max-w-[80vw]
+              bg-deep-horizon border-l border-white/10 shadow-2xl
+              pt-24 pb-8 px-6
+              transition-transform duration-300 ease-in-out
+              ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"}
+              overflow-y-auto
+            `}
+          >
+            <div className="flex flex-col gap-1">
+              {/* Solutions Accordion */}
+              <button
+                className={`flex items-center justify-between w-full px-4 py-3 rounded-lg text-left font-semibold transition-colors duration-200 ${
+                  isSolutionsPage
+                    ? "text-golden-hour-start bg-white/5"
+                    : "text-white hover:bg-white/5"
+                }`}
+                onClick={() => setMobileSolutionsOpen(!mobileSolutionsOpen)}
+              >
+                Solutions
+                <svg
+                  className={`h-4 w-4 transition-transform duration-200 ${
+                    mobileSolutionsOpen ? "rotate-180" : ""
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+
+              <div
+                className={`overflow-hidden transition-all duration-200 ${
+                  mobileSolutionsOpen ? "max-h-40" : "max-h-0"
+                }`}
+              >
+                <Link
+                  to="/shopify-profit-recovery"
+                  className={`block pl-8 pr-4 py-2.5 rounded-lg text-sm transition-colors duration-200 ${
+                    isShopifyPage
+                      ? "text-golden-hour-start bg-white/5"
+                      : "text-granite hover:text-white hover:bg-white/5"
+                  }`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Shopify Profit Recovery
+                </Link>
+                <Link
+                  to="/agentic-bi"
+                  className={`block pl-8 pr-4 py-2.5 rounded-lg text-sm transition-colors duration-200 ${
+                    isAgenticBIPage
+                      ? "text-golden-hour-start bg-white/5"
+                      : "text-granite hover:text-white hover:bg-white/5"
+                  }`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Agentic BI Migration
+                </Link>
+              </div>
+
+              <Link
+                to="/portfolio"
+                className="block"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {({ isActive }) => (
+                  <span
+                    className={`block px-4 py-3 rounded-lg font-semibold transition-colors duration-200 ${
+                      isActive
+                        ? "text-golden-hour-start bg-white/5"
+                        : "text-white hover:bg-white/5"
+                    }`}
+                  >
+                    Portfolio
+                  </span>
+                )}
+              </Link>
+
+              <Link
+                to="/pricing"
+                className="block"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {({ isActive }) => (
+                  <span
+                    className={`block px-4 py-3 rounded-lg font-semibold transition-colors duration-200 ${
+                      isActive
+                        ? "text-golden-hour-start bg-white/5"
+                        : "text-white hover:bg-white/5"
+                    }`}
+                  >
+                    Pricing
+                  </span>
+                )}
+              </Link>
+
+              <Link
+                to="/blog"
+                className="block"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {({ isActive }) => (
+                  <span
+                    className={`block px-4 py-3 rounded-lg font-semibold transition-colors duration-200 ${
+                      isActive
+                        ? "text-golden-hour-start bg-white/5"
+                        : "text-white hover:bg-white/5"
+                    }`}
+                  >
+                    Insights
+                  </span>
+                )}
+              </Link>
+
+              {/* Divider */}
+              <div className="my-3 border-t border-white/10" />
+
+              <Link
+                to="/demo"
+                className="block"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <SummitButton size="md" className="w-full justify-center">
+                  Get Started
+                </SummitButton>
+              </Link>
+            </div>
+          </nav>
+        </div>
 
         <main className="flex-grow">
           <Outlet />

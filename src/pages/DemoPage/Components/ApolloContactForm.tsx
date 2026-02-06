@@ -1,31 +1,103 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SummitButton } from "../../../components/Summit/SummitButton";
 
 const APOLLO_FORM_ID = "apollo-demo-form";
 
 const inputBase =
-  "w-full rounded-xl px-4 py-3.5 text-deep-horizon placeholder:text-atmospheric-haze/50 border-2 border-atmospheric-haze/20 bg-white/80 backdrop-blur-sm transition-all duration-300 ease-bouncy focus:outline-none focus:border-golden-hour-start focus:ring-4 focus:ring-golden-hour-start/15 focus:bg-white hover:border-atmospheric-haze/40";
+  "w-full rounded-xl px-4 py-3.5 text-deep-horizon placeholder:text-atmospheric-haze/50 border-2 bg-white/80 backdrop-blur-sm transition-all duration-300 ease-bouncy focus:outline-none focus:border-golden-hour-start focus:ring-4 focus:ring-golden-hour-start/15 focus:bg-white hover:border-atmospheric-haze/40";
 
 export const ApolloContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<{
+    name?: string;
+    email?: string;
+  }>({});
+  const succeededRef = useRef(false);
+  const fallbackTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Watch for Apollo overlay being removed from the DOM (user closed calendar)
+  useEffect(() => {
+    if (!isSubmitting) return;
+
+    const observer = new MutationObserver(() => {
+      const apolloOverlay =
+        document.querySelector("iframe[src*='apollo']") ||
+        document.querySelector("[class*='apollo']") ||
+        document.querySelector("[id*='apollo-overlay']");
+
+      if (!apolloOverlay && succeededRef.current === false) {
+        setTimeout(() => {
+          if (!succeededRef.current) {
+            setIsSubmitting(false);
+            if (fallbackTimerRef.current)
+              clearTimeout(fallbackTimerRef.current);
+          }
+        }, 500);
+      }
+    });
+
+    const startTimer = setTimeout(() => {
+      observer.observe(document.body, { childList: true, subtree: true });
+    }, 2000);
+
+    return () => {
+      clearTimeout(startTimer);
+      observer.disconnect();
+    };
+  }, [isSubmitting]);
+
+  const validateFields = (form: HTMLFormElement) => {
+    const formData = new FormData(form);
+    const name = (formData.get("name") as string)?.trim() ?? "";
+    const email = (formData.get("email") as string)?.trim() ?? "";
+    const errors: { name?: string; email?: string } = {};
+
+    if (!name) errors.name = "Please enter your name.";
+    if (!email) {
+      errors.email = "Please enter your email.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errors.email = "Please enter a valid email address.";
+    }
+
+    return errors;
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError(null);
+    succeededRef.current = false;
+
+    const errors = validateFields(e.currentTarget);
+    setFieldErrors(errors);
+    if (Object.keys(errors).length > 0) return;
+
     if (!window.ApolloMeetings) {
-      console.error("Apollo Meetings widget not loaded");
+      setError(
+        "Our scheduling tool is still loading. Please wait a moment and try again.",
+      );
       return;
     }
+
     setIsSubmitting(true);
-    const resetFallback = setTimeout(() => setIsSubmitting(false), 60000);
+    fallbackTimerRef.current = setTimeout(() => {
+      setIsSubmitting(false);
+      setError("Something took too long. Please try again.");
+    }, 30000);
+
     window.ApolloMeetings.submit({
       formId: APOLLO_FORM_ID,
       onSuccess: () => {
-        clearTimeout(resetFallback);
+        succeededRef.current = true;
+        if (fallbackTimerRef.current) clearTimeout(fallbackTimerRef.current);
         setIsSubmitting(false);
       },
       onError: () => {
-        clearTimeout(resetFallback);
+        if (fallbackTimerRef.current) clearTimeout(fallbackTimerRef.current);
         setIsSubmitting(false);
+        setError(
+          "Something went wrong opening the calendar. Please try again.",
+        );
       },
     });
   };
@@ -55,9 +127,16 @@ export const ApolloContactForm = () => {
           </div>
         </div>
 
+        {error && (
+          <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-600 text-sm">
+            {error}
+          </div>
+        )}
+
         <form
           id={APOLLO_FORM_ID}
           onSubmit={handleSubmit}
+          noValidate
           className="space-y-5"
         >
           <div className="space-y-2">
@@ -71,11 +150,17 @@ export const ApolloContactForm = () => {
               id="apollo-name"
               type="text"
               name="name"
-              required
               autoComplete="name"
               placeholder="e.g. Jordan Smith"
-              className={inputBase}
+              className={`${inputBase} ${fieldErrors.name ? "border-red-400" : "border-atmospheric-haze/20"}`}
+              onChange={() =>
+                fieldErrors.name &&
+                setFieldErrors((prev) => ({ ...prev, name: undefined }))
+              }
             />
+            {fieldErrors.name && (
+              <p className="mt-1 text-red-500 text-xs">{fieldErrors.name}</p>
+            )}
           </div>
 
           <div className="space-y-2">
@@ -89,11 +174,17 @@ export const ApolloContactForm = () => {
               id="apollo-email"
               type="email"
               name="email"
-              required
               autoComplete="email"
               placeholder="you@company.com"
-              className={inputBase}
+              className={`${inputBase} ${fieldErrors.email ? "border-red-400" : "border-atmospheric-haze/20"}`}
+              onChange={() =>
+                fieldErrors.email &&
+                setFieldErrors((prev) => ({ ...prev, email: undefined }))
+              }
             />
+            {fieldErrors.email && (
+              <p className="mt-1 text-red-500 text-xs">{fieldErrors.email}</p>
+            )}
           </div>
 
           <div className="pt-3">
