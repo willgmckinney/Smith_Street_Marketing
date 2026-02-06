@@ -786,7 +786,7 @@ export const AgenticBI = () => {
             backgroundSize: "50px 50px",
           }}
         />
-        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-b from-transparent to-deep-horizon" />
+        <div className="absolute inset-x-0 bottom-0 h-1/5 bg-gradient-to-b from-transparent to-deep-horizon" />
       </div>
 
       {/* Hero Section */}
