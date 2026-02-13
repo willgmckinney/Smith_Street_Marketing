@@ -479,7 +479,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: "ecommerce-sovereignty-shopify-to-aws-migration",
     title:
-      "The Architectures of E-commerce Sovereignty: A Guide to Migrating from Shopify to Custom AWS Infrastructure",
+      'From "Renting" a Store to Owning the Infrastructure: A Guide to Migrating from Shopify to AWS',
     excerpt:
       "High-volume merchants can reclaim significant portions of their gross merchandise value by transitioning from a SaaS rental model to an ownership model hosted on cloud-native AWS infrastructure.",
     content: `
