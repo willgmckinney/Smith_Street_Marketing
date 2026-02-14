@@ -13,6 +13,18 @@ export default {
         granite: "#F8FAFC",
         "alpine-flora": "#10B981",
 
+        // Mountaineering palette
+        "cliff-dark": "#2A2D34",
+        "cliff-mid": "#3D4451",
+        "cliff-light": "#5C6370",
+        "alpine-ice": "#A8D8EA",
+        "sunrise-amber": "#64B5F6",
+        "rope-gold": "#5BA4D9",
+        "rope-tan": "#4A8DB7",
+        "rock-deep": "#4A4238",
+        "rock-mid": "#6B5B4E",
+        "rock-light": "#8B7865",
+
         // Legacy colors (keeping to prevent immediate breakage, but should be phased out)
         "primary-color-1": "var(--primary-color-Cyan)",
         "primary-color-2": "var(--primary-color-Green)",

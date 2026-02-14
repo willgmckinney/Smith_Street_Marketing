@@ -24,39 +24,39 @@ export const PortfolioPage = () => {
         {/* Projects Grid */}
         <div className="flex flex-wrap justify-center gap-8">
           <ProjectCard
+            title="Ascent Pharmaceuticals Landing"
+            description="A modern, conversion-focused landing experience for pharmaceutical manufacturers showcasing facilities, product portfolio, and partnership opportunities."
+            imageUrl="/pill.png"
+            linkUrl="/ascent-pharmaceuticals-landing"
+            technologies={["Web Development", "Brand Strategy"]}
+          />
+          <ProjectCard
             title="Construction Site Manager"
             description="An interactive dashboard for construction project management with real-time KPIs, productivity tracking, and dynamic data visualization."
-            imageUrl="/construction-hardhat.svg"
+            imageUrl="/construction-cap.png"
             linkUrl="/construction-dashboard"
-            technologies={["HTML5", "JavaScript", "Chart.js", "Tailwind CSS"]}
+            technologies={["Data Analytics", "Web App"]}
           />
           <ProjectCard
             title="Real Estate Broker Dashboard"
             description="A comprehensive market intelligence dashboard for real estate professionals featuring property analytics, pipeline tracking, and dynamic filtering capabilities."
-            imageUrl="/real-estate-house.svg"
+            imageUrl="/tent.png"
             linkUrl="/real-estate-dashboard"
-            technologies={["HTML5", "JavaScript", "Chart.js", "CSS3"]}
+            technologies={["Data Analytics", "Web App"]}
           />
           <ProjectCard
             title="Security Shift Scheduler"
             description="A comprehensive shift scheduling system for security personnel with user/admin views, real-time assignment management, and export capabilities."
-            imageUrl="/security-shield.svg"
+            imageUrl="/lock.png"
             linkUrl="/security-scheduling-dashboard"
-            technologies={["HTML5", "JavaScript", "Tailwind", "LocalStorage"]}
+            technologies={["Custom Software Development", "Web App"]}
           />
           <ProjectCard
             title="Trusted Tax Company"
             description="A comprehensive tax preparation dashboard featuring client management, return tracking, refund analytics, and revenue insights for tax professionals."
-            imageUrl="/tax-calculator.svg"
+            imageUrl="/calculator.png"
             linkUrl="/tax-company-dashboard"
-            technologies={["HTML5", "JavaScript", "Chart.js", "Tailwind CSS"]}
-          />
-          <ProjectCard
-            title="Ascent Pharmaceuticals Landing"
-            description="A modern, conversion-focused landing experience for pharmaceutical manufacturers showcasing facilities, product portfolio, and partnership opportunities."
-            imageUrl="/ascent-pharmaceuticals.svg"
-            linkUrl="/ascent-pharmaceuticals-landing"
-            technologies={["HTML5", "CSS3", "Accessibility", "Brand Strategy"]}
+            technologies={["Data Analytics", "Web App"]}
           />
         </div>
       </div>

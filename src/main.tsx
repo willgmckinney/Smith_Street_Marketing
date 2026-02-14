@@ -13,7 +13,7 @@ import { companyRoute } from "./routes/company";
 import { constructionDashboardRoute } from "./routes/construction-dashboard";
 import { demoRoute } from "./routes/demo";
 import { portfolioRoute } from "./routes/portfolio";
-import { pricingRoute } from "./routes/pricing";
+import { howWeWorkRoute } from "./routes/how-we-work";
 import { privacyRoute } from "./routes/privacy";
 import { realEstateDashboardRoute } from "./routes/real-estate-dashboard";
 import { securitySchedulingDashboardRoute } from "./routes/security-scheduling-dashboard";
@@ -23,7 +23,7 @@ import { taxCompanyDashboardRoute } from "./routes/tax-company-dashboard";
 
 const routeTree = rootRoute.addChildren([
   indexRoute,
-  pricingRoute,
+  howWeWorkRoute,
   demoRoute,
   companyRoute,
   portfolioRoute,
