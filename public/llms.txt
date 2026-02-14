@@ -6,7 +6,7 @@ Smith Ave Insights (Smith Street Marketing) is a consulting and software develop
 - Home: https://smithaveinsights.com/
 - Company: https://smithaveinsights.com/company
 - Portfolio: https://smithaveinsights.com/portfolio
-- Pricing: https://smithaveinsights.com/pricing
+- How We Work: https://smithaveinsights.com/how-we-work
 - Blog: https://smithaveinsights.com/blog
 - Demo / Contact: https://smithaveinsights.com/demo
 - Support: https://smithaveinsights.com/support

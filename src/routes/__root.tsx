@@ -158,14 +158,14 @@ export const rootRoute = createRootRoute({
               )}
             </Link>
 
-            <Link to="/pricing">
+            <Link to="/how-we-work">
               {({ isActive }) => (
                 <SummitButton
                   variant="secondary"
                   size="sm"
                   className={`bg-transparent border-transparent shadow-none hover:bg-white/10 ${isActive ? "text-golden-hour-start" : "text-granite"}`}
                 >
-                  Pricing
+                  How We Work
                 </SummitButton>
               )}
             </Link>
@@ -318,7 +318,7 @@ export const rootRoute = createRootRoute({
               </Link>
 
               <Link
-                to="/pricing"
+                to="/how-we-work"
                 className="block"
                 onClick={() => setMobileMenuOpen(false)}
               >
@@ -330,7 +330,7 @@ export const rootRoute = createRootRoute({
                         : "text-white hover:bg-white/5"
                     }`}
                   >
-                    Pricing
+                    How We Work
                   </span>
                 )}
               </Link>
@@ -369,11 +369,13 @@ export const rootRoute = createRootRoute({
           </nav>
         </div>
 
-        <main className="flex-grow">
+        <main className="flex-grow relative z-10">
           <Outlet />
         </main>
 
-        <Footer />
+        <div className="relative z-10">
+          <Footer />
+        </div>
       </div>
     );
   },
