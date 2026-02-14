@@ -24,11 +24,11 @@ export const ProjectCard = ({
     >
       <SummitCard className="h-full group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
         {/* Background Image Container */}
-        <div className="relative h-64 w-full overflow-hidden border-b border-white/10">
+        <div className="relative h-64 w-full overflow-hidden border-b border-white/10 bg-deep-horizon">
           <img
             src={imageUrl}
             alt={title}
-            className={`w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 `}
+            className={`w-full h-full object-contain transition-transform duration-700 ease-out group-hover:scale-110 `}
           />
 
           {/* Gradient Overlay */}
