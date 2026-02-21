@@ -23,6 +23,20 @@ export const PortfolioPage = () => {
       <div className="container mx-auto px-4 py-20">
         {/* Projects Grid */}
         <div className="flex flex-wrap justify-center gap-8">
+        <ProjectCard
+            title="Image Hunter – Apollo Mapping"
+            description="Satellite imagery and geospatial solutions for the satellite industry. Explore high-resolution imagery, mapping tools, and discovery platforms powered by Apollo Mapping."
+            imageUrl="/sattelite.png"
+            linkUrl="https://imagehunter.apollomapping.com/"
+            technologies={["Satellite Imagery", "Geospatial", "Web App"]}
+          />
+          <ProjectCard
+            title="kontinu-ed – interactive higher education platform"
+            description="An interactive higher education platform for the kontinu-ed brand. Explore the platform and the features it offers."
+            imageUrl="/book.png"
+            linkUrl="https://kontinued.com/"
+            technologies={["Web Development", "Education", "UI/UX Design"]}
+          />
           <ProjectCard
             title="Ascent Pharmaceuticals Landing"
             description="A modern, conversion-focused landing experience for pharmaceutical manufacturers showcasing facilities, product portfolio, and partnership opportunities."
