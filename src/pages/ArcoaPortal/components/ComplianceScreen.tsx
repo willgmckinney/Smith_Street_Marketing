@@ -118,7 +118,7 @@ export function ComplianceScreen({ onDownload }: ComplianceScreenProps) {
         className="text-center text-[11px] leading-relaxed px-2 arcoa-fade-in"
         style={{ animationDelay: "500ms", color: "var(--muted)" }}
       >
-        All certificates generated and retained by ARCOA Group for 7 years per
+        All certificates generated and retained by ACME Group for 7 years per
         retention policy.
       </p>
     </div>

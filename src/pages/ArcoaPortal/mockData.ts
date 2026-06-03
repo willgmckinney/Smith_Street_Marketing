@@ -253,42 +253,42 @@ export const environmental = {
 
 export const certificates: Certificate[] = [
   {
-    id: "ARCOA-CDD-2026-0419",
+    id: "ACME-CDD-2026-0419",
     type: "Certificate of Data Destruction",
     dateIssued: "2026-05-19",
     assetsCovered: 842,
     method: "Overwrite (NIST 800-88 Purge) + Shred",
   },
   {
-    id: "ARCOA-CDR-2026-0388",
+    id: "ACME-CDR-2026-0388",
     type: "Certificate of Recycling",
     dateIssued: "2026-05-02",
     assetsCovered: 511,
     method: "e-Stewards / R2",
   },
   {
-    id: "ARCOA-CDD-2026-0301",
+    id: "ACME-CDD-2026-0301",
     type: "Certificate of Data Destruction",
     dateIssued: "2026-04-11",
     assetsCovered: 96,
     method: "Cryptographic Erase",
   },
   {
-    id: "ARCOA-CDR-2026-0240",
+    id: "ACME-CDR-2026-0240",
     type: "Certificate of Recycling",
     dateIssued: "2026-03-22",
     assetsCovered: 308,
     method: "e-Stewards / R2",
   },
   {
-    id: "ARCOA-CDD-2026-0188",
+    id: "ACME-CDD-2026-0188",
     type: "Certificate of Data Destruction",
     dateIssued: "2026-02-28",
     assetsCovered: 274,
     method: "Degauss + Shred",
   },
   {
-    id: "ARCOA-CDD-2026-0102",
+    id: "ACME-CDD-2026-0102",
     type: "Certificate of Data Destruction",
     dateIssued: "2026-01-30",
     assetsCovered: 130,

@@ -4,7 +4,7 @@ import { rootRoute } from "./__root";
 
 export const arcoaPortalRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: "/arcoa-portal",
+  path: "/acme-portal",
   component: function ArcoaPortalComponent() {
     return <ArcoaPortal />;
   },

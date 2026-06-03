@@ -21,7 +21,7 @@ export const ArcoaPortal = () => {
   }, []);
 
   useEffect(() => {
-    document.title = "ARCOA Portal — Lakeshore Regional";
+    document.title = "ACME Portal — Lakeshore Regional";
     return () => {
       document.title = "Smith Avenue Insights";
     };

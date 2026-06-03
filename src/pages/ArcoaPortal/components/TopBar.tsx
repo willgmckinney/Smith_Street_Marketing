@@ -14,7 +14,7 @@ export function TopBar() {
           className="text-lg font-bold tracking-tight"
           style={{ color: "var(--navy)" }}
         >
-          ARCOA
+          ACME
         </span>
         <span
           className="font-mono text-[10px] uppercase tracking-widest"

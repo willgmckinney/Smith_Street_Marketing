@@ -18,7 +18,7 @@ export const rootRoute = createRootRoute({
     const location = useLocation();
     const isShopifyPage = location.pathname === "/shopify-profit-recovery";
     const isAgenticBIPage = location.pathname === "/agentic-bi";
-    const isArcoaPortalPage = location.pathname === "/arcoa-portal";
+    const isArcoaPortalPage = location.pathname === "/acme-portal";
     const isSolutionsPage = isShopifyPage || isAgenticBIPage;
     const isStandaloneDemo = isArcoaPortalPage;
 
