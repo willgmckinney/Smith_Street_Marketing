@@ -72,6 +72,13 @@ export const PortfolioPage = () => {
             linkUrl="/tax-company-dashboard"
             technologies={["Data Analytics", "Web App"]}
           />
+          <ProjectCard
+            title="ARCOA Client Portal"
+            description="A mobile-first ITAD reporting portal for enterprise asset managers — asset disposition tracking, ESG impact metrics, and audit-ready compliance certificates."
+            imageUrl="/lock.png"
+            linkUrl="/arcoa-portal"
+            technologies={["Web App", "Data Analytics", "Mobile-First"]}
+          />
         </div>
       </div>
     </div>

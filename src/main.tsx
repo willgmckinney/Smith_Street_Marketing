@@ -6,6 +6,7 @@ import { indexRoute } from "./routes";
 import { rootRoute } from "./routes/__root";
 import { accessibilityRoute } from "./routes/accessibility";
 import { agenticBIRoute } from "./routes/agentic-bi";
+import { arcoaPortalRoute } from "./routes/arcoa-portal";
 import { ascentPharmaceuticalsLandingRoute } from "./routes/ascent-pharmaceuticals-landing";
 import { blogRoute } from "./routes/blog";
 import { blogPostRoute } from "./routes/blog/$postId";
@@ -37,6 +38,7 @@ const routeTree = rootRoute.addChildren([
   privacyRoute,
   taxCompanyDashboardRoute,
   ascentPharmaceuticalsLandingRoute,
+  arcoaPortalRoute,
   blogRoute,
   blogPostRoute,
 ]);
