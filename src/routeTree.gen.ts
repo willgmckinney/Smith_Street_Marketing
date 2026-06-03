@@ -23,7 +23,6 @@ import { Route as DemoImport } from './routes/demo'
 import { Route as ConstructionDashboardImport } from './routes/construction-dashboard'
 import { Route as CompanyImport } from './routes/company'
 import { Route as AscentPharmaceuticalsLandingImport } from './routes/ascent-pharmaceuticals-landing'
-import { Route as ArcoaPortalImport } from './routes/arcoa-portal'
 import { Route as AgenticBiImport } from './routes/agentic-bi'
 import { Route as AccessibilityImport } from './routes/accessibility'
 import { Route as IndexImport } from './routes/index'
@@ -106,12 +105,6 @@ const AscentPharmaceuticalsLandingRoute =
     getParentRoute: () => rootRoute,
   } as any)
 
-const ArcoaPortalRoute = ArcoaPortalImport.update({
-  id: '/arcoa-portal',
-  path: '/arcoa-portal',
-  getParentRoute: () => rootRoute,
-} as any)
-
 const AgenticBiRoute = AgenticBiImport.update({
   id: '/agentic-bi',
   path: '/agentic-bi',
@@ -165,13 +158,6 @@ declare module '@tanstack/react-router' {
       path: '/agentic-bi'
       fullPath: '/agentic-bi'
       preLoaderRoute: typeof AgenticBiImport
-      parentRoute: typeof rootRoute
-    }
-    '/arcoa-portal': {
-      id: '/arcoa-portal'
-      path: '/arcoa-portal'
-      fullPath: '/arcoa-portal'
-      preLoaderRoute: typeof ArcoaPortalImport
       parentRoute: typeof rootRoute
     }
     '/ascent-pharmaceuticals-landing': {
@@ -281,7 +267,6 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/accessibility': typeof AccessibilityRoute
   '/agentic-bi': typeof AgenticBiRoute
-  '/arcoa-portal': typeof ArcoaPortalRoute
   '/ascent-pharmaceuticals-landing': typeof AscentPharmaceuticalsLandingRoute
   '/company': typeof CompanyRoute
   '/construction-dashboard': typeof ConstructionDashboardRoute
@@ -302,7 +287,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/accessibility': typeof AccessibilityRoute
   '/agentic-bi': typeof AgenticBiRoute
-  '/arcoa-portal': typeof ArcoaPortalRoute
   '/ascent-pharmaceuticals-landing': typeof AscentPharmaceuticalsLandingRoute
   '/company': typeof CompanyRoute
   '/construction-dashboard': typeof ConstructionDashboardRoute
@@ -324,7 +308,6 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/accessibility': typeof AccessibilityRoute
   '/agentic-bi': typeof AgenticBiRoute
-  '/arcoa-portal': typeof ArcoaPortalRoute
   '/ascent-pharmaceuticals-landing': typeof AscentPharmaceuticalsLandingRoute
   '/company': typeof CompanyRoute
   '/construction-dashboard': typeof ConstructionDashboardRoute
@@ -347,7 +330,6 @@ export interface FileRouteTypes {
     | '/'
     | '/accessibility'
     | '/agentic-bi'
-    | '/arcoa-portal'
     | '/ascent-pharmaceuticals-landing'
     | '/company'
     | '/construction-dashboard'
@@ -367,7 +349,6 @@ export interface FileRouteTypes {
     | '/'
     | '/accessibility'
     | '/agentic-bi'
-    | '/arcoa-portal'
     | '/ascent-pharmaceuticals-landing'
     | '/company'
     | '/construction-dashboard'
@@ -387,7 +368,6 @@ export interface FileRouteTypes {
     | '/'
     | '/accessibility'
     | '/agentic-bi'
-    | '/arcoa-portal'
     | '/ascent-pharmaceuticals-landing'
     | '/company'
     | '/construction-dashboard'
@@ -409,7 +389,6 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AccessibilityRoute: typeof AccessibilityRoute
   AgenticBiRoute: typeof AgenticBiRoute
-  ArcoaPortalRoute: typeof ArcoaPortalRoute
   AscentPharmaceuticalsLandingRoute: typeof AscentPharmaceuticalsLandingRoute
   CompanyRoute: typeof CompanyRoute
   ConstructionDashboardRoute: typeof ConstructionDashboardRoute
@@ -430,7 +409,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AccessibilityRoute: AccessibilityRoute,
   AgenticBiRoute: AgenticBiRoute,
-  ArcoaPortalRoute: ArcoaPortalRoute,
   AscentPharmaceuticalsLandingRoute: AscentPharmaceuticalsLandingRoute,
   CompanyRoute: CompanyRoute,
   ConstructionDashboardRoute: ConstructionDashboardRoute,
@@ -460,7 +438,6 @@ export const routeTree = rootRoute
         "/",
         "/accessibility",
         "/agentic-bi",
-        "/arcoa-portal",
         "/ascent-pharmaceuticals-landing",
         "/company",
         "/construction-dashboard",
@@ -485,9 +462,6 @@ export const routeTree = rootRoute
     },
     "/agentic-bi": {
       "filePath": "agentic-bi.tsx"
-    },
-    "/arcoa-portal": {
-      "filePath": "arcoa-portal.tsx"
     },
     "/ascent-pharmaceuticals-landing": {
       "filePath": "ascent-pharmaceuticals-landing.tsx"

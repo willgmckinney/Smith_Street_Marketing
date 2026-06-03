@@ -18,9 +18,7 @@ export const rootRoute = createRootRoute({
     const location = useLocation();
     const isShopifyPage = location.pathname === "/shopify-profit-recovery";
     const isAgenticBIPage = location.pathname === "/agentic-bi";
-    const isArcoaPortalPage = location.pathname === "/acme-portal";
     const isSolutionsPage = isShopifyPage || isAgenticBIPage;
-    const isStandaloneDemo = isArcoaPortalPage;
 
     useEffect(() => {
       const handleScroll = () => {
@@ -65,14 +63,6 @@ export const rootRoute = createRootRoute({
         document.removeEventListener("mousedown", handleClickOutside);
       };
     }, [solutionsOpen]);
-
-    if (isStandaloneDemo) {
-      return (
-        <div className="min-h-screen">
-          <Outlet />
-        </div>
-      );
-    }
 
     return (
       <div className="flex flex-col min-h-screen bg-deep-horizon text-granite font-sans">
