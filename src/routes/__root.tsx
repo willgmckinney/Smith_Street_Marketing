@@ -18,7 +18,9 @@ export const rootRoute = createRootRoute({
     const location = useLocation();
     const isShopifyPage = location.pathname === "/shopify-profit-recovery";
     const isAgenticBIPage = location.pathname === "/agentic-bi";
+    const isAcmeLifecycle = location.pathname === "/acme-lifecycle";
     const isSolutionsPage = isShopifyPage || isAgenticBIPage;
+    const isFullPageDemo = isAcmeLifecycle;
 
     useEffect(() => {
       const handleScroll = () => {
@@ -65,7 +67,9 @@ export const rootRoute = createRootRoute({
     }, [solutionsOpen]);
 
     return (
-      <div className="flex flex-col min-h-screen bg-deep-horizon text-granite font-sans">
+      <div className={`flex flex-col min-h-screen bg-deep-horizon text-granite font-sans ${isFullPageDemo ? "bg-transparent" : ""}`}>
+        {!isFullPageDemo && (
+        <>
         <header
           className={`
             fixed top-0 left-0 right-0 z-50 transition-all duration-300
@@ -368,14 +372,18 @@ export const rootRoute = createRootRoute({
             </div>
           </nav>
         </div>
+        </>
+        )}
 
-        <main className="flex-grow relative z-10">
+        <main className={`flex-grow relative z-10 ${isFullPageDemo ? "flex-grow-0" : ""}`}>
           <Outlet />
         </main>
 
+        {!isFullPageDemo && (
         <div className="relative z-10">
           <Footer />
         </div>
+        )}
       </div>
     );
   },

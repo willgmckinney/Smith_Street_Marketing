@@ -72,6 +72,13 @@ export const PortfolioPage = () => {
             linkUrl="/tax-company-dashboard"
             technologies={["Data Analytics", "Web App"]}
           />
+          <ProjectCard
+            title="ACME Lifecycle — Fleet & Opportunity Radar"
+            description="A two-sided IT asset lifecycle demo for ACME Group. Track distributed fleets as the client, then flip to ACME's internal view to see the same data as ranked sales opportunities."
+            imageUrl="/lock.png"
+            linkUrl="/acme-lifecycle"
+            technologies={["React", "Data Visualization", "Sales Demo"]}
+          />
         </div>
       </div>
     </div>
