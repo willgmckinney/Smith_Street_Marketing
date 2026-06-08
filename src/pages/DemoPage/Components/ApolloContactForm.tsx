@@ -4,7 +4,7 @@ import { BlueprintButton } from "../../../components/Blueprint/BlueprintButton";
 const APOLLO_FORM_ID = "apollo-demo-form";
 
 const inputBase =
-  "w-full rounded-xl px-4 py-3.5 text-blueprint-base placeholder:text-drafting-surface/50 border-2 bg-white/80 backdrop-blur-sm transition-all duration-300 ease-spec focus:outline-none focus:border-marker-start focus:ring-4 focus:ring-marker-start/15 focus:bg-white hover:border-drafting-surface/40";
+  "w-full rounded-spec px-4 py-3.5 text-chalk placeholder:text-chalk/40 border border-chalk/15 bg-blueprint-base transition-all duration-300 ease-spec focus:outline-none focus:border-marker-start focus:ring-2 focus:ring-marker-start/20 focus:bg-drafting-surface hover:border-chalk/25";
 
 export const ApolloContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -103,19 +103,13 @@ export const ApolloContactForm = () => {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-white via-chalk/30 to-marker-start/5 p-6 sm:p-8 border border-chalk/10 border border-white/60">
-      {/* Soft accent glow */}
-      <div
-        className="pointer-events-none absolute -top-12 -right-12 h-32 w-32 rounded-full bg-marker-start/10 blur-3xl"
-        aria-hidden
-      />
-
+    <div className="relative overflow-hidden rounded-card bg-drafting-surface p-6 sm:p-8 border border-chalk/10">
       <div className="relative space-y-6">
         <div className="space-y-2">
-          <h2 className="font-display text-2xl sm:text-3xl font-bold text-blueprint-base leading-tight">
+          <h2 className="font-display text-2xl sm:text-3xl font-bold text-chalk leading-tight">
             Let's find a time that works
           </h2>
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 pt-1 text-xs text-drafting-surface/70">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 pt-1 text-xs text-chalk/60">
             <span className="flex items-center gap-1.5">
               <span className="h-1.5 w-1.5 rounded-full bg-marker-start" />
               ~30 min
@@ -142,7 +136,7 @@ export const ApolloContactForm = () => {
           <div className="space-y-2">
             <label
               htmlFor="apollo-name"
-              className="block text-sm font-semibold text-blueprint-base/90"
+              className="block text-sm font-semibold text-chalk/90"
             >
               Full name
             </label>
@@ -166,7 +160,7 @@ export const ApolloContactForm = () => {
           <div className="space-y-2">
             <label
               htmlFor="apollo-email"
-              className="block text-sm font-semibold text-blueprint-base/90"
+              className="block text-sm font-semibold text-chalk/90"
             >
               Email address
             </label>

@@ -5,7 +5,7 @@ import { ApolloContactForm } from "./Components/ApolloContactForm";
 export const DemoPage = () => {
   return (
     <div className="min-h-screen bg-blueprint-base pt-24 relative overflow-hidden">
-      <BlueprintGrid className="opacity-25" />
+      <BlueprintGrid opacity={0.55} />
       <div className="absolute inset-0 bg-gradient-to-b from-blueprint-base via-transparent to-blueprint-base z-0 pointer-events-none" />
 
       <div className="container mx-auto px-4 py-16 relative z-10">
@@ -29,9 +29,9 @@ export const DemoPage = () => {
                   "Enterprise-grade support options when you need them",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start">
-                    <div className="bg-marker-gradient p-1 rounded-spec mr-4 mt-1">
+                    <div className="bg-marker-start p-1 rounded-spec mr-4 mt-1">
                       <svg
-                        className="w-4 h-4 text-blueprint-base"
+                        className="w-4 h-4 text-drafting-surface"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"

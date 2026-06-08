@@ -7,7 +7,7 @@ import { BlogCard } from "./Components/BlogCard";
 export default function BlogPage() {
   return (
     <div className="min-h-screen bg-blueprint-base pt-24 pb-20 px-4 sm:px-6 lg:px-8 relative">
-      <BlueprintGrid className="opacity-15" />
+      <BlueprintGrid opacity={0.5} />
 
       <div className="max-w-7xl mx-auto text-center mb-16 relative z-10">
         <SpecLabel className="mb-4">insights</SpecLabel>

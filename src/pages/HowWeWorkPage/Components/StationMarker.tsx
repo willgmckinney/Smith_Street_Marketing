@@ -37,7 +37,7 @@ export const StationMarker = ({
           border transition-all duration-500
           ${
             isActive
-              ? "bg-marker-start border-marker-end text-blueprint-base"
+              ? "bg-marker-start border-marker-end text-drafting-surface"
               : lit
                 ? "bg-sheet-mid border-chalk/20 text-chalk/80"
                 : "bg-sheet-dark border-chalk/10 text-chalk/30"

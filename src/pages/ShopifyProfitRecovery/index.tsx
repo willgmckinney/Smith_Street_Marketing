@@ -70,7 +70,7 @@ export const ShopifyProfitRecovery = () => {
     <div className="min-h-screen bg-blueprint-base text-chalk">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-24 pb-20 overflow-hidden border-b border-marker-start/20">
-        <div className="absolute inset-0 bg-blueprint-grid bg-[length:32px_32px] opacity-25" />
+        <div className="absolute inset-0 bg-blueprint-grid bg-[length:32px_32px] opacity-50" />
         <div className="absolute inset-0 bg-gradient-to-br from-blueprint-base via-marker-start/5 to-blueprint-base" />
         
         <div className="relative z-10 max-w-5xl mx-auto text-center">
@@ -80,9 +80,9 @@ export const ShopifyProfitRecovery = () => {
             </span>
           </div>
           
-          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-white leading-tight">
+          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-chalk leading-tight">
             Reclaim{" "}
-            <span className="text-transparent bg-clip-text bg-marker-gradient">
+            <span className="text-marker-start">
               2-3% of Your Revenue
             </span>
             <br />
@@ -90,7 +90,7 @@ export const ShopifyProfitRecovery = () => {
           </h1>
           
           <p className="text-xl sm:text-2xl text-chalk/80 mb-8 max-w-3xl mx-auto leading-relaxed">
-            <strong className="text-white">Owner Infrastructure</strong> vs{" "}
+            <strong className="text-chalk">Owner Infrastructure</strong> vs{" "}
             <span className="text-marker-start">Rented Infrastructure</span>.
             <br />
             Stop paying the "Success Tax" that grows with your revenue.
@@ -112,7 +112,7 @@ export const ShopifyProfitRecovery = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-drafting-surface/50">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-chalk mb-4">
               The "Success Tax" Calculator
             </h2>
             <p className="text-lg text-chalk/80 max-w-2xl mx-auto">
@@ -121,9 +121,9 @@ export const ShopifyProfitRecovery = () => {
             </p>
           </div>
 
-          <div className="bg-blueprint-base rounded-card p-8 border border-white/10 border border-chalk/10">
+          <div className="bg-drafting-surface rounded-card p-8 border border-chalk/10 border border-chalk/10">
             <div className="mb-8">
-              <label htmlFor="revenue" className="block text-white font-semibold mb-3 text-lg">
+              <label htmlFor="revenue" className="block text-chalk font-semibold mb-3 text-lg">
                 Annual Revenue
               </label>
               <div className="relative">
@@ -135,7 +135,7 @@ export const ShopifyProfitRecovery = () => {
                   type="number"
                   value={annualRevenue}
                   onChange={(e) => setAnnualRevenue(Number(e.target.value))}
-                  className="w-full pl-10 pr-4 py-4 bg-drafting-surface border border-white/20 rounded-lg text-white text-2xl font-bold focus:outline-none focus:ring-2 focus:ring-marker-start focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-4 bg-drafting-surface border border-chalk/20 rounded-lg text-chalk text-2xl font-bold focus:outline-none focus:ring-2 focus:ring-marker-start focus:border-transparent"
                   placeholder="5,000,000"
                   min="0"
                   step="10000"
@@ -169,7 +169,7 @@ export const ShopifyProfitRecovery = () => {
                 <div className="text-sm text-chalk/70">
                   Annual fees & costs
                 </div>
-                <div className="mt-4 pt-4 border-t border-white/10 text-xs text-chalk/60 space-y-1">
+                <div className="mt-4 pt-4 border-t border-chalk/10 text-xs text-chalk/60 space-y-1">
                   <div>Transaction fees: {formatCurrency(annualRevenue * 0.0215 + (annualRevenue / 100) * 0.30)}</div>
                   <div>Platform fees: {formatCurrency(annualRevenue / 12 > 1000000 ? (annualRevenue / 12 - 1000000) * 12 * 0.0025 : 0)}</div>
                   <div>App subscriptions: {formatCurrency(40000)}</div>
@@ -188,7 +188,7 @@ export const ShopifyProfitRecovery = () => {
                 <div className="text-sm text-chalk/70">
                   Annual costs
                 </div>
-                <div className="mt-4 pt-4 border-t border-white/10 text-xs text-chalk/60 space-y-1">
+                <div className="mt-4 pt-4 border-t border-chalk/10 text-xs text-chalk/60 space-y-1">
                   <div>Processing: {formatCurrency(annualRevenue * 0.018)}</div>
                   <div>Hosting: {formatCurrency(24000)}</div>
                   <div>Maintenance: {formatCurrency(5000)}</div>
@@ -196,15 +196,15 @@ export const ShopifyProfitRecovery = () => {
               </div>
             </div>
 
-            <div className="bg-marker-gradient/20 border-2 border-marker-start rounded-lg p-8 text-center">
+            <div className="bg-marker-start/20 border-2 border-marker-start rounded-lg p-8 text-center">
               <div className="text-sm text-marker-start font-semibold uppercase tracking-wider mb-2">
                 Total Profit Recovered
               </div>
-              <div className="text-5xl sm:text-6xl font-display font-bold text-white mb-2">
+              <div className="text-5xl sm:text-6xl font-display font-bold text-chalk mb-2">
                 {formatCurrency(profitRecovered)}
               </div>
               <div className="text-xl text-chalk/80">
-                That's <strong className="text-white">{percentageRecovered.toFixed(1)}%</strong> of your revenue back in your pocket
+                That's <strong className="text-chalk">{percentageRecovered.toFixed(1)}%</strong> of your revenue back in your pocket
               </div>
               <div className="mt-6">
                 <BlueprintButton className="mx-auto" size="lg" onClick={scrollToBooking}>
@@ -220,13 +220,13 @@ export const ShopifyProfitRecovery = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-blueprint-base">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-chalk mb-4">
               Why CEOs choose to own their infrastructure instead of renting it
             </h2>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-drafting-surface rounded-card p-8 border border-white/10">              
+            <div className="bg-drafting-surface rounded-card p-8 border border-chalk/10">              
               <h3 className="font-display text-xl font-bold text-marker-start mb-3">
               Instant margin expansion
               </h3>
@@ -235,7 +235,7 @@ export const ShopifyProfitRecovery = () => {
               </p>
             </div>
 
-            <div className="bg-drafting-surface rounded-card p-8 border border-white/10">              
+            <div className="bg-drafting-surface rounded-card p-8 border border-chalk/10">              
               <h3 className="font-display text-xl font-bold text-marker-start mb-3">
                 Sub-1-second load times
               </h3>
@@ -244,7 +244,7 @@ export const ShopifyProfitRecovery = () => {
               </p>
             </div>
 
-            <div className="bg-drafting-surface rounded-card p-8 border border-white/10">              
+            <div className="bg-drafting-surface rounded-card p-8 border border-chalk/10">              
               <h3 className="font-display text-xl font-bold text-marker-start mb-3">
                 90-Day "Plumbing Swap"
               </h3>
@@ -253,7 +253,7 @@ export const ShopifyProfitRecovery = () => {
               </p>
             </div>
 
-            <div className="bg-drafting-surface rounded-card p-8 border border-white/10">              
+            <div className="bg-drafting-surface rounded-card p-8 border border-chalk/10">              
               <h3 className="font-display text-xl font-bold text-marker-start mb-3">
                 Absolutely Zero Downtime
               </h3>
@@ -269,7 +269,7 @@ export const ShopifyProfitRecovery = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-drafting-surface/50">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-chalk mb-4">
               Owner vs. Renter: The Fiduciary Choice
             </h2>
             <p className="text-lg text-chalk/80 max-w-2xl mx-auto mb-8">
@@ -277,11 +277,11 @@ export const ShopifyProfitRecovery = () => {
             </p>
           </div>
 
-          <div className="bg-blueprint-base rounded-card p-8 border border-white/10 overflow-x-auto">
+          <div className="bg-drafting-surface rounded-card p-8 border border-chalk/10 overflow-x-auto">
             <table className="w-full border-collapse">
               <thead>
-                <tr className="border-b border-white/20">
-                  <th className="text-left p-4 font-display font-bold text-white text-lg">
+                <tr className="border-b border-chalk/20">
+                  <th className="text-left p-4 font-display font-bold text-chalk text-lg">
                     Metric
                   </th>
                   <th className="text-left p-4 font-display font-bold text-red-400 text-lg">
@@ -293,8 +293,8 @@ export const ShopifyProfitRecovery = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-b border-white/10">
-                  <td className="p-4 font-semibold text-white">Transaction & Platform Fees</td>
+                <tr className="border-b border-chalk/10">
+                  <td className="p-4 font-semibold text-chalk">Transaction & Platform Fees</td>
                   <td className="p-4 text-red-400">
                     <div>2.15% + $0.30 per transaction</div>
                     <div className="text-sm text-chalk/60 mt-1">+ 0.25% platform fee (above $1M/mo)</div>
@@ -306,8 +306,8 @@ export const ShopifyProfitRecovery = () => {
                     <div className="text-sm text-chalk/60">Total choice of provider</div>
                   </td>
                 </tr>
-                <tr className="border-b border-white/10">
-                  <td className="p-4 font-semibold text-white">App Subscription Costs</td>
+                <tr className="border-b border-chalk/10">
+                  <td className="p-4 font-semibold text-chalk">App Subscription Costs</td>
                   <td className="p-4 text-red-400">
                     <div>$18,000 - $60,000+ annually</div>
                     <div className="text-sm text-chalk/60 mt-1">Search: $500-$2,000/mo</div>
@@ -320,8 +320,8 @@ export const ShopifyProfitRecovery = () => {
                     <div className="text-sm text-chalk/60">Self-hosted or flat-rate APIs</div>
                   </td>
                 </tr>
-                <tr className="border-b border-white/10">
-                  <td className="p-4 font-semibold text-white">Speed (LCP)</td>
+                <tr className="border-b border-chalk/10">
+                  <td className="p-4 font-semibold text-chalk">Speed (LCP)</td>
                   <td className="p-4 text-red-400">
                     <div>2.5s - 4.0s average</div>
                     <div className="text-sm text-chalk/60 mt-1">App bloat slows performance</div>
@@ -333,8 +333,8 @@ export const ShopifyProfitRecovery = () => {
                     <div className="text-sm text-chalk/60">Higher SEO rankings, lower Ad costs</div>
                   </td>
                 </tr>
-                <tr className="border-b border-white/10">
-                  <td className="p-4 font-semibold text-white">Platform Risk</td>
+                <tr className="border-b border-chalk/10">
+                  <td className="p-4 font-semibold text-chalk">Platform Risk</td>
                   <td className="p-4 text-red-400">
                     <div>Account freezes (5-20 day holds)</div>
                     <div className="text-sm text-chalk/60 mt-1">Forced migrations break custom logic</div>
@@ -349,7 +349,7 @@ export const ShopifyProfitRecovery = () => {
                   </td>
                 </tr>
                 <tr>
-                  <td className="p-4 font-semibold text-white">Cost Over 3 Years</td>
+                  <td className="p-4 font-semibold text-chalk">Cost Over 3 Years</td>
                   <td className="p-4 text-red-400 text-xl font-bold">$750,000+</td>
                   <td className="p-4 text-verified text-xl font-bold">$250,000 (Fixed)</td>
                 </tr>
@@ -362,10 +362,10 @@ export const ShopifyProfitRecovery = () => {
       {/* Risk Reversal / Guarantee */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-blueprint-base">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-marker-gradient/20 border-2 border-marker-start rounded-card p-12 text-center">
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
+          <div className="bg-marker-start/20 border-2 border-marker-start rounded-card p-12 text-center">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-chalk mb-6">
               If we can't show you a path to at least{" "}
-              <span className="text-transparent bg-clip-text bg-marker-gradient">
+              <span className="text-marker-start">
                 $50k in savings
               </span>
               , we'll pay you for your time.
@@ -385,7 +385,7 @@ export const ShopifyProfitRecovery = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-drafting-surface/50">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-chalk mb-4">
               The Process: 3 Simple Steps
             </h2>
             <p className="text-lg text-chalk/80 max-w-2xl mx-auto">
@@ -394,11 +394,11 @@ export const ShopifyProfitRecovery = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-blueprint-base rounded-card p-8 border border-white/10 text-center">
-              <div className="w-16 h-16 bg-marker-gradient rounded-full flex items-center justify-center mx-auto mb-6 text-blueprint-base font-display font-bold text-2xl">
+            <div className="bg-drafting-surface rounded-card p-8 border border-chalk/10 text-center">
+              <div className="w-16 h-16 bg-marker-start rounded-full flex items-center justify-center mx-auto mb-6 text-drafting-surface font-display font-bold text-2xl">
                 1
               </div>
-              <h3 className="font-display text-2xl font-bold text-white mb-4">
+              <h3 className="font-display text-2xl font-bold text-chalk mb-4">
                 The Audit
               </h3>
               <p className="text-chalk/80 leading-relaxed">
@@ -407,11 +407,11 @@ export const ShopifyProfitRecovery = () => {
               </p>
             </div>
 
-            <div className="bg-blueprint-base rounded-card p-8 border border-white/10 text-center">
-              <div className="w-16 h-16 bg-marker-gradient rounded-full flex items-center justify-center mx-auto mb-6 text-blueprint-base font-display font-bold text-2xl">
+            <div className="bg-drafting-surface rounded-card p-8 border border-chalk/10 text-center">
+              <div className="w-16 h-16 bg-marker-start rounded-full flex items-center justify-center mx-auto mb-6 text-drafting-surface font-display font-bold text-2xl">
                 2
               </div>
-              <h3 className="font-display text-2xl font-bold text-white mb-4">
+              <h3 className="font-display text-2xl font-bold text-chalk mb-4">
                 The Migration
               </h3>
               <p className="text-chalk/80 leading-relaxed">
@@ -420,11 +420,11 @@ export const ShopifyProfitRecovery = () => {
               </p>
             </div>
 
-            <div className="bg-blueprint-base rounded-card p-8 border border-white/10 text-center">
-              <div className="w-16 h-16 bg-marker-gradient rounded-full flex items-center justify-center mx-auto mb-6 text-blueprint-base font-display font-bold text-2xl">
+            <div className="bg-drafting-surface rounded-card p-8 border border-chalk/10 text-center">
+              <div className="w-16 h-16 bg-marker-start rounded-full flex items-center justify-center mx-auto mb-6 text-drafting-surface font-display font-bold text-2xl">
                 3
               </div>
-              <h3 className="font-display text-2xl font-bold text-white mb-4">
+              <h3 className="font-display text-2xl font-bold text-chalk mb-4">
                 The Recovery
               </h3>
               <p className="text-chalk/80 leading-relaxed">
@@ -440,7 +440,7 @@ export const ShopifyProfitRecovery = () => {
       <section id="booking-section" className="py-20 px-4 sm:px-6 lg:px-8 bg-blueprint-base">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-chalk mb-4">
               Get Your Free 2-Page Profit Recovery Audit
             </h2>
             <p className="text-lg text-chalk/80 max-w-2xl mx-auto mb-8">
@@ -451,8 +451,8 @@ export const ShopifyProfitRecovery = () => {
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div className="space-y-6">
-              <div className="bg-drafting-surface rounded-card p-6 border border-white/10">
-                <h3 className="font-display text-xl font-bold text-white mb-4">
+              <div className="bg-drafting-surface rounded-card p-6 border border-chalk/10">
+                <h3 className="font-display text-xl font-bold text-chalk mb-4">
                   What You'll Get:
                 </h3>
                 <ul className="space-y-3">
@@ -463,9 +463,9 @@ export const ShopifyProfitRecovery = () => {
                     "ROI calculation specific to your revenue",
                   ].map((item, i) => (
                     <li key={i} className="flex items-start">
-                      <div className="bg-marker-gradient p-1 rounded-full mr-3 mt-1 flex-shrink-0">
+                      <div className="bg-marker-start p-1 rounded-full mr-3 mt-1 flex-shrink-0">
                         <svg
-                          className="w-4 h-4 text-blueprint-base"
+                          className="w-4 h-4 text-drafting-surface"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -484,8 +484,8 @@ export const ShopifyProfitRecovery = () => {
                 </ul>
               </div>
 
-              <div className="bg-marker-gradient/10 border border-marker-start/30 rounded-card p-6">
-                <p className="text-white font-semibold mb-2">
+              <div className="bg-marker-start/10 border border-marker-start/30 rounded-card p-6">
+                <p className="text-chalk font-semibold mb-2">
                   ⚡ White paper delivered in 48 hours after the audit call
                 </p>
                 <p className="text-chalk/80 text-sm">
@@ -495,7 +495,7 @@ export const ShopifyProfitRecovery = () => {
               </div>
             </div>
 
-            <div className="bg-white rounded-card shadow-2xl p-0 border border-white/10 overflow-hidden">
+            <div className="bg-white rounded-card shadow-2xl p-0 border border-chalk/10 overflow-hidden">
               <ApolloContactForm />
             </div>
           </div>

@@ -4,9 +4,9 @@ export const AccessibilityPage = () => {
   return (
     <div className="min-h-screen bg-blueprint-base pt-24">
       {/* Hero Section */}
-      <div className="bg-drafting-surface py-20 border-b border-white/5">
+      <div className="bg-drafting-surface py-20 border-b border-chalk/5">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-marker-start to-marker-end font-bold mb-6">
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-chalk font-bold mb-6">
             Accessibility Statement
           </h1>
           <p className="font-sans text-xl md:text-2xl text-chalk max-w-3xl mx-auto leading-relaxed">
@@ -22,7 +22,7 @@ export const AccessibilityPage = () => {
           <div className="max-w-4xl mx-auto space-y-16">
             {/* Commitment Section */}
             <section>
-              <h2 className="font-display text-3xl md:text-4xl text-white font-bold mb-6">
+              <h2 className="font-display text-3xl md:text-4xl text-chalk font-bold mb-6">
                 Our Commitment
               </h2>
               <p className="font-sans text-lg text-chalk/80 leading-relaxed mb-4">
@@ -35,7 +35,7 @@ export const AccessibilityPage = () => {
 
             {/* Standards Section */}
             <section>
-              <h2 className="font-display text-3xl md:text-4xl text-white font-bold mb-6">
+              <h2 className="font-display text-3xl md:text-4xl text-chalk font-bold mb-6">
                 Accessibility Standards
               </h2>
               <p className="font-sans text-lg text-chalk/80 leading-relaxed mb-4">
@@ -66,7 +66,7 @@ export const AccessibilityPage = () => {
 
             {/* Features Section */}
             <section>
-              <h2 className="font-display text-3xl md:text-4xl text-white font-bold mb-6">
+              <h2 className="font-display text-3xl md:text-4xl text-chalk font-bold mb-6">
                 Accessibility Features
               </h2>
               <ul className="list-disc list-inside font-sans text-lg text-chalk/70 space-y-2 ml-4">
@@ -83,7 +83,7 @@ export const AccessibilityPage = () => {
 
             {/* Contact Section */}
             <section className="text-center">
-              <h2 className="font-display text-3xl md:text-4xl text-white font-bold mb-6">
+              <h2 className="font-display text-3xl md:text-4xl text-chalk font-bold mb-6">
                 Contact Us
               </h2>
               <p className="font-sans text-lg text-chalk/80 leading-relaxed mb-8">

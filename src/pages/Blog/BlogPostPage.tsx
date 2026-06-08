@@ -38,13 +38,13 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ postId }) => {
 
         <div className="absolute bottom-0 left-0 right-0 z-20 px-4 sm:px-6 lg:px-8 pb-12">
           <div className="max-w-3xl mx-auto">
-            <span className="inline-block px-3 py-1 mb-4 text-xs font-bold text-blueprint-base bg-marker-start rounded-full shadow-lg">
+            <span className="inline-block px-3 py-1 mb-4 text-xs font-bold text-drafting-surface bg-marker-start rounded-full shadow-lg">
               {post.category}
             </span>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-chalk mb-6 leading-tight">
               {post.title}
             </h1>
-            <div className="flex items-center gap-6 text-sm text-gray-300">
+            <div className="flex items-center gap-6 text-sm text-chalk/60">
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 rounded-full bg-gray-600 overflow-hidden">
                   {/* Placeholder for author image - could add to data later */}
@@ -64,20 +64,20 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ postId }) => {
       {/* Content */}
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
-          className="prose prose-lg prose-invert max-w-none 
-                prose-headings:font-display prose-headings:font-bold prose-headings:text-white
-                prose-p:text-gray-300 prose-p:leading-relaxed
+          className="prose prose-lg max-w-none 
+                prose-headings:font-display prose-headings:font-bold prose-headings:text-chalk
+                prose-p:text-chalk/80 prose-p:leading-relaxed
                 prose-a:text-marker-start prose-a:no-underline hover:prose-a:underline
-                prose-strong:text-white
-                prose-blockquote:border-l-marker-start prose-blockquote:bg-white/5 prose-blockquote:p-4 prose-blockquote:rounded-r-lg
-                prose-table:text-gray-300 prose-th:text-white prose-td:text-gray-300
-                prose-ul:text-gray-300 prose-ol:text-gray-300 prose-li:text-gray-300
-                prose-h2:text-white prose-h3:text-white prose-h2:mt-8 prose-h3:mt-6"
+                prose-strong:text-chalk
+                prose-blockquote:border-l-marker-start prose-blockquote:bg-chalk/5 prose-blockquote:p-4 prose-blockquote:rounded-r-lg
+                prose-table:text-chalk/80 prose-th:text-chalk prose-td:text-chalk/70
+                prose-ul:text-chalk/80 prose-ol:text-chalk/80 prose-li:text-chalk/80
+                prose-h2:text-chalk prose-h3:text-chalk prose-h2:mt-8 prose-h3:mt-6"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
 
         {/* Footer of the article */}
-        <div className="mt-16 pt-8 border-t border-white/10">
+        <div className="mt-16 pt-8 border-t border-chalk/10">
           <Link to="/blog">
             <BlueprintButton variant="secondary">← Back to All Posts</BlueprintButton>
           </Link>

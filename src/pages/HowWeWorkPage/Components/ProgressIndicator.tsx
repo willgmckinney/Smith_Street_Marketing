@@ -21,8 +21,8 @@ export const ProgressIndicator = ({
             cx="50"
             cy="50"
             r={radius}
-            fill="rgba(30, 41, 59, 0.9)"
-            stroke="rgba(0, 196, 132, 0.15)"
+            fill="#FFFFFF"
+            stroke="rgba(18, 154, 106, 0.35)"
             strokeWidth="2"
           />
 
@@ -42,8 +42,8 @@ export const ProgressIndicator = ({
 
           <defs>
             <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#00c484" />
-              <stop offset="100%" stopColor="#32e875" />
+              <stop offset="0%" stopColor="#129A6A" />
+              <stop offset="100%" stopColor="#1FB97E" />
             </linearGradient>
           </defs>
 
@@ -51,7 +51,7 @@ export const ProgressIndicator = ({
             x="50"
             y="44"
             textAnchor="middle"
-            fill="#F8FAFC"
+            fill="#1E293B"
             fontSize="22"
             fontWeight="bold"
             fontFamily="monospace"
@@ -63,7 +63,7 @@ export const ProgressIndicator = ({
             x="50"
             y="60"
             textAnchor="middle"
-            fill="#5C6370"
+            fill="#64748B"
             fontSize="10"
             fontFamily="monospace"
           >
@@ -78,12 +78,12 @@ export const ProgressIndicator = ({
         </div>
       </div>
 
-      <div className="w-1 h-32 bg-chalk/5 rounded-spec overflow-hidden relative">
+      <div className="w-1 h-32 bg-chalk/10 rounded-spec overflow-hidden relative">
         <div
           className="absolute bottom-0 w-full rounded-spec transition-all duration-500"
           style={{
             height: `${progress}%`,
-            background: "linear-gradient(to top, #00c484, #32e875)",
+            background: "linear-gradient(to top, #129A6A, #1FB97E)",
           }}
         />
 

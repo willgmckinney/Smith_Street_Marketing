@@ -138,13 +138,13 @@ export const BuildTimeline = ({ activeService }: BuildTimelineProps) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-spec bg-white/5 border border-chalk/10 mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-spec bg-chalk/5 border border-chalk/10 mb-6">
             <div className="w-2 h-2 rounded-spec bg-marker-start animate-pulse" />
             <span className="font-mono text-xs text-chalk/60 tracking-wider lowercase">
               foundation — start here
             </span>
           </div>
-          <h2 className="font-display text-2xl md:text-3xl text-white mb-3">
+          <h2 className="font-display text-2xl md:text-3xl text-chalk mb-3">
             The Build Begins
           </h2>
           <p className="text-chalk/60 max-w-xl mx-auto text-sm md:text-base">
@@ -225,7 +225,7 @@ export const BuildTimeline = ({ activeService }: BuildTimelineProps) => {
             <span className="font-mono text-marker-start text-lg">✓</span>
           </div>
 
-          <h2 className="font-display text-3xl md:text-4xl text-white mb-4">
+          <h2 className="font-display text-3xl md:text-4xl text-chalk mb-4">
             Handoff Complete
           </h2>
           <p className="text-chalk/60 max-w-lg mx-auto mb-8 text-sm md:text-base">
@@ -233,9 +233,11 @@ export const BuildTimeline = ({ activeService }: BuildTimelineProps) => {
             Ready to start your build?
           </p>
 
-          <Link to="/demo">
-            <BlueprintButton size="lg">Start a Project</BlueprintButton>
-          </Link>
+          <div className="flex justify-center">
+            <Link to="/demo">
+              <BlueprintButton size="lg">Start a Project</BlueprintButton>
+            </Link>
+          </div>
         </motion.div>
       </div>
     </div>

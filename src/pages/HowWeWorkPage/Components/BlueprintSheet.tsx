@@ -5,7 +5,7 @@ interface BlueprintSheetProps {
 }
 
 export const BlueprintSheet = ({ scrollProgress }: BlueprintSheetProps) => {
-  const gridOpacity = Math.min(0.15 + scrollProgress * 0.004, 0.45);
+  const gridOpacity = Math.min(0.35 + scrollProgress * 0.004, 0.7);
   const lineProgress = Math.min(scrollProgress / 100, 1);
 
   return (
@@ -14,7 +14,7 @@ export const BlueprintSheet = ({ scrollProgress }: BlueprintSheetProps) => {
         className="absolute inset-0 transition-opacity duration-700"
         style={{ opacity: gridOpacity }}
       >
-        <BlueprintGrid />
+        <BlueprintGrid opacity={1} />
       </div>
 
       {/* Vertical dimension line — draws in on scroll */}
@@ -61,7 +61,7 @@ export const BlueprintSheet = ({ scrollProgress }: BlueprintSheetProps) => {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(180deg, transparent 0%, rgba(15,23,42,0.4) 100%)",
+            "linear-gradient(180deg, transparent 0%, rgba(244, 243, 239, 0.85) 100%)",
         }}
       />
     </div>

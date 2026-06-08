@@ -6,7 +6,7 @@ import { DimensionLine } from "../../../../components/Blueprint/DimensionLine";
 export const ScreenWideCTA = () => {
   return (
     <div className="relative flex flex-col justify-center items-center bg-blueprint-base text-chalk min-h-[80vh] px-4 sm:px-8 py-20 overflow-hidden border-y border-chalk/10">
-      <BlueprintGrid className="opacity-30" />
+      <BlueprintGrid opacity={0.55} />
 
       <div className="relative z-10 max-w-7xl mx-auto w-full text-center space-y-12">
         <DimensionLine label="scope of work" className="max-w-md mx-auto mb-8" />

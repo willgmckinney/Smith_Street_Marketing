@@ -37,7 +37,7 @@ export const ServiceSelector = ({
   ][];
 
   return (
-    <div className="sticky top-[72px] z-30 bg-blueprint-base/90 backdrop-blur-lg border-b border-white/10">
+    <div className="sticky top-[72px] z-30 bg-blueprint-base border-b border-chalk/10">
       <div className="container mx-auto px-4">
         <nav
           className="flex items-center justify-center gap-2 py-3"
@@ -60,8 +60,8 @@ export const ServiceSelector = ({
                   focus:outline-none focus-visible:ring-2 focus-visible:ring-grid-line/50
                   ${
                     isActive
-                      ? "text-blueprint-base"
-                      : "text-chalk/60 hover:text-chalk hover:bg-white/5"
+                      ? "text-drafting-surface"
+                      : "text-chalk/60 hover:text-chalk hover:bg-chalk/5"
                   }
                 `}
               >

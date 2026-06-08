@@ -11,12 +11,12 @@ export const HowWeWorkPage = () => {
     <div className="min-h-screen bg-blueprint-base">
       <div className="relative z-20 pt-24 pb-8 md:pt-28 md:pb-12 overflow-hidden border-b border-chalk/10">
         <div
-          className="absolute inset-0 bg-blueprint-grid bg-[length:32px_32px] opacity-20"
+          className="absolute inset-0 bg-blueprint-grid bg-[length:32px_32px] opacity-50"
           aria-hidden
         />
 
         <div className="relative container mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-spec bg-white/5 border border-chalk/10 mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-spec bg-chalk/5 border border-chalk/10 mb-6">
             <span className="font-mono text-xs text-marker-start tracking-wider lowercase">
               The Build
             </span>

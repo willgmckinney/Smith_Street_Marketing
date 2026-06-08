@@ -40,9 +40,9 @@ export const ProjectCard = ({
           <div className="absolute inset-0 bg-gradient-to-t from-blueprint-base via-blueprint-base/50 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500" />
 
           <div className="absolute bottom-4 right-4 translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-            <div className="bg-marker-gradient p-2 rounded-spec border border-chalk/10">
+            <div className="bg-marker-start p-2 rounded-spec border border-chalk/10">
               <svg
-                className="w-6 h-6 text-blueprint-base"
+                className="w-6 h-6 text-drafting-surface"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -61,7 +61,7 @@ export const ProjectCard = ({
         <div className="p-6 pt-12 flex flex-col h-[calc(100%-16rem)]">
           <DimensionLine className="mb-4 max-w-[120px]" />
 
-          <h3 className="font-display font-bold text-xl text-white mb-3 group-hover:text-marker-start transition-colors">
+          <h3 className="font-display font-bold text-xl text-chalk mb-3 group-hover:text-marker-start transition-colors">
             {title}
           </h3>
 

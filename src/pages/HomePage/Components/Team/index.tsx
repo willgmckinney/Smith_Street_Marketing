@@ -36,7 +36,7 @@ export const Team = () => {
     <section className="bg-blueprint-base py-20 sm:py-32 px-4 sm:px-8 relative">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20 space-y-4">
-          <h2 className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl text-white">
+          <h2 className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl text-chalk">
             The Team
           </h2>
           <p className="text-xl text-chalk/70 max-w-2xl mx-auto">
@@ -63,7 +63,7 @@ export const Team = () => {
                 />
               </div>
 
-              <h3 className="font-display font-bold text-xl text-white mb-2">
+              <h3 className="font-display font-bold text-xl text-chalk mb-2">
                 {teamMember.name}
               </h3>
               {/* <p className="text-marker-start text-sm font-bold uppercase tracking-wider mb-4">{teamMember.role}</p> */}

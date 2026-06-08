@@ -4,26 +4,27 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Blueprint Prime Palette
-        "marker-start": "#00c484",
-        "marker-end": "#32e875",
+        // Blueprint Prime Palette — light sheet, single green marking accent
+        "marker-start": "#129A6A",
+        "marker-end": "#1FB97E",
+        "marker-ink": "#052E20",
         caution: "#FFECC2",
-        "blueprint-base": "#0F172A",
-        "drafting-surface": "#1E293B",
-        chalk: "#F8FAFC",
-        verified: "#10B981",
+        "blueprint-base": "#F4F3EF",
+        "drafting-surface": "#FFFFFF",
+        chalk: "#1E293B",
+        verified: "#129A6A",
 
-        // Blueprint sheet palette (How We Work)
-        "sheet-dark": "#2A2D34",
-        "sheet-mid": "#3D4451",
-        "sheet-light": "#5C6370",
-        "grid-line": "#A8D8EA",
-        "annotation-blue": "#64B5F6",
-        "beam-line": "#5BA4D9",
-        "beam-fill": "#4A8DB7",
-        "station-deep": "#4A4238",
-        "station-mid": "#6B5B4E",
-        "station-light": "#8B7865",
+        // Blueprint sheet palette (secondary UI on light backgrounds)
+        "sheet-dark": "#CBD5E1",
+        "sheet-mid": "#E2E8F0",
+        "sheet-light": "#64748B",
+        "grid-line": "#129A6A",
+        "annotation-blue": "#129A6A",
+        "beam-line": "#129A6A",
+        "beam-fill": "#0E7C55",
+        "station-deep": "#94A3B8",
+        "station-mid": "#CBD5E1",
+        "station-light": "#64748B",
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
@@ -39,11 +40,12 @@ export default {
         spec: "cubic-bezier(0.2, 0, 0, 1)",
       },
       backgroundImage: {
-        "marker-gradient": "linear-gradient(to right, #32e875, #00c484)",
+        // Flat accent kept as a token alias; no gradient sheen
+        "marker-gradient": "linear-gradient(to right, #129A6A, #129A6A)",
         "blueprint-grid":
-          "linear-gradient(rgba(0, 196, 132, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 196, 132, 0.06) 1px, transparent 1px)",
+          "linear-gradient(rgba(18, 154, 106, 0.11) 1px, transparent 1px), linear-gradient(90deg, rgba(18, 154, 106, 0.09) 1px, transparent 1px)",
         "blueprint-grid-dense":
-          "linear-gradient(rgba(0, 196, 132, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 196, 132, 0.06) 1px, transparent 1px)",
+          "linear-gradient(rgba(18, 154, 106, 0.11) 1px, transparent 1px), linear-gradient(90deg, rgba(18, 154, 106, 0.09) 1px, transparent 1px)",
       },
     },
   },

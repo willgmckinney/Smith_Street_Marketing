@@ -18,11 +18,11 @@ export const BlueprintButton: React.FC<BlueprintButtonProps> = ({
 
   const variants = {
     primary:
-      "bg-marker-gradient text-blueprint-base hover:-translate-y-px hover:brightness-110",
+      "bg-marker-start text-marker-ink hover:-translate-y-px hover:brightness-110",
     secondary:
-      "bg-drafting-surface text-chalk border border-chalk/10 hover:bg-slate-700 hover:-translate-y-px",
+      "bg-drafting-surface text-chalk border border-chalk/10 hover:bg-chalk/5 hover:-translate-y-px",
     outline:
-      "bg-transparent border border-marker-start text-marker-start hover:bg-drafting-surface hover:-translate-y-px",
+      "bg-transparent border border-marker-start text-marker-start hover:bg-marker-start/5 hover:-translate-y-px",
   };
 
   const sizes = {

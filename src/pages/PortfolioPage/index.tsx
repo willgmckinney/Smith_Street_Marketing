@@ -74,7 +74,7 @@ export const PortfolioPage = () => {
   return (
     <div className="min-h-screen bg-blueprint-base pt-24">
       <div className="relative bg-drafting-surface py-20 border-b border-chalk/10 overflow-hidden">
-        <BlueprintGrid className="opacity-20" />
+        <BlueprintGrid opacity={0.55} />
         <div className="container mx-auto px-4 text-center relative z-10">
           <SpecLabel className="mb-4">recent builds</SpecLabel>
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-chalk font-bold mb-6">

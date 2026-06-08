@@ -24,14 +24,14 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
           </div>
         )}
         <div className="absolute top-4 left-4">
-          <span className="px-3 py-1 text-xs font-bold text-blueprint-base bg-marker-start rounded-full shadow-lg">
+          <span className="px-3 py-1 text-xs font-bold text-drafting-surface bg-marker-start rounded-full shadow-lg">
             {post.category}
           </span>
         </div>
       </div>
 
       <div className="p-6 flex flex-col flex-grow">
-        <div className="flex items-center gap-2 text-sm text-gray-400 mb-3">
+        <div className="flex items-center gap-2 text-sm text-chalk/50 mb-3">
           <span>{post.date}</span>
           <span>•</span>
           <span>{post.readTime}</span>
@@ -41,7 +41,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
           {post.title}
         </h3>
 
-        <p className="text-gray-300 text-sm mb-6 line-clamp-3 flex-grow">
+        <p className="text-chalk/70 text-sm mb-6 line-clamp-3 flex-grow">
           {post.excerpt}
         </p>
 

@@ -156,33 +156,33 @@ export const blogPosts: BlogPost[] = [
       <div class="overflow-x-auto my-8">
         <table class="w-full border-collapse">
           <thead>
-            <tr class="border-b border-white/20">
-              <th class="text-left p-4 font-bold text-white">Feature</th>
-              <th class="text-left p-4 font-bold text-white">AWS</th>
-              <th class="text-left p-4 font-bold text-white">Azure</th>
-              <th class="text-left p-4 font-bold text-white">GCP</th>
+            <tr class="border-b border-chalk/20">
+              <th class="text-left p-4 font-bold text-chalk">Feature</th>
+              <th class="text-left p-4 font-bold text-chalk">AWS</th>
+              <th class="text-left p-4 font-bold text-chalk">Azure</th>
+              <th class="text-left p-4 font-bold text-chalk">GCP</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Free Trial & Tier</td>
               <td class="p-4">$200 credit (6mo), 30+ always-free services</td>
               <td class="p-4">$200 credit (30d), 12mo free on 20+ services, 65+ always-free</td>
               <td class="p-4">$300 credit (91d), 20+ always-free products</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Billing Granularity</td>
               <td class="p-4">Per-second (Linux), hourly (some services)</td>
               <td class="p-4">Per-minute (VMs)</td>
               <td class="p-4">Per-second on nearly all VMs</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Discounts</td>
               <td class="p-4">Reserved Instances, Savings Plans (up to ~72%); Spot instances</td>
               <td class="p-4">Reserved VMs, Azure Hybrid Benefit (license reuse)</td>
               <td class="p-4">Sustained-use discounts (auto), Committed Use Discounts (flexible across VM types)</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Egress/Data costs</td>
               <td class="p-4">Varies by region; tiered</td>
               <td class="p-4">Varies by region; tiered</td>
@@ -294,9 +294,9 @@ export const blogPosts: BlogPost[] = [
       <h2>Sources</h2>
       <p>Authoritative cloud documentation and industry analyses were consulted, including official AWS/Azure/GCP compliance and pricing pages and expert comparisons, to ensure up-to-date and detailed insights.</p>
 
-      <div class="mt-8 p-6 bg-white/5 rounded-lg border border-white/10">
+      <div class="mt-8 p-6 bg-chalk/5 rounded-lg border border-chalk/10">
         <h3 class="text-lg font-bold mb-4">Key References</h3>
-        <ul class="space-y-2 text-sm text-gray-300">
+        <ul class="space-y-2 text-sm text-chalk/70">
           <li>• AWS Free Tier: <a href="https://aws.amazon.com/free/" class="text-marker-start hover:underline" target="_blank" rel="noopener noreferrer">aws.amazon.com/free/</a></li>
           <li>• Azure Free Account: <a href="https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account" class="text-marker-start hover:underline" target="_blank" rel="noopener noreferrer">azure.microsoft.com</a></li>
           <li>• Google Cloud Free Program: <a href="https://docs.cloud.google.com/free/docs/free-cloud-features" class="text-marker-start hover:underline" target="_blank" rel="noopener noreferrer">docs.cloud.google.com</a></li>
@@ -336,11 +336,11 @@ export const blogPosts: BlogPost[] = [
 
       <p>Clear framing prevents a common consulting mistake: over-engineering solutions for poorly articulated problems.</p>
 
-      <div class="mt-6 p-6 bg-white/5 rounded-lg border border-white/10">
+      <div class="mt-6 p-6 bg-chalk/5 rounded-lg border border-chalk/10">
         <h3 class="text-lg font-bold mb-2">Tactical Action:</h3>
         <p class="mb-2">Write a Decision Statement at the start of every engagement document that states the hypothesis you are testing or the problem you are resolving.</p>
         <p class="mt-4"><strong>Example:</strong></p>
-        <p class="italic text-gray-300">"We are selecting a data architecture that balances short-term delivery with mid-term adaptability. We acknowledge current data constraints and define success as aligning extract reliability with measurable business outcomes."</p>
+        <p class="italic text-chalk/70">"We are selecting a data architecture that balances short-term delivery with mid-term adaptability. We acknowledge current data constraints and define success as aligning extract reliability with measurable business outcomes."</p>
       </div>
 
       <h2>Principle 2: Surface and Document Assumptions</h2>
@@ -348,21 +348,21 @@ export const blogPosts: BlogPost[] = [
 
       <p>Research on organizational decision-making shows that effective execution under uncertainty involves clearly identifying what you know, what you don't know, and the assumptions bridging those gaps.</p>
 
-      <div class="mt-6 p-6 bg-white/5 rounded-lg border border-white/10">
+      <div class="mt-6 p-6 bg-chalk/5 rounded-lg border border-chalk/10">
         <h3 class="text-lg font-bold mb-2">Tactical Action:</h3>
         <p class="mb-4">For every major decision point, create a table with:</p>
         <div class="overflow-x-auto my-4">
           <table class="w-full border-collapse">
             <thead>
-              <tr class="border-b border-white/20">
-                <th class="text-left p-4 font-bold text-white">Assumption</th>
-                <th class="text-left p-4 font-bold text-white">Source</th>
-                <th class="text-left p-4 font-bold text-white">Confidence Level</th>
-                <th class="text-left p-4 font-bold text-white">Test Plan</th>
+              <tr class="border-b border-chalk/20">
+                <th class="text-left p-4 font-bold text-chalk">Assumption</th>
+                <th class="text-left p-4 font-bold text-chalk">Source</th>
+                <th class="text-left p-4 font-bold text-chalk">Confidence Level</th>
+                <th class="text-left p-4 font-bold text-chalk">Test Plan</th>
               </tr>
             </thead>
             <tbody>
-              <tr class="border-b border-white/10">
+              <tr class="border-b border-chalk/10">
                 <td class="p-4">…</td>
                 <td class="p-4">…</td>
                 <td class="p-4">…</td>
@@ -381,7 +381,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>This is exactly what good consultants do intuitively: break down decisions into smaller steps that clarify unknowns as part of solution delivery.</p>
 
-      <div class="mt-6 p-6 bg-white/5 rounded-lg border border-white/10">
+      <div class="mt-6 p-6 bg-chalk/5 rounded-lg border border-chalk/10">
         <h3 class="text-lg font-bold mb-2">Tactical Action:</h3>
         <p class="mb-4">Split decisions between:</p>
         <ul class="list-disc pl-6 space-y-2">
@@ -396,7 +396,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>Your job is to make risk and uncertainty understandable and communicable. Clients struggle most not with risk itself, but with ambiguity, situations where they can't see the contours of uncertainty.</p>
 
-      <div class="mt-6 p-6 bg-white/5 rounded-lg border border-white/10">
+      <div class="mt-6 p-6 bg-chalk/5 rounded-lg border border-chalk/10">
         <h3 class="text-lg font-bold mb-2">Tactical Action:</h3>
         <p class="mb-4">When presenting options, tie them to risks in plain language:</p>
         <ul class="list-disc pl-6 space-y-2">
@@ -413,7 +413,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>In cognitive psychology research, heuristics are recognized as effective rules of thumb when full information is unavailable and speed is necessary.</p>
 
-      <div class="mt-6 p-6 bg-white/5 rounded-lg border border-white/10">
+      <div class="mt-6 p-6 bg-chalk/5 rounded-lg border border-chalk/10">
         <h3 class="text-lg font-bold mb-2">Tactical Actions:</h3>
         <ul class="list-disc pl-6 space-y-2">
           <li><strong>Pareto Prioritization:</strong> Focus first on components contributing ~80% of observed impacts</li>
@@ -457,10 +457,10 @@ export const blogPosts: BlogPost[] = [
         <li><strong>The Journal of Risk and Uncertainty</strong> — a longstanding venue on risk and decision science.</li>
       </ul>
 
-      <div class="mt-8 p-6 bg-white/5 rounded-lg border border-white/10">
+      <div class="mt-8 p-6 bg-chalk/5 rounded-lg border border-chalk/10">
         <h3 class="text-lg font-bold mb-4">Sources</h3>
-        <p class="mb-4 text-sm text-gray-300">This article draws from research in decision science, organizational behavior, and consulting practice. Key references include:</p>
-        <ul class="space-y-2 text-sm text-gray-300">
+        <p class="mb-4 text-sm text-chalk/70">This article draws from research in decision science, organizational behavior, and consulting practice. Key references include:</p>
+        <ul class="space-y-2 text-sm text-chalk/70">
           <li>Springer Link: Uncertainty, Risk, and Decision-Making</li>
           <li>ScienceDirect: Making Evidence-Based Organizational Decisions in an Uncertain World</li>
           <li>OUP Academic: Decision-Making with Uncertainty</li>
@@ -496,27 +496,27 @@ export const blogPosts: BlogPost[] = [
       <div class="overflow-x-auto my-8">
         <table class="w-full border-collapse">
           <thead>
-            <tr class="border-b border-white/20">
-              <th class="text-left p-4 font-bold text-white">Shopify Plan Tier</th>
-              <th class="text-left p-4 font-bold text-white">Monthly Subscription (Annual)</th>
-              <th class="text-left p-4 font-bold text-white">Online Card Rates (Est. 2025)</th>
-              <th class="text-left p-4 font-bold text-white">Third-Party Transaction Fee</th>
+            <tr class="border-b border-chalk/20">
+              <th class="text-left p-4 font-bold text-chalk">Shopify Plan Tier</th>
+              <th class="text-left p-4 font-bold text-chalk">Monthly Subscription (Annual)</th>
+              <th class="text-left p-4 font-bold text-chalk">Online Card Rates (Est. 2025)</th>
+              <th class="text-left p-4 font-bold text-chalk">Third-Party Transaction Fee</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Basic</td>
               <td class="p-4">$29</td>
               <td class="p-4">2.9% + 30¢</td>
               <td class="p-4">2.0%</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Grow</td>
               <td class="p-4">$79</td>
               <td class="p-4">2.7% + 30¢</td>
               <td class="p-4">1.0%</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Advanced</td>
               <td class="p-4">$299</td>
               <td class="p-4">2.5% + 30¢</td>
@@ -550,29 +550,29 @@ export const blogPosts: BlogPost[] = [
       <div class="overflow-x-auto my-8">
         <table class="w-full border-collapse">
           <thead>
-            <tr class="border-b border-white/20">
-              <th class="text-left p-4 font-bold text-white">AWS Service</th>
-              <th class="text-left p-4 font-bold text-white">Unit of Cost</th>
-              <th class="text-left p-4 font-bold text-white">Estimated Monthly Cost (10k DAU)</th>
+            <tr class="border-b border-chalk/20">
+              <th class="text-left p-4 font-bold text-chalk">AWS Service</th>
+              <th class="text-left p-4 font-bold text-chalk">Unit of Cost</th>
+              <th class="text-left p-4 font-bold text-chalk">Estimated Monthly Cost (10k DAU)</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">AWS Amplify (Hosting)</td>
               <td class="p-4">Build min + GB Served</td>
               <td class="p-4">$8.08 – $65.98</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">AWS Lambda (Logic)</td>
               <td class="p-4">Requests + Duration</td>
               <td class="p-4">$20.00 – $106.41</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Amazon DynamoDB (Data)</td>
               <td class="p-4">Read/Write Units + Storage</td>
               <td class="p-4">$15.00 – $45.00</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Amazon CloudFront (CDN)</td>
               <td class="p-4">Data Transfer Out</td>
               <td class="p-4">Included (Free tier/Standard)</td>
@@ -606,29 +606,29 @@ export const blogPosts: BlogPost[] = [
       <div class="overflow-x-auto my-8">
         <table class="w-full border-collapse">
           <thead>
-            <tr class="border-b border-white/20">
-              <th class="text-left p-4 font-bold text-white">Infrastructure Component</th>
-              <th class="text-left p-4 font-bold text-white">Role in E-Commerce</th>
-              <th class="text-left p-4 font-bold text-white">Benefit Over Shopify</th>
+            <tr class="border-b border-chalk/20">
+              <th class="text-left p-4 font-bold text-chalk">Infrastructure Component</th>
+              <th class="text-left p-4 font-bold text-chalk">Role in E-Commerce</th>
+              <th class="text-left p-4 font-bold text-chalk">Benefit Over Shopify</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">AWS Lambda</td>
               <td class="p-4">Checkout & Business Logic</td>
               <td class="p-4">Infinite scaling; pay-per-request</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Amazon DynamoDB</td>
               <td class="p-4">Product & Order Storage</td>
               <td class="p-4">Consistent latency; NoSQL flexibility</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Amazon EventBridge</td>
               <td class="p-4">Orchestration (Email, ERP)</td>
               <td class="p-4">Reliable, asynchronous processing</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Amazon Cognito</td>
               <td class="p-4">Customer Authentication</td>
               <td class="p-4">Secure, scalable identity management</td>
@@ -671,29 +671,29 @@ export const blogPosts: BlogPost[] = [
       <div class="overflow-x-auto my-8">
         <table class="w-full border-collapse">
           <thead>
-            <tr class="border-b border-white/20">
-              <th class="text-left p-4 font-bold text-white">Data Entity</th>
-              <th class="text-left p-4 font-bold text-white">Migration Strategy</th>
-              <th class="text-left p-4 font-bold text-white">AWS/Medusa Equivalent</th>
+            <tr class="border-b border-chalk/20">
+              <th class="text-left p-4 font-bold text-chalk">Data Entity</th>
+              <th class="text-left p-4 font-bold text-chalk">Migration Strategy</th>
+              <th class="text-left p-4 font-bold text-chalk">AWS/Medusa Equivalent</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Products</td>
               <td class="p-4">API-driven sync via Plugin</td>
               <td class="p-4">Medusa Product Module</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Customers</td>
               <td class="p-4">Export/Import with Password Hash Migrator</td>
               <td class="p-4">Medusa Customer Module</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Orders</td>
               <td class="p-4">Historical Import for Analytics</td>
               <td class="p-4">Amazon Redshift / S3 Data Lake</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Metafields</td>
               <td class="p-4">Mapping to Custom Attributes</td>
               <td class="p-4">Medusa Metadata Fields</td>
@@ -735,29 +735,29 @@ export const blogPosts: BlogPost[] = [
       <div class="overflow-x-auto my-8">
         <table class="w-full border-collapse">
           <thead>
-            <tr class="border-b border-white/20">
-              <th class="text-left p-4 font-bold text-white">Expense Category</th>
-              <th class="text-left p-4 font-bold text-white">Shopify (Managed)</th>
-              <th class="text-left p-4 font-bold text-white">AWS (Custom/Headless)</th>
+            <tr class="border-b border-chalk/20">
+              <th class="text-left p-4 font-bold text-chalk">Expense Category</th>
+              <th class="text-left p-4 font-bold text-chalk">Shopify (Managed)</th>
+              <th class="text-left p-4 font-bold text-chalk">AWS (Custom/Headless)</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Software/Hosting</td>
               <td class="p-4">$2,300 – $10,000+</td>
               <td class="p-4">$100 – $500</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Transaction Fees</td>
               <td class="p-4">0.5% – 2% (Platform Tax)</td>
               <td class="p-4">0% (Direct Gateway)</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">App Subscriptions</td>
               <td class="p-4">$500 – $5,000</td>
               <td class="p-4">$0 (Native Features)</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Developer Ops</td>
               <td class="p-4">Minimal</td>
               <td class="p-4">$5,000 – $15,000/mo</td>
@@ -785,9 +785,9 @@ export const blogPosts: BlogPost[] = [
 
       <p>Ultimately, the merchants who successfully navigate this migration are those who recognize that at a certain scale, their digital platform <em>is</em> their business. Recovering the margins currently surrendered to platform "taxes" provides the capital necessary to out-invest competitors in customer experience, performance, and long-term brand equity in the 2026 digital economy.</p>
 
-      <div class="mt-8 p-6 bg-white/5 rounded-lg border border-white/10">
+      <div class="mt-8 p-6 bg-chalk/5 rounded-lg border border-chalk/10">
         <h3 class="text-lg font-bold mb-4">Key Takeaways</h3>
-        <ul class="space-y-2 text-sm text-gray-300">
+        <ul class="space-y-2 text-sm text-chalk/70">
           <li>• <strong>Transaction Fee Recovery:</strong> Merchants processing $50M+ GMV can save over $500,000 annually by eliminating platform surcharges and negotiating direct gateway rates.</li>
           <li>• <strong>Performance Gains:</strong> Migrating from Liquid to headless Next.js on AWS can improve Time to Interactive by 20–45% and boost mobile organic traffic by up to 300%.</li>
           <li>• <strong>Data Sovereignty:</strong> Owning the data layer enables custom ML models, precise attribution, and marketing optimizations unavailable on managed platforms.</li>

@@ -118,7 +118,7 @@ export const HighlightCard = ({
           className={`
             font-display text-xl md:text-2xl font-bold mb-3
             transition-colors duration-500
-            ${isVisible ? "text-white" : "text-chalk/40"}
+            ${isVisible ? "text-chalk" : "text-chalk/40"}
           `}
         >
           {content.title}

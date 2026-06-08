@@ -4,12 +4,15 @@ interface BlueprintGridProps {
   dense?: boolean;
   className?: string;
   animate?: boolean;
+  /** Layer opacity multiplier, 0–1. Grid line weight is set in tailwind.config.js. */
+  opacity?: number;
 }
 
 export const BlueprintGrid = ({
   dense = false,
   className = "",
   animate = false,
+  opacity = 0.65,
 }: BlueprintGridProps) => {
   const prefersReducedMotion = useReducedMotion();
 
@@ -22,7 +25,7 @@ export const BlueprintGrid = ({
         aria-hidden
         className={`absolute inset-0 bg-blueprint-base ${gridClass} ${sizeClass} pointer-events-none ${className}`}
         initial={{ opacity: 0, scale: 1.02 }}
-        animate={{ opacity: 0.4, scale: 1 }}
+        animate={{ opacity: Math.max(opacity, 0.75), scale: 1 }}
         transition={{ duration: 1.2, ease: [0.2, 0, 0, 1] }}
       />
     );
@@ -31,7 +34,8 @@ export const BlueprintGrid = ({
   return (
     <div
       aria-hidden
-      className={`absolute inset-0 bg-blueprint-base ${gridClass} ${sizeClass} opacity-40 pointer-events-none ${className}`}
+      className={`absolute inset-0 bg-blueprint-base ${gridClass} ${sizeClass} pointer-events-none ${className}`}
+      style={{ opacity }}
     />
   );
 };

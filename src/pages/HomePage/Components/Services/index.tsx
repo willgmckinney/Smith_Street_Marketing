@@ -63,7 +63,7 @@ export const Services = () => {
                 />
               </div>
               <div className="p-8 pt-12 flex-1 flex flex-col">
-                <h3 className="font-display font-bold text-2xl text-white mb-4 group-hover:text-marker-start transition-colors">
+                <h3 className="font-display font-bold text-2xl text-chalk mb-4 group-hover:text-marker-start transition-colors">
                   {service.title}
                 </h3>
                 <p className="font-sans text-chalk/80 text-lg leading-relaxed flex-1">

@@ -25,14 +25,14 @@ const TableauTaxCalculator = ({ onGetAudit }: { onGetAudit: () => void }) => {
   };
 
   return (
-    <div className="bg-blueprint-base rounded-card p-8 border border-white/10 border border-chalk/10">
+    <div className="bg-drafting-surface rounded-card p-8 border border-chalk/10 border border-chalk/10">
       <div className="text-center mb-8">
-        <div className="inline-block px-3 py-1 mb-4 bg-red-500/20 border border-red-500/30 rounded-pill">
+        <div className="inline-block px-3 py-1 mb-4 bg-red-500/20 border border-red-500/30 rounded-spec">
           <span className="text-red-400 font-bold text-xs uppercase tracking-wider">
             The Tableau Tax Calculator
           </span>
         </div>
-        <h3 className="font-display text-2xl font-bold text-white">
+        <h3 className="font-display text-2xl font-bold text-chalk">
           Calculate Your Hidden BI Costs
         </h3>
       </div>
@@ -40,7 +40,7 @@ const TableauTaxCalculator = ({ onGetAudit }: { onGetAudit: () => void }) => {
       <div className="space-y-6 mb-8">
         {/* Tableau Seats Input */}
         <div>
-          <label className="block text-white font-semibold mb-2 text-sm">
+          <label className="block text-chalk font-semibold mb-2 text-sm">
             Number of Tableau/Power BI Seats
           </label>
           <div className="flex items-center gap-4">
@@ -48,7 +48,7 @@ const TableauTaxCalculator = ({ onGetAudit }: { onGetAudit: () => void }) => {
               type="number"
               value={tableauSeats}
               onChange={(e) => setTableauSeats(Number(e.target.value))}
-              className="flex-1 px-4 py-3 bg-drafting-surface border border-white/20 rounded-lg text-white text-lg font-bold focus:outline-none focus:ring-2 focus:ring-marker-start focus:border-transparent"
+              className="flex-1 px-4 py-3 bg-drafting-surface border border-chalk/20 rounded-lg text-chalk text-lg font-bold focus:outline-none focus:ring-2 focus:ring-marker-start focus:border-transparent"
               min="1"
               step="1"
             />
@@ -66,7 +66,7 @@ const TableauTaxCalculator = ({ onGetAudit }: { onGetAudit: () => void }) => {
 
         {/* Hourly Rate Input */}
         <div>
-          <label className="block text-white font-semibold mb-2 text-sm">
+          <label className="block text-chalk font-semibold mb-2 text-sm">
             Average Analyst Hourly Rate ($)
           </label>
           <div className="flex items-center gap-4">
@@ -74,7 +74,7 @@ const TableauTaxCalculator = ({ onGetAudit }: { onGetAudit: () => void }) => {
               type="number"
               value={hourlyRate}
               onChange={(e) => setHourlyRate(Number(e.target.value))}
-              className="flex-1 px-4 py-3 bg-drafting-surface border border-white/20 rounded-lg text-white text-lg font-bold focus:outline-none focus:ring-2 focus:ring-marker-start focus:border-transparent"
+              className="flex-1 px-4 py-3 bg-drafting-surface border border-chalk/20 rounded-lg text-chalk text-lg font-bold focus:outline-none focus:ring-2 focus:ring-marker-start focus:border-transparent"
               min="25"
               step="5"
             />
@@ -92,7 +92,7 @@ const TableauTaxCalculator = ({ onGetAudit }: { onGetAudit: () => void }) => {
 
         {/* Manual Hours Input */}
         <div>
-          <label className="block text-white font-semibold mb-2 text-sm">
+          <label className="block text-chalk font-semibold mb-2 text-sm">
             Hours Spent on "Manual Follow-up" Per Week
           </label>
           <div className="flex items-center gap-4">
@@ -100,7 +100,7 @@ const TableauTaxCalculator = ({ onGetAudit }: { onGetAudit: () => void }) => {
               type="number"
               value={manualHoursPerWeek}
               onChange={(e) => setManualHoursPerWeek(Number(e.target.value))}
-              className="flex-1 px-4 py-3 bg-drafting-surface border border-white/20 rounded-lg text-white text-lg font-bold focus:outline-none focus:ring-2 focus:ring-marker-start focus:border-transparent"
+              className="flex-1 px-4 py-3 bg-drafting-surface border border-chalk/20 rounded-lg text-chalk text-lg font-bold focus:outline-none focus:ring-2 focus:ring-marker-start focus:border-transparent"
               min="1"
               step="1"
             />
@@ -231,9 +231,9 @@ const QuickIndexDemo = () => {
   };
 
   return (
-    <div className="bg-blueprint-base rounded-card border border-white/10 border border-chalk/10 overflow-hidden">
+    <div className="bg-drafting-surface rounded-card border border-chalk/10 border border-chalk/10 overflow-hidden">
       {/* Terminal Header */}
-      <div className="bg-drafting-surface/80 px-4 py-3 flex items-center gap-2 border-b border-white/10">
+      <div className="bg-drafting-surface/80 px-4 py-3 flex items-center gap-2 border-b border-chalk/10">
         <div className="flex gap-2">
           <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
           <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
@@ -257,12 +257,12 @@ const QuickIndexDemo = () => {
               ${
                 isDragging
                   ? "border-marker-start bg-marker-start/10"
-                  : "border-white/20 hover:border-white/40 hover:bg-white/5"
+                  : "border-chalk/20 hover:border-chalk/40 hover:bg-chalk/5"
               }
             `}
           >
             <div className="text-4xl mb-4">📁</div>
-            <div className="text-white font-semibold mb-2">
+            <div className="text-chalk font-semibold mb-2">
               Upload a sample "Lost Deal" CSV or Support PDF
             </div>
             <div className="text-chalk/60 text-xs">
@@ -288,7 +288,7 @@ const QuickIndexDemo = () => {
                 </span>
                 <span
                   className={
-                    i === processingStage - 1 ? "text-white" : "text-chalk/70"
+                    i === processingStage - 1 ? "text-chalk" : "text-chalk/70"
                   }
                 >
                   {msg}
@@ -317,7 +317,7 @@ const QuickIndexDemo = () => {
                   HIGH PRIORITY
                 </span>
               </div>
-              <p className="text-white font-semibold mb-2 text-base">
+              <p className="text-chalk font-semibold mb-2 text-base">
                 "60% of churned users mentioned [Feature X] in support tickets,
                 but it's missing from your Tableau Revenue Chart."
               </p>
@@ -346,10 +346,10 @@ const LegacyVsAgenticComparison = () => {
   return (
     <div className="grid md:grid-cols-2 gap-8">
       {/* Legacy Side */}
-      <div className="bg-drafting-surface/30 rounded-card p-8 border border-white/5 relative overflow-hidden">
+      <div className="bg-drafting-surface/30 rounded-card p-8 border border-chalk/5 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-gray-500/5 to-transparent"></div>
         <div className="relative">
-          <div className="inline-block px-3 py-1 mb-4 bg-gray-500/20 border border-gray-500/30 rounded-pill">
+          <div className="inline-block px-3 py-1 mb-4 bg-gray-500/20 border border-gray-500/30 rounded-spec">
             <span className="text-gray-400 font-bold text-xs uppercase tracking-wider">
               Legacy BI
             </span>
@@ -396,12 +396,12 @@ const LegacyVsAgenticComparison = () => {
       <div className="bg-drafting-surface/50 rounded-card p-8 border border-marker-start/30 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-marker-start/10 to-verified/5"></div>
         <div className="relative">
-          <div className="inline-block px-3 py-1 mb-4 bg-marker-start/20 border border-marker-start/30 rounded-pill">
+          <div className="inline-block px-3 py-1 mb-4 bg-marker-start/20 border border-marker-start/30 rounded-spec">
             <span className="text-marker-start font-bold text-xs uppercase tracking-wider">
               Agentic BI
             </span>
           </div>
-          <h3 className="font-display text-2xl font-bold text-white mb-6">
+          <h3 className="font-display text-2xl font-bold text-chalk mb-6">
             AI-Powered Agents
           </h3>
 
@@ -410,23 +410,23 @@ const LegacyVsAgenticComparison = () => {
             <div className="absolute inset-0 flex items-center justify-center">
               {/* Central Node */}
               <div className="w-12 h-12 bg-marker-start rounded-full flex items-center justify-center animate-pulse shadow-lg shadow-marker-start/50">
-                <span className="text-blueprint-base font-bold text-xs">AI</span>
+                <span className="text-chalk font-bold text-xs">AI</span>
               </div>
 
               {/* Connected Nodes */}
               <div className="absolute top-2 left-1/4 w-8 h-8 bg-verified/80 rounded-full flex items-center justify-center">
-                <span className="text-blueprint-base font-bold text-[10px]">
+                <span className="text-chalk font-bold text-[10px]">
                   CRM
                 </span>
               </div>
-              <div className="absolute top-4 right-1/4 w-8 h-8 bg-blue-500/80 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-[10px]">Slack</span>
+              <div className="absolute top-4 right-1/4 w-8 h-8 bg-marker-start/80 rounded-full flex items-center justify-center">
+                <span className="text-chalk font-bold text-[10px]">Slack</span>
               </div>
               <div className="absolute bottom-2 left-1/3 w-8 h-8 bg-purple-500/80 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-[10px]">Jira</span>
+                <span className="text-chalk font-bold text-[10px]">Jira</span>
               </div>
               <div className="absolute bottom-4 right-1/3 w-8 h-8 bg-orange-500/80 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-[10px]">PDF</span>
+                <span className="text-chalk font-bold text-[10px]">PDF</span>
               </div>
 
               {/* Connection Lines (SVG) */}
@@ -480,7 +480,7 @@ const LegacyVsAgenticComparison = () => {
             </div>
           </div>
 
-          <ul className="space-y-3 text-white pt-[30px]">
+          <ul className="space-y-3 text-chalk pt-[30px]">
             <li className="flex items-center gap-2">
               <span className="text-verified">✓</span>
               <span>Real-time autonomous monitoring</span>
@@ -632,18 +632,18 @@ const LeadCaptureModal = ({
   if (!isOpen) return null;
 
   const inputBase =
-    "w-full px-4 py-3 bg-blueprint-base border rounded-lg text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-marker-start focus:border-transparent";
+    "w-full px-4 py-3 bg-blueprint-base border rounded-lg text-chalk transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-marker-start focus:border-transparent";
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div
-        className="absolute inset-0 bg-blueprint-base/90 backdrop-blur-sm"
+        className="absolute inset-0 bg-chalk/50"
         onClick={onClose}
       ></div>
-      <div className="relative bg-drafting-surface rounded-card p-8 max-w-md w-full border border-white/10 shadow-2xl">
+      <div className="relative bg-drafting-surface rounded-card p-8 max-w-md w-full border border-chalk/10 shadow-2xl">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-chalk/60 hover:text-white transition-colors"
+          className="absolute top-4 right-4 text-chalk/60 hover:text-chalk transition-colors"
         >
           <svg
             className="w-6 h-6"
@@ -660,7 +660,7 @@ const LeadCaptureModal = ({
           </svg>
         </button>
 
-        <h3 className="font-display text-2xl font-bold text-white mb-2">
+        <h3 className="font-display text-2xl font-bold text-chalk mb-2">
           Get Your Full BI Audit
         </h3>
         <p className="text-chalk/70 mb-6">
@@ -681,14 +681,14 @@ const LeadCaptureModal = ({
           className="space-y-4"
         >
           <div>
-            <label className="block text-white font-semibold mb-2 text-sm">
+            <label className="block text-chalk font-semibold mb-2 text-sm">
               Full Name
             </label>
             <input
               type="text"
               name="name"
               autoComplete="name"
-              className={`${inputBase} ${fieldErrors.name ? "border-red-400" : "border-white/20"}`}
+              className={`${inputBase} ${fieldErrors.name ? "border-red-400" : "border-chalk/20"}`}
               placeholder="e.g. Jordan Smith"
               onChange={() =>
                 fieldErrors.name &&
@@ -700,14 +700,14 @@ const LeadCaptureModal = ({
             )}
           </div>
           <div>
-            <label className="block text-white font-semibold mb-2 text-sm">
+            <label className="block text-chalk font-semibold mb-2 text-sm">
               Work Email
             </label>
             <input
               type="email"
               name="email"
               autoComplete="email"
-              className={`${inputBase} ${fieldErrors.email ? "border-red-400" : "border-white/20"}`}
+              className={`${inputBase} ${fieldErrors.email ? "border-red-400" : "border-chalk/20"}`}
               placeholder="you@company.com"
               onChange={() =>
                 fieldErrors.email &&
@@ -791,7 +791,7 @@ export const AgenticBI = () => {
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-24 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-blueprint-grid bg-[length:32px_32px] opacity-30" />
+        <div className="absolute inset-0 bg-blueprint-grid bg-[length:32px_32px] opacity-50" />
         <div className="absolute inset-0 bg-gradient-to-br from-blueprint-base via-drafting-surface to-blueprint-base opacity-50" />
 
         <div className="relative z-10 max-w-5xl mx-auto text-center">
@@ -801,15 +801,15 @@ export const AgenticBI = () => {
             </span>
           </div>
 
-          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-white leading-tight lg:leading-[78px]">
+          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-chalk leading-tight lg:leading-[78px]">
             Stop Building Dashboards. <br className="hidden sm:block" />
-            <span className="text-transparent bg-clip-text bg-marker-gradient">
+            <span className="text-marker-start">
               Start Building Agents.
             </span>
           </h1>
 
           <p className="text-xl sm:text-2xl text-chalk/80 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Slash BI costs by <strong className="text-white">60%</strong> and
+            Slash BI costs by <strong className="text-chalk">60%</strong> and
             index the{" "}
             <span className="text-marker-start">80% of data</span> your
             legacy tools can't see.
@@ -843,12 +843,12 @@ export const AgenticBI = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-drafting-surface/50 relative">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-block px-3 py-1 mb-4 bg-red-500/20 border border-red-500/30 rounded-pill">
+            <div className="inline-block px-3 py-1 mb-4 bg-red-500/20 border border-red-500/30 rounded-spec">
               <span className="text-red-400 font-bold text-xs uppercase tracking-wider">
                 The Hidden Cost
               </span>
             </div>
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-chalk mb-4">
               The "Tableau Tax" is Bleeding You Dry
             </h2>
             <p className="text-lg text-chalk/80 max-w-2xl mx-auto">
@@ -858,13 +858,13 @@ export const AgenticBI = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-blueprint-base rounded-card p-8 border border-red-500/20 relative overflow-hidden">
+            <div className="bg-drafting-surface rounded-card p-8 border border-red-500/20 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/10 rounded-full blur-3xl"></div>
               <div className="relative">
                 <div className="text-5xl font-display font-bold text-red-400 mb-4">
                   $70+
                 </div>
-                <h3 className="font-display text-xl font-bold text-white mb-3">
+                <h3 className="font-display text-xl font-bold text-chalk mb-3">
                   Per User, Per Month
                 </h3>
                 <p className="text-chalk/70">
@@ -874,13 +874,13 @@ export const AgenticBI = () => {
               </div>
             </div>
 
-            <div className="bg-blueprint-base rounded-card p-8 border border-red-500/20 relative overflow-hidden">
+            <div className="bg-drafting-surface rounded-card p-8 border border-red-500/20 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/10 rounded-full blur-3xl"></div>
               <div className="relative">
                 <div className="text-5xl font-display font-bold text-red-400 mb-4">
                   40%
                 </div>
-                <h3 className="font-display text-xl font-bold text-white mb-3">
+                <h3 className="font-display text-xl font-bold text-chalk mb-3">
                   Analyst Time Wasted
                 </h3>
                 <p className="text-chalk/70">
@@ -891,13 +891,13 @@ export const AgenticBI = () => {
               </div>
             </div>
 
-            <div className="bg-blueprint-base rounded-card p-8 border border-red-500/20 relative overflow-hidden">
+            <div className="bg-drafting-surface rounded-card p-8 border border-red-500/20 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/10 rounded-full blur-3xl"></div>
               <div className="relative">
                 <div className="text-5xl font-display font-bold text-red-400 mb-4">
                   80%
                 </div>
-                <h3 className="font-display text-xl font-bold text-white mb-3">
+                <h3 className="font-display text-xl font-bold text-chalk mb-3">
                   Dark Data Invisible
                 </h3>
                 <p className="text-chalk/70">
@@ -914,7 +914,7 @@ export const AgenticBI = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-blueprint-base">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-chalk mb-4">
               Legacy vs. Agentic: See the Difference
             </h2>
             <p className="text-lg text-chalk/80 max-w-2xl mx-auto">
@@ -930,12 +930,12 @@ export const AgenticBI = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-drafting-surface/50">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-block px-3 py-1 mb-4 bg-marker-start/20 border border-marker-start/30 rounded-pill">
+            <div className="inline-block px-3 py-1 mb-4 bg-marker-start/20 border border-marker-start/30 rounded-spec">
               <span className="text-marker-start font-bold text-xs uppercase tracking-wider">
                 The Mechanism
               </span>
             </div>
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-chalk mb-4">
               How Quick Index Reads What Others Can't
             </h2>
             <p className="text-lg text-chalk/80 max-w-2xl mx-auto">
@@ -947,11 +947,11 @@ export const AgenticBI = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-marker-gradient rounded-full flex items-center justify-center flex-shrink-0 text-blueprint-base font-display font-bold">
+                <div className="w-12 h-12 bg-marker-start rounded-full flex items-center justify-center flex-shrink-0 text-drafting-surface font-display font-bold">
                   1
                 </div>
                 <div>
-                  <h3 className="font-display text-xl font-bold text-white mb-2">
+                  <h3 className="font-display text-xl font-bold text-chalk mb-2">
                     Connect Everything
                   </h3>
                   <p className="text-chalk/70">
@@ -962,11 +962,11 @@ export const AgenticBI = () => {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-marker-gradient rounded-full flex items-center justify-center flex-shrink-0 text-blueprint-base font-display font-bold">
+                <div className="w-12 h-12 bg-marker-start rounded-full flex items-center justify-center flex-shrink-0 text-drafting-surface font-display font-bold">
                   2
                 </div>
                 <div>
-                  <h3 className="font-display text-xl font-bold text-white mb-2">
+                  <h3 className="font-display text-xl font-bold text-chalk mb-2">
                     Index the Unstructured
                   </h3>
                   <p className="text-chalk/70">
@@ -977,11 +977,11 @@ export const AgenticBI = () => {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-marker-gradient rounded-full flex items-center justify-center flex-shrink-0 text-blueprint-base font-display font-bold">
+                <div className="w-12 h-12 bg-marker-start rounded-full flex items-center justify-center flex-shrink-0 text-drafting-surface font-display font-bold">
                   3
                 </div>
                 <div>
-                  <h3 className="font-display text-xl font-bold text-white mb-2">
+                  <h3 className="font-display text-xl font-bold text-chalk mb-2">
                     Agents Take Action
                   </h3>
                   <p className="text-chalk/70">
@@ -1003,13 +1003,13 @@ export const AgenticBI = () => {
           <div className="bg-gradient-to-br from-marker-start/20 to-verified/10 border border-marker-start/30 rounded-card p-8 md:p-12 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-marker-start/10 rounded-full blur-3xl"></div>
             <div className="relative">
-              <div className="inline-block px-3 py-1 mb-6 bg-verified/20 border border-verified/30 rounded-pill">
+              <div className="inline-block px-3 py-1 mb-6 bg-verified/20 border border-verified/30 rounded-spec">
                 <span className="text-verified font-bold text-xs uppercase tracking-wider">
                   Case Study
                 </span>
               </div>
 
-              <div className="text-5xl sm:text-6xl md:text-7xl font-display font-bold text-white mb-4">
+              <div className="text-5xl sm:text-6xl md:text-7xl font-display font-bold text-chalk mb-4">
                 $400,000
               </div>
               <div className="text-2xl text-marker-start font-semibold mb-6">
@@ -1052,7 +1052,7 @@ export const AgenticBI = () => {
                 "We had the data all along. We just couldn't see it until Quick
                 Index connected the dots between our CRM and our support
                 tickets."
-                <div className="mt-2 text-white font-semibold not-italic">
+                <div className="mt-2 text-chalk font-semibold not-italic">
                   — VP of Operations, Manufacturing Company
                 </div>
               </blockquote>
@@ -1068,7 +1068,7 @@ export const AgenticBI = () => {
       >
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-chalk mb-4">
               Calculate Your "Dark Data" Waste
             </h2>
             <p className="text-lg text-chalk/80 max-w-2xl mx-auto">
@@ -1085,16 +1085,16 @@ export const AgenticBI = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-blueprint-base">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-chalk mb-4">
               QuickSuite vs. Legacy BI: The Numbers
             </h2>
           </div>
 
-          <div className="bg-drafting-surface rounded-card p-8 border border-white/10 overflow-x-auto">
+          <div className="bg-drafting-surface rounded-card p-8 border border-chalk/10 overflow-x-auto">
             <table className="w-full border-collapse">
               <thead>
-                <tr className="border-b border-white/20">
-                  <th className="text-left p-4 font-display font-bold text-white text-lg">
+                <tr className="border-b border-chalk/20">
+                  <th className="text-left p-4 font-display font-bold text-chalk text-lg">
                     Feature
                   </th>
                   <th className="text-left p-4 font-display font-bold text-red-400 text-lg">
@@ -1106,8 +1106,8 @@ export const AgenticBI = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-b border-white/10">
-                  <td className="p-4 font-semibold text-white">
+                <tr className="border-b border-chalk/10">
+                  <td className="p-4 font-semibold text-chalk">
                     Pricing Model
                   </td>
                   <td className="p-4 text-red-400">
@@ -1123,8 +1123,8 @@ export const AgenticBI = () => {
                     </div>
                   </td>
                 </tr>
-                <tr className="border-b border-white/10">
-                  <td className="p-4 font-semibold text-white">Data Types</td>
+                <tr className="border-b border-chalk/10">
+                  <td className="p-4 font-semibold text-chalk">Data Types</td>
                   <td className="p-4 text-red-400">
                     Structured databases only
                   </td>
@@ -1132,8 +1132,8 @@ export const AgenticBI = () => {
                     Structured + Unstructured (PDFs, Slack, etc.)
                   </td>
                 </tr>
-                <tr className="border-b border-white/10">
-                  <td className="p-4 font-semibold text-white">Automation</td>
+                <tr className="border-b border-chalk/10">
+                  <td className="p-4 font-semibold text-chalk">Automation</td>
                   <td className="p-4 text-red-400">
                     Limited third-party hooks
                   </td>
@@ -1141,8 +1141,8 @@ export const AgenticBI = () => {
                     Native Quick Flows & Quick Automate
                   </td>
                 </tr>
-                <tr className="border-b border-white/10">
-                  <td className="p-4 font-semibold text-white">
+                <tr className="border-b border-chalk/10">
+                  <td className="p-4 font-semibold text-chalk">
                     Migration Risk
                   </td>
                   <td className="p-4 text-red-400">High (complex rebuilds)</td>
@@ -1150,8 +1150,8 @@ export const AgenticBI = () => {
                     Zero (in-place evolution)
                   </td>
                 </tr>
-                <tr className="border-b border-white/10">
-                  <td className="p-4 font-semibold text-white">
+                <tr className="border-b border-chalk/10">
+                  <td className="p-4 font-semibold text-chalk">
                     Time to Insight
                   </td>
                   <td className="p-4 text-red-400">Days to weeks</td>
@@ -1160,7 +1160,7 @@ export const AgenticBI = () => {
                   </td>
                 </tr>
                 <tr>
-                  <td className="p-4 font-semibold text-white">3-Year TCO</td>
+                  <td className="p-4 font-semibold text-chalk">3-Year TCO</td>
                   <td className="p-4 text-red-400 text-xl font-bold">
                     $500k - $1M+
                   </td>
@@ -1181,7 +1181,7 @@ export const AgenticBI = () => {
       >
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-chalk mb-4">
               Get Your Free "Dark Data" Audit
             </h2>
             <p className="text-lg text-chalk/80 max-w-2xl mx-auto mb-8">
@@ -1192,8 +1192,8 @@ export const AgenticBI = () => {
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div className="space-y-6">
-              <div className="bg-blueprint-base rounded-card p-6 border border-white/10">
-                <h3 className="font-display text-xl font-bold text-white mb-4">
+              <div className="bg-drafting-surface rounded-card p-6 border border-chalk/10">
+                <h3 className="font-display text-xl font-bold text-chalk mb-4">
                   What You'll Discover:
                 </h3>
                 <ul className="space-y-3">
@@ -1204,9 +1204,9 @@ export const AgenticBI = () => {
                     "ROI projection for the first 90 days",
                   ].map((item, i) => (
                     <li key={i} className="flex items-start">
-                      <div className="bg-marker-gradient p-1 rounded-full mr-3 mt-1 flex-shrink-0">
+                      <div className="bg-marker-start p-1 rounded-full mr-3 mt-1 flex-shrink-0">
                         <svg
-                          className="w-4 h-4 text-blueprint-base"
+                          className="w-4 h-4 text-drafting-surface"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -1225,11 +1225,11 @@ export const AgenticBI = () => {
                 </ul>
               </div>
 
-              <div className="bg-marker-gradient/10 border border-marker-start/30 rounded-card p-6">
-                <p className="text-white font-semibold mb-2">Our Guarantee</p>
+              <div className="bg-marker-start/10 border border-marker-start/30 rounded-card p-6">
+                <p className="text-chalk font-semibold mb-2">Our Guarantee</p>
                 <p className="text-chalk/80 text-sm">
                   If we can't identify at least{" "}
-                  <strong className="text-white">
+                  <strong className="text-chalk">
                     $50,000 in annual savings
                   </strong>{" "}
                   or hidden revenue, we'll pay you for your time.
@@ -1237,7 +1237,7 @@ export const AgenticBI = () => {
               </div>
             </div>
 
-            <div className="bg-white rounded-card shadow-2xl p-0 border border-white/10 overflow-hidden">
+            <div className="bg-white rounded-card shadow-2xl p-0 border border-chalk/10 overflow-hidden">
               <ApolloContactForm />
             </div>
           </div>
@@ -1245,19 +1245,19 @@ export const AgenticBI = () => {
       </section>
 
       {/* Break-up Footer – hidden for now */}
-      {/* <section className="py-16 px-4 sm:px-6 lg:px-8 bg-blueprint-base border-t border-white/10">
+      {/* <section className="py-16 px-4 sm:px-6 lg:px-8 bg-blueprint-base border-t border-chalk/10">
         <div className="max-w-4xl mx-auto text-center">
-          <h3 className="font-display text-2xl font-bold text-white mb-4">
+          <h3 className="font-display text-2xl font-bold text-chalk mb-4">
             Not ready to talk? No problem.
           </h3>
           <p className="text-chalk/70 mb-6">
             Download our free guide and see what you're missing.
           </p>
-          <div className="bg-drafting-surface rounded-card p-8 border border-white/10 inline-block">
+          <div className="bg-drafting-surface rounded-card p-8 border border-chalk/10 inline-block">
             <div className="flex flex-col sm:flex-row items-center gap-6">
               <div className="text-6xl">📊</div>
               <div className="text-left">
-                <div className="font-display font-bold text-white text-lg mb-1">
+                <div className="font-display font-bold text-chalk text-lg mb-1">
                   "3 Things Tableau Misses"
                 </div>
                 <div className="text-chalk/60 text-sm mb-4">

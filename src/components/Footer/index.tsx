@@ -1,8 +1,8 @@
 import emailjs from "@emailjs/browser";
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import logo from "../../assets/logo.png";
 import { BlueprintButton } from "../Blueprint/BlueprintButton";
+import { Monogram } from "../Blueprint/Monogram";
 
 const Footer = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -56,17 +56,13 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-drafting-surface border-t border-white/10 text-chalk">
+    <footer className="bg-drafting-surface border-t border-chalk/10 text-chalk">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row">
         {/* Contact Form Section */}
-        <div className="w-full lg:w-1/2 p-8 sm:p-12 border-b lg:border-b-0 lg:border-r border-white/10">
+        <div className="w-full lg:w-1/2 p-8 sm:p-12 border-b lg:border-b-0 lg:border-r border-chalk/10">
           <div className="flex items-center gap-4 mb-8">
-            <img
-              src={logo}
-              className="h-12 w-auto"
-              alt="Smith Avenue Insights Logo"
-            />
-            <span className="font-display font-bold text-2xl text-white">
+            <Monogram size={44} className="text-chalk" />
+            <span className="font-display font-bold text-2xl text-chalk">
               Smith Avenue Insights
             </span>
           </div>
@@ -81,7 +77,7 @@ const Footer = () => {
                 Name
               </label>
               <input
-                className="w-full bg-blueprint-base/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-marker-start focus:ring-1 focus:ring-marker-start transition-all"
+                className="w-full bg-drafting-surface border border-chalk/15 rounded-lg px-4 py-3 text-chalk focus:outline-none focus:border-marker-start focus:ring-1 focus:ring-marker-start transition-all"
                 type="text"
                 name="from_name"
                 required
@@ -94,7 +90,7 @@ const Footer = () => {
                 Email
               </label>
               <input
-                className="w-full bg-blueprint-base/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-marker-start focus:ring-1 focus:ring-marker-start transition-all"
+                className="w-full bg-drafting-surface border border-chalk/15 rounded-lg px-4 py-3 text-chalk focus:outline-none focus:border-marker-start focus:ring-1 focus:ring-marker-start transition-all"
                 type="email"
                 name="reply_to"
                 required
@@ -107,7 +103,7 @@ const Footer = () => {
                 Message
               </label>
               <textarea
-                className="w-full bg-blueprint-base/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-marker-start focus:ring-1 focus:ring-marker-start transition-all"
+                className="w-full bg-drafting-surface border border-chalk/15 rounded-lg px-4 py-3 text-chalk focus:outline-none focus:border-marker-start focus:ring-1 focus:ring-marker-start transition-all"
                 name="message"
                 required
                 rows={4}
@@ -136,8 +132,8 @@ const Footer = () => {
         </div>
 
         {/* Navigation Section */}
-        <div className="w-full lg:w-1/2 p-8 sm:p-12 bg-blueprint-base/30">
-          <h3 className="font-display font-bold text-xl text-white mb-8">
+        <div className="w-full lg:w-1/2 p-8 sm:p-12 bg-blueprint-base/50">
+          <h3 className="font-display font-bold text-xl text-chalk mb-8">
             Menu
           </h3>
           <nav className="flex flex-col space-y-4">
@@ -157,7 +153,7 @@ const Footer = () => {
             ))}
           </nav>
 
-          <div className="mt-16 pt-8 border-t border-white/10 text-sm text-chalk/40">
+          <div className="mt-16 pt-8 border-t border-chalk/10 text-sm text-chalk/40">
             &copy; {new Date().getFullYear()} Smith Avenue Insights. All rights
             reserved.
           </div>

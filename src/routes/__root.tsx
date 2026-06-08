@@ -5,9 +5,9 @@ import {
   useLocation,
 } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import logo from "../assets/logo.png";
 import Footer from "../components/Footer";
 import { BlueprintButton } from "../components/Blueprint/BlueprintButton";
+import { Monogram } from "../components/Blueprint/Monogram";
 
 export const rootRoute = createRootRoute({
   component: () => {
@@ -75,16 +75,15 @@ export const rootRoute = createRootRoute({
             fixed top-0 left-0 right-0 z-50 transition-all duration-300
             px-4 sm:px-6 lg:px-8 py-4
             flex items-center justify-between
-            ${scrolled || mobileMenuOpen ? "bg-blueprint-base/80 backdrop-blur-md border-b border-white/10 shadow-lg" : "bg-transparent"}
+            ${scrolled || mobileMenuOpen ? "bg-blueprint-base border-b border-chalk/10" : "bg-transparent"}
           `}
         >
           <Link to="/" className="flex flex-row items-center gap-3 group">
-            <img
-              src={logo}
-              className="h-10 sm:h-12 w-auto transition-transform duration-300 group-hover:scale-110"
-              alt="Smith Avenue Insights Logo"
+            <Monogram
+              size={40}
+              className="text-chalk transition-transform duration-300 group-hover:-translate-y-px"
             />
-            <p className="font-display font-bold text-lg sm:text-xl md:text-2xl text-white hidden sm:block tracking-tight">
+            <p className="font-display font-bold text-lg sm:text-xl md:text-2xl text-chalk hidden sm:block tracking-tight">
               Smith Avenue Insights
             </p>
           </Link>
@@ -95,7 +94,7 @@ export const rootRoute = createRootRoute({
               <BlueprintButton
                 variant="secondary"
                 size="sm"
-                className={`bg-transparent border-transparent shadow-none hover:bg-white/10 ${
+                className={`bg-transparent border-transparent shadow-none hover:bg-chalk/10 ${
                   isSolutionsPage ? "text-marker-start" : "text-chalk"
                 }`}
                 onClick={() => setSolutionsOpen(!solutionsOpen)}
@@ -121,15 +120,15 @@ export const rootRoute = createRootRoute({
 
               {solutionsOpen && (
                 <div
-                  className="absolute top-full left-0 mt-2 w-56 bg-drafting-surface rounded-lg border border-white/10 shadow-lg overflow-hidden z-50"
+                  className="absolute top-full left-0 mt-2 w-56 bg-drafting-surface rounded-lg border border-chalk/10 shadow-lg overflow-hidden z-50"
                   onMouseLeave={() => setSolutionsOpen(false)}
                 >
                   <Link
                     to="/shopify-profit-recovery"
                     className={`block px-4 py-3 transition-colors duration-200 ${
                       isShopifyPage
-                        ? "bg-white/10 text-marker-start"
-                        : "text-chalk hover:bg-white/10 hover:text-marker-start"
+                        ? "bg-chalk/10 text-marker-start"
+                        : "text-chalk hover:bg-chalk/10 hover:text-marker-start"
                     }`}
                     onClick={() => setSolutionsOpen(false)}
                   >
@@ -139,8 +138,8 @@ export const rootRoute = createRootRoute({
                     to="/agentic-bi"
                     className={`block px-4 py-3 transition-colors duration-200 ${
                       isAgenticBIPage
-                        ? "bg-white/10 text-marker-start"
-                        : "text-chalk hover:bg-white/10 hover:text-marker-start"
+                        ? "bg-chalk/10 text-marker-start"
+                        : "text-chalk hover:bg-chalk/10 hover:text-marker-start"
                     }`}
                     onClick={() => setSolutionsOpen(false)}
                   >
@@ -155,7 +154,7 @@ export const rootRoute = createRootRoute({
                 <BlueprintButton
                   variant="secondary"
                   size="sm"
-                  className={`bg-transparent border-transparent shadow-none hover:bg-white/10 ${isActive ? "text-marker-start" : "text-chalk"}`}
+                  className={`bg-transparent border-transparent shadow-none hover:bg-chalk/10 ${isActive ? "text-marker-start" : "text-chalk"}`}
                 >
                   Portfolio
                 </BlueprintButton>
@@ -167,7 +166,7 @@ export const rootRoute = createRootRoute({
                 <BlueprintButton
                   variant="secondary"
                   size="sm"
-                  className={`bg-transparent border-transparent shadow-none hover:bg-white/10 ${isActive ? "text-marker-start" : "text-chalk"}`}
+                  className={`bg-transparent border-transparent shadow-none hover:bg-chalk/10 ${isActive ? "text-marker-start" : "text-chalk"}`}
                 >
                   How We Work
                 </BlueprintButton>
@@ -179,7 +178,7 @@ export const rootRoute = createRootRoute({
                 <BlueprintButton
                   variant="secondary"
                   size="sm"
-                  className={`bg-transparent border-transparent shadow-none hover:bg-white/10 ${isActive ? "text-marker-start" : "text-chalk"}`}
+                  className={`bg-transparent border-transparent shadow-none hover:bg-chalk/10 ${isActive ? "text-marker-start" : "text-chalk"}`}
                 >
                   Insights
                 </BlueprintButton>
@@ -193,7 +192,7 @@ export const rootRoute = createRootRoute({
 
           {/* Mobile Hamburger Button */}
           <button
-            className="md:hidden relative z-50 p-2 rounded-lg text-white hover:bg-white/10 transition-colors duration-200"
+            className="md:hidden relative z-50 p-2 rounded-lg text-chalk hover:bg-chalk/10 transition-colors duration-200"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
@@ -231,7 +230,7 @@ export const rootRoute = createRootRoute({
         >
           {/* Backdrop */}
           <div
-            className="absolute inset-0 bg-blueprint-base/60 backdrop-blur-sm"
+            className="absolute inset-0 bg-chalk/40"
             onClick={() => setMobileMenuOpen(false)}
           />
 
@@ -239,7 +238,7 @@ export const rootRoute = createRootRoute({
           <nav
             className={`
               absolute top-0 right-0 h-full w-72 max-w-[80vw]
-              bg-blueprint-base border-l border-white/10 shadow-2xl
+              bg-blueprint-base border-l border-chalk/10 shadow-2xl
               pt-24 pb-8 px-6
               transition-transform duration-300 ease-in-out
               ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"}
@@ -251,8 +250,8 @@ export const rootRoute = createRootRoute({
               <button
                 className={`flex items-center justify-between w-full px-4 py-3 rounded-lg text-left font-semibold transition-colors duration-200 ${
                   isSolutionsPage
-                    ? "text-marker-start bg-white/5"
-                    : "text-white hover:bg-white/5"
+                    ? "text-marker-start bg-chalk/5"
+                    : "text-chalk hover:bg-chalk/5"
                 }`}
                 onClick={() => setMobileSolutionsOpen(!mobileSolutionsOpen)}
               >
@@ -283,8 +282,8 @@ export const rootRoute = createRootRoute({
                   to="/shopify-profit-recovery"
                   className={`block pl-8 pr-4 py-2.5 rounded-lg text-sm transition-colors duration-200 ${
                     isShopifyPage
-                      ? "text-marker-start bg-white/5"
-                      : "text-chalk hover:text-white hover:bg-white/5"
+                      ? "text-marker-start bg-chalk/5"
+                      : "text-chalk hover:text-chalk hover:bg-chalk/5"
                   }`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
@@ -294,8 +293,8 @@ export const rootRoute = createRootRoute({
                   to="/agentic-bi"
                   className={`block pl-8 pr-4 py-2.5 rounded-lg text-sm transition-colors duration-200 ${
                     isAgenticBIPage
-                      ? "text-marker-start bg-white/5"
-                      : "text-chalk hover:text-white hover:bg-white/5"
+                      ? "text-marker-start bg-chalk/5"
+                      : "text-chalk hover:text-chalk hover:bg-chalk/5"
                   }`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
@@ -312,8 +311,8 @@ export const rootRoute = createRootRoute({
                   <span
                     className={`block px-4 py-3 rounded-lg font-semibold transition-colors duration-200 ${
                       isActive
-                        ? "text-marker-start bg-white/5"
-                        : "text-white hover:bg-white/5"
+                        ? "text-marker-start bg-chalk/5"
+                        : "text-chalk hover:bg-chalk/5"
                     }`}
                   >
                     Portfolio
@@ -330,8 +329,8 @@ export const rootRoute = createRootRoute({
                   <span
                     className={`block px-4 py-3 rounded-lg font-semibold transition-colors duration-200 ${
                       isActive
-                        ? "text-marker-start bg-white/5"
-                        : "text-white hover:bg-white/5"
+                        ? "text-marker-start bg-chalk/5"
+                        : "text-chalk hover:bg-chalk/5"
                     }`}
                   >
                     How We Work
@@ -348,8 +347,8 @@ export const rootRoute = createRootRoute({
                   <span
                     className={`block px-4 py-3 rounded-lg font-semibold transition-colors duration-200 ${
                       isActive
-                        ? "text-marker-start bg-white/5"
-                        : "text-white hover:bg-white/5"
+                        ? "text-marker-start bg-chalk/5"
+                        : "text-chalk hover:bg-chalk/5"
                     }`}
                   >
                     Insights
@@ -358,7 +357,7 @@ export const rootRoute = createRootRoute({
               </Link>
 
               {/* Divider */}
-              <div className="my-3 border-t border-white/10" />
+              <div className="my-3 border-t border-chalk/10" />
 
               <Link
                 to="/demo"
