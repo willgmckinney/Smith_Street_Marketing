@@ -166,14 +166,23 @@ export const PortfolioPage = () => {
       <div className="relative bg-drafting-surface py-2cell border-b border-chalk/10 overflow-hidden">
         <BlueprintGrid opacity={0.55} />
         <div className="max-w-7xl mx-auto px-cell relative z-10">
-          <SpecLabel className="mb-4">recent builds</SpecLabel>
-          <h1 className="font-display text-display-2 text-chalk font-extrabold mb-6">
-            The work
-          </h1>
-          <DimensionLine label="jobs completed" className="max-w-xs mb-8" />
-          <p className="font-sans text-body text-chalk/70 max-w-2xl">
-            From a two-person startup to Airbus. Same standard either way.
-          </p>
+          <SpecLabel className="mb-cell">recent builds</SpecLabel>
+          <div className="flex items-start gap-4 sm:gap-cell">
+            <span className="font-mono text-label-mono text-marker-start mt-2">
+              01
+            </span>
+            <div>
+              <h1 className="font-display text-display-2 text-chalk font-extrabold leading-[0.95]">
+                The
+                <br />
+                work
+              </h1>
+              <DimensionLine label="jobs completed" className="max-w-xs my-6" />
+              <p className="font-sans text-body text-chalk/70 max-w-2xl">
+                From a two-person startup to Airbus. Same standard either way.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 

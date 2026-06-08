@@ -12,7 +12,7 @@ export const DimensionLine = ({ label, className = "" }: DimensionLineProps) => 
         <div className="w-px h-2 bg-marker-start/60" />
       </div>
       {label && (
-        <span className="font-mono text-xs text-marker-start/80 tracking-wider shrink-0">
+        <span className="font-mono text-label-mono text-marker-start/80 lowercase shrink-0">
           {label}
         </span>
       )}
