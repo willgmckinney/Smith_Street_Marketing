@@ -134,14 +134,14 @@ export const CliffFace = ({ scrollProgress }: CliffFaceProps) => {
         >
           <div className="flex flex-col items-center gap-2">
             <svg
-              className="w-8 h-8 text-sunrise-amber"
+              className="w-8 h-8 text-annotation-blue"
               viewBox="0 0 24 24"
               fill="currentColor"
             >
               <path d="M4 21V4l8 4.5L12 4l8 4.5V21" />
               <path d="M4 4l8 4.5" stroke="currentColor" strokeWidth="2" fill="none" />
             </svg>
-            <span className="font-mono text-xs text-sunrise-amber/80 tracking-[0.2em] uppercase">
+            <span className="font-mono text-xs text-annotation-blue/80 tracking-[0.2em] uppercase">
               Summit
             </span>
           </div>

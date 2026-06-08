@@ -27,14 +27,14 @@ export const SupportPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-deep-horizon pt-24">
+    <div className="min-h-screen bg-blueprint-base pt-24">
       {/* Hero Section */}
-      <div className="bg-atmospheric-haze py-20 border-b border-white/5">
+      <div className="bg-drafting-surface py-20 border-b border-white/5">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-golden-hour-start to-golden-hour-end font-bold mb-6">
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-marker-start to-marker-end font-bold mb-6">
             Support Center
           </h1>
-          <p className="font-sans text-xl md:text-2xl text-granite max-w-3xl mx-auto leading-relaxed">
+          <p className="font-sans text-xl md:text-2xl text-chalk max-w-3xl mx-auto leading-relaxed">
             Find answers to common questions and get the support you need to
             succeed.
           </p>
@@ -51,10 +51,10 @@ export const SupportPage = () => {
             <div className="space-y-6">
               {faqItems.map((item, index) => (
                 <SummitCard key={index} className="p-8">
-                  <h3 className="font-display text-xl font-bold text-golden-hour-start mb-4">
+                  <h3 className="font-display text-xl font-bold text-marker-start mb-4">
                     {item.question}
                   </h3>
-                  <p className="font-sans text-granite/70 leading-relaxed">
+                  <p className="font-sans text-chalk/70 leading-relaxed">
                     {item.answer}
                   </p>
                 </SummitCard>
@@ -65,13 +65,13 @@ export const SupportPage = () => {
       </div>
 
       {/* Contact Support Section */}
-      <div className="bg-atmospheric-haze py-20 border-t border-white/5">
+      <div className="bg-drafting-surface py-20 border-t border-white/5">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="font-display text-3xl md:text-4xl text-white font-bold mb-8">
               Need More Help?
             </h2>
-            <p className="font-sans text-lg md:text-xl text-granite/80 mb-10 leading-relaxed">
+            <p className="font-sans text-lg md:text-xl text-chalk/80 mb-10 leading-relaxed">
               Our support team is here to help you with any questions or
               concerns.
             </p>

@@ -25,7 +25,7 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ postId }) => {
     <article className="min-h-screen pt-24 pb-20">
       {/* Header Image/Background */}
       <div className="relative h-[40vh] w-full overflow-hidden mb-12">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-deep-horizon z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-blueprint-base z-10" />
         {post.imageUrl ? (
           <img
             src={post.imageUrl}
@@ -33,12 +33,12 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ postId }) => {
             className="w-full h-full object-cover opacity-60"
           />
         ) : (
-          <div className="w-full h-full bg-atmospheric-haze" />
+          <div className="w-full h-full bg-drafting-surface" />
         )}
 
         <div className="absolute bottom-0 left-0 right-0 z-20 px-4 sm:px-6 lg:px-8 pb-12">
           <div className="max-w-3xl mx-auto">
-            <span className="inline-block px-3 py-1 mb-4 text-xs font-bold text-deep-horizon bg-golden-hour-start rounded-full shadow-lg">
+            <span className="inline-block px-3 py-1 mb-4 text-xs font-bold text-blueprint-base bg-marker-start rounded-full shadow-lg">
               {post.category}
             </span>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white mb-6 leading-tight">
@@ -67,9 +67,9 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ postId }) => {
           className="prose prose-lg prose-invert max-w-none 
                 prose-headings:font-display prose-headings:font-bold prose-headings:text-white
                 prose-p:text-gray-300 prose-p:leading-relaxed
-                prose-a:text-golden-hour-start prose-a:no-underline hover:prose-a:underline
+                prose-a:text-marker-start prose-a:no-underline hover:prose-a:underline
                 prose-strong:text-white
-                prose-blockquote:border-l-golden-hour-start prose-blockquote:bg-white/5 prose-blockquote:p-4 prose-blockquote:rounded-r-lg
+                prose-blockquote:border-l-marker-start prose-blockquote:bg-white/5 prose-blockquote:p-4 prose-blockquote:rounded-r-lg
                 prose-table:text-gray-300 prose-th:text-white prose-td:text-gray-300
                 prose-ul:text-gray-300 prose-ol:text-gray-300 prose-li:text-gray-300
                 prose-h2:text-white prose-h3:text-white prose-h2:mt-8 prose-h3:mt-6"

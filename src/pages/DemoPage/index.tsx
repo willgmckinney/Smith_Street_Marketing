@@ -3,7 +3,7 @@ import { ApolloContactForm } from "./Components/ApolloContactForm";
 
 export const DemoPage = () => {
   return (
-    <div className="min-h-screen bg-deep-horizon pt-24 relative overflow-hidden">
+    <div className="min-h-screen bg-blueprint-base pt-24 relative overflow-hidden">
       {/* Background Overlay */}
       <div
         className="absolute inset-0 z-0 opacity-20"
@@ -15,7 +15,7 @@ export const DemoPage = () => {
           backgroundRepeat: "no-repeat",
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-deep-horizon via-transparent to-deep-horizon z-0 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-blueprint-base via-transparent to-blueprint-base z-0 pointer-events-none" />
 
       <div className="container mx-auto px-4 py-16 relative z-10">
         <div className="flex flex-col lg:flex-row items-start gap-12 lg:gap-20">
@@ -23,7 +23,7 @@ export const DemoPage = () => {
           <div className="lg:w-1/2 pt-8">
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-white leading-tight">
               Let's discuss your{" "}
-              <span className="text-golden-hour-start">
+              <span className="text-marker-start">
                 unique requirements
               </span>
             </h1>
@@ -40,9 +40,9 @@ export const DemoPage = () => {
                   "Learn about our enterprise-grade support options",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start">
-                    <div className="bg-golden-gradient p-1 rounded-full mr-4 mt-1">
+                    <div className="bg-marker-gradient p-1 rounded-full mr-4 mt-1">
                       <svg
-                        className="w-4 h-4 text-deep-horizon"
+                        className="w-4 h-4 text-blueprint-base"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -55,7 +55,7 @@ export const DemoPage = () => {
                         />
                       </svg>
                     </div>
-                    <span className="text-xl text-granite/80 font-sans">
+                    <span className="text-xl text-chalk/80 font-sans">
                       {item}
                     </span>
                   </li>

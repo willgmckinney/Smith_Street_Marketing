@@ -80,7 +80,7 @@ export const ProgressIndicator = ({
 
         {/* Label */}
         <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap">
-          <span className="font-mono text-[9px] text-cliff-light tracking-[0.15em] uppercase">
+          <span className="font-mono text-[9px] text-sheet-light tracking-[0.15em] uppercase">
             Altitude
           </span>
         </div>

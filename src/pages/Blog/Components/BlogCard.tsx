@@ -19,12 +19,12 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
-          <div className="w-full h-full bg-deep-horizon flex items-center justify-center">
+          <div className="w-full h-full bg-blueprint-base flex items-center justify-center">
             <span className="text-4xl">📄</span>
           </div>
         )}
         <div className="absolute top-4 left-4">
-          <span className="px-3 py-1 text-xs font-bold text-deep-horizon bg-golden-hour-start rounded-full shadow-lg">
+          <span className="px-3 py-1 text-xs font-bold text-blueprint-base bg-marker-start rounded-full shadow-lg">
             {post.category}
           </span>
         </div>
@@ -37,7 +37,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
           <span>{post.readTime}</span>
         </div>
 
-        <h3 className="text-xl font-display font-bold text-granite mb-3 group-hover:text-golden-hour-start transition-colors">
+        <h3 className="text-xl font-display font-bold text-chalk mb-3 group-hover:text-marker-start transition-colors">
           {post.title}
         </h3>
 

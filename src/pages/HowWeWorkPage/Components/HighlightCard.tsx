@@ -74,14 +74,14 @@ export const HighlightCard = ({
       <div
         className={`
           relative p-6 md:p-8 rounded-2xl
-          bg-atmospheric-haze/90 backdrop-blur-xl
+          bg-drafting-surface/90 backdrop-blur-xl
           border transition-all duration-500
           ${
             isVisible
-              ? "border-sunrise-amber/30 shadow-[0_8px_32px_rgba(100,181,246,0.15)]"
+              ? "border-annotation-blue/30 shadow-[0_8px_32px_rgba(100,181,246,0.15)]"
               : "border-white/5 shadow-lg"
           }
-          ${isLastMilestone && isVisible ? "ring-2 ring-golden-hour-start/30" : ""}
+          ${isLastMilestone && isVisible ? "ring-2 ring-marker-start/30" : ""}
         `}
       >
         {/* Top rim light */}
@@ -95,8 +95,8 @@ export const HighlightCard = ({
               transition-all duration-500
               ${
                 isVisible
-                  ? "bg-gradient-to-br from-sunrise-amber to-golden-hour-start text-deep-horizon"
-                  : "bg-cliff-mid text-cliff-light"
+                  ? "bg-gradient-to-br from-annotation-blue to-marker-start text-blueprint-base"
+                  : "bg-sheet-mid text-sheet-light"
               }
             `}
           >
@@ -107,7 +107,7 @@ export const HighlightCard = ({
             <span
               className={`
                 font-mono text-[10px] tracking-[0.2em] uppercase
-                ${isVisible ? "text-sunrise-amber" : "text-cliff-light"}
+                ${isVisible ? "text-annotation-blue" : "text-sheet-light"}
               `}
             >
               Camp {milestoneNumber} of {totalMilestones}
@@ -121,7 +121,7 @@ export const HighlightCard = ({
           className={`
             font-display text-xl md:text-2xl font-bold mb-3
             transition-colors duration-500
-            ${isVisible ? "text-white" : "text-granite/40"}
+            ${isVisible ? "text-white" : "text-chalk/40"}
           `}
         >
           {content.title}
@@ -132,7 +132,7 @@ export const HighlightCard = ({
           className={`
             text-sm md:text-base leading-relaxed mb-6
             transition-colors duration-500
-            ${isVisible ? "text-granite/80" : "text-granite/30"}
+            ${isVisible ? "text-chalk/80" : "text-chalk/30"}
           `}
         >
           {content.description}
@@ -152,7 +152,7 @@ export const HighlightCard = ({
                   className={`
                     font-mono text-2xl md:text-3xl font-bold leading-none
                     transition-colors duration-500
-                    ${isVisible ? "text-alpine-ice" : "text-cliff-light"}
+                    ${isVisible ? "text-grid-line" : "text-sheet-light"}
                   `}
                 >
                   {metric.value}
@@ -161,7 +161,7 @@ export const HighlightCard = ({
                   className={`
                     text-[10px] uppercase tracking-wider mt-1
                     transition-colors duration-500
-                    ${isVisible ? "text-granite/50" : "text-granite/20"}
+                    ${isVisible ? "text-chalk/50" : "text-chalk/20"}
                   `}
                 >
                   {metric.label}
@@ -178,7 +178,7 @@ export const HighlightCard = ({
             transition-all duration-500
             ${
               isVisible
-                ? "bg-gradient-to-r from-sunrise-amber/60 to-transparent"
+                ? "bg-gradient-to-r from-annotation-blue/60 to-transparent"
                 : "bg-white/5"
             }
             ${side === "left" ? "right-0 translate-x-full" : "left-0 -translate-x-full rotate-180"}

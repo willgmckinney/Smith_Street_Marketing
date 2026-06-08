@@ -147,15 +147,15 @@ export const MountainTimeline = ({
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
-            <div className="w-2 h-2 rounded-full bg-golden-hour-start animate-pulse" />
-            <span className="font-mono text-xs text-granite/60 tracking-wider uppercase">
+            <div className="w-2 h-2 rounded-full bg-marker-start animate-pulse" />
+            <span className="font-mono text-xs text-chalk/60 tracking-wider uppercase">
               Base Camp — Start Here
             </span>
           </div>
           <h2 className="font-display text-2xl md:text-3xl text-white mb-3">
             Your Ascent Begins
           </h2>
-          <p className="text-granite/60 max-w-xl mx-auto text-sm md:text-base">
+          <p className="text-chalk/60 max-w-xl mx-auto text-sm md:text-base">
             Follow the rope up the mountain to see each phase of your engagement.
             Each piton marks a critical milestone on the path to your summit.
           </p>
@@ -246,7 +246,7 @@ export const MountainTimeline = ({
             />
 
             <svg
-              className="w-16 h-16 mx-auto mb-6 text-sunrise-amber"
+              className="w-16 h-16 mx-auto mb-6 text-annotation-blue"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -261,14 +261,14 @@ export const MountainTimeline = ({
           <h2 className="font-display text-3xl md:text-4xl text-white mb-4">
             Summit Reached
           </h2>
-          <p className="text-granite/60 max-w-lg mx-auto mb-8 text-sm md:text-base">
+          <p className="text-chalk/60 max-w-lg mx-auto mb-8 text-sm md:text-base">
             From base camp to the peak, we're with you every step. Ready to
             start your ascent?
           </p>
 
           <a
             href="/demo"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-golden-hour-start to-golden-hour-end text-deep-horizon font-display font-bold text-lg shadow-button-glow hover:-translate-y-0.5 transition-all duration-300 active:scale-95"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-marker-start to-marker-end text-blueprint-base font-display font-bold text-lg  hover:-translate-y-0.5 transition-all duration-300 active:scale-95"
           >
             Start Your Climb
             <svg

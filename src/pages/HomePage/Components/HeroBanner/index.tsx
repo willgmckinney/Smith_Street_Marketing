@@ -46,7 +46,7 @@ export const HeroBanner = () => {
   const words = ["Climb", "New", "Peaks"];
 
   return (
-    <div className="relative flex flex-col items-center justify-center h-screen w-full overflow-hidden bg-deep-horizon">
+    <div className="relative flex flex-col items-center justify-center h-screen w-full overflow-hidden bg-blueprint-base">
       {/* Video Background */}
       <video
         ref={videoRef}
@@ -60,12 +60,12 @@ export const HeroBanner = () => {
       </video>
 
       {/* Gradient Overlay (Bottom-up, subtle dark gradient) */}
-      <div className="absolute inset-0 bg-gradient-to-t from-deep-horizon via-deep-horizon/40 to-transparent z-1 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-blueprint-base via-blueprint-base/40 to-transparent z-1 pointer-events-none" />
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center space-y-8 sm:space-y-12 px-4">
         <h1
-          className="font-display font-extrabold text-granite text-center leading-tight drop-shadow-2xl"
+          className="font-display font-extrabold text-chalk text-center leading-tight drop-shadow-2xl"
           style={{
             textShadow: "0 4px 20px rgba(0,0,0,0.5)", // Soft, deep shadow
           }}
@@ -74,7 +74,7 @@ export const HeroBanner = () => {
             {words.map((word, index) => (
               <span
                 key={index}
-                className={`transition-all duration-1000 ease-bouncy ${
+                className={`transition-all duration-1000 ease-spec ${
                   visibleWords[index]
                     ? "opacity-100 translate-y-0 scale-100"
                     : "opacity-0 translate-y-10 scale-90"

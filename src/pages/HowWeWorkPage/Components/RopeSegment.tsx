@@ -81,7 +81,7 @@ export const RopeSegment = ({ isActive, isPassed, isLast }: RopeSegmentProps) =>
           <div
             className={`
               w-3 h-3 rounded-full border-2 transition-colors duration-700
-              ${lit ? "bg-rope-gold border-rope-tan" : "bg-cliff-mid border-cliff-light"}
+              ${lit ? "bg-beam-line border-beam-fill" : "bg-sheet-mid border-sheet-light"}
             `}
           />
         </div>

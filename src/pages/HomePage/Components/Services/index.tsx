@@ -35,7 +35,7 @@ const servicesList = [
 
 export const Services = () => {
   return (
-    <section className="bg-deep-horizon py-20 sm:py-32 px-4 sm:px-8 relative overflow-hidden">
+    <section className="bg-blueprint-base py-20 sm:py-32 px-4 sm:px-8 relative overflow-hidden">
       {/* Atmospheric background elements could be added here */}
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -43,14 +43,14 @@ export const Services = () => {
           <h2 className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70 mb-4">
             Our Services
           </h2>
-          <div className="h-1 w-24 bg-golden-gradient mx-auto rounded-full" />
+          <div className="h-1 w-24 bg-marker-gradient mx-auto rounded-full" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           {servicesList.map((service, index) => (
             <SummitCard key={index} className="flex flex-col h-full group">
-              <div className="h-64 overflow-hidden relative bg-deep-horizon">
-                <div className="absolute inset-0 bg-deep-horizon/20 z-10 group-hover:bg-transparent transition-colors duration-500" />
+              <div className="h-64 overflow-hidden relative bg-blueprint-base">
+                <div className="absolute inset-0 bg-blueprint-base/20 z-10 group-hover:bg-transparent transition-colors duration-500" />
                 <img
                   src={service.image}
                   alt={service.title}
@@ -58,10 +58,10 @@ export const Services = () => {
                 />
               </div>
               <div className="p-8 flex-1 flex flex-col">
-                <h3 className="font-display font-bold text-2xl text-white mb-4 group-hover:text-golden-hour-start transition-colors">
+                <h3 className="font-display font-bold text-2xl text-white mb-4 group-hover:text-marker-start transition-colors">
                   {service.title}
                 </h3>
-                <p className="font-sans text-granite/80 text-lg leading-relaxed flex-1">
+                <p className="font-sans text-chalk/80 text-lg leading-relaxed flex-1">
                   {service.description}
                 </p>
               </div>

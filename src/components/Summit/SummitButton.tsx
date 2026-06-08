@@ -14,15 +14,15 @@ export const SummitButton: React.FC<SummitButtonProps> = ({
   ...props
 }) => {
   const baseStyles =
-    "font-display font-bold rounded-pill transition-all duration-300 ease-bouncy active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center";
+    "font-display font-bold rounded-pill transition-all duration-300 ease-spec active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center";
 
   const variants = {
     primary:
-      "bg-golden-gradient text-deep-horizon shadow-button-glow hover:-translate-y-[2px] hover:brightness-110",
+      "bg-marker-gradient text-blueprint-base  hover:-translate-y-[2px] hover:brightness-110",
     secondary:
-      "bg-atmospheric-haze text-granite border border-white/10 hover:bg-slate-700 hover:-translate-y-[2px]",
+      "bg-drafting-surface text-chalk border border-white/10 hover:bg-slate-700 hover:-translate-y-[2px]",
     outline:
-      "bg-transparent border-2 border-golden-hour-start text-golden-hour-start hover:bg-golden-hour-start/10",
+      "bg-transparent border-2 border-marker-start text-marker-start hover:bg-marker-start/10",
   };
 
   const sizes = {

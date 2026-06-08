@@ -2,18 +2,18 @@ import { ProjectCard } from "./Components/ProjectCard";
 
 export const PortfolioPage = () => {
   return (
-    <div className="min-h-screen bg-deep-horizon pt-24">
-      <div className="bg-atmospheric-haze py-20 border-b border-white/5">
+    <div className="min-h-screen bg-blueprint-base pt-24">
+      <div className="bg-drafting-surface py-20 border-b border-white/5">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-golden-hour-start to-golden-hour-end font-bold mb-6">
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-marker-start to-marker-end font-bold mb-6">
             Our Portfolio
           </h1>
           <div className="max-w-4xl mx-auto">
-            <p className="font-sans text-xl text-granite leading-relaxed mb-6">
+            <p className="font-sans text-xl text-chalk leading-relaxed mb-6">
               At Smith Avenue Insights, we specialize in creating innovative
               digital solutions that drive business growth.
             </p>
-            <p className="font-sans text-lg text-granite/70 leading-relaxed">
+            <p className="font-sans text-lg text-chalk/70 leading-relaxed">
               Scalable. Maintainable. User-centric.
             </p>
           </div>

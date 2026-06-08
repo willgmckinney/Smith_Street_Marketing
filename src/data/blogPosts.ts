@@ -297,11 +297,11 @@ export const blogPosts: BlogPost[] = [
       <div class="mt-8 p-6 bg-white/5 rounded-lg border border-white/10">
         <h3 class="text-lg font-bold mb-4">Key References</h3>
         <ul class="space-y-2 text-sm text-gray-300">
-          <li>• AWS Free Tier: <a href="https://aws.amazon.com/free/" class="text-golden-hour-start hover:underline" target="_blank" rel="noopener noreferrer">aws.amazon.com/free/</a></li>
-          <li>• Azure Free Account: <a href="https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account" class="text-golden-hour-start hover:underline" target="_blank" rel="noopener noreferrer">azure.microsoft.com</a></li>
-          <li>• Google Cloud Free Program: <a href="https://docs.cloud.google.com/free/docs/free-cloud-features" class="text-golden-hour-start hover:underline" target="_blank" rel="noopener noreferrer">docs.cloud.google.com</a></li>
-          <li>• AWS HIPAA Compliance: <a href="https://aws.amazon.com/compliance/hipaa-compliance/" class="text-golden-hour-start hover:underline" target="_blank" rel="noopener noreferrer">aws.amazon.com/compliance/hipaa-compliance/</a></li>
-          <li>• Azure GxP Guidelines: <a href="https://azure.microsoft.com/en-us/blog/new-azure-gxp-guidelines-help-pharmaceutical-and-biotech-customers-build-gxp-solutions/" class="text-golden-hour-start hover:underline" target="_blank" rel="noopener noreferrer">azure.microsoft.com</a></li>
+          <li>• AWS Free Tier: <a href="https://aws.amazon.com/free/" class="text-marker-start hover:underline" target="_blank" rel="noopener noreferrer">aws.amazon.com/free/</a></li>
+          <li>• Azure Free Account: <a href="https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account" class="text-marker-start hover:underline" target="_blank" rel="noopener noreferrer">azure.microsoft.com</a></li>
+          <li>• Google Cloud Free Program: <a href="https://docs.cloud.google.com/free/docs/free-cloud-features" class="text-marker-start hover:underline" target="_blank" rel="noopener noreferrer">docs.cloud.google.com</a></li>
+          <li>• AWS HIPAA Compliance: <a href="https://aws.amazon.com/compliance/hipaa-compliance/" class="text-marker-start hover:underline" target="_blank" rel="noopener noreferrer">aws.amazon.com/compliance/hipaa-compliance/</a></li>
+          <li>• Azure GxP Guidelines: <a href="https://azure.microsoft.com/en-us/blog/new-azure-gxp-guidelines-help-pharmaceutical-and-biotech-customers-build-gxp-solutions/" class="text-marker-start hover:underline" target="_blank" rel="noopener noreferrer">azure.microsoft.com</a></li>
           <li>• AWS vs Azure vs GCP Comparisons: BMC Software, DevZero, EffectiveSoft, Jit.io, DEV Community</li>
         </ul>
       </div>

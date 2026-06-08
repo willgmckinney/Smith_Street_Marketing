@@ -33,13 +33,13 @@ const teamList = [
 
 export const Team = () => {
   return (
-    <section className="bg-deep-horizon py-20 sm:py-32 px-4 sm:px-8 relative">
+    <section className="bg-blueprint-base py-20 sm:py-32 px-4 sm:px-8 relative">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20 space-y-4">
           <h2 className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl text-white">
             The Team
           </h2>
-          <p className="text-xl text-granite/70 max-w-2xl mx-auto">
+          <p className="text-xl text-chalk/70 max-w-2xl mx-auto">
             Expert climbers guiding your ascent.
           </p>
         </div>
@@ -48,14 +48,14 @@ export const Team = () => {
           {teamList.map((teamMember) => (
             <SummitCard
               key={teamMember.name}
-              className="flex flex-col items-center text-center p-6 h-full hover:bg-atmospheric-haze/90 transition-colors"
+              className="flex flex-col items-center text-center p-6 h-full hover:bg-drafting-surface/90 transition-colors"
             >
               <div className="w-32 h-32 mb-6 rounded-full p-1 bg-white shadow-lg">
                 <img
                   src={teamMember.profilePicture}
                   alt={teamMember.name}
                   loading="eager"
-                  className={`w-full h-full object-cover rounded-full border-4 border-deep-horizon ${
+                  className={`w-full h-full object-cover rounded-full border-4 border-blueprint-base ${
                     teamMember.name === "Germayne Curry"
                       ? "object-[center_10%]"
                       : "object-center"
@@ -66,9 +66,9 @@ export const Team = () => {
               <h3 className="font-display font-bold text-xl text-white mb-2">
                 {teamMember.name}
               </h3>
-              {/* <p className="text-golden-hour-start text-sm font-bold uppercase tracking-wider mb-4">{teamMember.role}</p> */}
+              {/* <p className="text-marker-start text-sm font-bold uppercase tracking-wider mb-4">{teamMember.role}</p> */}
 
-              <p className="font-sans text-sm text-granite/70 leading-relaxed">
+              <p className="font-sans text-sm text-chalk/70 leading-relaxed">
                 {teamMember.bio}
               </p>
             </SummitCard>

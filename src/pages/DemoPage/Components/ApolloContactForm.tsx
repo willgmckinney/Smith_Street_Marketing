@@ -4,7 +4,7 @@ import { SummitButton } from "../../../components/Summit/SummitButton";
 const APOLLO_FORM_ID = "apollo-demo-form";
 
 const inputBase =
-  "w-full rounded-xl px-4 py-3.5 text-deep-horizon placeholder:text-atmospheric-haze/50 border-2 bg-white/80 backdrop-blur-sm transition-all duration-300 ease-bouncy focus:outline-none focus:border-golden-hour-start focus:ring-4 focus:ring-golden-hour-start/15 focus:bg-white hover:border-atmospheric-haze/40";
+  "w-full rounded-xl px-4 py-3.5 text-blueprint-base placeholder:text-drafting-surface/50 border-2 bg-white/80 backdrop-blur-sm transition-all duration-300 ease-spec focus:outline-none focus:border-marker-start focus:ring-4 focus:ring-marker-start/15 focus:bg-white hover:border-drafting-surface/40";
 
 export const ApolloContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -103,25 +103,25 @@ export const ApolloContactForm = () => {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-white via-granite/30 to-golden-hour-start/5 p-6 sm:p-8 shadow-rim-card border border-white/60">
+    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-white via-chalk/30 to-marker-start/5 p-6 sm:p-8 border border-chalk/10 border border-white/60">
       {/* Soft accent glow */}
       <div
-        className="pointer-events-none absolute -top-12 -right-12 h-32 w-32 rounded-full bg-golden-hour-start/10 blur-3xl"
+        className="pointer-events-none absolute -top-12 -right-12 h-32 w-32 rounded-full bg-marker-start/10 blur-3xl"
         aria-hidden
       />
 
       <div className="relative space-y-6">
         <div className="space-y-2">
-          <h2 className="font-display text-2xl sm:text-3xl font-bold text-deep-horizon leading-tight">
+          <h2 className="font-display text-2xl sm:text-3xl font-bold text-blueprint-base leading-tight">
             Let's find a time that works
           </h2>
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 pt-1 text-xs text-atmospheric-haze/70">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 pt-1 text-xs text-drafting-surface/70">
             <span className="flex items-center gap-1.5">
-              <span className="h-1.5 w-1.5 rounded-full bg-golden-hour-start" />
+              <span className="h-1.5 w-1.5 rounded-full bg-marker-start" />
               ~30 min
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="h-1.5 w-1.5 rounded-full bg-golden-hour-start" />
+              <span className="h-1.5 w-1.5 rounded-full bg-marker-start" />
               No commitment
             </span>
           </div>
@@ -142,7 +142,7 @@ export const ApolloContactForm = () => {
           <div className="space-y-2">
             <label
               htmlFor="apollo-name"
-              className="block text-sm font-semibold text-deep-horizon/90"
+              className="block text-sm font-semibold text-blueprint-base/90"
             >
               Full name
             </label>
@@ -152,7 +152,7 @@ export const ApolloContactForm = () => {
               name="name"
               autoComplete="name"
               placeholder="e.g. Jordan Smith"
-              className={`${inputBase} ${fieldErrors.name ? "border-red-400" : "border-atmospheric-haze/20"}`}
+              className={`${inputBase} ${fieldErrors.name ? "border-red-400" : "border-drafting-surface/20"}`}
               onChange={() =>
                 fieldErrors.name &&
                 setFieldErrors((prev) => ({ ...prev, name: undefined }))
@@ -166,7 +166,7 @@ export const ApolloContactForm = () => {
           <div className="space-y-2">
             <label
               htmlFor="apollo-email"
-              className="block text-sm font-semibold text-deep-horizon/90"
+              className="block text-sm font-semibold text-blueprint-base/90"
             >
               Email address
             </label>
@@ -176,7 +176,7 @@ export const ApolloContactForm = () => {
               name="email"
               autoComplete="email"
               placeholder="you@company.com"
-              className={`${inputBase} ${fieldErrors.email ? "border-red-400" : "border-atmospheric-haze/20"}`}
+              className={`${inputBase} ${fieldErrors.email ? "border-red-400" : "border-drafting-surface/20"}`}
               onChange={() =>
                 fieldErrors.email &&
                 setFieldErrors((prev) => ({ ...prev, email: undefined }))
@@ -195,7 +195,7 @@ export const ApolloContactForm = () => {
             >
               {isSubmitting ? (
                 <span className="flex items-center justify-center gap-2">
-                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-deep-horizon/30 border-t-deep-horizon" />
+                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-blueprint-base/30 border-t-blueprint-base" />
                   Opening calendar…
                 </span>
               ) : (

@@ -25,7 +25,7 @@ export default function BlogPage() {
       </div>
 
       {/* Newsletter / CTA Section
-      <div className="max-w-4xl mx-auto mt-24 text-center bg-atmospheric-haze/50 rounded-card p-12 border border-white/5">
+      <div className="max-w-4xl mx-auto mt-24 text-center bg-drafting-surface/50 rounded-card p-12 border border-white/5">
         <h2 className="text-3xl font-display font-bold mb-4">
           Stay in the Loop
         </h2>
@@ -37,7 +37,7 @@ export default function BlogPage() {
           <input
             type="email"
             placeholder="Enter your email"
-            className="px-4 py-3 rounded-lg bg-deep-horizon border border-gray-700 text-white focus:outline-none focus:border-golden-hour-start flex-grow"
+            className="px-4 py-3 rounded-lg bg-blueprint-base border border-gray-700 text-white focus:outline-none focus:border-marker-start flex-grow"
           />
           <SummitButton>Subscribe</SummitButton>
         </div>

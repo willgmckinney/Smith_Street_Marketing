@@ -56,7 +56,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-atmospheric-haze border-t border-white/10 text-granite">
+    <footer className="bg-drafting-surface border-t border-white/10 text-chalk">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row">
         {/* Contact Form Section */}
         <div className="w-full lg:w-1/2 p-8 sm:p-12 border-b lg:border-b-0 lg:border-r border-white/10">
@@ -71,17 +71,17 @@ const Footer = () => {
             </span>
           </div>
 
-          <h3 className="font-display font-bold text-xl text-golden-hour-start mb-6">
+          <h3 className="font-display font-bold text-xl text-marker-start mb-6">
             Contact Us
           </h3>
 
           <form onSubmit={sendEmail} className="space-y-6 max-w-md">
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-granite/80">
+              <label className="block text-sm font-medium text-chalk/80">
                 Name
               </label>
               <input
-                className="w-full bg-deep-horizon/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-golden-hour-start focus:ring-1 focus:ring-golden-hour-start transition-all"
+                className="w-full bg-blueprint-base/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-marker-start focus:ring-1 focus:ring-marker-start transition-all"
                 type="text"
                 name="from_name"
                 required
@@ -90,11 +90,11 @@ const Footer = () => {
             </div>
 
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-granite/80">
+              <label className="block text-sm font-medium text-chalk/80">
                 Email
               </label>
               <input
-                className="w-full bg-deep-horizon/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-golden-hour-start focus:ring-1 focus:ring-golden-hour-start transition-all"
+                className="w-full bg-blueprint-base/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-marker-start focus:ring-1 focus:ring-marker-start transition-all"
                 type="email"
                 name="reply_to"
                 required
@@ -103,11 +103,11 @@ const Footer = () => {
             </div>
 
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-granite/80">
+              <label className="block text-sm font-medium text-chalk/80">
                 Message
               </label>
               <textarea
-                className="w-full bg-deep-horizon/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-golden-hour-start focus:ring-1 focus:ring-golden-hour-start transition-all"
+                className="w-full bg-blueprint-base/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-marker-start focus:ring-1 focus:ring-marker-start transition-all"
                 name="message"
                 required
                 rows={4}
@@ -127,7 +127,7 @@ const Footer = () => {
 
             {stateMessage && (
               <p
-                className={`text-sm mt-4 ${stateMessage.includes("wrong") ? "text-red-400" : "text-alpine-flora"}`}
+                className={`text-sm mt-4 ${stateMessage.includes("wrong") ? "text-red-400" : "text-verified"}`}
               >
                 {stateMessage}
               </p>
@@ -136,7 +136,7 @@ const Footer = () => {
         </div>
 
         {/* Navigation Section */}
-        <div className="w-full lg:w-1/2 p-8 sm:p-12 bg-deep-horizon/30">
+        <div className="w-full lg:w-1/2 p-8 sm:p-12 bg-blueprint-base/30">
           <h3 className="font-display font-bold text-xl text-white mb-8">
             Menu
           </h3>
@@ -150,14 +150,14 @@ const Footer = () => {
               <Link
                 key={link.to}
                 to={link.to}
-                className="text-lg text-granite/70 hover:text-golden-hour-start hover:translate-x-2 transition-all duration-300 w-fit"
+                className="text-lg text-chalk/70 hover:text-marker-start hover:translate-x-2 transition-all duration-300 w-fit"
               >
                 {link.label}
               </Link>
             ))}
           </nav>
 
-          <div className="mt-16 pt-8 border-t border-white/10 text-sm text-granite/40">
+          <div className="mt-16 pt-8 border-t border-white/10 text-sm text-chalk/40">
             &copy; {new Date().getFullYear()} Smith Avenue Insights. All rights
             reserved.
           </div>

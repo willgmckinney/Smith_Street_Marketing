@@ -16,7 +16,7 @@
 }
 
 body {
-  @apply bg-deep-horizon text-granite font-sans antialiased;
+  @apply bg-blueprint-base text-chalk font-sans antialiased;
   overflow-x: hidden;
 }
 
@@ -30,11 +30,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-deep-horizon;
+  @apply bg-blueprint-base;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-atmospheric-haze rounded-full border-2 border-deep-horizon;
+  @apply bg-drafting-surface rounded-full border-2 border-blueprint-base;
 }
 
 ::-webkit-scrollbar-thumb:hover {

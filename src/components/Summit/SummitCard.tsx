@@ -15,9 +15,9 @@ export const SummitCard: React.FC<SummitCardProps> = ({
     <div
       onClick={onClick}
       className={`
-        bg-atmospheric-haze/80 backdrop-blur-md 
+        bg-drafting-surface/80 backdrop-blur-md 
         border border-white/10 
-        shadow-rim-card rounded-card 
+        border border-chalk/10 rounded-card 
         relative overflow-hidden
         before:absolute before:inset-x-0 before:top-0 before:h-[1px] before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent
         ${onClick ? "cursor-pointer transition-transform duration-300 hover:-translate-y-1" : ""}

@@ -24,7 +24,7 @@ export const ProjectCard = ({
     >
       <SummitCard className="h-full group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
         {/* Background Image Container */}
-        <div className="relative h-64 w-full overflow-hidden border-b border-white/10 bg-deep-horizon">
+        <div className="relative h-64 w-full overflow-hidden border-b border-white/10 bg-blueprint-base">
           <img
             src={imageUrl}
             alt={title}
@@ -32,13 +32,13 @@ export const ProjectCard = ({
           />
 
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-deep-horizon via-deep-horizon/50 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500" />
+          <div className="absolute inset-0 bg-gradient-to-t from-blueprint-base via-blueprint-base/50 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500" />
 
           {/* View Project Indicator */}
           <div className="absolute bottom-4 right-4 translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-            <div className="bg-golden-gradient p-2 rounded-full shadow-lg">
+            <div className="bg-marker-gradient p-2 rounded-full shadow-lg">
               <svg
-                className="w-6 h-6 text-deep-horizon"
+                className="w-6 h-6 text-blueprint-base"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -56,11 +56,11 @@ export const ProjectCard = ({
 
         {/* Content */}
         <div className="p-6 flex flex-col h-[calc(100%-16rem)]">
-          <h3 className="font-display font-bold text-xl text-white mb-3 group-hover:text-golden-hour-start transition-colors">
+          <h3 className="font-display font-bold text-xl text-white mb-3 group-hover:text-marker-start transition-colors">
             {title}
           </h3>
 
-          <p className="font-sans text-sm text-granite/80 leading-relaxed mb-6 flex-grow">
+          <p className="font-sans text-sm text-chalk/80 leading-relaxed mb-6 flex-grow">
             {description}
           </p>
 
@@ -68,7 +68,7 @@ export const ProjectCard = ({
             {technologies.map((tech, index) => (
               <span
                 key={index}
-                className="px-3 py-1 bg-white/5 border border-white/10 text-granite text-xs rounded-full font-medium backdrop-blur-sm"
+                className="px-3 py-1 bg-white/5 border border-white/10 text-chalk text-xs rounded-full font-medium backdrop-blur-sm"
               >
                 {tech}
               </span>

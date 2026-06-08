@@ -34,10 +34,10 @@ export const Piton = ({ isActive, isPassed, number, side }: PitonProps) => {
           transition-all duration-500
           ${
             isActive
-              ? "bg-gradient-to-br from-sunrise-amber via-[#4A90B8] to-rope-gold shadow-[0_0_20px_rgba(100,181,246,0.4)]"
+              ? "bg-gradient-to-br from-annotation-blue via-[#4A90B8] to-beam-line shadow-[0_0_20px_rgba(100,181,246,0.4)]"
               : lit
                 ? "bg-gradient-to-br from-[#7A7A7A] to-[#5C5C5C] shadow-lg"
-                : "bg-gradient-to-br from-cliff-mid to-cliff-dark shadow-md"
+                : "bg-gradient-to-br from-sheet-mid to-sheet-dark shadow-md"
           }
         `}
       >
@@ -74,10 +74,10 @@ export const Piton = ({ isActive, isPassed, number, side }: PitonProps) => {
             transition-colors duration-500
             ${
               isActive
-                ? "bg-deep-horizon border-2 border-sunrise-amber/80"
+                ? "bg-blueprint-base border-2 border-annotation-blue/80"
                 : lit
-                  ? "bg-deep-horizon border-2 border-white/20"
-                  : "bg-deep-horizon border-2 border-white/10"
+                  ? "bg-blueprint-base border-2 border-white/20"
+                  : "bg-blueprint-base border-2 border-white/10"
             }
           `}
         />
@@ -87,7 +87,7 @@ export const Piton = ({ isActive, isPassed, number, side }: PitonProps) => {
           className={`
             relative font-mono text-sm font-bold leading-none
             transition-colors duration-500
-            ${isActive ? "text-deep-horizon" : lit ? "text-white/80" : "text-white/30"}
+            ${isActive ? "text-blueprint-base" : lit ? "text-white/80" : "text-white/30"}
           `}
         >
           {number}
