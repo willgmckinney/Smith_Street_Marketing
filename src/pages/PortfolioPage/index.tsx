@@ -2,7 +2,7 @@ import { DimensionLine } from "../../components/Blueprint/DimensionLine";
 import { SpecLabel } from "../../components/Blueprint/SpecLabel";
 import { BlueprintGrid } from "../../components/Blueprint/BlueprintGrid";
 import { AssetFrame } from "../../components/Blueprint/AssetFrame";
-import { SystemDiagram } from "../../components/Blueprint/SystemDiagram";
+import { ImageHunterDiagram } from "../../components/Blueprint/ImageHunterDiagram";
 import {
   LakehouseDiagram,
   CheckoutFlowDiagram,
@@ -28,16 +28,25 @@ const flagships: Entry[] = [
   {
     index: 1,
     client: "Apollo Mapping",
-    system: "ImageHunter API",
+    system: "ImageHunter",
     built:
-      "A geospatial imagery API that searches and orders satellite scenes across providers.",
-    stack: ["fastapi", "ecs fargate", "asyncpg", "redis", "aws cdk", "oauth 2.0"],
+      "A multi-repo satellite-imagery search-and-order system: a React SPA, a Flask backend, a Celery ingest and render pipeline, and a FastAPI partner API over a shared PostGIS catalog.",
+    stack: [
+      "react",
+      "leaflet",
+      "flask",
+      "postgis",
+      "celery",
+      "s3",
+      "fastapi",
+      "ecs fargate",
+    ],
     scale:
-      "oauth2 client-credentials api on ecs fargate serving production imagery traffic",
+      "postgis imagery catalog spanning ~35 vendor apis, with async preview rendering to s3",
     href: "https://imagehunter.apollomapping.com/",
     figure: 1,
-    caption: "imagehunter request path",
-    asset: <SystemDiagram className="w-full max-w-md mx-auto" />,
+    caption: "imagehunter system architecture",
+    asset: <ImageHunterDiagram className="w-full" />,
   },
   {
     index: 2,
