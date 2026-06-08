@@ -141,7 +141,7 @@ export const BuildTimeline = ({ activeService }: BuildTimelineProps) => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-spec bg-chalk/5 border border-chalk/10 mb-6">
             <div className="w-2 h-2 rounded-spec bg-marker-start animate-pulse" />
             <span className="font-mono text-xs text-chalk/60 tracking-wider lowercase">
-              foundation — start here
+              foundation: start here
             </span>
           </div>
           <h2 className="font-display text-2xl md:text-3xl text-chalk mb-3">

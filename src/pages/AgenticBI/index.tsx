@@ -901,7 +901,7 @@ export const AgenticBI = () => {
                   Dark Data Invisible
                 </h3>
                 <p className="text-chalk/70">
-                  Slack threads, support PDFs, Jira tickets—your legacy BI can't
+                  Slack threads, support PDFs, Jira tickets, your legacy BI can't
                   see the unstructured data where real insights hide.
                 </p>
               </div>
@@ -940,7 +940,7 @@ export const AgenticBI = () => {
             </h2>
             <p className="text-lg text-chalk/80 max-w-2xl mx-auto">
               While legacy tools query databases, Quick Index scans your entire
-              knowledge base—Slack, PDFs, Jira, and more.
+              knowledge base, Slack, PDFs, Jira, and more.
             </p>
           </div>
 
@@ -985,7 +985,7 @@ export const AgenticBI = () => {
                     Agents Take Action
                   </h3>
                   <p className="text-chalk/70">
-                    Quick Flows don't just report—they act. Create Jira tickets,
+                    Quick Flows don't just report, they act. Create Jira tickets,
                     send Slack alerts, and update CRMs automatically.
                   </p>
                 </div>
@@ -1020,7 +1020,7 @@ export const AgenticBI = () => {
                 A Fortune 500 manufacturer used Quick Index to scan support
                 tickets, Slack channels, and sales call transcripts. The AI
                 found a recurring product complaint mentioned in 60% of churned
-                accounts—but completely invisible to their Tableau dashboards.
+                accounts, but completely invisible to their Tableau dashboards.
               </p>
 
               <div className="grid sm:grid-cols-3 gap-6 mb-8">
@@ -1053,7 +1053,7 @@ export const AgenticBI = () => {
                 Index connected the dots between our CRM and our support
                 tickets."
                 <div className="mt-2 text-chalk font-semibold not-italic">
-                  — VP of Operations, Manufacturing Company
+                  VP of Operations, Manufacturing Company
                 </div>
               </blockquote>
             </div>
@@ -1186,7 +1186,7 @@ export const AgenticBI = () => {
             </h2>
             <p className="text-lg text-chalk/80 max-w-2xl mx-auto mb-8">
               In 30 minutes, we'll show you exactly what insights your legacy BI
-              is missing—and how much it's costing you.
+              is missing, and how much it's costing you.
             </p>
           </div>
 

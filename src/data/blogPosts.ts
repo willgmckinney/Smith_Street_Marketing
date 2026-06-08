@@ -21,7 +21,7 @@ export const blogPosts: BlogPost[] = [
     id: "building-cost-efficient-aws-architectures",
     title: "Designing Cost-Efficient AWS Architectures at Scale",
     excerpt:
-      "Cost optimization in AWS is not about cutting corners — it's about intentional architecture, visibility, and disciplined automation.",
+      "Cost optimization in AWS is not about cutting corners, it's about intentional architecture, visibility, and disciplined automation.",
     content: `
       <p>One of the most persistent misconceptions about AWS is that high cloud bills are inevitable at scale. In reality, the majority of excessive AWS spend stems from architectural decisions made early, left unexamined as systems evolve.</p>
   
@@ -45,7 +45,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Cost Visibility as an Engineering Metric</h2>
       <p>High-performing cloud teams treat cost as a first-class engineering concern. Enforcing resource tagging, setting up AWS Budgets with alerting, and exposing cost dashboards to engineering teams creates accountability and faster feedback loops.</p>
   
-      <p>Cost efficiency is not about spending less — it is about ensuring every dollar spent is directly tied to delivered business value.</p>
+      <p>Cost efficiency is not about spending less, it is about ensuring every dollar spent is directly tied to delivered business value.</p>
     `,
     author: "William McKinney",
     date: "Nov 8, 2025",
@@ -67,7 +67,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Choosing the Right Event Backbone</h2>
       <p>AWS provides multiple eventing primitives, each with distinct trade-offs. SNS excels at fan-out messaging, SQS provides durability and backpressure handling, and EventBridge offers schema-aware routing and cross-account event buses.</p>
   
-      <p>Misusing these services — such as treating SNS as a queue or overloading EventBridge with high-throughput data streams — can lead to performance bottlenecks and unexpected costs.</p>
+      <p>Misusing these services, such as treating SNS as a queue or overloading EventBridge with high-throughput data streams, can lead to performance bottlenecks and unexpected costs.</p>
   
       <h2>Idempotency and Exactly-Once Illusions</h2>
       <p>AWS services generally provide at-least-once delivery. Designing consumers to be idempotent is not optional. This often requires explicit deduplication strategies using DynamoDB, conditional writes, or application-level request tracking.</p>
@@ -82,7 +82,7 @@ export const blogPosts: BlogPost[] = [
       <h2>When Event-Driven Is the Wrong Choice</h2>
       <p>Not every system benefits from EDA. Low-latency request-response flows, simple CRUD applications, and tightly coupled business logic are often better served by synchronous APIs.</p>
   
-      <p>Event-driven architecture is a powerful tool — but like all powerful tools, it demands expertise, restraint, and strong operational practices.</p>
+      <p>Event-driven architecture is a powerful tool, but like all powerful tools, it demands expertise, restraint, and strong operational practices.</p>
     `,
     author: "William McKinney",
     date: "Nov 23, 2025",
@@ -94,7 +94,7 @@ export const blogPosts: BlogPost[] = [
     id: "securing-aws-multi-account-environments",
     title: "Securing Multi-Account AWS Environments Without Slowing Teams Down",
     excerpt:
-      "Strong security and developer velocity are not opposing forces — they are architectural outcomes.",
+      "Strong security and developer velocity are not opposing forces, they are architectural outcomes.",
     content: `
       <p>As organizations mature on AWS, a single-account strategy quickly becomes unmanageable. Multi-account environments are essential for security, billing isolation, and blast-radius containment.</p>
   
@@ -103,7 +103,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Organizations and SCPs as Guardrails</h2>
       <p>AWS Organizations allows central governance through Service Control Policies (SCPs). The key is to use SCPs as guardrails, not straightjackets.</p>
   
-      <p>Effective SCPs restrict only truly dangerous actions — such as disabling CloudTrail or modifying shared networking — while leaving room for teams to innovate within safe boundaries.</p>
+      <p>Effective SCPs restrict only truly dangerous actions, such as disabling CloudTrail or modifying shared networking, while leaving room for teams to innovate within safe boundaries.</p>
   
       <h2>Centralized Identity with Decentralized Execution</h2>
       <p>Centralizing identity via AWS IAM Identity Center (formerly SSO) simplifies access management and auditing. Engineers should authenticate centrally but assume roles into workload accounts with clearly defined permissions.</p>
@@ -116,7 +116,7 @@ export const blogPosts: BlogPost[] = [
       <p>Clear ownership boundaries, infrastructure-as-code enforcement, and automated provisioning pipelines prevent networking teams from becoming blockers.</p>
   
       <h2>Security as an Enabler</h2>
-      <p>When security controls are automated, visible, and predictable, they accelerate delivery rather than slow it down. Security failures in AWS environments are rarely due to missing tools — they are due to inconsistent implementation.</p>
+      <p>When security controls are automated, visible, and predictable, they accelerate delivery rather than slow it down. Security failures in AWS environments are rarely due to missing tools, they are due to inconsistent implementation.</p>
   
       <p>The goal is not maximal restriction, but maximal confidence that systems behave as intended under failure and attack.</p>
     `,
@@ -281,7 +281,7 @@ export const blogPosts: BlogPost[] = [
       <p><strong>Summary:</strong> Security posture is excellent on all three, with comparable defenses. AWS historically led in breadth of security services, Azure wins in Windows-centric integration and policy management, and GCP promotes a secure-by-default stance. Each cloud publishes extensive security whitepapers and automated tools. A concise security comparison notes: "AWS leads with robust KMS/S3 encryption… Azure's Key Vault and integration simplify enterprise encryption… GCP encrypts all data at rest by default". Any SMB can meet strict pharma security needs on any of these platforms, though implementation details (e.g. logging, patching) remain the customer's responsibility.</p>
 
       <h2>Conclusion</h2>
-      <p>In choosing a cloud for a pharmaceutical SMB website, there is no single "best" provider—each major cloud has distinct advantages.</p>
+      <p>In choosing a cloud for a pharmaceutical SMB website, there is no single "best" provider, each major cloud has distinct advantages.</p>
 
       <ul class="list-disc pl-6 space-y-2 my-4">
         <li><strong>AWS</strong> is the market leader with the largest service portfolio and ecosystem. It offers unmatched flexibility and mature security/compliance support. AWS's global infrastructure can scale to virtually any traffic spike. However, its complexity and pricing can be daunting for newcomers. AWS best suits SMBs that want the widest choices and are willing to manage complexity (or work with AWS-savvy consultants).</li>
@@ -320,7 +320,7 @@ export const blogPosts: BlogPost[] = [
     content: `
       <p>One of the most persistent challenges in consulting is making recommendations when information is incomplete. Clients expect clear guidance, but real-world decisions often involve ambiguity, missing data, and competing priorities.</p>
 
-      <p>Decision science research provides a framework for navigating uncertainty systematically. By applying these principles deliberately, consultants can make decisions that are defensible—even when information is incomplete.</p>
+      <p>Decision science research provides a framework for navigating uncertainty systematically. By applying these principles deliberately, consultants can make decisions that are defensible, even when information is incomplete.</p>
 
       <h2>Principle 1: Frame the Decision Before You Solve the Problem</h2>
       <p>Before evaluating alternatives, clearly define the type of decision you are making:</p>
@@ -385,8 +385,8 @@ export const blogPosts: BlogPost[] = [
         <h3 class="text-lg font-bold mb-2">Tactical Action:</h3>
         <p class="mb-4">Split decisions between:</p>
         <ul class="list-disc pl-6 space-y-2">
-          <li><strong>Exploratory Decisions</strong> — hypotheses to test (two-way doors)</li>
-          <li><strong>Commitment Decisions</strong> — bounded by known constraints (one-way doors)</li>
+          <li><strong>Exploratory Decisions</strong>, hypotheses to test (two-way doors)</li>
+          <li><strong>Commitment Decisions</strong>, bounded by known constraints (one-way doors)</li>
         </ul>
         <p class="mt-4">Then sequence work so exploratory decisions feed information into commitment decisions.</p>
       </div>
@@ -424,7 +424,7 @@ export const blogPosts: BlogPost[] = [
       </div>
 
       <h2>Principle 6: Align Decision Style With Decision Context</h2>
-      <p>Decision science research shows that different types of tasks and uncertainty require different decision styles—analytical, intuitive, or blended.</p>
+      <p>Decision science research shows that different types of tasks and uncertainty require different decision styles, analytical, intuitive, or blended.</p>
 
       <p>As a consultant, you should be explicit about your decision style and why you chose it.</p>
 
@@ -446,15 +446,15 @@ export const blogPosts: BlogPost[] = [
         <li>Match decision style to context</li>
       </ol>
 
-      <p>By approaching uncertainty deliberately and transparently, you make decisions that are defensible—even when information is incomplete.</p>
+      <p>By approaching uncertainty deliberately and transparently, you make decisions that are defensible, even when information is incomplete.</p>
 
       <h2>Recommended Reading</h2>
       <p>If you'd like to go deeper into how humans and organizations make better decisions under uncertainty, these sources are valuable starting points:</p>
 
       <ul class="list-disc pl-6 space-y-2 my-4">
         <li>Daniel Ellsberg's work on ambiguity aversion, showing people prefer calculable risks over ambiguous ones.</li>
-        <li><strong>Farsighted: How We Make the Decisions That Matter the Most</strong> — explores decision processes in high-stakes contexts.</li>
-        <li><strong>The Journal of Risk and Uncertainty</strong> — a longstanding venue on risk and decision science.</li>
+        <li><strong>Farsighted: How We Make the Decisions That Matter the Most</strong>, explores decision processes in high-stakes contexts.</li>
+        <li><strong>The Journal of Risk and Uncertainty</strong>, a longstanding venue on risk and decision science.</li>
       </ul>
 
       <div class="mt-8 p-6 bg-chalk/5 rounded-lg border border-chalk/10">
@@ -535,7 +535,7 @@ export const blogPosts: BlogPost[] = [
       <p>These fees constitute a <strong>regressive tax on growth</strong>. As a merchant's volume increases, the operational cost of the platform does not scale linearly with the value captured by Shopify through these transaction-based fees. This inefficiency is the primary driver for the "profit recovery" narrative, which posits that by owning the transactional infrastructure on AWS, a merchant can cap their infrastructure costs while their revenue continues to scale.</p>
 
       <h3>The App Ecosystem as a Regressive Performance Tax</h3>
-      <p>The second major inefficiency is the dependency on the Shopify App Store. While the core platform provides essential commerce functions, any advanced functionality—such as sophisticated loyalty programs, complex upselling logic, multi-warehouse inventory routing, or deep behavioral analytics—requires the installation of third-party applications. These apps typically operate on a monthly recurring revenue (MRR) model, with costs ranging from $10 to several hundred dollars per month. A mature enterprise store may easily accumulate 20 to 30 active apps, adding <strong>$1,000 to $5,000 in monthly overhead</strong>.</p>
+      <p>The second major inefficiency is the dependency on the Shopify App Store. While the core platform provides essential commerce functions, any advanced functionality, such as sophisticated loyalty programs, complex upselling logic, multi-warehouse inventory routing, or deep behavioral analytics, requires the installation of third-party applications. These apps typically operate on a monthly recurring revenue (MRR) model, with costs ranging from $10 to several hundred dollars per month. A mature enterprise store may easily accumulate 20 to 30 active apps, adding <strong>$1,000 to $5,000 in monthly overhead</strong>.</p>
 
       <p>Beyond the direct financial cost, these applications introduce a <strong>performance tax</strong>. Most Shopify apps function by injecting JavaScript into the storefront's theme. Because the merchant has no control over how these external scripts are delivered, they often block the main thread, delay the Largest Contentful Paint (LCP), and degrade the Interaction to Next Paint (INP). This degradation is not a minor technicality; it directly impacts conversion rates. Industry data indicates that every 100ms delay in page load time can lead to a <strong>7% reduction in conversions</strong>.</p>
 
@@ -591,7 +591,7 @@ export const blogPosts: BlogPost[] = [
       <h3>The Role of Data Sovereignty in Maximizing Lifetime Value</h3>
       <p>Profit recovery extends into the realm of marketing efficiency and Customer Lifetime Value (CLV). On a managed platform, the merchant's ability to access and manipulate granular behavioral data is often limited by the platform's APIs. This creates an "attribution gap" where merchants struggle to connect top-of-funnel activity with long-term customer behavior.</p>
 
-      <p>By owning the data layer on AWS (using Amazon Redshift or a custom Data Lake on S3), a merchant can implement the "EAGLES" metrics framework—tracking CLV, Customer Acquisition Cost (CAC), and cohort-based retention with 100% accuracy.</p>
+      <p>By owning the data layer on AWS (using Amazon Redshift or a custom Data Lake on S3), a merchant can implement the "EAGLES" metrics framework, tracking CLV, Customer Acquisition Cost (CAC), and cohort-based retention with 100% accuracy.</p>
 
       <p>This data sovereignty allows for the recovery of profit currently lost to inefficient ad spend. With direct access to transaction logs and behavioral events, a merchant can build custom machine learning models on <strong>Amazon SageMaker</strong> to predict churn or optimize personalized product recommendations. These capabilities, which are often "locked" behind enterprise-tier app subscriptions or proprietary platform tools, become native features of the custom AWS architecture, driving revenue growth that is unencumbered by platform fees.</p>
 
@@ -781,7 +781,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Conclusion: The Strategic Imperative of Cloud-Native Commerce</h2>
       <p>The move from Shopify to AWS is more than a technical migration; it is a <strong>declaration of operational independence</strong>. For the "Profit Recovery" framework to succeed, the transition must be viewed through the lens of long-term asset building. By owning the infrastructure, the data layer, and the frontend experience, a merchant transforms their e-commerce store from a rented storefront into a proprietary technology asset.</p>
 
-      <p>The economic benefits—eliminating transaction slippage, shedding the app-middleware tax, and maximizing marketing efficiency through data sovereignty—are compelling for high-volume merchants. However, the success of this strategy hinges on the merchant's readiness to embrace a "Product, not Project" mindset. A custom AWS site requires continuous iteration and professional cloud management to ensure that the initial performance and profit gains are maintained as the business scales.</p>
+      <p>The economic benefits, eliminating transaction slippage, shedding the app-middleware tax, and maximizing marketing efficiency through data sovereignty, are compelling for high-volume merchants. However, the success of this strategy hinges on the merchant's readiness to embrace a "Product, not Project" mindset. A custom AWS site requires continuous iteration and professional cloud management to ensure that the initial performance and profit gains are maintained as the business scales.</p>
 
       <p>Ultimately, the merchants who successfully navigate this migration are those who recognize that at a certain scale, their digital platform <em>is</em> their business. Recovering the margins currently surrendered to platform "taxes" provides the capital necessary to out-invest competitors in customer experience, performance, and long-term brand equity in the 2026 digital economy.</p>
 
@@ -791,7 +791,7 @@ export const blogPosts: BlogPost[] = [
           <li>• <strong>Transaction Fee Recovery:</strong> Merchants processing $50M+ GMV can save over $500,000 annually by eliminating platform surcharges and negotiating direct gateway rates.</li>
           <li>• <strong>Performance Gains:</strong> Migrating from Liquid to headless Next.js on AWS can improve Time to Interactive by 20–45% and boost mobile organic traffic by up to 300%.</li>
           <li>• <strong>Data Sovereignty:</strong> Owning the data layer enables custom ML models, precise attribution, and marketing optimizations unavailable on managed platforms.</li>
-          <li>• <strong>Phased Migration:</strong> A five-phase roadmap—from functional audit through dark launch—mitigates risk to SEO, data integrity, and operational continuity.</li>
+          <li>• <strong>Phased Migration:</strong> A five-phase roadmap, from functional audit through dark launch, mitigates risk to SEO, data integrity, and operational continuity.</li>
           <li>• <strong>TCO Realism:</strong> AWS hosting costs can be as low as $65–$150/month, but engineering talent ($5k–$15k/month) must be factored into the total cost of ownership.</li>
         </ul>
       </div>

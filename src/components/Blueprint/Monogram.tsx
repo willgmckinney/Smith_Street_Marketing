@@ -42,7 +42,7 @@ export const Monogram = ({ className = "", size = 44 }: MonogramProps) => {
       >
         SA
       </text>
-      {/* corner tick — the only flourish, in the marking accent */}
+      {/* corner tick: the only flourish, in the marking accent */}
       <line
         x1="31"
         y1="1.5"

@@ -7,25 +7,25 @@ import { BlueprintCard } from "../../../../components/Blueprint/BlueprintCard";
 const teamList = [
   {
     name: "William McKinney",
-    bio: "William brings extensive expertise in software development and consulting, with a strong focus on building scalable solutions. His experience spans across full-stack development, cloud architecture, and technical leadership.",
+    bio: "William built the ImageHunter API for Apollo Mapping on ECS Fargate. He owns the backend: FastAPI services, Postgres, and the AWS CDK that ships them.",
     profilePicture: willMcKinneyProfilePic,
-    role: "Technical Lead", // Added for context if needed, or just display name
+    role: "Technical Lead",
   },
   {
     name: "Dylan Morozowski",
-    bio: "Dylan is a seasoned software developer and AWS certified professional, specializing in cloud architecture and data analytics. He helps organizations optimize their data infrastructure and implement cutting-edge analytics solutions.",
+    bio: "Dylan built the satellite imagery lakehouse for Airbus on Glue and Redshift. AWS certified, he designs the data infrastructure that reporting runs on.",
     profilePicture: dylanMorozowskiProfilePic,
     role: "Cloud Architect",
   },
   {
     name: "Duncan Meyer",
-    bio: "Duncan is a skilled software engineer with a proven track record in developing robust applications and leading teams. His expertise in modern development practices and agile methodologies drives business growth.",
+    bio: "Duncan shipped the LillyDirect checkout and order-status pages from Figma to production. He writes the front-end in React and TypeScript and keeps it tested.",
     profilePicture: duncanMeyerProfilePic,
     role: "Software Engineer",
   },
   {
     name: "Germayne Curry",
-    bio: "Germayne connects businesses with tailored software solutions that help them move faster and operate smarter. His unique blend of background and skills allows him to understand complex problems and deliver impactful solutions.",
+    bio: "Germayne scopes engagements and matches them to the right build. He turns a rough problem into a clear plan with a stack, a timeline, and a number.",
     profilePicture: GermayneCurryProfilePic,
     role: "Solutions Architect",
   },

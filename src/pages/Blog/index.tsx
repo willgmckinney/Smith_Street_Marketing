@@ -16,8 +16,8 @@ export default function BlogPage() {
         </h1>
         <DimensionLine className="max-w-xs mx-auto mb-6" />
         <p className="text-xl text-chalk/70 max-w-2xl mx-auto">
-          Notes on technology, data, and building systems that last — from
-          the team at SAI.
+          Notes on technology, data, and building systems that last, from the
+          team at SAI.
         </p>
       </div>
 

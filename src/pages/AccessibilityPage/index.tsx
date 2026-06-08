@@ -58,8 +58,9 @@ export const AccessibilityPage = () => {
                   interface must be understandable.
                 </li>
                 <li>
-                  Robust - Content must be robust enough to be interpreted by a
-                  wide variety of user agents, including assistive technologies.
+                  Robust - Content must be reliable enough to be interpreted by
+                  a wide variety of user agents, including assistive
+                  technologies.
                 </li>
               </ul>
             </section>

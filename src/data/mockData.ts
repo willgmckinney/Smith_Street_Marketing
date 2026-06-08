@@ -368,7 +368,7 @@ export const opportunityClients: OpportunityClient[] = [
     lastEngagement: "1 mo ago",
     lastEngagementMonths: 1,
     priority: "Low",
-    recommendedAction: "Monitor — recent touch",
+    recommendedAction: "Monitor: recent touch",
   },
 ];
 

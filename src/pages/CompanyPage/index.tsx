@@ -41,7 +41,7 @@ export const CompanyPage = () => {
                   Innovation
                 </h3>
                 <p className="font-sans text-chalk/70">
-                  Pushing boundaries with cutting-edge technology solutions
+                  We pick the right tool for the job and ship it.
                 </p>
               </BlueprintCard>
               <BlueprintCard className="p-8">
