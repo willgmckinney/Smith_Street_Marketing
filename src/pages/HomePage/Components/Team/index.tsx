@@ -2,7 +2,7 @@ import duncanMeyerProfilePic from "../../../../assets/duncanMeyerProfile.jpg";
 import dylanMorozowskiProfilePic from "../../../../assets/dylanMorozowskiProfile.jpg";
 import GermayneCurryProfilePic from "../../../../assets/GermayneCurryProfile.jpg";
 import willMcKinneyProfilePic from "../../../../assets/willMckinneyProfile.jpg";
-import { BlueprintCard } from "../../../../componen../Blueprint/BlueprintCard";
+import { BlueprintCard } from "../../../../components/Blueprint/BlueprintCard";
 
 const teamList = [
   {
@@ -40,7 +40,7 @@ export const Team = () => {
             The Team
           </h2>
           <p className="text-xl text-chalk/70 max-w-2xl mx-auto">
-            Expert climbers guiding your ascent.
+            The crew that builds it.
           </p>
         </div>
 

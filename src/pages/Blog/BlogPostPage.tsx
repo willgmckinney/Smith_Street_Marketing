@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import React from "react";
-import { BlueprintButton } from "../../componen../Blueprint/BlueprintButton";
+import { BlueprintButton } from "../../components/Blueprint/BlueprintButton";
 import { blogPosts } from "../../data/blogPosts";
 
 interface BlogPostPageProps {

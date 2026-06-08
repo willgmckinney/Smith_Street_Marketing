@@ -1,4 +1,4 @@
-import { BlueprintCard } from "../../../componen../Blueprint/BlueprintCard";
+import { BlueprintCard } from "../../../components/Blueprint/BlueprintCard";
 
 interface ProjectCardProps {
   title: string;

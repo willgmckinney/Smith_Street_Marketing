@@ -1,4 +1,4 @@
-import { BlueprintButton } from "../../componen../Blueprint/BlueprintButton";
+import { BlueprintButton } from "../../components/Blueprint/BlueprintButton";
 
 export const AccessibilityPage = () => {
   return (

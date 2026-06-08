@@ -7,7 +7,7 @@ import {
 import { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
 import Footer from "../components/Footer";
-import { BlueprintButton } from "../componen../Blueprint/BlueprintButton";
+import { BlueprintButton } from "../components/Blueprint/BlueprintButton";
 
 export const rootRoute = createRootRoute({
   component: () => {

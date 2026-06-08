@@ -5,7 +5,7 @@ import { Team } from "./Components/Team";
 
 export const HomePage = () => {
   return (
-    <div className="bg-neutral-color-2">
+    <div className="bg-blueprint-base">
       <div className="relative z-[1] h-[100vh] min-h-screen">
         <HeroBanner />
       </div>

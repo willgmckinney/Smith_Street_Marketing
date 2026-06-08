@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { BlueprintButton } from "../../../componen../Blueprint/BlueprintButton";
+import { BlueprintButton } from "../../../components/Blueprint/BlueprintButton";
 
 const APOLLO_FORM_ID = "apollo-demo-form";
 

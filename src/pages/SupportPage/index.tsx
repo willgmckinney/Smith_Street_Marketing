@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { BlueprintButton } from "../../componen../Blueprint/BlueprintButton";
-import { BlueprintCard } from "../../componen../Blueprint/BlueprintCard";
+import { BlueprintButton } from "../../components/Blueprint/BlueprintButton";
+import { BlueprintCard } from "../../components/Blueprint/BlueprintCard";
 
 export const SupportPage = () => {
   const faqItems = [

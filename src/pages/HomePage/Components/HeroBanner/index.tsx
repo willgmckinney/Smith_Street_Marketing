@@ -1,92 +1,51 @@
-import { useEffect, useRef, useState } from "react";
-import goatVideo from "../../../../assets/Animated_Goat_Climbs_Mountain_Sunrise.mp4";
+import { Link } from "@tanstack/react-router";
+import { BlueprintButton } from "../../../../components/Blueprint/BlueprintButton";
+import { BlueprintGrid } from "../../../../components/Blueprint/BlueprintGrid";
+import { SpecLabel } from "../../../../components/Blueprint/SpecLabel";
+
+const recentBuilds = ["Apollo Mapping", "Eli Lilly", "Airbus"];
 
 export const HeroBanner = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [visibleWords, setVisibleWords] = useState<boolean[]>([
-    false,
-    false,
-    false,
-  ]);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    // Ensure video is muted for mobile autoplay
-    video.muted = true;
-
-    // Attempt to play if it hasn't started
-    const playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        // Auto-play was prevented
-        console.log("Autoplay prevented");
-      });
-    }
-
-    const handleTimeUpdate = () => {
-      if (video.currentTime >= 6.0) {
-        video.pause();
-
-        // Fade in words one at a time with delays
-        setTimeout(() => setVisibleWords([true, false, false]), 0);
-        setTimeout(() => setVisibleWords([true, true, false]), 600);
-        setTimeout(() => setVisibleWords([true, true, true]), 1200);
-      }
-    };
-
-    video.addEventListener("timeupdate", handleTimeUpdate);
-
-    return () => {
-      video.removeEventListener("timeupdate", handleTimeUpdate);
-    };
-  }, []);
-
-  const words = ["Climb", "New", "Peaks"];
-
   return (
     <div className="relative flex flex-col items-center justify-center h-screen w-full overflow-hidden bg-blueprint-base">
-      {/* Video Background */}
-      <video
-        ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover z-0"
-        autoPlay
-        muted
-        playsInline
-        loop={false}
-      >
-        <source src={goatVideo} type="video/mp4" />
-      </video>
+      <BlueprintGrid animate />
 
-      {/* Gradient Overlay (Bottom-up, subtle dark gradient) */}
-      <div className="absolute inset-0 bg-gradient-to-t from-blueprint-base via-blueprint-base/40 to-transparent z-1 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-blueprint-base via-blueprint-base/60 to-transparent pointer-events-none" />
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center space-y-8 sm:space-y-12 px-4">
-        <h1
-          className="font-display font-extrabold text-chalk text-center leading-tight drop-shadow-2xl"
-          style={{
-            textShadow: "0 4px 20px rgba(0,0,0,0.5)", // Soft, deep shadow
-          }}
-        >
-          <div className="text-[3.5rem] sm:text-[5rem] md:text-[7rem] lg:text-[10rem] flex flex-wrap justify-center gap-x-4 gap-y-2">
-            {words.map((word, index) => (
-              <span
-                key={index}
-                className={`transition-all duration-1000 ease-spec ${
-                  visibleWords[index]
-                    ? "opacity-100 translate-y-0 scale-100"
-                    : "opacity-0 translate-y-10 scale-90"
-                }`}
-              >
-                {word}
-              </span>
-            ))}
-          </div>
+      <div className="relative z-10 flex flex-col items-center justify-center px-4 sm:px-8 max-w-5xl mx-auto text-center space-y-8">
+        <SpecLabel>software · data · cloud</SpecLabel>
+
+        <h1 className="font-display font-extrabold text-chalk text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight">
+          General contractors for your tech.
         </h1>
 
-        {/* Subtitle / Additional Text could go here to enhance the "Expansive" feel */}
+        <p className="font-sans text-lg sm:text-xl text-chalk/80 max-w-3xl leading-relaxed">
+          Software and data infrastructure that helps your business grow
+          instead of holding it back. We take on the hard problems and build
+          what you actually need. No project too big or too small.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-4 pt-2">
+          <Link to="/demo">
+            <BlueprintButton size="lg">Start a project</BlueprintButton>
+          </Link>
+          <Link to="/portfolio">
+            <BlueprintButton variant="outline" size="lg">
+              See the work
+            </BlueprintButton>
+          </Link>
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-3 pt-4">
+          {recentBuilds.map((client) => (
+            <span
+              key={client}
+              className="font-mono text-xs text-chalk/50 border border-chalk/10 rounded-spec px-3 py-1.5 tracking-wider"
+            >
+              {client}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );

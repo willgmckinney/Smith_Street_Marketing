@@ -3,8 +3,9 @@ import cloudServices from "../../../../assets/cloudServices.png";
 import customSoftwareDevelopment from "../../../../assets/customSoftwareDevelopment.png";
 import dataAnalysisBusinessIntelligence from "../../../../assets/dataAnalysisBusinessIntelligence.png";
 import websiteDevelopment from "../../../../assets/websiteDevelopment.png";
-import { BlueprintCard } from "../../../../componen../Blueprint/BlueprintCard";
-// import "./services.css"; // Removing old CSS in favor of Tailwind/Summit styles
+import { BlueprintCard } from "../../../../components/Blueprint/BlueprintCard";
+import { DimensionLine } from "../../../../components/Blueprint/DimensionLine";
+import { SpecLabel } from "../../../../components/Blueprint/SpecLabel";
 
 const servicesList = [
   {
@@ -36,19 +37,23 @@ const servicesList = [
 export const Services = () => {
   return (
     <section className="bg-blueprint-base py-20 sm:py-32 px-4 sm:px-8 relative overflow-hidden">
-      {/* Atmospheric background elements could be added here */}
-
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-20">
-          <h2 className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70 mb-4">
+        <div className="text-center mb-20 space-y-4">
+          <SpecLabel>capabilities</SpecLabel>
+          <h2 className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl text-chalk">
             Our Services
           </h2>
-          <div className="h-1 w-24 bg-marker-gradient mx-auto rounded-full" />
+          <DimensionLine className="max-w-xs mx-auto" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           {servicesList.map((service, index) => (
-            <BlueprintCard key={index} className="flex flex-col h-full group">
+            <BlueprintCard
+              key={index}
+              index={index + 1}
+              accent
+              className="flex flex-col h-full group"
+            >
               <div className="h-64 overflow-hidden relative bg-blueprint-base">
                 <div className="absolute inset-0 bg-blueprint-base/20 z-10 group-hover:bg-transparent transition-colors duration-500" />
                 <img
@@ -57,7 +62,7 @@ export const Services = () => {
                   className="w-full h-full object-contain transition-transform duration-700 ease-out group-hover:scale-110"
                 />
               </div>
-              <div className="p-8 flex-1 flex flex-col">
+              <div className="p-8 pt-12 flex-1 flex flex-col">
                 <h3 className="font-display font-bold text-2xl text-white mb-4 group-hover:text-marker-start transition-colors">
                   {service.title}
                 </h3>

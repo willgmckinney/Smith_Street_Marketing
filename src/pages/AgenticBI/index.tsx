@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { BlueprintButton } from "../../componen../Blueprint/BlueprintButton";
+import { BlueprintButton } from "../../components/Blueprint/BlueprintButton";
 import { ApolloContactForm } from "../DemoPage/Components/ApolloContactForm";
 
 // Tableau Tax Calculator Component
