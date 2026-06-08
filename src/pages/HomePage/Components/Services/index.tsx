@@ -56,7 +56,7 @@ export const Services = () => {
           <h2 className="font-display font-extrabold text-display-2 text-chalk">
             What we build
           </h2>
-          <DimensionLine className="max-w-xs" />
+          <DimensionLine reveal className="max-w-xs" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-2cell gap-y-2cell">

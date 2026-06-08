@@ -29,6 +29,11 @@ export const AssetFrame = ({
     >
       <div className="relative flex items-center justify-center p-cell bg-blueprint-base">
         {children}
+        {/* faint blueprint grid draws over the asset on case-study hover */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-blueprint-grid bg-[length:16px_16px] opacity-0 transition-opacity duration-150 ease-spec group-hover:opacity-70 motion-reduce:transition-none motion-reduce:group-hover:opacity-0"
+        />
       </div>
       <figcaption className="flex items-center gap-2 border-t border-chalk/15 px-4 py-2 font-mono text-label-mono text-chalk/50 lowercase">
         <span className="h-px w-4 bg-marker-start/60" />

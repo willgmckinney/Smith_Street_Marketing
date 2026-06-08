@@ -1,11 +1,29 @@
 import { Link } from "@tanstack/react-router";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { BlueprintButton } from "../../../../components/Blueprint/BlueprintButton";
 import { BlueprintGrid } from "../../../../components/Blueprint/BlueprintGrid";
 import { SystemDiagram } from "../../../../components/Blueprint/SystemDiagram";
 
 const recentBuilds = ["Apollo Mapping", "Airbus", "Eli Lilly"];
 
+const column: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.5 } },
+};
+
+const rise: Variants = {
+  hidden: { opacity: 0, y: 8 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.2, ease: [0.2, 0, 0, 1] },
+  },
+};
+
 export const HeroBanner = () => {
+  const prefersReducedMotion = useReducedMotion();
+  const active = !prefersReducedMotion;
+
   return (
     <div className="relative flex items-center min-h-screen w-full overflow-hidden bg-blueprint-base">
       <BlueprintGrid animate />
@@ -13,24 +31,37 @@ export const HeroBanner = () => {
       <div className="relative z-10 w-full max-w-7xl mx-auto px-cell py-2cell">
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-2cell items-center">
           {/* Left: editorial copy */}
-          <div>
-            <p className="font-mono text-label-mono text-marker-start lowercase mb-cell">
+          <motion.div
+            variants={column}
+            initial={active ? "hidden" : false}
+            animate={active ? "visible" : false}
+          >
+            <motion.p
+              variants={rise}
+              className="font-mono text-label-mono text-marker-start lowercase mb-cell"
+            >
               software · data · cloud
-            </p>
+            </motion.p>
 
-            <h1 className="font-display font-extrabold text-chalk text-display-1">
+            <motion.h1
+              variants={rise}
+              className="font-display font-extrabold text-chalk text-display-1"
+            >
               General contractors
               <br />
               for your tech.
-            </h1>
+            </motion.h1>
 
-            <p className="font-sans text-body text-chalk/70 max-w-xl mt-cell">
+            <motion.p
+              variants={rise}
+              className="font-sans text-body text-chalk/70 max-w-xl mt-cell"
+            >
               Software and data infrastructure that helps your business grow
               instead of holding it back. We take on the hard problems and build
               what you actually need.
-            </p>
+            </motion.p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mt-cell">
+            <motion.div variants={rise} className="flex flex-col sm:flex-row gap-4 mt-cell">
               <Link to="/demo">
                 <BlueprintButton size="lg">Start a project</BlueprintButton>
               </Link>
@@ -39,19 +70,22 @@ export const HeroBanner = () => {
                   See the work
                 </BlueprintButton>
               </Link>
-            </div>
+            </motion.div>
 
-            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-2cell font-mono text-label-mono text-chalk/60">
+            <motion.div
+              variants={rise}
+              className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-2cell font-mono text-label-mono text-chalk/60"
+            >
               <span className="text-chalk/40">recent builds</span>
               {recentBuilds.map((client) => (
                 <span key={client} className="text-chalk">
                   {client}
                 </span>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          {/* Right: system illustration */}
+          {/* Right: system illustration draws itself in */}
           <div className="hidden lg:block">
             <SystemDiagram animate className="w-full max-w-sm mx-auto" />
           </div>

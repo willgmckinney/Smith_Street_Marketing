@@ -177,7 +177,7 @@ export const PortfolioPage = () => {
                 <br />
                 work
               </h1>
-              <DimensionLine label="jobs completed" className="max-w-xs my-6" />
+              <DimensionLine reveal label="jobs completed" className="max-w-xs my-6" />
               <p className="font-sans text-body text-chalk/70 max-w-2xl">
                 From a two-person startup to Airbus. Same standard either way.
               </p>

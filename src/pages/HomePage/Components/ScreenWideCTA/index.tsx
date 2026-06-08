@@ -9,7 +9,11 @@ export const ScreenWideCTA = () => {
       <BlueprintGrid opacity={0.55} />
 
       <div className="relative z-10 max-w-7xl mx-auto w-full text-center space-y-12">
-        <DimensionLine label="scope of work" className="max-w-md mx-auto mb-8" />
+        <DimensionLine
+          reveal
+          label="scope of work"
+          className="max-w-md mx-auto mb-8"
+        />
 
         <p className="font-display font-bold text-display-2 text-chalk">
           We build data systems and custom software that hold up under load.

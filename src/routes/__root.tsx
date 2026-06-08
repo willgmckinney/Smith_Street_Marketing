@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import { BlueprintButton } from "../components/Blueprint/BlueprintButton";
 import { Monogram } from "../components/Blueprint/Monogram";
+import { ScrollRule } from "../components/Blueprint/ScrollRule";
 
 export const rootRoute = createRootRoute({
   component: () => {
@@ -68,6 +69,7 @@ export const rootRoute = createRootRoute({
 
     return (
       <div className={`flex flex-col min-h-screen bg-blueprint-base text-chalk font-sans ${isFullPageDemo ? "bg-transparent" : ""}`}>
+        {!isFullPageDemo && <ScrollRule />}
         {!isFullPageDemo && (
         <>
         <header
