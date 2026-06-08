@@ -31,6 +31,27 @@ export default {
         display: ["Archivo", "sans-serif"],
         mono: ["Spline Sans Mono", "ui-monospace", "monospace"],
       },
+      // Single editorial type scale. Use only these steps.
+      fontSize: {
+        "display-1": [
+          "clamp(3.5rem, 8vw, 6rem)",
+          { lineHeight: "0.95", letterSpacing: "-0.02em" },
+        ],
+        "display-2": [
+          "clamp(2.5rem, 5vw, 4rem)",
+          { lineHeight: "1.0", letterSpacing: "-0.015em" },
+        ],
+        h: ["1.75rem", { lineHeight: "1.2", letterSpacing: "-0.01em" }],
+        body: ["1.125rem", { lineHeight: "1.6" }],
+        "label-mono": ["0.8125rem", { lineHeight: "1", letterSpacing: "0.16em" }],
+      },
+      // Spacing unit equals the visible 32px grid cell.
+      spacing: {
+        cell: "32px",
+        "2cell": "64px",
+        "3cell": "96px",
+        "4cell": "128px",
+      },
       borderRadius: {
         card: "6px",
         spec: "4px",

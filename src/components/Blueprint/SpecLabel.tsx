@@ -11,9 +11,14 @@ export const SpecLabel = ({
 }: SpecLabelProps) => {
   return (
     <p
-      className={`font-mono text-sm text-marker-start tracking-[0.16em] lowercase ${className}`}
+      className={`flex items-center font-mono text-label-mono text-marker-start lowercase ${className}`}
     >
-      {tick && <span className="mr-2 text-marker-start/60">—</span>}
+      {tick && (
+        <span
+          aria-hidden
+          className="mr-3 inline-block h-px w-6 bg-marker-start/60"
+        />
+      )}
       {children}
     </p>
   );

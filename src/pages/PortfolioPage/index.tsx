@@ -73,23 +73,17 @@ const projects = [
 export const PortfolioPage = () => {
   return (
     <div className="min-h-screen bg-blueprint-base pt-24">
-      <div className="relative bg-drafting-surface py-20 border-b border-chalk/10 overflow-hidden">
+      <div className="relative bg-drafting-surface py-2cell border-b border-chalk/10 overflow-hidden">
         <BlueprintGrid opacity={0.55} />
-        <div className="container mx-auto px-4 text-center relative z-10">
+        <div className="max-w-7xl mx-auto px-cell relative z-10">
           <SpecLabel className="mb-4">recent builds</SpecLabel>
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-chalk font-bold mb-6">
-            Our Portfolio
+          <h1 className="font-display text-display-2 text-chalk font-extrabold mb-6">
+            The work
           </h1>
-          <DimensionLine label="jobs completed" className="max-w-xs mx-auto mb-8" />
-          <div className="max-w-4xl mx-auto">
-            <p className="font-sans text-xl text-chalk leading-relaxed mb-6">
-              We build digital systems that hold up under load — scalable,
-              maintainable, and built for the job.
-            </p>
-            <p className="font-sans text-lg text-chalk/70 leading-relaxed">
-              Scalable. Maintainable. Built to spec.
-            </p>
-          </div>
+          <DimensionLine label="jobs completed" className="max-w-xs mb-8" />
+          <p className="font-sans text-body text-chalk/70 max-w-2xl">
+            From a two-person startup to Airbus. Same standard either way.
+          </p>
         </div>
       </div>
 

@@ -12,13 +12,13 @@ export const DemoPage = () => {
         <div className="flex flex-col lg:flex-row items-start gap-12 lg:gap-20">
           <div className="lg:w-1/2 pt-8">
             <SpecLabel className="mb-6">consultation</SpecLabel>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-chalk leading-tight">
+            <h1 className="font-display text-display-2 font-extrabold mb-8 text-chalk">
               Let's scope your{" "}
               <span className="text-marker-start">next build</span>
             </h1>
 
             <div className="space-y-10">
-              <h2 className="font-display text-2xl font-semibold text-chalk/90">
+              <h2 className="font-display text-h font-medium text-chalk/90">
                 What to expect from your consultation:
               </h2>
 
@@ -44,7 +44,7 @@ export const DemoPage = () => {
                         />
                       </svg>
                     </div>
-                    <span className="text-xl text-chalk/80 font-sans">
+                    <span className="text-body text-chalk/80 font-sans">
                       {item}
                     </span>
                   </li>

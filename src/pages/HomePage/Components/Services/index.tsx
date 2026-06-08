@@ -38,12 +38,12 @@ export const Services = () => {
   return (
     <section className="bg-blueprint-base py-20 sm:py-32 px-4 sm:px-8 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-20 space-y-4">
+        <div className="mb-2cell space-y-4 max-w-2xl">
           <SpecLabel>capabilities</SpecLabel>
-          <h2 className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl text-chalk">
-            Our Services
+          <h2 className="font-display font-extrabold text-display-2 text-chalk">
+            What we build
           </h2>
-          <DimensionLine className="max-w-xs mx-auto" />
+          <DimensionLine className="max-w-xs" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
