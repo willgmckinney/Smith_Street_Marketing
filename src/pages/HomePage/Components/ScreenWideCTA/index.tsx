@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import Skyline from "../../../../assets/Getting_Started_BG.png";
-import { SummitButton } from "../../../../components/Summit/SummitButton";
+import { BlueprintButton } from "../../../../componen../Blueprint/BlueprintButton";
 
 export const ScreenWideCTA = () => {
   return (
@@ -29,9 +29,9 @@ export const ScreenWideCTA = () => {
 
         <div className="pt-8 flex justify-center">
           <Link to="/demo">
-            <SummitButton size="lg" className="text-xl sm:text-2xl px-12 py-6">
+            <BlueprintButton size="lg" className="text-xl sm:text-2xl px-12 py-6">
               Get Started
-            </SummitButton>
+            </BlueprintButton>
           </Link>
         </div>
       </div>

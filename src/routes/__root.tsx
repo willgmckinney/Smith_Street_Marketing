@@ -7,7 +7,7 @@ import {
 import { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
 import Footer from "../components/Footer";
-import { SummitButton } from "../components/Summit/SummitButton";
+import { BlueprintButton } from "../componen../Blueprint/BlueprintButton";
 
 export const rootRoute = createRootRoute({
   component: () => {
@@ -92,7 +92,7 @@ export const rootRoute = createRootRoute({
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-2 sm:gap-4">
             <div className="relative solutions-dropdown">
-              <SummitButton
+              <BlueprintButton
                 variant="secondary"
                 size="sm"
                 className={`bg-transparent border-transparent shadow-none hover:bg-white/10 ${
@@ -117,7 +117,7 @@ export const rootRoute = createRootRoute({
                     d="M19 9l-7 7-7-7"
                   />
                 </svg>
-              </SummitButton>
+              </BlueprintButton>
 
               {solutionsOpen && (
                 <div
@@ -152,42 +152,42 @@ export const rootRoute = createRootRoute({
 
             <Link to="/portfolio">
               {({ isActive }) => (
-                <SummitButton
+                <BlueprintButton
                   variant="secondary"
                   size="sm"
                   className={`bg-transparent border-transparent shadow-none hover:bg-white/10 ${isActive ? "text-marker-start" : "text-chalk"}`}
                 >
                   Portfolio
-                </SummitButton>
+                </BlueprintButton>
               )}
             </Link>
 
             <Link to="/how-we-work">
               {({ isActive }) => (
-                <SummitButton
+                <BlueprintButton
                   variant="secondary"
                   size="sm"
                   className={`bg-transparent border-transparent shadow-none hover:bg-white/10 ${isActive ? "text-marker-start" : "text-chalk"}`}
                 >
                   How We Work
-                </SummitButton>
+                </BlueprintButton>
               )}
             </Link>
 
             <Link to="/blog">
               {({ isActive }) => (
-                <SummitButton
+                <BlueprintButton
                   variant="secondary"
                   size="sm"
                   className={`bg-transparent border-transparent shadow-none hover:bg-white/10 ${isActive ? "text-marker-start" : "text-chalk"}`}
                 >
                   Insights
-                </SummitButton>
+                </BlueprintButton>
               )}
             </Link>
 
             <Link to="/demo">
-              <SummitButton size="sm">Get Started</SummitButton>
+              <BlueprintButton size="sm">Get Started</BlueprintButton>
             </Link>
           </nav>
 
@@ -365,9 +365,9 @@ export const rootRoute = createRootRoute({
                 className="block"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                <SummitButton size="md" className="w-full justify-center">
+                <BlueprintButton size="md" className="w-full justify-center">
                   Get Started
-                </SummitButton>
+                </BlueprintButton>
               </Link>
             </div>
           </nav>

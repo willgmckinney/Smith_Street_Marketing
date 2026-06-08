@@ -1,4 +1,4 @@
-import { SummitButton } from "../../components/Summit/SummitButton";
+import { BlueprintButton } from "../../componen../Blueprint/BlueprintButton";
 
 export const PrivacyPage = () => {
   return (
@@ -123,7 +123,7 @@ export const PrivacyPage = () => {
                 href="mailto:privacy@smithavenueinsights.com"
                 className="inline-block"
               >
-                <SummitButton>Contact Privacy Team</SummitButton>
+                <BlueprintButton>Contact Privacy Team</BlueprintButton>
               </a>
             </section>
           </div>

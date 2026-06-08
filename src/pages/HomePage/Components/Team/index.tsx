@@ -2,7 +2,7 @@ import duncanMeyerProfilePic from "../../../../assets/duncanMeyerProfile.jpg";
 import dylanMorozowskiProfilePic from "../../../../assets/dylanMorozowskiProfile.jpg";
 import GermayneCurryProfilePic from "../../../../assets/GermayneCurryProfile.jpg";
 import willMcKinneyProfilePic from "../../../../assets/willMckinneyProfile.jpg";
-import { SummitCard } from "../../../../components/Summit/SummitCard";
+import { BlueprintCard } from "../../../../componen../Blueprint/BlueprintCard";
 
 const teamList = [
   {
@@ -46,7 +46,7 @@ export const Team = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {teamList.map((teamMember) => (
-            <SummitCard
+            <BlueprintCard
               key={teamMember.name}
               className="flex flex-col items-center text-center p-6 h-full hover:bg-drafting-surface/90 transition-colors"
             >
@@ -71,7 +71,7 @@ export const Team = () => {
               <p className="font-sans text-sm text-chalk/70 leading-relaxed">
                 {teamMember.bio}
               </p>
-            </SummitCard>
+            </BlueprintCard>
           ))}
         </div>
       </div>

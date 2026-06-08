@@ -1,12 +1,12 @@
 import React from "react";
 
-interface SummitButtonProps
+interface BlueprintButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "outline";
   size?: "sm" | "md" | "lg";
 }
 
-export const SummitButton: React.FC<SummitButtonProps> = ({
+export const BlueprintButton: React.FC<BlueprintButtonProps> = ({
   children,
   variant = "primary",
   size = "md",
@@ -14,15 +14,15 @@ export const SummitButton: React.FC<SummitButtonProps> = ({
   ...props
 }) => {
   const baseStyles =
-    "font-display font-bold rounded-pill transition-all duration-300 ease-spec active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center";
+    "font-display font-bold rounded-spec transition-all duration-[120ms] ease-spec disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center";
 
   const variants = {
     primary:
-      "bg-marker-gradient text-blueprint-base  hover:-translate-y-[2px] hover:brightness-110",
+      "bg-marker-gradient text-blueprint-base hover:-translate-y-px hover:brightness-110",
     secondary:
-      "bg-drafting-surface text-chalk border border-white/10 hover:bg-slate-700 hover:-translate-y-[2px]",
+      "bg-drafting-surface text-chalk border border-chalk/10 hover:bg-slate-700 hover:-translate-y-px",
     outline:
-      "bg-transparent border-2 border-marker-start text-marker-start hover:bg-marker-start/10",
+      "bg-transparent border border-marker-start text-marker-start hover:bg-drafting-surface hover:-translate-y-px",
   };
 
   const sizes = {

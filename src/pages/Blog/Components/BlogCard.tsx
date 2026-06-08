@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import React from "react";
-import { SummitButton } from "../../../components/Summit/SummitButton";
-import { SummitCard } from "../../../components/Summit/SummitCard";
+import { BlueprintButton } from "../../../componen../Blueprint/BlueprintButton";
+import { BlueprintCard } from "../../../componen../Blueprint/BlueprintCard";
 import { BlogPost } from "../../../data/blogPosts";
 
 interface BlogCardProps {
@@ -10,7 +10,7 @@ interface BlogCardProps {
 
 export const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
   return (
-    <SummitCard className="h-full flex flex-col group">
+    <BlueprintCard className="h-full flex flex-col group">
       <div className="relative h-48 overflow-hidden rounded-t-card">
         {post.imageUrl ? (
           <img
@@ -51,12 +51,12 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
             params={{ postId: post.id }}
             className="w-full"
           >
-            <SummitButton variant="secondary" className="w-full justify-center">
+            <BlueprintButton variant="secondary" className="w-full justify-center">
               Read Article
-            </SummitButton>
+            </BlueprintButton>
           </Link>
         </div>
       </div>
-    </SummitCard>
+    </BlueprintCard>
   );
 };

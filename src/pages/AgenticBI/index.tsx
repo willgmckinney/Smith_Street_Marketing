@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { SummitButton } from "../../components/Summit/SummitButton";
+import { BlueprintButton } from "../../componen../Blueprint/BlueprintButton";
 import { ApolloContactForm } from "../DemoPage/Components/ApolloContactForm";
 
 // Tableau Tax Calculator Component
@@ -158,9 +158,9 @@ const TableauTaxCalculator = ({ onGetAudit }: { onGetAudit: () => void }) => {
         </div>
       </div>
 
-      <SummitButton className="w-full" size="lg" onClick={onGetAudit}>
+      <BlueprintButton className="w-full" size="lg" onClick={onGetAudit}>
         Get the Full Audit
-      </SummitButton>
+      </BlueprintButton>
     </div>
   );
 };
@@ -718,7 +718,7 @@ const LeadCaptureModal = ({
               <p className="mt-1.5 text-red-400 text-xs">{fieldErrors.email}</p>
             )}
           </div>
-          <SummitButton
+          <BlueprintButton
             type="submit"
             disabled={isSubmitting}
             className="w-full"
@@ -747,7 +747,7 @@ const LeadCaptureModal = ({
                 </svg>
               </span>
             )}
-          </SummitButton>
+          </BlueprintButton>
         </form>
       </div>
     </div>
@@ -817,21 +817,21 @@ export const AgenticBI = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <SummitButton
+            <BlueprintButton
               size="lg"
               onClick={scrollToBooking}
               className="text-lg px-10 py-4"
             >
               Get Your Free Data Audit
-            </SummitButton>
-            <SummitButton
+            </BlueprintButton>
+            <BlueprintButton
               variant="outline"
               size="lg"
               onClick={scrollToCalculator}
               className="text-lg px-10 py-4"
             >
               Calculate Your Waste
-            </SummitButton>
+            </BlueprintButton>
           </div>
 
           <p className="mt-6 text-sm text-chalk/60">
@@ -1264,13 +1264,13 @@ export const AgenticBI = () => {
                 <div className="text-chalk/60 text-sm mb-4">
                   A 5-minute read that could save you $100k/year
                 </div>
-                <SummitButton
+                <BlueprintButton
                   variant="outline"
                   size="sm"
                   onClick={() => setShowModal(true)}
                 >
                   Download Free PDF
-                </SummitButton>
+                </BlueprintButton>
               </div>
             </div>
           </div>

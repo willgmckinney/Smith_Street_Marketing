@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import React from "react";
-import { SummitButton } from "../../components/Summit/SummitButton";
+import { BlueprintButton } from "../../componen../Blueprint/BlueprintButton";
 import { blogPosts } from "../../data/blogPosts";
 
 interface BlogPostPageProps {
@@ -15,7 +15,7 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ postId }) => {
       <div className="min-h-screen pt-32 px-4 text-center">
         <h1 className="text-3xl font-bold mb-4">Post not found</h1>
         <Link to="/blog">
-          <SummitButton>Back to Blog</SummitButton>
+          <BlueprintButton>Back to Blog</BlueprintButton>
         </Link>
       </div>
     );
@@ -79,7 +79,7 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ postId }) => {
         {/* Footer of the article */}
         <div className="mt-16 pt-8 border-t border-white/10">
           <Link to="/blog">
-            <SummitButton variant="secondary">← Back to All Posts</SummitButton>
+            <BlueprintButton variant="secondary">← Back to All Posts</BlueprintButton>
           </Link>
         </div>
       </div>

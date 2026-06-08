@@ -3,7 +3,7 @@ import cloudServices from "../../../../assets/cloudServices.png";
 import customSoftwareDevelopment from "../../../../assets/customSoftwareDevelopment.png";
 import dataAnalysisBusinessIntelligence from "../../../../assets/dataAnalysisBusinessIntelligence.png";
 import websiteDevelopment from "../../../../assets/websiteDevelopment.png";
-import { SummitCard } from "../../../../components/Summit/SummitCard";
+import { BlueprintCard } from "../../../../componen../Blueprint/BlueprintCard";
 // import "./services.css"; // Removing old CSS in favor of Tailwind/Summit styles
 
 const servicesList = [
@@ -48,7 +48,7 @@ export const Services = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           {servicesList.map((service, index) => (
-            <SummitCard key={index} className="flex flex-col h-full group">
+            <BlueprintCard key={index} className="flex flex-col h-full group">
               <div className="h-64 overflow-hidden relative bg-blueprint-base">
                 <div className="absolute inset-0 bg-blueprint-base/20 z-10 group-hover:bg-transparent transition-colors duration-500" />
                 <img
@@ -65,7 +65,7 @@ export const Services = () => {
                   {service.description}
                 </p>
               </div>
-            </SummitCard>
+            </BlueprintCard>
           ))}
         </div>
       </div>

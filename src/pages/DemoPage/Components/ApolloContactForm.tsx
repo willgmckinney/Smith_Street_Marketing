@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { SummitButton } from "../../../components/Summit/SummitButton";
+import { BlueprintButton } from "../../../componen../Blueprint/BlueprintButton";
 
 const APOLLO_FORM_ID = "apollo-demo-form";
 
@@ -188,7 +188,7 @@ export const ApolloContactForm = () => {
           </div>
 
           <div className="pt-3">
-            <SummitButton
+            <BlueprintButton
               type="submit"
               disabled={isSubmitting}
               className="w-full sm:w-auto min-w-[200px] group"
@@ -216,7 +216,7 @@ export const ApolloContactForm = () => {
                   </svg>
                 </span>
               )}
-            </SummitButton>
+            </BlueprintButton>
           </div>
         </form>
       </div>

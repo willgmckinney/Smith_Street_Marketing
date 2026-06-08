@@ -1,4 +1,4 @@
-import { SummitCard } from "../../../components/Summit/SummitCard";
+import { BlueprintCard } from "../../../componen../Blueprint/BlueprintCard";
 
 interface ProjectCardProps {
   title: string;
@@ -22,7 +22,7 @@ export const ProjectCard = ({
       rel="noopener noreferrer"
       className="block w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]"
     >
-      <SummitCard className="h-full group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+      <BlueprintCard className="h-full group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
         {/* Background Image Container */}
         <div className="relative h-64 w-full overflow-hidden border-b border-white/10 bg-blueprint-base">
           <img
@@ -75,7 +75,7 @@ export const ProjectCard = ({
             ))}
           </div>
         </div>
-      </SummitCard>
+      </BlueprintCard>
     </a>
   );
 };

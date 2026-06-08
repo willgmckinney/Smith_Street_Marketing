@@ -1,4 +1,4 @@
-import { SummitButton } from "../../components/Summit/SummitButton";
+import { BlueprintButton } from "../../componen../Blueprint/BlueprintButton";
 
 export const AccessibilityPage = () => {
   return (
@@ -92,7 +92,7 @@ export const AccessibilityPage = () => {
                 you need assistance with any part of our site.
               </p>
               <a href="mailto:accessibility@smithavenueinsights.com" className="inline-block">
-                <SummitButton>Contact Accessibility Team</SummitButton>
+                <BlueprintButton>Contact Accessibility Team</BlueprintButton>
               </a>
             </section>
           </div>

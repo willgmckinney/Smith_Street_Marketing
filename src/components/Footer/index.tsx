@@ -2,7 +2,7 @@ import emailjs from "@emailjs/browser";
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import logo from "../../assets/logo.png";
-import { SummitButton } from "../Summit/SummitButton";
+import { BlueprintButton } from "../Blueprint/BlueprintButton";
 
 const Footer = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -116,13 +116,13 @@ const Footer = () => {
             </div>
 
             <div className="pt-2">
-              <SummitButton
+              <BlueprintButton
                 type="submit"
                 disabled={isSubmitting}
                 className="w-full sm:w-auto"
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
-              </SummitButton>
+              </BlueprintButton>
             </div>
 
             {stateMessage && (

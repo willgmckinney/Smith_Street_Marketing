@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { SummitButton } from "../../components/Summit/SummitButton";
-import { SummitCard } from "../../components/Summit/SummitCard";
+import { BlueprintButton } from "../../componen../Blueprint/BlueprintButton";
+import { BlueprintCard } from "../../componen../Blueprint/BlueprintCard";
 
 export const SupportPage = () => {
   const faqItems = [
@@ -50,14 +50,14 @@ export const SupportPage = () => {
             </h2>
             <div className="space-y-6">
               {faqItems.map((item, index) => (
-                <SummitCard key={index} className="p-8">
+                <BlueprintCard key={index} className="p-8">
                   <h3 className="font-display text-xl font-bold text-marker-start mb-4">
                     {item.question}
                   </h3>
                   <p className="font-sans text-chalk/70 leading-relaxed">
                     {item.answer}
                   </p>
-                </SummitCard>
+                </BlueprintCard>
               ))}
             </div>
           </div>
@@ -77,12 +77,12 @@ export const SupportPage = () => {
             </p>
             <div className="flex flex-col md:flex-row gap-6 justify-center">
               <Link to="/demo">
-                <SummitButton size="lg">Schedule a Consultation</SummitButton>
+                <BlueprintButton size="lg">Schedule a Consultation</BlueprintButton>
               </Link>
               <a href="mailto:support@smithavenueinsights.com">
-                <SummitButton size="lg" variant="secondary">
+                <BlueprintButton size="lg" variant="secondary">
                   Email Support
-                </SummitButton>
+                </BlueprintButton>
               </a>
             </div>
           </div>

@@ -39,7 +39,7 @@ export default function BlogPage() {
             placeholder="Enter your email"
             className="px-4 py-3 rounded-lg bg-blueprint-base border border-gray-700 text-white focus:outline-none focus:border-marker-start flex-grow"
           />
-          <SummitButton>Subscribe</SummitButton>
+          <BlueprintButton>Subscribe</BlueprintButton>
         </div>
       </div> */}
     </div>

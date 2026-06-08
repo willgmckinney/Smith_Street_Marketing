@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { SummitButton } from "../../components/Summit/SummitButton";
-import { SummitCard } from "../../components/Summit/SummitCard";
+import { BlueprintButton } from "../../componen../Blueprint/BlueprintButton";
+import { BlueprintCard } from "../../componen../Blueprint/BlueprintCard";
 import { Team } from "../HomePage/Components/Team";
 
 export const CompanyPage = () => {
@@ -36,15 +36,15 @@ export const CompanyPage = () => {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              <SummitCard className="p-8">
+              <BlueprintCard className="p-8">
                 <h3 className="font-display text-xl font-bold text-marker-start mb-4">
                   Innovation
                 </h3>
                 <p className="font-sans text-chalk/70">
                   Pushing boundaries with cutting-edge technology solutions
                 </p>
-              </SummitCard>
-              <SummitCard className="p-8">
+              </BlueprintCard>
+              <BlueprintCard className="p-8">
                 <h3 className="font-display text-xl font-bold text-marker-start mb-4">
                   Excellence
                 </h3>
@@ -52,15 +52,15 @@ export const CompanyPage = () => {
                   Delivering outstanding results through expertise and
                   dedication
                 </p>
-              </SummitCard>
-              <SummitCard className="p-8">
+              </BlueprintCard>
+              <BlueprintCard className="p-8">
                 <h3 className="font-display text-xl font-bold text-marker-start mb-4">
                   Partnership
                 </h3>
                 <p className="font-sans text-chalk/70">
                   Building lasting relationships with our clients
                 </p>
-              </SummitCard>
+              </BlueprintCard>
             </div>
           </div>
         </div>
@@ -81,7 +81,7 @@ export const CompanyPage = () => {
               how we can help you achieve your goals.
             </p>
             <Link to="/demo" className="inline-block">
-              <SummitButton size="lg">Schedule a Consultation</SummitButton>
+              <BlueprintButton size="lg">Schedule a Consultation</BlueprintButton>
             </Link>
           </div>
         </div>

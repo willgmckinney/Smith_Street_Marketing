@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SummitButton } from "../../components/Summit/SummitButton";
+import { BlueprintButton } from "../../componen../Blueprint/BlueprintButton";
 import { ApolloContactForm } from "../DemoPage/Components/ApolloContactForm";
 
 export const ShopifyProfitRecovery = () => {
@@ -97,9 +97,9 @@ export const ShopifyProfitRecovery = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <SummitButton size="lg" onClick={scrollToBooking} className="text-lg px-10 py-4">
+            <BlueprintButton size="lg" onClick={scrollToBooking} className="text-lg px-10 py-4">
               Get My Free Profit Recovery Audit
-            </SummitButton>
+            </BlueprintButton>
           </div>
           
           <p className="mt-6 text-sm text-chalk/60">
@@ -207,9 +207,9 @@ export const ShopifyProfitRecovery = () => {
                 That's <strong className="text-white">{percentageRecovered.toFixed(1)}%</strong> of your revenue back in your pocket
               </div>
               <div className="mt-6">
-                <SummitButton className="mx-auto" size="lg" onClick={scrollToBooking}>
+                <BlueprintButton className="mx-auto" size="lg" onClick={scrollToBooking}>
                   Get My Free Audit
-                </SummitButton>
+                </BlueprintButton>
               </div>
             </div>
           </div>
@@ -374,9 +374,9 @@ export const ShopifyProfitRecovery = () => {
               We're that confident in our analysis. The audit is free, and if we can't
               demonstrate clear ROI, we'll compensate you for the 30 minutes it takes to review it.
             </p>
-            <SummitButton className="mx-auto" size="lg" onClick={scrollToBooking}>
+            <BlueprintButton className="mx-auto" size="lg" onClick={scrollToBooking}>
               Get My Free Audit
-            </SummitButton>
+            </BlueprintButton>
           </div>
         </div>
       </section>
