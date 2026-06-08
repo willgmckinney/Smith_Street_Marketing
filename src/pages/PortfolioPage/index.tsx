@@ -1,6 +1,6 @@
-import { DimensionLine } from "../../../components/Blueprint/DimensionLine";
-import { SpecLabel } from "../../../components/Blueprint/SpecLabel";
-import { BlueprintGrid } from "../../../components/Blueprint/BlueprintGrid";
+import { DimensionLine } from "../../components/Blueprint/DimensionLine";
+import { SpecLabel } from "../../components/Blueprint/SpecLabel";
+import { BlueprintGrid } from "../../components/Blueprint/BlueprintGrid";
 import { ProjectCard } from "./Components/ProjectCard";
 
 const projects = [
