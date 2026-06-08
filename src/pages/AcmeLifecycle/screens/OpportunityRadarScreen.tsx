@@ -106,7 +106,7 @@ export function OpportunityRadarScreen() {
         </p>
       </div>
 
-      {/* Lakeshore drill-down — prominent */}
+      {/* Lakeshore drill-down: prominent */}
       {lakeshore?.drillDown && (
         <div className="rounded-lg border border-[var(--accent)] bg-[var(--surface)] px-5 py-4" style={{ borderColor: "color-mix(in srgb, var(--accent) 40%, transparent)", background: "color-mix(in srgb, var(--accent) 8%, var(--surface))" }}>
           <p className="font-mono mb-1 text-[10px] uppercase tracking-wider text-[var(--accent)]">

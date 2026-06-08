@@ -17,7 +17,7 @@ export function RecoveryWatchScreen({ onPickupRequest }: RecoveryWatchScreenProp
   const hasItems = recoveryItems.length > 0;
 
   const handlePickup = () => {
-    setToast("Pickup requested — ACME notified.");
+    setToast("Pickup requested. ACME notified.");
     onPickupRequest?.();
   };
 
@@ -107,7 +107,8 @@ export function RecoveryWatchScreen({ onPickupRequest }: RecoveryWatchScreenProp
               </span>
               <span className="text-[var(--text-muted)]">
                 {" "}
-                — former employees, remote locations. Unrecovered hardware with
+                across former employees, remote locations. Unrecovered hardware
+                with
                 active storage is a HIPAA exposure until disposition is
                 documented.
               </span>

@@ -21,7 +21,7 @@ export function AcmeLifecycle() {
   }, [mode]);
 
   useEffect(() => {
-    document.title = "ACME Lifecycle — Fleet & Opportunity Demo";
+    document.title = "ACME Lifecycle: Fleet & Opportunity Demo";
     return () => {
       document.title = "Smith Avenue Insights";
     };

@@ -35,7 +35,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Data Transfer: The Silent Budget Killer</h2>
       <p>Many organizations focus exclusively on compute costs while ignoring data transfer. Cross-AZ traffic, inter-region replication, and NAT Gateway egress charges can quietly surpass EC2 costs in distributed systems.</p>
   
-      <p>Architectures that colocate tightly coupled services within the same Availability Zone, leverage VPC endpoints, and minimize unnecessary cross-region chatter can dramatically reduce network spend without sacrificing resilience.</p>
+      <p>Architectures that colocate tightly coupled services within the same Availability Zone, use VPC endpoints, and minimize unnecessary cross-region chatter can dramatically reduce network spend without sacrificing resilience.</p>
   
       <h2>Storage Tiering and Lifecycle Automation</h2>
       <p>S3 is often perceived as "cheap," but storing all data in S3 Standard indefinitely is rarely optimal. Intelligent-Tiering, lifecycle rules, and archival into Glacier or Glacier Deep Archive should be default design considerations, not afterthoughts.</p>
@@ -130,14 +130,14 @@ export const blogPosts: BlogPost[] = [
     id: "cloud-platforms-pharma-smb-aws-azure-gcp",
     title: "Cloud Platforms for Pharma SMB Websites: AWS vs. Azure vs. GCP",
     excerpt:
-      "Small pharmaceutical businesses must weigh price, compliance, performance, tooling, ecosystem, support, and security when choosing a cloud provider. A comprehensive comparison of AWS, Azure, and GCP.",
+      "Small pharmaceutical businesses must weigh price, compliance, performance, tooling, ecosystem, support, and security when choosing a cloud provider. A detailed comparison of AWS, Azure, and GCP.",
     content: `
       <h2>Executive Summary</h2>
       <p>Small pharmaceutical businesses building a website must weigh price, compliance, performance, tooling, ecosystem, support, and security when choosing a cloud provider. AWS, Microsoft Azure, and Google Cloud Platform (GCP) each offer pay‑as‑you‑go pricing with free trial credits ($100–$300) and always‑free tiers. Azure often advertises the lowest on‑demand rates (especially for Microsoft-centric organizations), AWS provides the broadest service portfolio and flexible reservation options (spot instances and Savings Plans up to ~72% off), and GCP emphasizes transparent pricing with automatic sustained-use discounts. All three support healthcare/pharma compliance (HIPAA, HITRUST, GxP) with Business Associate Agreements and extensive certifications. They each offer regional controls for data residency (AWS GovCloud/EU, Azure GovCloud/EU Data Boundaries, GCP Assured Workloads/Data Boundaries).</p>
 
-      <p>In performance, all can auto-scale globally (EC2/VMs/Kubernetes/Serverless). AWS has massive compute capacity and "gold-standard" reliability; GCP leverages Google's global fiber network and excels at containers; Azure offers seamless hybrid scalability, especially for Windows/.NET workloads. Developer tooling varies: AWS Code services, Azure DevOps/Visual Studio integration, and GCP's container-native tools each appeal to different teams. Ecosystem integrations are strong all around: Azure tightly integrates with Microsoft Office/Dynamics, AWS and GCP integrate with a broad partner Marketplace and third‑party tools (e.g. AWS AppFlow with Salesforce, GCP connectors for marketing data).</p>
+      <p>In performance, all can auto-scale globally (EC2/VMs/Kubernetes/Serverless). AWS has massive compute capacity and "gold-standard" reliability; GCP uses Google's global fiber network and excels at containers; Azure offers smooth hybrid scalability, especially for Windows/.NET workloads. Developer tooling varies: AWS Code services, Azure DevOps/Visual Studio integration, and GCP's container-native tools each appeal to different teams. Ecosystem integrations are strong all around: Azure tightly integrates with Microsoft Office/Dynamics, AWS and GCP integrate with a broad partner Marketplace and third‑party tools (e.g. AWS AppFlow with Salesforce, GCP connectors for marketing data).</p>
 
-      <p>Support SLAs are similar (typically ~99.95% uptime, with paid plans offering 24×7 support and 15‑minute response for critical issues). Security is robust everywhere: all provide IAM, encryption, firewalls, DDoS protection, monitoring (AWS GuardDuty/Shield, Azure Security Center/Sentinel, GCP Security Command Center/Cloud Armor).</p>
+      <p>Support SLAs are similar (typically ~99.95% uptime, with paid plans offering 24×7 support and 15‑minute response for critical issues). Security is strong everywhere: all provide IAM, encryption, firewalls, DDoS protection, monitoring (AWS GuardDuty/Shield, Azure Security Center/Sentinel, GCP Security Command Center/Cloud Armor).</p>
 
       <p>In summary, AWS offers the most mature platform and broad services, Azure leads in hybrid/Microsoft integration and enterprise compliance, and GCP shines in data/AI and transparent pricing. The ideal choice depends on an SMB's existing tech stack, regulatory needs, and budget.</p>
 
@@ -227,7 +227,7 @@ export const blogPosts: BlogPost[] = [
       <p>GCP (Google) built Kubernetes, so GCP's GKE is a leader in managed Kubernetes ease and scalability. Azure's AKS and AWS's EKS/ECS also provide strong container support. A cloud-native SMB with microservices may prefer GCP or AWS for container tooling, though Azure's AKS is quickly catching up.</p>
 
       <h3>Networking & CDN</h3>
-      <p>AWS CloudFront, Azure CDN, and Google Cloud CDN all distribute global content. Google's Cloud CDN leverages the Google edge network, which can benefit web assets' delivery speed. All providers offer content load balancing and global traffic routing (AWS Global Accelerator, Azure Traffic Manager, Google Cloud Load Balancing).</p>
+      <p>AWS CloudFront, Azure CDN, and Google Cloud CDN all distribute global content. Google's Cloud CDN uses the Google edge network, which can benefit web assets' delivery speed. All providers offer content load balancing and global traffic routing (AWS Global Accelerator, Azure Traffic Manager, Google Cloud Load Balancing).</p>
 
       <h3>Analytics & Big Data</h3>
       <p>Google is traditionally strong in high-throughput data analytics (BigQuery, Dataflow) and machine learning, which could benefit pharma use cases (e.g. analytics of research data). AWS and Azure also offer extensive analytics stacks (Amazon Redshift, Azure Synapse, etc.).</p>
@@ -241,7 +241,7 @@ export const blogPosts: BlogPost[] = [
       <p>A survey of dev teams notes: "AWS leads market share…its mature DevOps technologies (CloudFormation, Elastic Beanstalk, CodePipeline) provide a wide ecosystem and integrations". Azure "streamlines CI/CD" for shops already using Microsoft tech via Azure Pipelines, Boards, and Repos. GCP "shines in container/Kubernetes and ML workflows" with Cloud Build and Kubernetes-native CI/CD. In practice, a team already using Visual Studio/.NET or GitHub might lean Azure; a team heavy in Linux/OSS might use AWS; a team focused on containers might prefer GCP or AWS.</p>
 
       <h3>Management & Monitoring</h3>
-      <p>All clouds include integrated dashboards, CLIs (AWS CLI, Azure CLI, gcloud), and SDKs. AWS CloudWatch, Azure Monitor/Application Insights, and GCP Cloud Monitoring offer logging/metrics. Azure's portal and tools are rated easiest for those in a Microsoft shop; GCP's Console is known for usability; AWS's CloudWatch is extremely comprehensive but can be complex.</p>
+      <p>All clouds include integrated dashboards, CLIs (AWS CLI, Azure CLI, gcloud), and SDKs. AWS CloudWatch, Azure Monitor/Application Insights, and GCP Cloud Monitoring offer logging/metrics. Azure's portal and tools are rated easiest for those in a Microsoft shop; GCP's Console is known for usability; AWS's CloudWatch is extremely detailed but can be complex.</p>
 
       <h3>Business & Productivity Tools</h3>
       <p>Azure naturally meshes with Microsoft 365/Office tools (Active Directory, SharePoint, Dynamics 365 CRM). AWS has partnerships (e.g. Amazon Chime, Alexa or WorkMail). GCP integrates with Google Workspace (Gmail/Drive) and marketing platforms. Each cloud's marketplace provides many third-party SaaS and connectors (e.g. Salesforce, Slack, Datadog). In SMB practice, Azure often wins if the company already uses Microsoft Dynamics CRM or Office365, while AWS/GCP offer broad integration via APIs and services like AWS AppFlow (for Salesforce, SAP, etc.).</p>
@@ -253,7 +253,7 @@ export const blogPosts: BlogPost[] = [
       <h3>Analytics and Marketing Tools</h3>
       <p>GCP's strength is obvious with analytics: Google Analytics naturally exports to BigQuery, and Cloud AI tools (TensorFlow, AutoML) are readily available. Azure has Power BI and Machine Learning Studio. AWS offers Amazon QuickSight and SageMaker. For marketing and CRM, AWS and GCP provide machine learning APIs (personalization, contact center AI), and Azure has Dynamics 365 (CRM) and Azure AI Services. All clouds support popular open-source stacks and can host WordPress, Drupal, etc.</p>
 
-      <p>In short, the ecosystems are rich. AWS and Azure tie into vast partner networks, while GCP leverages Google's data/AI services. For an SMB, the choice may hinge on existing vendor relationships (e.g., a company using Office365 might favor Azure, one using Google Ads might favor GCP for easier ad-analytics integration).</p>
+      <p>In short, the ecosystems are rich. AWS and Azure tie into vast partner networks, while GCP uses Google's data/AI services. For an SMB, the choice may hinge on existing vendor relationships (e.g., a company using Office365 might favor Azure, one using Google Ads might favor GCP for easier ad-analytics integration).</p>
 
       <h2>Support Models and SLAs</h2>
       <p>AWS, Azure, and GCP each offer tiered support plans. All provide a Free basic tier (community support, docs, forums). Paid tiers (often called Developer/Standard/Business/Enterprise) ensure 24/7 phone/email support with guaranteed response times (e.g. AWS Enterprise: 15‑minute response for critical issues; Azure Premier: &lt;1 hour for critical). Enterprise plans often include dedicated TAMs and architectural reviews. SMBs rarely need enterprise support, but at minimum each cloud provides rapid response SLAs (e.g. 99.95% uptime SLA on VMs with multi-AZ setup). Major differences are minor: Azure's Premier level is historically expensive, GCP's Premium Support is competitive. All are transparent about SLAs in their documentation.</p>
@@ -278,7 +278,7 @@ export const blogPosts: BlogPost[] = [
       <h3>Compliance Tools</h3>
       <p>Each cloud offers compliance dashboards and policy frameworks. For example, Azure's Policy service includes HIPAA/HITRUST initiatives, AWS has Audit Manager and Artifact for compliance reports, and GCP has compliance "Assured Workloads" configurations and Shielded VMs.</p>
 
-      <p><strong>Summary:</strong> Security posture is excellent on all three, with comparable defenses. AWS historically led in breadth of security services, Azure wins in Windows-centric integration and policy management, and GCP promotes a secure-by-default stance. Each cloud publishes extensive security whitepapers and automated tools. A concise security comparison notes: "AWS leads with robust KMS/S3 encryption… Azure's Key Vault and integration simplify enterprise encryption… GCP encrypts all data at rest by default". Any SMB can meet strict pharma security needs on any of these platforms, though implementation details (e.g. logging, patching) remain the customer's responsibility.</p>
+      <p><strong>Summary:</strong> Security posture is excellent on all three, with comparable defenses. AWS historically led in breadth of security services, Azure wins in Windows-centric integration and policy management, and GCP promotes a secure-by-default stance. Each cloud publishes extensive security whitepapers and automated tools. A concise security comparison notes: "AWS leads with strong KMS/S3 encryption… Azure's Key Vault and integration simplify enterprise encryption… GCP encrypts all data at rest by default". Any SMB can meet strict pharma security needs on any of these platforms, though implementation details (e.g. logging, patching) remain the customer's responsibility.</p>
 
       <h2>Conclusion</h2>
       <p>In choosing a cloud for a pharmaceutical SMB website, there is no single "best" provider, each major cloud has distinct advantages.</p>
@@ -408,7 +408,7 @@ export const blogPosts: BlogPost[] = [
         <p class="mt-4">This both builds trust and reduces anxiety around decisions that must be made without perfect certainty.</p>
       </div>
 
-      <h2>Principle 5: Leverage Heuristics and Simple Decision Tools</h2>
+      <h2>Principle 5: Use Heuristics and Simple Decision Tools</h2>
       <p>When probabilistic data is unavailable, heuristics, simple decision rules based on experience, can be useful. While they are not perfect, they provide structure in ambiguity.</p>
 
       <p>In cognitive psychology research, heuristics are recognized as effective rules of thumb when full information is unavailable and speed is necessary.</p>
@@ -485,7 +485,7 @@ export const blogPosts: BlogPost[] = [
     content: `
       <p>The global e-commerce landscape in 2025 and 2026 is characterized by a fundamental tension between the convenience of managed Software-as-a-Service (SaaS) platforms and the economic imperative of margin preservation. As digital storefronts mature, the initial velocity provided by platforms like Shopify often transitions into a structural bottleneck, both financially and technically. The concept of <strong>profit recovery</strong>, as articulated by strategic analysts, suggests that high-volume merchants can reclaim significant portions of their gross merchandise value (GMV) by transitioning from a "rental" model to an "ownership" model hosted on cloud-native infrastructure such as Amazon Web Services (AWS).</p>
 
-      <p>This transition is not merely a change in hosting but a comprehensive re-architecting of the business's digital foundation, aimed at eliminating the platform "tax," reducing the performance drag of third-party dependencies, and establishing total data sovereignty.</p>
+      <p>This transition is not merely a change in hosting but a detailed re-architecting of the business's digital foundation, aimed at eliminating the platform "tax," reducing the performance drag of third-party dependencies, and establishing total data sovereignty.</p>
 
       <h2>The Structural Inefficiencies of Managed SaaS</h2>
       <p>The economic model of Shopify is designed to capture value across the entire lifecycle of a merchant's growth. While the entry-level costs appear low, the platform implements a multi-tiered fee structure that scales with volume, often outstripping the actual cost of the underlying infrastructure it provides. For an enterprise-level merchant, these costs manifest in several distinct categories: subscription fees, transaction slippage, app ecosystem overhead, and currency conversion penalties.</p>
@@ -712,7 +712,7 @@ export const blogPosts: BlogPost[] = [
       <h3>Phase 3: SEO Preservation and URL Architecture</h3>
       <p>The most common point of failure in e-commerce migration is the loss of organic search rankings. Shopify's URL structure is rigid (e.g., <code>/products/product-name</code>), whereas a custom AWS site offers total flexibility. While this flexibility is a long-term benefit, the immediate transition requires a 1:1 redirect map.</p>
 
-      <p>A robust SEO preservation strategy involves:</p>
+      <p>A strong SEO preservation strategy involves:</p>
 
       <ul class="list-disc pl-6 space-y-2 my-4">
         <li>Implementing permanent <strong>301 redirects</strong> for every product, collection, and blog URL.</li>
