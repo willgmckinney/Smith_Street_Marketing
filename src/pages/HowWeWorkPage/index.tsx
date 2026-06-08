@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { MountainTimeline } from "./Components/MountainTimeline";
+import { SpecLabel } from "../../components/Blueprint/SpecLabel";
+import { BuildTimeline } from "./Components/BuildTimeline";
 import { ServiceSelector } from "./Components/ServiceSelector";
 import type { ServiceType } from "./data/timelineContent";
 
@@ -8,66 +9,45 @@ export const HowWeWorkPage = () => {
 
   return (
     <div className="min-h-screen bg-blueprint-base">
-      {/* Hero section — z-20 keeps it above the fixed CliffFace (z-0) inside MountainTimeline */}
-      <div className="relative z-20 pt-24 pb-8 md:pt-28 md:pb-12 overflow-hidden">
-        {/* Subtle mountain silhouette background */}
-        <div className="absolute inset-0 opacity-10">
-          <svg
-            className="absolute bottom-0 w-full"
-            viewBox="0 0 1440 200"
-            preserveAspectRatio="none"
-            style={{ height: "100%" }}
-          >
-            <path
-              d="M0,200 L0,140 Q180,80 360,120 Q540,60 720,100 Q900,40 1080,80 Q1260,20 1440,60 L1440,200 Z"
-              fill="#1E293B"
-            />
-          </svg>
-        </div>
+      <div className="relative z-20 pt-24 pb-8 md:pt-28 md:pb-12 overflow-hidden border-b border-chalk/10">
+        <div
+          className="absolute inset-0 bg-blueprint-grid bg-[length:32px_32px] opacity-20"
+          aria-hidden
+        />
 
         <div className="relative container mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
-            <svg
-              className="w-4 h-4 text-annotation-blue"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M8 3l4 8 5-5 5 15H2L8 3z" />
-            </svg>
-            <span className="font-mono text-xs text-chalk/60 tracking-wider uppercase">
-              The Ascent
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-spec bg-white/5 border border-chalk/10 mb-6">
+            <span className="font-mono text-xs text-marker-start tracking-wider lowercase">
+              The Build
             </span>
           </div>
 
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-marker-start to-marker-end font-bold mb-6">
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-chalk font-bold mb-6">
             How We Work
           </h1>
 
+          <div className="flex justify-center mb-4">
+            <SpecLabel tick={false}>scope of work</SpecLabel>
+          </div>
+
           <p className="font-sans text-lg md:text-xl text-chalk/70 max-w-2xl mx-auto leading-relaxed mb-4">
-            Every great summit starts with a plan, the right gear, and a guide
-            who knows the route. Follow the rope to see how we'll get you to
-            the top.
+            Every solid build starts with a plan, the right tools, and a crew
+            that knows the job. Follow the blueprint to see how we get it done.
           </p>
 
           <p className="font-sans text-sm text-chalk/40 max-w-xl mx-auto">
-            Select your service below, then scroll to follow the climbing
-            route from base camp to summit.
+            Select your service below, then scroll through the build from
+            foundation to handoff.
           </p>
         </div>
       </div>
 
-      {/* Service selector */}
       <ServiceSelector
         activeService={activeService}
         onServiceChange={setActiveService}
       />
 
-      {/* Mountain timeline */}
-      <MountainTimeline activeService={activeService} />
+      <BuildTimeline activeService={activeService} />
     </div>
   );
 };

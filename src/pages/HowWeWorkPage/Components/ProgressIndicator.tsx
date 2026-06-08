@@ -1,35 +1,31 @@
 interface ProgressIndicatorProps {
   progress: number;
-  currentAltitude: number;
+  currentStation: number;
   totalMilestones: number;
 }
 
 export const ProgressIndicator = ({
   progress,
-  currentAltitude,
+  currentStation,
   totalMilestones,
 }: ProgressIndicatorProps) => {
-  // Calculate the stroke dash for the circular progress
   const radius = 42;
   const circumference = 2 * Math.PI * radius;
   const dashOffset = circumference - (progress / 100) * circumference;
 
   return (
     <div className="fixed bottom-6 right-6 z-40 flex items-end gap-3 scale-75 sm:scale-90 md:scale-100">
-      {/* Altimeter gauge */}
       <div className="relative">
         <svg width="100" height="100" viewBox="0 0 100 100">
-          {/* Background circle */}
           <circle
             cx="50"
             cy="50"
             r={radius}
             fill="rgba(30, 41, 59, 0.9)"
-            stroke="rgba(168, 216, 234, 0.15)"
+            stroke="rgba(0, 196, 132, 0.15)"
             strokeWidth="2"
           />
 
-          {/* Progress arc */}
           <circle
             cx="50"
             cy="50"
@@ -44,15 +40,13 @@ export const ProgressIndicator = ({
             className="transition-all duration-500"
           />
 
-          {/* Gradient definition */}
           <defs>
             <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#A8D8EA" />
-              <stop offset="100%" stopColor="#64B5F6" />
+              <stop offset="0%" stopColor="#00c484" />
+              <stop offset="100%" stopColor="#32e875" />
             </linearGradient>
           </defs>
 
-          {/* Camp number */}
           <text
             x="50"
             y="44"
@@ -62,10 +56,9 @@ export const ProgressIndicator = ({
             fontWeight="bold"
             fontFamily="monospace"
           >
-            {currentAltitude}
+            {currentStation}
           </text>
 
-          {/* Fraction */}
           <text
             x="50"
             y="60"
@@ -78,31 +71,28 @@ export const ProgressIndicator = ({
           </text>
         </svg>
 
-        {/* Label */}
         <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap">
-          <span className="font-mono text-[9px] text-sheet-light tracking-[0.15em] uppercase">
-            Altitude
+          <span className="font-mono text-[9px] text-sheet-light tracking-[0.15em] lowercase">
+            station
           </span>
         </div>
       </div>
 
-      {/* Vertical progress bar */}
-      <div className="w-1 h-32 bg-white/5 rounded-full overflow-hidden relative">
+      <div className="w-1 h-32 bg-chalk/5 rounded-spec overflow-hidden relative">
         <div
-          className="absolute bottom-0 w-full rounded-full transition-all duration-500"
+          className="absolute bottom-0 w-full rounded-spec transition-all duration-500"
           style={{
             height: `${progress}%`,
-            background: "linear-gradient(to top, #A8D8EA, #64B5F6)",
+            background: "linear-gradient(to top, #00c484, #32e875)",
           }}
         />
 
-        {/* Milestone tick marks */}
         {Array.from({ length: totalMilestones }, (_, i) => {
           const pos = ((i + 1) / totalMilestones) * 100;
           return (
             <div
               key={i}
-              className="absolute w-2 h-[1px] -left-0.5 bg-white/20"
+              className="absolute w-2 h-px -left-0.5 bg-chalk/20"
               style={{ bottom: `${pos}%` }}
             />
           );

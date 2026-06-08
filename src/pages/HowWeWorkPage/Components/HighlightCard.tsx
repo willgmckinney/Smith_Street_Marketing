@@ -1,5 +1,14 @@
 import { motion } from "framer-motion";
+import { BlueprintCard } from "../../../components/Blueprint/BlueprintCard";
 import type { TimelineMilestone } from "../data/timelineContent";
+
+const STAGE_LABELS = [
+  "foundations",
+  "framing",
+  "framing",
+  "finishing",
+  "handoff",
+];
 
 interface HighlightCardProps {
   content: TimelineMilestone;
@@ -36,9 +45,10 @@ const iconMap: Record<string, React.ReactNode> = {
       <line x1="6" y1="20" x2="6" y2="14" />
     </svg>
   ),
-  summit: (
+  handoff: (
     <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M8 3l4 8 5-5 5 15H2L8 3z" />
+      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+      <polyline points="22 4 12 14.01 9 11.01" />
     </svg>
   ),
 };
@@ -50,7 +60,7 @@ export const HighlightCard = ({
   milestoneNumber,
   totalMilestones,
 }: HighlightCardProps) => {
-  const isLastMilestone = milestoneNumber === totalMilestones;
+  const stageLabel = STAGE_LABELS[milestoneNumber - 1] ?? "scope";
 
   return (
     <motion.div
@@ -58,10 +68,9 @@ export const HighlightCard = ({
         w-full md:w-[calc(50%-40px)]
         ${side === "left" ? "md:mr-auto md:pr-4" : "md:ml-auto md:pl-4"}
       `}
-      initial={{ opacity: 0, x: 0, y: 20 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={{
         opacity: isVisible ? 1 : 0.15,
-        x: 0,
         y: isVisible ? 0 : 10,
       }}
       transition={{
@@ -71,32 +80,22 @@ export const HighlightCard = ({
         delay: 0.1,
       }}
     >
-      <div
-        className={`
-          relative p-6 md:p-8 rounded-2xl
-          bg-drafting-surface/90 backdrop-blur-xl
-          border transition-all duration-500
-          ${
-            isVisible
-              ? "border-annotation-blue/30 shadow-[0_8px_32px_rgba(100,181,246,0.15)]"
-              : "border-white/5 shadow-lg"
-          }
-          ${isLastMilestone && isVisible ? "ring-2 ring-marker-start/30" : ""}
-        `}
+      <BlueprintCard
+        index={milestoneNumber}
+        accent={isVisible}
+        className={`p-6 md:p-8 transition-all duration-500 ${
+          isVisible ? "border-marker-start/30" : "border-chalk/5"
+        }`}
       >
-        {/* Top rim light */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-
-        {/* Altitude label */}
-        <div className="flex items-center gap-3 mb-4">
+        <div className="flex items-center gap-3 mb-4 pt-6">
           <div
             className={`
-              w-10 h-10 rounded-xl flex items-center justify-center
+              w-10 h-10 rounded-spec flex items-center justify-center border
               transition-all duration-500
               ${
                 isVisible
-                  ? "bg-gradient-to-br from-annotation-blue to-marker-start text-blueprint-base"
-                  : "bg-sheet-mid text-sheet-light"
+                  ? "bg-marker-start/20 border-marker-start text-marker-start"
+                  : "bg-sheet-mid border-chalk/10 text-sheet-light"
               }
             `}
           >
@@ -106,17 +105,15 @@ export const HighlightCard = ({
           <div className="flex-1">
             <span
               className={`
-                font-mono text-[10px] tracking-[0.2em] uppercase
-                ${isVisible ? "text-annotation-blue" : "text-sheet-light"}
+                font-mono text-[10px] tracking-[0.2em] lowercase
+                ${isVisible ? "text-marker-start" : "text-sheet-light"}
               `}
             >
-              Camp {milestoneNumber} of {totalMilestones}
-              {isLastMilestone ? " — Summit" : ""}
+              {stageLabel} · station {milestoneNumber} of {totalMilestones}
             </span>
           </div>
         </div>
 
-        {/* Title */}
         <h3
           className={`
             font-display text-xl md:text-2xl font-bold mb-3
@@ -127,7 +124,6 @@ export const HighlightCard = ({
           {content.title}
         </h3>
 
-        {/* Description */}
         <p
           className={`
             text-sm md:text-base leading-relaxed mb-6
@@ -138,12 +134,11 @@ export const HighlightCard = ({
           {content.description}
         </p>
 
-        {/* Metrics */}
         {content.metrics && content.metrics.length > 0 && (
           <div
             className={`
               flex gap-6 pt-5 border-t transition-colors duration-500
-              ${isVisible ? "border-white/10" : "border-white/5"}
+              ${isVisible ? "border-chalk/10" : "border-chalk/5"}
             `}
           >
             {content.metrics.map((metric, i) => (
@@ -152,7 +147,7 @@ export const HighlightCard = ({
                   className={`
                     font-mono text-2xl md:text-3xl font-bold leading-none
                     transition-colors duration-500
-                    ${isVisible ? "text-grid-line" : "text-sheet-light"}
+                    ${isVisible ? "text-marker-start" : "text-sheet-light"}
                   `}
                 >
                   {metric.value}
@@ -171,20 +166,19 @@ export const HighlightCard = ({
           </div>
         )}
 
-        {/* Connector line to center (desktop only) */}
         <div
           className={`
-            hidden md:block absolute top-1/2 w-8 h-[2px]
+            hidden md:block absolute top-1/2 w-8 h-px
             transition-all duration-500
             ${
               isVisible
-                ? "bg-gradient-to-r from-annotation-blue/60 to-transparent"
-                : "bg-white/5"
+                ? "bg-marker-start/40"
+                : "bg-chalk/5"
             }
-            ${side === "left" ? "right-0 translate-x-full" : "left-0 -translate-x-full rotate-180"}
+            ${side === "left" ? "right-0 translate-x-full" : "left-0 -translate-x-full"}
           `}
         />
-      </div>
+      </BlueprintCard>
     </motion.div>
   );
 };

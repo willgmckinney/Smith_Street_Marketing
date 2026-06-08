@@ -1,19 +1,20 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { Link } from "@tanstack/react-router";
+import { BlueprintButton } from "../../../components/Blueprint/BlueprintButton";
 import type { ServiceType, TimelineMilestone } from "../data/timelineContent";
 import { timelineContent } from "../data/timelineContent";
-import { CliffFace } from "./CliffFace";
+import { BeamSegment } from "./BeamSegment";
+import { BlueprintSheet } from "./BlueprintSheet";
 import { HighlightCard } from "./HighlightCard";
-import { Piton } from "./Piton";
 import { ProgressIndicator } from "./ProgressIndicator";
-import { RopeSegment } from "./RopeSegment";
+import { StationMarker } from "./StationMarker";
 
-interface MountainTimelineProps {
+interface BuildTimelineProps {
   activeService: ServiceType;
 }
 
-/** Wrapper around each milestone that reports when it enters/exits the viewport */
 const MilestoneSection = ({
   milestone,
   index,
@@ -39,24 +40,19 @@ const MilestoneSection = ({
   );
 };
 
-export const MountainTimeline = ({
-  activeService,
-}: MountainTimelineProps) => {
+export const BuildTimeline = ({ activeService }: BuildTimelineProps) => {
   const [activeHighlight, setActiveHighlight] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const milestones = timelineContent[activeService];
 
-  // Reset active highlight when service changes
   useEffect(() => {
     setActiveHighlight(0);
     setScrollProgress(0);
-    // Scroll to top of timeline when switching services
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [activeService]);
 
-  // Track scroll progress
   useEffect(() => {
     const handleScroll = () => {
       if (!containerRef.current) return;
@@ -64,16 +60,17 @@ export const MountainTimeline = ({
       const rect = containerRef.current.getBoundingClientRect();
       const containerTop = rect.top + window.scrollY;
       const containerHeight = rect.height;
-      const scrollPosition = window.scrollY - containerTop + window.innerHeight * 0.5;
+      const scrollPosition =
+        window.scrollY - containerTop + window.innerHeight * 0.5;
       const progress = Math.max(
         0,
-        Math.min(100, (scrollPosition / containerHeight) * 100)
+        Math.min(100, (scrollPosition / containerHeight) * 100),
       );
       setScrollProgress(progress);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // Initial calculation
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, [activeService]);
 
@@ -83,10 +80,9 @@ export const MountainTimeline = ({
         setActiveHighlight(index);
       }
     },
-    []
+    [],
   );
 
-  // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowDown" || e.key === "ArrowRight") {
@@ -108,7 +104,7 @@ export const MountainTimeline = ({
 
   const scrollToMilestone = (index: number) => {
     const el = document.querySelector(
-      `[data-milestone-id="${milestones[index]?.id}"]`
+      `[data-milestone-id="${milestones[index]?.id}"]`,
     );
     if (el) {
       el.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -121,17 +117,14 @@ export const MountainTimeline = ({
       role="region"
       aria-label="Project engagement timeline"
     >
-      {/* Parallax mountain background */}
-      <CliffFace scrollProgress={scrollProgress} />
+      <BlueprintSheet scrollProgress={scrollProgress} />
 
-      {/* Progress indicator */}
       <ProgressIndicator
         progress={scrollProgress}
-        currentAltitude={activeHighlight + 1}
+        currentStation={activeHighlight + 1}
         totalMilestones={milestones.length}
       />
 
-      {/* Timeline content */}
       <div
         ref={containerRef}
         id={`timeline-panel-${activeService}`}
@@ -139,29 +132,27 @@ export const MountainTimeline = ({
         aria-label={`${activeService} service timeline`}
         className="relative z-10 container mx-auto px-4 md:px-8"
       >
-        {/* Base camp intro */}
         <motion.div
           className="text-center pt-12 pb-16 md:pt-16 md:pb-24"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
-            <div className="w-2 h-2 rounded-full bg-marker-start animate-pulse" />
-            <span className="font-mono text-xs text-chalk/60 tracking-wider uppercase">
-              Base Camp — Start Here
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-spec bg-white/5 border border-chalk/10 mb-6">
+            <div className="w-2 h-2 rounded-spec bg-marker-start animate-pulse" />
+            <span className="font-mono text-xs text-chalk/60 tracking-wider lowercase">
+              foundation — start here
             </span>
           </div>
           <h2 className="font-display text-2xl md:text-3xl text-white mb-3">
-            Your Ascent Begins
+            The Build Begins
           </h2>
           <p className="text-chalk/60 max-w-xl mx-auto text-sm md:text-base">
-            Follow the rope up the mountain to see each phase of your engagement.
-            Each piton marks a critical milestone on the path to your summit.
+            Follow the dimension line to see each phase of your engagement.
+            Each station marks a critical milestone on the path to handoff.
           </p>
         </motion.div>
 
-        {/* Milestones */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeService}
@@ -182,24 +173,19 @@ export const MountainTimeline = ({
                   className="relative"
                   style={{ minHeight: "55vh" }}
                 >
-                  {/* Intersection observer sentinel */}
                   <MilestoneSection
                     milestone={milestone}
                     index={index}
                     onInView={handleMilestoneInView}
                   />
 
-                  {/* Rope + Piton center column (hidden on mobile) */}
                   <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-14">
-                    {/* Rope running through this section */}
-                    <RopeSegment
+                    <BeamSegment
                       isActive={isActive}
                       isPassed={isPassed}
                       isLast={index === milestones.length - 1}
                     />
-
-                    {/* Piton marker — odd to the left, even to the right */}
-                    <Piton
+                    <StationMarker
                       isActive={isActive}
                       isPassed={isPassed}
                       number={index + 1}
@@ -207,8 +193,10 @@ export const MountainTimeline = ({
                     />
                   </div>
 
-                  {/* Content card */}
-                  <div className="flex items-center pt-16 md:pt-0" style={{ minHeight: "55vh" }}>
+                  <div
+                    className="flex items-center pt-16 md:pt-0"
+                    style={{ minHeight: "55vh" }}
+                  >
                     <div className="w-full flex px-2 md:px-8">
                       <HighlightCard
                         content={milestone}
@@ -225,7 +213,6 @@ export const MountainTimeline = ({
           </motion.div>
         </AnimatePresence>
 
-        {/* Summit reached */}
         <motion.div
           className="text-center py-24 md:py-32"
           initial={{ opacity: 0 }}
@@ -234,55 +221,21 @@ export const MountainTimeline = ({
           }}
           transition={{ duration: 0.8 }}
         >
-          <div className="relative inline-block">
-            {/* Summit glow */}
-            <div
-              className="absolute inset-0 -m-8 rounded-full transition-opacity duration-1000"
-              style={{
-                background:
-                  "radial-gradient(circle, rgba(100,181,246,0.2) 0%, transparent 70%)",
-                opacity: scrollProgress > 90 ? 1 : 0,
-              }}
-            />
-
-            <svg
-              className="w-16 h-16 mx-auto mb-6 text-annotation-blue"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M8 3l4 8 5-5 5 15H2L8 3z" />
-            </svg>
+          <div className="w-12 h-12 mx-auto mb-6 border border-marker-start rounded-spec flex items-center justify-center">
+            <span className="font-mono text-marker-start text-lg">✓</span>
           </div>
 
           <h2 className="font-display text-3xl md:text-4xl text-white mb-4">
-            Summit Reached
+            Handoff Complete
           </h2>
           <p className="text-chalk/60 max-w-lg mx-auto mb-8 text-sm md:text-base">
-            From base camp to the peak, we're with you every step. Ready to
-            start your ascent?
+            From foundation to final inspection, we're with you every step.
+            Ready to start your build?
           </p>
 
-          <a
-            href="/demo"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-marker-start to-marker-end text-blueprint-base font-display font-bold text-lg  hover:-translate-y-0.5 transition-all duration-300 active:scale-95"
-          >
-            Start Your Climb
-            <svg
-              className="w-5 h-5"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </a>
+          <Link to="/demo">
+            <BlueprintButton size="lg">Start a Project</BlueprintButton>
+          </Link>
         </motion.div>
       </div>
     </div>

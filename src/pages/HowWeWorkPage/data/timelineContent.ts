@@ -75,7 +75,7 @@ export const timelineContent: Record<ServiceType, TimelineMilestone[]> = {
     {
       id: "analytics-5",
       title: "Ongoing Optimization",
-      icon: "summit",
+      icon: "handoff",
       description:
         "Analytics isn't a one-time project—it's a competitive advantage that compounds over time. We provide 24/7 monitoring, quarterly model retraining, and continuous dashboard evolution. As your business grows, your analytics capabilities grow with it.",
       metrics: [
@@ -133,7 +133,7 @@ export const timelineContent: Record<ServiceType, TimelineMilestone[]> = {
     {
       id: "software-5",
       title: "Maintenance & Evolution",
-      icon: "summit",
+      icon: "handoff",
       description:
         "Software isn't done when it ships—that's when the real work begins. We provide proactive maintenance, security patching, performance optimization, and feature evolution. <4 hour response times and monthly enhancement cycles mean your product never falls behind.",
       metrics: [
@@ -149,7 +149,7 @@ export const timelineContent: Record<ServiceType, TimelineMilestone[]> = {
       title: "Migration Assessment",
       icon: "compass",
       description:
-        "Cloud migrations fail when the business case isn't rock solid. We conduct comprehensive infrastructure audits, dependency mapping, and TCO analysis that proves the ROI. You'll know exactly what you're getting into: timeline, risks, costs, and benefits—all quantified.",
+        "Cloud migrations fail when the business case isn't solid. We conduct comprehensive infrastructure audits, dependency mapping, and TCO analysis that proves the ROI. You'll know exactly what you're getting into: timeline, risks, costs, and benefits—all quantified.",
       metrics: [
         { value: "1 Week", label: "Full Assessment" },
         { value: "30-40%", label: "Avg Cost Savings" },
@@ -191,7 +191,7 @@ export const timelineContent: Record<ServiceType, TimelineMilestone[]> = {
     {
       id: "aws-5",
       title: "Optimization & Support",
-      icon: "summit",
+      icon: "handoff",
       description:
         "AWS costs spiral when left unmanaged. We provide continuous cost optimization through reserved instance planning, auto-scaling tuning, and resource rightsizing. 24/7 monitoring with CloudWatch and custom alerting means issues are resolved before they impact users.",
       metrics: [
