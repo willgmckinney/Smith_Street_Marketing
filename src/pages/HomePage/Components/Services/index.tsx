@@ -1,42 +1,55 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import cloudServices from "../../../../assets/cloudServices.png";
-import customSoftwareDevelopment from "../../../../assets/customSoftwareDevelopment.png";
-import dataAnalysisBusinessIntelligence from "../../../../assets/dataAnalysisBusinessIntelligence.png";
-import websiteDevelopment from "../../../../assets/websiteDevelopment.png";
-import { BlueprintCard } from "../../../../components/Blueprint/BlueprintCard";
 import { DimensionLine } from "../../../../components/Blueprint/DimensionLine";
 import { SpecLabel } from "../../../../components/Blueprint/SpecLabel";
+import {
+  ServiceIcon,
+  type ServiceIconName,
+} from "../../../../components/Blueprint/ServiceIcon";
 
-const servicesList = [
+type Service = {
+  icon: ServiceIconName;
+  title: string;
+  what: string;
+  stack: string[];
+  example: string;
+};
+
+const servicesList: Service[] = [
   {
-    title: "Data Analysis and Business Intelligence",
-    description:
-      "Unlock the power of your data with our comprehensive analysis and business intelligence solutions. We transform raw data into actionable insights, enabling you to make informed decisions, streamline operations, and identify new growth opportunities.",
-    image: dataAnalysisBusinessIntelligence,
+    icon: "data",
+    title: "Data & business intelligence",
+    what: "We build the pipelines and warehouses your reporting runs on.",
+    stack: ["kafka", "redshift", "glue", "dbt"],
+    example: "Built a satellite imagery lakehouse for Airbus on Glue and Redshift.",
   },
   {
-    title: "Cloud Integration and Migration",
-    description:
-      "Seamlessly transition to the cloud with our expert integration and migration services. We ensure a smooth and secure migration process, optimizing your cloud infrastructure for maximum efficiency and cost savings, while minimizing downtime.",
-    image: cloudServices,
+    icon: "cloud",
+    title: "Cloud integration & migration",
+    what: "We move workloads to AWS and keep the bill in check.",
+    stack: ["cdk", "ecs fargate", "well-architected"],
+    example:
+      "Run the ImageHunter API for Apollo Mapping on ECS Fargate with OAuth2.",
   },
   {
-    title: "Website Development and Maintenance",
-    description:
-      "Enhance your online presence with our cutting-edge website development and maintenance services. We create stunning, user-friendly websites that drive traffic and engagement, and provide ongoing support to keep your site secure and up-to-date.",
-    image: websiteDevelopment,
+    icon: "web",
+    title: "Website development & maintenance",
+    what: "We ship fast, accessible sites and keep them current.",
+    stack: ["react", "typescript", "vite"],
+    example:
+      "Shipped the Ascent Pharmaceuticals landing experience end to end.",
   },
   {
-    title: "Custom Software Development",
-    description:
-      "Tailor-made software solutions designed to meet your unique business needs. Our custom software development services deliver robust, scalable, and user-friendly applications that enhance productivity and support your business goals.",
-    image: customSoftwareDevelopment,
+    icon: "software",
+    title: "Custom software development",
+    what: "We build the application when off-the-shelf does not fit.",
+    stack: ["react", "fastapi", "postgres"],
+    example:
+      "Took LillyDirect checkout and order-status from Figma to production.",
   },
 ];
 
 export const Services = () => {
   return (
-    <section className="bg-blueprint-base py-20 sm:py-32 px-4 sm:px-8 relative overflow-hidden">
+    <section className="bg-blueprint-base py-3cell px-cell relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="mb-2cell space-y-4 max-w-2xl">
           <SpecLabel>capabilities</SpecLabel>
@@ -46,31 +59,42 @@ export const Services = () => {
           <DimensionLine className="max-w-xs" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-          {servicesList.map((service, index) => (
-            <BlueprintCard
-              key={index}
-              index={index + 1}
-              accent
-              className="flex flex-col h-full group"
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-2cell gap-y-2cell">
+          {servicesList.map((service) => (
+            <div
+              key={service.title}
+              className="border-t border-chalk/15 pt-cell"
             >
-              <div className="h-64 overflow-hidden relative bg-blueprint-base">
-                <div className="absolute inset-0 bg-blueprint-base/20 z-10 group-hover:bg-transparent transition-colors duration-500" />
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="w-full h-full object-contain transition-transform duration-700 ease-out group-hover:scale-110"
+              <div className="flex items-start gap-4">
+                <ServiceIcon
+                  name={service.icon}
+                  className="text-marker-start shrink-0 mt-1"
                 />
+                <div>
+                  <h3 className="font-display font-bold text-h text-chalk mb-2">
+                    {service.title}
+                  </h3>
+                  <p className="font-sans text-body text-chalk/80">
+                    {service.what}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {service.stack.map((tag) => (
+                      <span
+                        key={tag}
+                        className="font-mono text-label-mono text-chalk/70 border border-chalk/15 rounded-spec px-2.5 py-1 lowercase"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <p className="font-mono text-label-mono text-marker-start lowercase mt-4 leading-relaxed">
+                    {service.example}
+                  </p>
+                </div>
               </div>
-              <div className="p-8 pt-12 flex-1 flex flex-col">
-                <h3 className="font-display font-bold text-2xl text-chalk mb-4 group-hover:text-marker-start transition-colors">
-                  {service.title}
-                </h3>
-                <p className="font-sans text-chalk/80 text-lg leading-relaxed flex-1">
-                  {service.description}
-                </p>
-              </div>
-            </BlueprintCard>
+            </div>
           ))}
         </div>
       </div>

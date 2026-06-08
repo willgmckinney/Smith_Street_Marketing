@@ -1,72 +1,162 @@
 import { DimensionLine } from "../../components/Blueprint/DimensionLine";
 import { SpecLabel } from "../../components/Blueprint/SpecLabel";
 import { BlueprintGrid } from "../../components/Blueprint/BlueprintGrid";
-import { ProjectCard } from "./Components/ProjectCard";
+import { AssetFrame } from "../../components/Blueprint/AssetFrame";
+import { SystemDiagram } from "../../components/Blueprint/SystemDiagram";
+import {
+  LakehouseDiagram,
+  CheckoutFlowDiagram,
+} from "../../components/Blueprint/ArchitectureDiagrams";
+import { Wireframe } from "../../components/Blueprint/Wireframe";
+import { CaseStudy } from "./Components/CaseStudy";
+import type { ReactNode } from "react";
 
-const projects = [
+type Entry = {
+  index: number;
+  client: string;
+  system: string;
+  built: string;
+  stack: string[];
+  scale: string;
+  href?: string;
+  figure: number;
+  caption: string;
+  asset: ReactNode;
+};
+
+const flagships: Entry[] = [
   {
-    title: "Image Hunter – Apollo Mapping",
-    description:
-      "Satellite imagery and geospatial solutions for the satellite industry. Explore high-resolution imagery, mapping tools, and discovery platforms powered by Apollo Mapping.",
-    imageUrl: "/sattelite.png",
-    linkUrl: "https://imagehunter.apollomapping.com/",
-    technologies: ["Satellite Imagery", "Geospatial", "Web App"],
+    index: 1,
+    client: "Apollo Mapping",
+    system: "ImageHunter API",
+    built:
+      "A geospatial imagery API that searches and orders satellite scenes across providers.",
+    stack: ["fastapi", "ecs fargate", "asyncpg", "redis", "aws cdk", "oauth 2.0"],
+    scale:
+      "oauth2 client-credentials api on ecs fargate serving production imagery traffic",
+    href: "https://imagehunter.apollomapping.com/",
+    figure: 1,
+    caption: "imagehunter request path",
+    asset: <SystemDiagram className="w-full max-w-md mx-auto" />,
   },
   {
-    title: "kontinu-ed – interactive higher education platform",
-    description:
-      "An interactive higher education platform for the kontinu-ed brand. Explore the platform and the features it offers.",
-    imageUrl: "/book.png",
-    linkUrl: "https://kontinued.com/",
-    technologies: ["Web Development", "Education", "UI/UX Design"],
+    index: 2,
+    client: "Airbus",
+    system: "Imagery Lakehouse",
+    built:
+      "A lakehouse for satellite imagery data, from ingestion through governed analytics.",
+    stack: ["glue", "dms", "lake formation", "kafka msk", "redshift"],
+    scale:
+      "governed s3 lakehouse with lake formation access control, served to redshift",
+    figure: 2,
+    caption: "lakehouse data flow",
+    asset: <LakehouseDiagram className="w-full" />,
   },
   {
-    title: "Ascent Pharmaceuticals Landing",
-    description:
-      "A modern, conversion-focused landing experience for pharmaceutical manufacturers showcasing facilities, product portfolio, and partnership opportunities.",
-    imageUrl: "/pill.png",
-    linkUrl: "/ascent-pharmaceuticals-landing",
-    technologies: ["Web Development", "Brand Strategy"],
+    index: 3,
+    client: "Eli Lilly",
+    system: "LillyDirect",
+    built:
+      "Checkout and order-status pages taken from Figma to production for the direct-to-patient platform.",
+    stack: ["react", "typescript", "figma to prod"],
+    scale: "production checkout and order-status flow shipped to lillydirect",
+    figure: 3,
+    caption: "checkout flow",
+    asset: <CheckoutFlowDiagram className="w-full" />,
+  },
+];
+
+const demos: Entry[] = [
+  {
+    index: 4,
+    client: "Construction",
+    system: "Site Manager Dashboard",
+    built:
+      "A project dashboard tracking real-time KPIs and crew productivity across active sites.",
+    stack: ["react", "recharts", "typescript"],
+    scale: "real-time kpis and productivity tracking across active sites",
+    href: "/construction-dashboard",
+    figure: 4,
+    caption: "site manager view",
+    asset: <Wireframe variant="dashboard" className="w-full max-w-md mx-auto" />,
   },
   {
-    title: "Construction Site Manager",
-    description:
-      "An interactive dashboard for construction project management with real-time KPIs, productivity tracking, and dynamic data visualization.",
-    imageUrl: "/construction-cap.png",
-    linkUrl: "/construction-dashboard",
-    technologies: ["Data Analytics", "Web App"],
+    index: 5,
+    client: "Real Estate",
+    system: "Broker Dashboard",
+    built:
+      "A market-intelligence dashboard with property analytics, pipeline tracking, and dynamic filtering.",
+    stack: ["react", "recharts", "typescript"],
+    scale: "property analytics and pipeline tracking with dynamic filters",
+    href: "/real-estate-dashboard",
+    figure: 5,
+    caption: "broker map view",
+    asset: <Wireframe variant="map" className="w-full max-w-md mx-auto" />,
   },
   {
-    title: "Real Estate Broker Dashboard",
-    description:
-      "A comprehensive market intelligence dashboard for real estate professionals featuring property analytics, pipeline tracking, and dynamic filtering capabilities.",
-    imageUrl: "/tent.png",
-    linkUrl: "/real-estate-dashboard",
-    technologies: ["Data Analytics", "Web App"],
+    index: 6,
+    client: "Security",
+    system: "Shift Scheduler",
+    built:
+      "A scheduling system for security personnel with user and admin views and CSV export.",
+    stack: ["react", "typescript"],
+    scale: "user and admin views with real-time assignment and export",
+    href: "/security-scheduling-dashboard",
+    figure: 6,
+    caption: "schedule grid",
+    asset: <Wireframe variant="schedule" className="w-full max-w-md mx-auto" />,
   },
   {
-    title: "Security Shift Scheduler",
-    description:
-      "A comprehensive shift scheduling system for security personnel with user/admin views, real-time assignment management, and export capabilities.",
-    imageUrl: "/lock.png",
-    linkUrl: "/security-scheduling-dashboard",
-    technologies: ["Custom Software Development", "Web App"],
+    index: 7,
+    client: "Tax Services",
+    system: "Practice Dashboard",
+    built:
+      "A tax-prep dashboard for client management, return tracking, and refund analytics.",
+    stack: ["react", "recharts"],
+    scale: "client management, return tracking, and refund analytics",
+    href: "/tax-company-dashboard",
+    figure: 7,
+    caption: "practice overview",
+    asset: <Wireframe variant="dashboard" className="w-full max-w-md mx-auto" />,
   },
   {
-    title: "Trusted Tax Company",
-    description:
-      "A comprehensive tax preparation dashboard featuring client management, return tracking, refund analytics, and revenue insights for tax professionals.",
-    imageUrl: "/calculator.png",
-    linkUrl: "/tax-company-dashboard",
-    technologies: ["Data Analytics", "Web App"],
+    index: 8,
+    client: "Ascent Pharmaceuticals",
+    system: "Manufacturer Landing",
+    built:
+      "A conversion-focused landing experience covering facilities, product portfolio, and partnerships.",
+    stack: ["react", "typescript", "vite"],
+    scale: "manufacturer landing with product portfolio and partnership paths",
+    href: "/ascent-pharmaceuticals-landing",
+    figure: 8,
+    caption: "landing layout",
+    asset: <Wireframe variant="landing" className="w-full max-w-md mx-auto" />,
   },
   {
-    title: "ACME Lifecycle — Fleet & Opportunity Radar",
-    description:
-      "A two-sided IT asset lifecycle demo for ACME Group. Track distributed fleets as the client, then flip to ACME's internal view to see the same data as ranked sales opportunities.",
-    imageUrl: "/lock.png",
-    linkUrl: "/acme-lifecycle",
-    technologies: ["React", "Data Visualization", "Sales Demo"],
+    index: 9,
+    client: "kontinu-ed",
+    system: "Higher-Education Platform",
+    built:
+      "An interactive higher-education platform with course discovery and enrollment.",
+    stack: ["react", "typescript"],
+    scale: "interactive higher-education platform with course discovery",
+    href: "https://kontinued.com/",
+    figure: 9,
+    caption: "platform layout",
+    asset: <Wireframe variant="landing" className="w-full max-w-md mx-auto" />,
+  },
+  {
+    index: 10,
+    client: "ACME Group",
+    system: "Lifecycle & Opportunity Radar",
+    built:
+      "A two-sided IT asset lifecycle demo: fleet tracking for the client, ranked opportunities for ACME.",
+    stack: ["react", "data viz"],
+    scale: "two-sided fleet view and ranked sales opportunities from one dataset",
+    href: "/acme-lifecycle",
+    figure: 10,
+    caption: "fleet dashboard",
+    asset: <Wireframe variant="dashboard" className="w-full max-w-md mx-auto" />,
   },
 ];
 
@@ -87,12 +177,32 @@ export const PortfolioPage = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-20">
-        <div className="flex flex-wrap justify-center gap-8">
-          {projects.map((project, index) => (
-            <ProjectCard key={project.title} index={index + 1} {...project} />
-          ))}
-        </div>
+      <div className="max-w-7xl mx-auto px-cell py-2cell">
+        <SpecLabel className="mb-cell">flagship engagements</SpecLabel>
+        {flagships.map((p) => (
+          <CaseStudy
+            key={p.system}
+            {...p}
+            asset={
+              <AssetFrame figure={p.figure} caption={p.caption}>
+                {p.asset}
+              </AssetFrame>
+            }
+          />
+        ))}
+
+        <SpecLabel className="mb-cell mt-3cell">interactive demos</SpecLabel>
+        {demos.map((p) => (
+          <CaseStudy
+            key={p.system}
+            {...p}
+            asset={
+              <AssetFrame figure={p.figure} caption={p.caption}>
+                {p.asset}
+              </AssetFrame>
+            }
+          />
+        ))}
       </div>
     </div>
   );
