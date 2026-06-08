@@ -69,14 +69,14 @@ export const ShopifyProfitRecovery = () => {
   return (
     <div className="min-h-screen bg-blueprint-base text-chalk">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-24 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blueprint-base via-drafting-surface to-blueprint-base opacity-50" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,184,0,0.1),transparent_50%)]" />
+      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-24 pb-20 overflow-hidden border-b border-marker-start/20">
+        <div className="absolute inset-0 bg-blueprint-grid bg-[length:32px_32px] opacity-25" />
+        <div className="absolute inset-0 bg-gradient-to-br from-blueprint-base via-marker-start/5 to-blueprint-base" />
         
         <div className="relative z-10 max-w-5xl mx-auto text-center">
-          <div className="inline-block px-4 py-2 mb-6 bg-marker-start/20 border border-marker-start/30 rounded-pill">
-            <span className="text-marker-start font-bold text-sm uppercase tracking-wider">
-              Stop the Success Tax
+          <div className="inline-block px-4 py-2 mb-6 bg-marker-start/20 border border-marker-start/30 rounded-spec">
+            <span className="text-marker-start font-mono font-bold text-sm tracking-[0.16em] lowercase">
+              stop the success tax
             </span>
           </div>
           
