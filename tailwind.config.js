@@ -24,17 +24,6 @@ export default {
         "station-deep": "#4A4238",
         "station-mid": "#6B5B4E",
         "station-light": "#8B7865",
-
-        // Legacy colors (keeping to prevent immediate breakage, but should be phased out)
-        "primary-color-1": "var(--primary-color-Cyan)",
-        "primary-color-2": "var(--primary-color-Green)",
-        "secondary-color-1": "var(--secondary-color-deep-teal)",
-        "secondary-color-2": "var(--secondary-color-sky-blue)",
-        "neutral-color-1": "var(--neutral-color-charcol-gray)",
-        "neutral-color-2": "var(--neutral-color-light-gray)",
-        "accent-color-1": "var(--accent-color-vibrant-blue)",
-        "accent-color-2": "var(--accent-color-lime-green)",
-        "tirtiary-color": "var(--tirtiary-color-gray)",
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
