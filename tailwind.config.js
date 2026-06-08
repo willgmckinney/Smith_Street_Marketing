@@ -38,7 +38,7 @@ export default {
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
-        display: ["Poppins", "sans-serif"],
+        display: ["Archivo", "sans-serif"],
         mono: ["Spline Sans Mono", "ui-monospace", "monospace"],
       },
       borderRadius: {

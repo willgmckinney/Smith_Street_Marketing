@@ -111,7 +111,7 @@ const Footer = () => {
                 name="message"
                 required
                 rows={4}
-                placeholder="How can we help you ascend?"
+                placeholder="What do you need built?"
               />
             </div>
 
