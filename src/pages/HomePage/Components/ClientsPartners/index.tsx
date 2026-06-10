@@ -34,8 +34,6 @@ const clients: RosterEntry[] = [
 
 const partners: RosterEntry[] = [
   { name: "AWS", descriptor: "cloud partner", logo: `${LOGO}/aws-mono.png`, ar: 633 / 379 },
-  { name: "SHI", descriptor: "it solutions", logo: `${LOGO}/shi-mono.png`, ar: 208 / 96 },
-  { name: "SDI Presence", descriptor: "consulting", logo: `${LOGO}/sdi-presence-mono.png`, ar: 113 / 40 },
   { name: "M25", descriptor: "venture", logo: `${LOGO}/m25-mono.png`, ar: 211 / 153 },
   { name: "IU Ventures", descriptor: "member", logo: `${LOGO}/iu-ventures-mono.png`, ar: 134 / 167 },
 ];

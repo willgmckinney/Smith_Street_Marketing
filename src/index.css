@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  /* Firefox */
+  scrollbar-width: none;
+  /* legacy Edge / IE */
+  -ms-overflow-style: none;
+}
+
 body {
   @apply bg-blueprint-base text-chalk font-sans antialiased;
   overflow-x: hidden;
@@ -11,21 +18,14 @@ h1, h2, h3, h4, h5, h6 {
   @apply font-display font-bold;
 }
 
-/* Scrollbar styling for that premium feel */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  @apply bg-blueprint-base;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-drafting-surface rounded-full border-2 border-blueprint-base;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-chalk/20;
+/* Hide the native scrollbar site-wide; scrolling still works.
+   The custom ScrollRule on the left serves as the progress indicator. */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background: transparent;
 }
 
 /* Blueprint timeline animations */
