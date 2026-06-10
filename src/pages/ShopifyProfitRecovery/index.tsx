@@ -148,7 +148,7 @@ export const ShopifyProfitRecovery = () => {
                 step="100000"
                 value={annualRevenue}
                 onChange={(e) => setAnnualRevenue(Number(e.target.value))}
-                className="w-full mt-4 h-2 bg-drafting-surface rounded-lg appearance-none cursor-pointer accent-marker-start"
+                className="w-full mt-4 h-2 bg-chalk/15 rounded-lg appearance-none cursor-pointer accent-marker-start"
               />
               <div className="flex justify-between text-sm text-chalk/60 mt-2">
                 <span>$1M</span>

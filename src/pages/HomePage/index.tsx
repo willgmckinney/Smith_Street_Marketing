@@ -1,5 +1,5 @@
 import { HeroBanner } from "./Components/HeroBanner";
-import { ScreenWideCTA } from "./Components/ScreenWideCTA";
+import { ClientsPartners } from "./Components/ClientsPartners";
 import { Services } from "./Components/Services";
 import { Team } from "./Components/Team";
 
@@ -9,7 +9,7 @@ export const HomePage = () => {
       <div className="relative z-[1] h-[100vh] min-h-screen">
         <HeroBanner />
       </div>
-      <ScreenWideCTA />
+      <ClientsPartners />
       <Services />
       <Team />
     </div>

@@ -74,3 +74,60 @@ h1, h2, h3, h4, h5, h6 {
     animation: none !important;
   }
 }
+
+/* Clients & partners roster: monochrome logo wall, hover/focus to green */
+.logo-cell {
+  transition: transform 0.18s ease, border-color 0.18s ease;
+}
+.logo-cell:hover,
+.logo-cell:focus-visible {
+  outline: none;
+  transform: translateY(-2px);
+  border-color: #129a6a;
+}
+.logo-mask {
+  background-color: #1e293b;
+  -webkit-mask: var(--logo-src) no-repeat center / contain;
+  mask: var(--logo-src) no-repeat center / contain;
+  transition: background-color 0.18s ease;
+}
+.logo-cell:hover .logo-mask,
+.logo-cell:focus-visible .logo-mask {
+  background-color: #129a6a;
+}
+/* static identifier logo (reference card header), no hover behavior */
+.logo-mask-static {
+  background-color: #1e293b;
+  -webkit-mask: var(--logo-src) no-repeat center / contain;
+  mask: var(--logo-src) no-repeat center / contain;
+}
+
+/* Opt-in marquee mode (off by default) */
+@keyframes roster-marquee-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes roster-marquee-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+.roster-marquee {
+  -webkit-mask: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.roster-track {
+  display: flex;
+  width: max-content;
+}
+.roster-track-left { animation: roster-marquee-left 45s linear infinite; }
+.roster-track-right { animation: roster-marquee-right 45s linear infinite; }
+.roster-marquee:hover .roster-track-left,
+.roster-marquee:hover .roster-track-right {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .roster-track-left,
+  .roster-track-right {
+    animation: none;
+  }
+}

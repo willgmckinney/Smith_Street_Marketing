@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import React from "react";
 import { BlueprintButton } from "../../components/Blueprint/BlueprintButton";
+import { AssetFrame } from "../../components/Blueprint/AssetFrame";
+import { getBlogFigure } from "../../components/Blueprint/BlogDiagrams";
 import { blogPosts } from "../../data/blogPosts";
 
 interface BlogPostPageProps {
@@ -8,7 +10,8 @@ interface BlogPostPageProps {
 }
 
 export const BlogPostPage: React.FC<BlogPostPageProps> = ({ postId }) => {
-  const post = blogPosts.find((p) => p.id === postId);
+  const postIndex = blogPosts.findIndex((p) => p.id === postId);
+  const post = postIndex >= 0 ? blogPosts[postIndex] : undefined;
 
   if (!post) {
     return (
@@ -21,44 +24,34 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ postId }) => {
     );
   }
 
+  const { Figure, caption } = getBlogFigure(post.id);
+
   return (
     <article className="min-h-screen pt-24 pb-20">
-      {/* Header Image/Background */}
-      <div className="relative h-[40vh] w-full overflow-hidden mb-12">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-blueprint-base z-10" />
-        {post.imageUrl ? (
-          <img
-            src={post.imageUrl}
-            alt={post.title}
-            className="w-full h-full object-cover opacity-60"
-          />
-        ) : (
-          <div className="w-full h-full bg-drafting-surface" />
-        )}
-
-        <div className="absolute bottom-0 left-0 right-0 z-20 px-4 sm:px-6 lg:px-8 pb-12">
-          <div className="max-w-3xl mx-auto">
-            <span className="inline-block px-3 py-1 mb-4 text-xs font-bold text-drafting-surface bg-marker-start rounded-full shadow-lg">
-              {post.category}
-            </span>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-chalk mb-6 leading-tight">
-              {post.title}
-            </h1>
-            <div className="flex items-center gap-6 text-sm text-chalk/60">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-gray-600 overflow-hidden">
-                  {/* Placeholder for author image - could add to data later */}
-                  <div className="w-full h-full flex items-center justify-center text-xs">
-                    👤
-                  </div>
-                </div>
-                <span className="font-semibold">{post.author}</span>
-              </div>
-              <span>{post.date}</span>
-              <span>{post.readTime}</span>
-            </div>
-          </div>
+      {/* Editorial header + framed figure (the portfolio asset treatment) */}
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mb-cell">
+        <Link
+          to="/blog"
+          className="inline-block mb-cell font-mono text-label-mono lowercase text-chalk/50 transition-colors hover:text-marker-start"
+        >
+          ← field notes
+        </Link>
+        <p className="font-mono text-label-mono lowercase text-marker-start mb-3">
+          {post.category}
+        </p>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-chalk mb-cell leading-tight">
+          {post.title}
+        </h1>
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-label-mono lowercase text-chalk/45 mb-cell">
+          <span className="text-chalk/70">{post.author}</span>
+          <span aria-hidden>·</span>
+          <span>{post.date}</span>
+          <span aria-hidden>·</span>
+          <span>{post.readTime}</span>
         </div>
+        <AssetFrame figure={postIndex + 1} caption={caption}>
+          <Figure className="w-full" />
+        </AssetFrame>
       </div>
 
       {/* Content */}

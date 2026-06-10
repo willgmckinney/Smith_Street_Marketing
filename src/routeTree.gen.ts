@@ -11,7 +11,6 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as TaxCompanyDashboardImport } from './routes/tax-company-dashboard'
 import { Route as SupportImport } from './routes/support'
 import { Route as ShopifyProfitRecoveryImport } from './routes/shopify-profit-recovery'
 import { Route as SecuritySchedulingDashboardImport } from './routes/security-scheduling-dashboard'
@@ -31,12 +30,6 @@ import { Route as BlogIndexImport } from './routes/blog/index'
 import { Route as BlogPostIdImport } from './routes/blog/$postId'
 
 // Create/Update Routes
-
-const TaxCompanyDashboardRoute = TaxCompanyDashboardImport.update({
-  id: '/tax-company-dashboard',
-  path: '/tax-company-dashboard',
-  getParentRoute: () => rootRoute,
-} as any)
 
 const SupportRoute = SupportImport.update({
   id: '/support',
@@ -251,13 +244,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SupportImport
       parentRoute: typeof rootRoute
     }
-    '/tax-company-dashboard': {
-      id: '/tax-company-dashboard'
-      path: '/tax-company-dashboard'
-      fullPath: '/tax-company-dashboard'
-      preLoaderRoute: typeof TaxCompanyDashboardImport
-      parentRoute: typeof rootRoute
-    }
     '/blog/$postId': {
       id: '/blog/$postId'
       path: '/blog/$postId'
@@ -293,7 +279,6 @@ export interface FileRoutesByFullPath {
   '/security-scheduling-dashboard': typeof SecuritySchedulingDashboardRoute
   '/shopify-profit-recovery': typeof ShopifyProfitRecoveryRoute
   '/support': typeof SupportRoute
-  '/tax-company-dashboard': typeof TaxCompanyDashboardRoute
   '/blog/$postId': typeof BlogPostIdRoute
   '/blog': typeof BlogIndexRoute
 }
@@ -314,7 +299,6 @@ export interface FileRoutesByTo {
   '/security-scheduling-dashboard': typeof SecuritySchedulingDashboardRoute
   '/shopify-profit-recovery': typeof ShopifyProfitRecoveryRoute
   '/support': typeof SupportRoute
-  '/tax-company-dashboard': typeof TaxCompanyDashboardRoute
   '/blog/$postId': typeof BlogPostIdRoute
   '/blog': typeof BlogIndexRoute
 }
@@ -336,7 +320,6 @@ export interface FileRoutesById {
   '/security-scheduling-dashboard': typeof SecuritySchedulingDashboardRoute
   '/shopify-profit-recovery': typeof ShopifyProfitRecoveryRoute
   '/support': typeof SupportRoute
-  '/tax-company-dashboard': typeof TaxCompanyDashboardRoute
   '/blog/$postId': typeof BlogPostIdRoute
   '/blog/': typeof BlogIndexRoute
 }
@@ -359,7 +342,6 @@ export interface FileRouteTypes {
     | '/security-scheduling-dashboard'
     | '/shopify-profit-recovery'
     | '/support'
-    | '/tax-company-dashboard'
     | '/blog/$postId'
     | '/blog'
   fileRoutesByTo: FileRoutesByTo
@@ -379,7 +361,6 @@ export interface FileRouteTypes {
     | '/security-scheduling-dashboard'
     | '/shopify-profit-recovery'
     | '/support'
-    | '/tax-company-dashboard'
     | '/blog/$postId'
     | '/blog'
   id:
@@ -399,7 +380,6 @@ export interface FileRouteTypes {
     | '/security-scheduling-dashboard'
     | '/shopify-profit-recovery'
     | '/support'
-    | '/tax-company-dashboard'
     | '/blog/$postId'
     | '/blog/'
   fileRoutesById: FileRoutesById
@@ -421,7 +401,6 @@ export interface RootRouteChildren {
   SecuritySchedulingDashboardRoute: typeof SecuritySchedulingDashboardRoute
   ShopifyProfitRecoveryRoute: typeof ShopifyProfitRecoveryRoute
   SupportRoute: typeof SupportRoute
-  TaxCompanyDashboardRoute: typeof TaxCompanyDashboardRoute
   BlogPostIdRoute: typeof BlogPostIdRoute
   BlogIndexRoute: typeof BlogIndexRoute
 }
@@ -442,7 +421,6 @@ const rootRouteChildren: RootRouteChildren = {
   SecuritySchedulingDashboardRoute: SecuritySchedulingDashboardRoute,
   ShopifyProfitRecoveryRoute: ShopifyProfitRecoveryRoute,
   SupportRoute: SupportRoute,
-  TaxCompanyDashboardRoute: TaxCompanyDashboardRoute,
   BlogPostIdRoute: BlogPostIdRoute,
   BlogIndexRoute: BlogIndexRoute,
 }
@@ -472,7 +450,6 @@ export const routeTree = rootRoute
         "/security-scheduling-dashboard",
         "/shopify-profit-recovery",
         "/support",
-        "/tax-company-dashboard",
         "/blog/$postId",
         "/blog/"
       ]
@@ -521,9 +498,6 @@ export const routeTree = rootRoute
     },
     "/support": {
       "filePath": "support.tsx"
-    },
-    "/tax-company-dashboard": {
-      "filePath": "tax-company-dashboard.tsx"
     },
     "/blog/$postId": {
       "filePath": "blog/$postId.tsx"

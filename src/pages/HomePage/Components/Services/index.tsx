@@ -27,7 +27,7 @@ const servicesList: Service[] = [
     what: "We move workloads to AWS and keep the bill in check.",
     stack: ["cdk", "ecs fargate", "well-architected"],
     example:
-      "Run the ImageHunter API for Apollo Mapping on ECS Fargate with OAuth2.",
+      "Migrated container workloads to ECS Fargate with CDK and OAuth2-secured APIs.",
   },
   {
     icon: "web",
@@ -43,7 +43,7 @@ const servicesList: Service[] = [
     what: "We build the application when off-the-shelf does not fit.",
     stack: ["react", "fastapi", "postgres"],
     example:
-      "Took LillyDirect checkout and order-status from Figma to production.",
+      "Built the Kontinued course-discovery and enrollment experience in React and TypeScript.",
   },
 ];
 

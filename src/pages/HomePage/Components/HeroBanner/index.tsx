@@ -2,9 +2,9 @@ import { Link } from "@tanstack/react-router";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { BlueprintButton } from "../../../../components/Blueprint/BlueprintButton";
 import { BlueprintGrid } from "../../../../components/Blueprint/BlueprintGrid";
-import { SystemDiagram } from "../../../../components/Blueprint/SystemDiagram";
+import { ArchitectureCycle } from "../../../../components/Blueprint/ArchitectureCycle";
 
-const recentBuilds = ["Apollo Mapping", "Airbus", "Eli Lilly"];
+const recentBuilds = ["Airbus", "Ascent Pharma", "Kontinued"];
 
 const column: Variants = {
   hidden: {},
@@ -29,12 +29,13 @@ export const HeroBanner = () => {
       <BlueprintGrid animate />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-cell py-2cell">
-        <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-2cell items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.25fr] gap-cell lg:gap-2cell items-center">
           {/* Left: editorial copy */}
           <motion.div
             variants={column}
             initial={active ? "hidden" : false}
             animate={active ? "visible" : false}
+            className="relative z-10"
           >
             <motion.p
               variants={rise}
@@ -85,10 +86,10 @@ export const HeroBanner = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right: system illustration draws itself in */}
-          <div className="hidden lg:block">
-            <SystemDiagram animate className="w-full max-w-sm mx-auto" />
-          </div>
+          {/* Right: six reference architectures cycle through a shared hinge.
+              On desktop it bleeds to the right edge of the viewport, twice the
+              old size; on mobile it stacks under the copy. */}
+          <ArchitectureCycle className="hidden lg:block w-full max-w-md mx-auto mt-cell lg:mt-0 lg:absolute lg:top-1/2 lg:right-[calc((100%-100vw)/2)] lg:z-0 lg:mx-0 lg:w-[58vw] lg:max-w-[1200px] lg:-translate-y-1/2" />
         </div>
       </div>
     </div>

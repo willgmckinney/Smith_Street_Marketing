@@ -2,10 +2,9 @@ import { DimensionLine } from "../../components/Blueprint/DimensionLine";
 import { SpecLabel } from "../../components/Blueprint/SpecLabel";
 import { BlueprintGrid } from "../../components/Blueprint/BlueprintGrid";
 import { AssetFrame } from "../../components/Blueprint/AssetFrame";
-import { ImageHunterDiagram } from "../../components/Blueprint/ImageHunterDiagram";
 import {
   LakehouseDiagram,
-  CheckoutFlowDiagram,
+  GeospatialPlatformDiagram,
 } from "../../components/Blueprint/ArchitectureDiagrams";
 import { Wireframe } from "../../components/Blueprint/Wireframe";
 import { CaseStudy } from "./Components/CaseStudy";
@@ -27,29 +26,6 @@ type Entry = {
 const flagships: Entry[] = [
   {
     index: 1,
-    client: "Apollo Mapping",
-    system: "ImageHunter",
-    built:
-      "A multi-repo satellite-imagery search-and-order system: a React SPA, a Flask backend, a Celery ingest and render pipeline, and a FastAPI partner API over a shared PostGIS catalog.",
-    stack: [
-      "react",
-      "leaflet",
-      "flask",
-      "postgis",
-      "celery",
-      "s3",
-      "fastapi",
-      "ecs fargate",
-    ],
-    scale:
-      "postgis imagery catalog spanning ~35 vendor apis, with async preview rendering to s3",
-    href: "https://imagehunter.apollomapping.com/",
-    figure: 1,
-    caption: "imagehunter system architecture",
-    asset: <ImageHunterDiagram className="w-full" />,
-  },
-  {
-    index: 2,
     client: "Airbus",
     system: "Imagery Lakehouse",
     built:
@@ -57,27 +33,54 @@ const flagships: Entry[] = [
     stack: ["glue", "dms", "lake formation", "kafka msk", "redshift"],
     scale:
       "governed s3 lakehouse with lake formation access control, served to redshift",
-    figure: 2,
+    figure: 1,
     caption: "lakehouse data flow",
     asset: <LakehouseDiagram className="w-full" />,
   },
   {
-    index: 3,
-    client: "Eli Lilly",
-    system: "LillyDirect",
+    index: 2,
+    client: "Apollo Mapping",
+    system: "Geospatial Platform",
     built:
-      "Checkout and order-status pages taken from Figma to production for the direct-to-patient platform.",
-    stack: ["react", "typescript", "figma to prod"],
-    scale: "production checkout and order-status flow shipped to lillydirect",
+      "A search-and-order platform for satellite imagery: web application, API layer, governed catalog, and async processing behind it.",
+    stack: ["react", "aws", "spatial database", "async workers", "object storage"],
+    scale: "multi-vendor imagery catalog with async preview delivery",
+    href: "https://apollomapping.com/",
+    figure: 2,
+    caption: "platform architecture",
+    asset: <GeospatialPlatformDiagram className="w-full" />,
+  },
+  {
+    index: 3,
+    client: "Ascent Pharmaceuticals",
+    system: "Manufacturer Website",
+    built:
+      "A conversion-focused manufacturer site covering facilities, product portfolio, and partnership paths.",
+    stack: ["react", "typescript", "vite"],
+    scale: "live manufacturer site with product portfolio and partnership paths",
+    href: "https://www.ascentpharm.com/",
     figure: 3,
-    caption: "checkout flow",
-    asset: <CheckoutFlowDiagram className="w-full" />,
+    caption: "site layout",
+    asset: <Wireframe variant="landing" className="w-full max-w-md mx-auto" />,
+  },
+  {
+    index: 4,
+    client: "Kontinued",
+    system: "Higher-Education Platform",
+    built:
+      "An interactive higher-education platform with course discovery and enrollment.",
+    stack: ["react", "typescript"],
+    scale: "course discovery and enrollment across continuing-ed programs",
+    href: "https://kontinued.com/",
+    figure: 4,
+    caption: "platform layout",
+    asset: <Wireframe variant="landing" className="w-full max-w-md mx-auto" />,
   },
 ];
 
 const demos: Entry[] = [
   {
-    index: 4,
+    index: 5,
     client: "Construction",
     system: "Site Manager Dashboard",
     built:
@@ -85,12 +88,12 @@ const demos: Entry[] = [
     stack: ["react", "recharts", "typescript"],
     scale: "real-time kpis and productivity tracking across active sites",
     href: "/construction-dashboard",
-    figure: 4,
+    figure: 5,
     caption: "site manager view",
     asset: <Wireframe variant="dashboard" className="w-full max-w-md mx-auto" />,
   },
   {
-    index: 5,
+    index: 6,
     client: "Real Estate",
     system: "Broker Dashboard",
     built:
@@ -98,12 +101,12 @@ const demos: Entry[] = [
     stack: ["react", "recharts", "typescript"],
     scale: "property analytics and pipeline tracking with dynamic filters",
     href: "/real-estate-dashboard",
-    figure: 5,
+    figure: 6,
     caption: "broker map view",
     asset: <Wireframe variant="map" className="w-full max-w-md mx-auto" />,
   },
   {
-    index: 6,
+    index: 7,
     client: "Security",
     system: "Shift Scheduler",
     built:
@@ -111,51 +114,12 @@ const demos: Entry[] = [
     stack: ["react", "typescript"],
     scale: "user and admin views with real-time assignment and export",
     href: "/security-scheduling-dashboard",
-    figure: 6,
+    figure: 7,
     caption: "schedule grid",
     asset: <Wireframe variant="schedule" className="w-full max-w-md mx-auto" />,
   },
   {
-    index: 7,
-    client: "Tax Services",
-    system: "Practice Dashboard",
-    built:
-      "A tax-prep dashboard for client management, return tracking, and refund analytics.",
-    stack: ["react", "recharts"],
-    scale: "client management, return tracking, and refund analytics",
-    href: "/tax-company-dashboard",
-    figure: 7,
-    caption: "practice overview",
-    asset: <Wireframe variant="dashboard" className="w-full max-w-md mx-auto" />,
-  },
-  {
     index: 8,
-    client: "Ascent Pharmaceuticals",
-    system: "Manufacturer Landing",
-    built:
-      "A conversion-focused landing experience covering facilities, product portfolio, and partnerships.",
-    stack: ["react", "typescript", "vite"],
-    scale: "manufacturer landing with product portfolio and partnership paths",
-    href: "/ascent-pharmaceuticals-landing",
-    figure: 8,
-    caption: "landing layout",
-    asset: <Wireframe variant="landing" className="w-full max-w-md mx-auto" />,
-  },
-  {
-    index: 9,
-    client: "kontinu-ed",
-    system: "Higher-Education Platform",
-    built:
-      "An interactive higher-education platform with course discovery and enrollment.",
-    stack: ["react", "typescript"],
-    scale: "interactive higher-education platform with course discovery",
-    href: "https://kontinued.com/",
-    figure: 9,
-    caption: "platform layout",
-    asset: <Wireframe variant="landing" className="w-full max-w-md mx-auto" />,
-  },
-  {
-    index: 10,
     client: "ACME Group",
     system: "Lifecycle & Opportunity Radar",
     built:
@@ -163,7 +127,7 @@ const demos: Entry[] = [
     stack: ["react", "data viz"],
     scale: "two-sided fleet view and ranked sales opportunities from one dataset",
     href: "/acme-lifecycle",
-    figure: 10,
+    figure: 8,
     caption: "fleet dashboard",
     asset: <Wireframe variant="dashboard" className="w-full max-w-md mx-auto" />,
   },

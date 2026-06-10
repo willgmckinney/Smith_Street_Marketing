@@ -7,7 +7,7 @@ import { BlueprintCard } from "../../../../components/Blueprint/BlueprintCard";
 const teamList = [
   {
     name: "William McKinney",
-    bio: "William built the ImageHunter API for Apollo Mapping on ECS Fargate. He owns the backend: FastAPI services, Postgres, and the AWS CDK that ships them.",
+    bio: "William leads backend and cloud delivery: APIs on ECS Fargate, Postgres, and the AWS CDK that ships them.",
     profilePicture: willMcKinneyProfilePic,
     role: "Technical Lead",
   },
@@ -19,15 +19,15 @@ const teamList = [
   },
   {
     name: "Duncan Meyer",
-    bio: "Duncan shipped the LillyDirect checkout and order-status pages from Figma to production. He writes the front-end in React and TypeScript and keeps it tested.",
+    bio: "Duncan models data and ships analysis pipelines teams actually use. He works in Python and SQL and turns messy inputs into clear metrics.",
     profilePicture: duncanMeyerProfilePic,
-    role: "Software Engineer",
+    role: "ML & Data Science Lead",
   },
   {
     name: "Germayne Curry",
-    bio: "Germayne scopes engagements and matches them to the right build. He turns a rough problem into a clear plan with a stack, a timeline, and a number.",
+    bio: "Germayne runs sales and brings engagements from first conversation to signed scope. He matches the problem to the right team and keeps delivery aligned with what the client needs.",
     profilePicture: GermayneCurryProfilePic,
-    role: "Solutions Architect",
+    role: "Head of Sales",
   },
 ];
 

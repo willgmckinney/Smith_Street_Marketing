@@ -66,7 +66,7 @@ export const timelineContent: Record<ServiceType, TimelineMilestone[]> = {
       title: "Visualization & Reporting",
       icon: "chart",
       description:
-        "Dashboards that executives actually use. We combine AWS QuickSight with custom React visualizations to create interfaces that answer questions before they're asked. Real-time updates, drill-down capabilities, and mobile-first design mean insights are always at your fingertips.",
+        "Dashboards that executives actually use. We combine AWS quick with custom React visualizations to create interfaces that answer questions before they're asked. Real-time updates, drill-down capabilities, and mobile-first design mean insights are always at your fingertips.",
       metrics: [
         { value: "Real-time", label: "Data Refresh" },
         { value: "5-sec", label: "Load Time" },

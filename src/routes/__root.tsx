@@ -7,7 +7,7 @@ import {
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import { BlueprintButton } from "../components/Blueprint/BlueprintButton";
-import { Monogram } from "../components/Blueprint/Monogram";
+import { GoatMark } from "../components/Blueprint/GoatMark";
 import { ScrollRule } from "../components/Blueprint/ScrollRule";
 
 export const rootRoute = createRootRoute({
@@ -81,9 +81,9 @@ export const rootRoute = createRootRoute({
           `}
         >
           <Link to="/" className="flex flex-row items-center gap-3 group">
-            <Monogram
-              size={40}
-              className="text-chalk transition-transform duration-300 group-hover:-translate-y-px"
+            <GoatMark
+              size={44}
+              className="transition-transform duration-300 group-hover:-translate-y-px"
             />
             <p className="font-display font-bold text-lg sm:text-xl md:text-2xl text-chalk hidden sm:block tracking-tight">
               Smith Avenue Insights

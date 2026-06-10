@@ -2,7 +2,7 @@ import emailjs from "@emailjs/browser";
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { BlueprintButton } from "../Blueprint/BlueprintButton";
-import { Monogram } from "../Blueprint/Monogram";
+import { GoatMark } from "../Blueprint/GoatMark";
 
 const Footer = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -61,7 +61,7 @@ const Footer = () => {
         {/* Contact Form Section */}
         <div className="w-full lg:w-1/2 p-8 sm:p-12 border-b lg:border-b-0 lg:border-r border-chalk/10">
           <div className="flex items-center gap-4 mb-8">
-            <Monogram size={44} className="text-chalk" />
+            <GoatMark size={44} />
             <span className="font-display font-bold text-2xl text-chalk">
               Smith Avenue Insights
             </span>

@@ -59,7 +59,7 @@ const TableauTaxCalculator = ({ onGetAudit }: { onGetAudit: () => void }) => {
               step="5"
               value={tableauSeats}
               onChange={(e) => setTableauSeats(Number(e.target.value))}
-              className="flex-1 h-2 bg-drafting-surface rounded-lg appearance-none cursor-pointer accent-marker-start"
+              className="flex-1 h-2 bg-chalk/15 rounded-lg appearance-none cursor-pointer accent-marker-start"
             />
           </div>
         </div>
@@ -85,7 +85,7 @@ const TableauTaxCalculator = ({ onGetAudit }: { onGetAudit: () => void }) => {
               step="5"
               value={hourlyRate}
               onChange={(e) => setHourlyRate(Number(e.target.value))}
-              className="flex-1 h-2 bg-drafting-surface rounded-lg appearance-none cursor-pointer accent-marker-start"
+              className="flex-1 h-2 bg-chalk/15 rounded-lg appearance-none cursor-pointer accent-marker-start"
             />
           </div>
         </div>
@@ -111,7 +111,7 @@ const TableauTaxCalculator = ({ onGetAudit }: { onGetAudit: () => void }) => {
               step="1"
               value={manualHoursPerWeek}
               onChange={(e) => setManualHoursPerWeek(Number(e.target.value))}
-              className="flex-1 h-2 bg-drafting-surface rounded-lg appearance-none cursor-pointer accent-marker-start"
+              className="flex-1 h-2 bg-chalk/15 rounded-lg appearance-none cursor-pointer accent-marker-start"
             />
           </div>
         </div>
