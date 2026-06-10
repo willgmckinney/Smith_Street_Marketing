@@ -16,6 +16,7 @@ import { Route as SupportImport } from './routes/support'
 import { Route as ShopifyProfitRecoveryImport } from './routes/shopify-profit-recovery'
 import { Route as SecuritySchedulingDashboardImport } from './routes/security-scheduling-dashboard'
 import { Route as RealEstateDashboardImport } from './routes/real-estate-dashboard'
+import { Route as QuickDemoImport } from './routes/quick-demo'
 import { Route as PrivacyImport } from './routes/privacy'
 import { Route as PortfolioImport } from './routes/portfolio'
 import { Route as HowWeWorkImport } from './routes/how-we-work'
@@ -28,6 +29,7 @@ import { Route as AccessibilityImport } from './routes/accessibility'
 import { Route as IndexImport } from './routes/index'
 import { Route as BlogIndexImport } from './routes/blog/index'
 import { Route as BlogPostIdImport } from './routes/blog/$postId'
+import { Route as AuthCallbackImport } from './routes/auth/callback'
 
 // Create/Update Routes
 
@@ -59,6 +61,12 @@ const SecuritySchedulingDashboardRoute =
 const RealEstateDashboardRoute = RealEstateDashboardImport.update({
   id: '/real-estate-dashboard',
   path: '/real-estate-dashboard',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const QuickDemoRoute = QuickDemoImport.update({
+  id: '/quick-demo',
+  path: '/quick-demo',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -132,6 +140,12 @@ const BlogIndexRoute = BlogIndexImport.update({
 const BlogPostIdRoute = BlogPostIdImport.update({
   id: '/blog/$postId',
   path: '/blog/$postId',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const AuthCallbackRoute = AuthCallbackImport.update({
+  id: '/auth/callback',
+  path: '/auth/callback',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -209,6 +223,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyImport
       parentRoute: typeof rootRoute
     }
+    '/quick-demo': {
+      id: '/quick-demo'
+      path: '/quick-demo'
+      fullPath: '/quick-demo'
+      preLoaderRoute: typeof QuickDemoImport
+      parentRoute: typeof rootRoute
+    }
     '/real-estate-dashboard': {
       id: '/real-estate-dashboard'
       path: '/real-estate-dashboard'
@@ -244,6 +265,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TaxCompanyDashboardImport
       parentRoute: typeof rootRoute
     }
+    '/auth/callback': {
+      id: '/auth/callback'
+      path: '/auth/callback'
+      fullPath: '/auth/callback'
+      preLoaderRoute: typeof AuthCallbackImport
+      parentRoute: typeof rootRoute
+    }
     '/blog/$postId': {
       id: '/blog/$postId'
       path: '/blog/$postId'
@@ -274,11 +302,13 @@ export interface FileRoutesByFullPath {
   '/how-we-work': typeof HowWeWorkRoute
   '/portfolio': typeof PortfolioRoute
   '/privacy': typeof PrivacyRoute
+  '/quick-demo': typeof QuickDemoRoute
   '/real-estate-dashboard': typeof RealEstateDashboardRoute
   '/security-scheduling-dashboard': typeof SecuritySchedulingDashboardRoute
   '/shopify-profit-recovery': typeof ShopifyProfitRecoveryRoute
   '/support': typeof SupportRoute
   '/tax-company-dashboard': typeof TaxCompanyDashboardRoute
+  '/auth/callback': typeof AuthCallbackRoute
   '/blog/$postId': typeof BlogPostIdRoute
   '/blog': typeof BlogIndexRoute
 }
@@ -294,11 +324,13 @@ export interface FileRoutesByTo {
   '/how-we-work': typeof HowWeWorkRoute
   '/portfolio': typeof PortfolioRoute
   '/privacy': typeof PrivacyRoute
+  '/quick-demo': typeof QuickDemoRoute
   '/real-estate-dashboard': typeof RealEstateDashboardRoute
   '/security-scheduling-dashboard': typeof SecuritySchedulingDashboardRoute
   '/shopify-profit-recovery': typeof ShopifyProfitRecoveryRoute
   '/support': typeof SupportRoute
   '/tax-company-dashboard': typeof TaxCompanyDashboardRoute
+  '/auth/callback': typeof AuthCallbackRoute
   '/blog/$postId': typeof BlogPostIdRoute
   '/blog': typeof BlogIndexRoute
 }
@@ -315,11 +347,13 @@ export interface FileRoutesById {
   '/how-we-work': typeof HowWeWorkRoute
   '/portfolio': typeof PortfolioRoute
   '/privacy': typeof PrivacyRoute
+  '/quick-demo': typeof QuickDemoRoute
   '/real-estate-dashboard': typeof RealEstateDashboardRoute
   '/security-scheduling-dashboard': typeof SecuritySchedulingDashboardRoute
   '/shopify-profit-recovery': typeof ShopifyProfitRecoveryRoute
   '/support': typeof SupportRoute
   '/tax-company-dashboard': typeof TaxCompanyDashboardRoute
+  '/auth/callback': typeof AuthCallbackRoute
   '/blog/$postId': typeof BlogPostIdRoute
   '/blog/': typeof BlogIndexRoute
 }
@@ -337,11 +371,13 @@ export interface FileRouteTypes {
     | '/how-we-work'
     | '/portfolio'
     | '/privacy'
+    | '/quick-demo'
     | '/real-estate-dashboard'
     | '/security-scheduling-dashboard'
     | '/shopify-profit-recovery'
     | '/support'
     | '/tax-company-dashboard'
+    | '/auth/callback'
     | '/blog/$postId'
     | '/blog'
   fileRoutesByTo: FileRoutesByTo
@@ -356,11 +392,13 @@ export interface FileRouteTypes {
     | '/how-we-work'
     | '/portfolio'
     | '/privacy'
+    | '/quick-demo'
     | '/real-estate-dashboard'
     | '/security-scheduling-dashboard'
     | '/shopify-profit-recovery'
     | '/support'
     | '/tax-company-dashboard'
+    | '/auth/callback'
     | '/blog/$postId'
     | '/blog'
   id:
@@ -375,11 +413,13 @@ export interface FileRouteTypes {
     | '/how-we-work'
     | '/portfolio'
     | '/privacy'
+    | '/quick-demo'
     | '/real-estate-dashboard'
     | '/security-scheduling-dashboard'
     | '/shopify-profit-recovery'
     | '/support'
     | '/tax-company-dashboard'
+    | '/auth/callback'
     | '/blog/$postId'
     | '/blog/'
   fileRoutesById: FileRoutesById
@@ -396,11 +436,13 @@ export interface RootRouteChildren {
   HowWeWorkRoute: typeof HowWeWorkRoute
   PortfolioRoute: typeof PortfolioRoute
   PrivacyRoute: typeof PrivacyRoute
+  QuickDemoRoute: typeof QuickDemoRoute
   RealEstateDashboardRoute: typeof RealEstateDashboardRoute
   SecuritySchedulingDashboardRoute: typeof SecuritySchedulingDashboardRoute
   ShopifyProfitRecoveryRoute: typeof ShopifyProfitRecoveryRoute
   SupportRoute: typeof SupportRoute
   TaxCompanyDashboardRoute: typeof TaxCompanyDashboardRoute
+  AuthCallbackRoute: typeof AuthCallbackRoute
   BlogPostIdRoute: typeof BlogPostIdRoute
   BlogIndexRoute: typeof BlogIndexRoute
 }
@@ -416,11 +458,13 @@ const rootRouteChildren: RootRouteChildren = {
   HowWeWorkRoute: HowWeWorkRoute,
   PortfolioRoute: PortfolioRoute,
   PrivacyRoute: PrivacyRoute,
+  QuickDemoRoute: QuickDemoRoute,
   RealEstateDashboardRoute: RealEstateDashboardRoute,
   SecuritySchedulingDashboardRoute: SecuritySchedulingDashboardRoute,
   ShopifyProfitRecoveryRoute: ShopifyProfitRecoveryRoute,
   SupportRoute: SupportRoute,
   TaxCompanyDashboardRoute: TaxCompanyDashboardRoute,
+  AuthCallbackRoute: AuthCallbackRoute,
   BlogPostIdRoute: BlogPostIdRoute,
   BlogIndexRoute: BlogIndexRoute,
 }
@@ -445,11 +489,13 @@ export const routeTree = rootRoute
         "/how-we-work",
         "/portfolio",
         "/privacy",
+        "/quick-demo",
         "/real-estate-dashboard",
         "/security-scheduling-dashboard",
         "/shopify-profit-recovery",
         "/support",
         "/tax-company-dashboard",
+        "/auth/callback",
         "/blog/$postId",
         "/blog/"
       ]
@@ -484,6 +530,9 @@ export const routeTree = rootRoute
     "/privacy": {
       "filePath": "privacy.tsx"
     },
+    "/quick-demo": {
+      "filePath": "quick-demo.tsx"
+    },
     "/real-estate-dashboard": {
       "filePath": "real-estate-dashboard.tsx"
     },
@@ -498,6 +547,9 @@ export const routeTree = rootRoute
     },
     "/tax-company-dashboard": {
       "filePath": "tax-company-dashboard.tsx"
+    },
+    "/auth/callback": {
+      "filePath": "auth/callback.tsx"
     },
     "/blog/$postId": {
       "filePath": "blog/$postId.tsx"

@@ -18,7 +18,8 @@ export const rootRoute = createRootRoute({
     const location = useLocation();
     const isShopifyPage = location.pathname === "/shopify-profit-recovery";
     const isAgenticBIPage = location.pathname === "/agentic-bi";
-    const isSolutionsPage = isShopifyPage || isAgenticBIPage;
+    const isQuickDemoPage = location.pathname === "/quick-demo";
+    const isSolutionsPage = isShopifyPage || isAgenticBIPage || isQuickDemoPage;
 
     useEffect(() => {
       const handleScroll = () => {
@@ -141,6 +142,17 @@ export const rootRoute = createRootRoute({
                     onClick={() => setSolutionsOpen(false)}
                   >
                     Agentic BI Migration
+                  </Link>
+                  <Link
+                    to="/quick-demo"
+                    className={`block px-4 py-3 transition-colors duration-200 ${
+                      isQuickDemoPage
+                        ? "bg-white/10 text-golden-hour-start"
+                        : "text-granite hover:bg-white/10 hover:text-golden-hour-start"
+                    }`}
+                    onClick={() => setSolutionsOpen(false)}
+                  >
+                    Quick Demo
                   </Link>
                 </div>
               )}
@@ -272,7 +284,7 @@ export const rootRoute = createRootRoute({
 
               <div
                 className={`overflow-hidden transition-all duration-200 ${
-                  mobileSolutionsOpen ? "max-h-40" : "max-h-0"
+                  mobileSolutionsOpen ? "max-h-60" : "max-h-0"
                 }`}
               >
                 <Link
@@ -296,6 +308,17 @@ export const rootRoute = createRootRoute({
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Agentic BI Migration
+                </Link>
+                <Link
+                  to="/quick-demo"
+                  className={`block pl-8 pr-4 py-2.5 rounded-lg text-sm transition-colors duration-200 ${
+                    isQuickDemoPage
+                      ? "text-golden-hour-start bg-white/5"
+                      : "text-granite hover:text-white hover:bg-white/5"
+                  }`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Quick Demo
                 </Link>
               </div>
 

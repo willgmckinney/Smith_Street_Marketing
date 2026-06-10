@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# Local env files (real values must never be committed)
+.env
+.env.local
+.env.*.local
+.vercel
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

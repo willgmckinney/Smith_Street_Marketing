@@ -2,11 +2,13 @@ import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+import { AuthProvider } from "./lib/auth";
 import { indexRoute } from "./routes";
 import { rootRoute } from "./routes/__root";
 import { accessibilityRoute } from "./routes/accessibility";
 import { agenticBIRoute } from "./routes/agentic-bi";
 import { ascentPharmaceuticalsLandingRoute } from "./routes/ascent-pharmaceuticals-landing";
+import { authCallbackRoute } from "./routes/auth/callback";
 import { blogRoute } from "./routes/blog";
 import { blogPostRoute } from "./routes/blog/$postId";
 import { companyRoute } from "./routes/company";
@@ -15,6 +17,7 @@ import { demoRoute } from "./routes/demo";
 import { portfolioRoute } from "./routes/portfolio";
 import { howWeWorkRoute } from "./routes/how-we-work";
 import { privacyRoute } from "./routes/privacy";
+import { quickDemoRoute } from "./routes/quick-demo";
 import { realEstateDashboardRoute } from "./routes/real-estate-dashboard";
 import { securitySchedulingDashboardRoute } from "./routes/security-scheduling-dashboard";
 import { shopifyProfitRecoveryRoute } from "./routes/shopify-profit-recovery";
@@ -32,6 +35,8 @@ const routeTree = rootRoute.addChildren([
   securitySchedulingDashboardRoute,
   shopifyProfitRecoveryRoute,
   agenticBIRoute,
+  quickDemoRoute,
+  authCallbackRoute,
   supportRoute,
   accessibilityRoute,
   privacyRoute,
@@ -57,7 +62,9 @@ if (!rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
     <StrictMode>
-      <RouterProvider router={router} />
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
     </StrictMode>,
   );
 }
