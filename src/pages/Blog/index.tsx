@@ -10,7 +10,7 @@ export default function BlogPage() {
       <div className="relative bg-drafting-surface py-2cell border-b border-chalk/10 overflow-hidden">
         <BlueprintGrid opacity={0.55} />
         <div className="max-w-7xl mx-auto px-cell relative z-10">
-          <SpecLabel className="mb-cell">field notes</SpecLabel>
+          <SpecLabel className="mb-cell">writing</SpecLabel>
           <div className="flex items-start gap-4 sm:gap-cell">
             <span className="font-mono text-label-mono text-marker-start mt-2">
               03
@@ -19,7 +19,7 @@ export default function BlogPage() {
               <h1 className="font-display text-display-2 text-chalk font-extrabold leading-[0.95]">
                 The
                 <br />
-                notes
+                writing
               </h1>
               <DimensionLine
                 reveal

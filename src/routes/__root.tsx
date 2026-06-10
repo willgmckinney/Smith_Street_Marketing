@@ -13,14 +13,9 @@ import { ScrollRule } from "../components/Blueprint/ScrollRule";
 export const rootRoute = createRootRoute({
   component: () => {
     const [scrolled, setScrolled] = useState(false);
-    const [solutionsOpen, setSolutionsOpen] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [mobileSolutionsOpen, setMobileSolutionsOpen] = useState(false);
     const location = useLocation();
-    const isShopifyPage = location.pathname === "/shopify-profit-recovery";
-    const isAgenticBIPage = location.pathname === "/agentic-bi";
     const isAcmeLifecycle = location.pathname === "/acme-lifecycle";
-    const isSolutionsPage = isShopifyPage || isAgenticBIPage;
     const isFullPageDemo = isAcmeLifecycle;
 
     useEffect(() => {
@@ -35,7 +30,6 @@ export const rootRoute = createRootRoute({
     // Close mobile menu on route change
     useEffect(() => {
       setMobileMenuOpen(false);
-      setMobileSolutionsOpen(false);
     }, [location.pathname]);
 
     // Lock body scroll when mobile menu is open
@@ -49,23 +43,6 @@ export const rootRoute = createRootRoute({
         document.body.style.overflow = "";
       };
     }, [mobileMenuOpen]);
-
-    useEffect(() => {
-      const handleClickOutside = (event: MouseEvent) => {
-        const target = event.target as HTMLElement;
-        if (!target.closest(".solutions-dropdown")) {
-          setSolutionsOpen(false);
-        }
-      };
-
-      if (solutionsOpen) {
-        document.addEventListener("mousedown", handleClickOutside);
-      }
-
-      return () => {
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, [solutionsOpen]);
 
     return (
       <div className={`flex flex-col min-h-screen bg-blueprint-base text-chalk font-sans ${isFullPageDemo ? "bg-transparent" : ""}`}>
@@ -92,73 +69,14 @@ export const rootRoute = createRootRoute({
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-2 sm:gap-4">
-            <div className="relative solutions-dropdown">
-              <BlueprintButton
-                variant="secondary"
-                size="sm"
-                className={`bg-transparent border-transparent shadow-none hover:bg-chalk/10 ${
-                  isSolutionsPage ? "text-marker-start" : "text-chalk"
-                }`}
-                onClick={() => setSolutionsOpen(!solutionsOpen)}
-                onMouseEnter={() => setSolutionsOpen(true)}
-              >
-                Solutions
-                <svg
-                  className={`ml-1 h-4 w-4 inline-block transition-transform duration-200 ${
-                    solutionsOpen ? "rotate-180" : ""
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </BlueprintButton>
-
-              {solutionsOpen && (
-                <div
-                  className="absolute top-full left-0 mt-2 w-56 bg-drafting-surface rounded-lg border border-chalk/10 shadow-lg overflow-hidden z-50"
-                  onMouseLeave={() => setSolutionsOpen(false)}
-                >
-                  <Link
-                    to="/shopify-profit-recovery"
-                    className={`block px-4 py-3 transition-colors duration-200 ${
-                      isShopifyPage
-                        ? "bg-chalk/10 text-marker-start"
-                        : "text-chalk hover:bg-chalk/10 hover:text-marker-start"
-                    }`}
-                    onClick={() => setSolutionsOpen(false)}
-                  >
-                    Shopify Profit Recovery
-                  </Link>
-                  <Link
-                    to="/agentic-bi"
-                    className={`block px-4 py-3 transition-colors duration-200 ${
-                      isAgenticBIPage
-                        ? "bg-chalk/10 text-marker-start"
-                        : "text-chalk hover:bg-chalk/10 hover:text-marker-start"
-                    }`}
-                    onClick={() => setSolutionsOpen(false)}
-                  >
-                    Agentic BI Migration
-                  </Link>
-                </div>
-              )}
-            </div>
-
             <Link to="/portfolio">
               {({ isActive }) => (
                 <BlueprintButton
                   variant="secondary"
                   size="sm"
-                  className={`bg-transparent border-transparent shadow-none hover:bg-chalk/10 ${isActive ? "text-marker-start" : "text-chalk"}`}
+                  className={`bg-transparent border-transparent shadow-none hover:bg-chalk/10 font-mono font-normal lowercase tracking-[0.08em] ${isActive ? "text-marker-start" : "text-chalk"}`}
                 >
-                  Portfolio
+                  the work
                 </BlueprintButton>
               )}
             </Link>
@@ -168,9 +86,9 @@ export const rootRoute = createRootRoute({
                 <BlueprintButton
                   variant="secondary"
                   size="sm"
-                  className={`bg-transparent border-transparent shadow-none hover:bg-chalk/10 ${isActive ? "text-marker-start" : "text-chalk"}`}
+                  className={`bg-transparent border-transparent shadow-none hover:bg-chalk/10 font-mono font-normal lowercase tracking-[0.08em] ${isActive ? "text-marker-start" : "text-chalk"}`}
                 >
-                  How We Work
+                  process
                 </BlueprintButton>
               )}
             </Link>
@@ -180,15 +98,15 @@ export const rootRoute = createRootRoute({
                 <BlueprintButton
                   variant="secondary"
                   size="sm"
-                  className={`bg-transparent border-transparent shadow-none hover:bg-chalk/10 ${isActive ? "text-marker-start" : "text-chalk"}`}
+                  className={`bg-transparent border-transparent shadow-none hover:bg-chalk/10 font-mono font-normal lowercase tracking-[0.08em] ${isActive ? "text-marker-start" : "text-chalk"}`}
                 >
-                  Insights
+                  writing
                 </BlueprintButton>
               )}
             </Link>
 
             <Link to="/demo">
-              <BlueprintButton size="sm">Get Started</BlueprintButton>
+              <BlueprintButton size="sm">Start a project</BlueprintButton>
             </Link>
           </nav>
 
@@ -248,62 +166,6 @@ export const rootRoute = createRootRoute({
             `}
           >
             <div className="flex flex-col gap-1">
-              {/* Solutions Accordion */}
-              <button
-                className={`flex items-center justify-between w-full px-4 py-3 rounded-lg text-left font-semibold transition-colors duration-200 ${
-                  isSolutionsPage
-                    ? "text-marker-start bg-chalk/5"
-                    : "text-chalk hover:bg-chalk/5"
-                }`}
-                onClick={() => setMobileSolutionsOpen(!mobileSolutionsOpen)}
-              >
-                Solutions
-                <svg
-                  className={`h-4 w-4 transition-transform duration-200 ${
-                    mobileSolutionsOpen ? "rotate-180" : ""
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-
-              <div
-                className={`overflow-hidden transition-all duration-200 ${
-                  mobileSolutionsOpen ? "max-h-40" : "max-h-0"
-                }`}
-              >
-                <Link
-                  to="/shopify-profit-recovery"
-                  className={`block pl-8 pr-4 py-2.5 rounded-lg text-sm transition-colors duration-200 ${
-                    isShopifyPage
-                      ? "text-marker-start bg-chalk/5"
-                      : "text-chalk hover:text-chalk hover:bg-chalk/5"
-                  }`}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Shopify Profit Recovery
-                </Link>
-                <Link
-                  to="/agentic-bi"
-                  className={`block pl-8 pr-4 py-2.5 rounded-lg text-sm transition-colors duration-200 ${
-                    isAgenticBIPage
-                      ? "text-marker-start bg-chalk/5"
-                      : "text-chalk hover:text-chalk hover:bg-chalk/5"
-                  }`}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Agentic BI Migration
-                </Link>
-              </div>
-
               <Link
                 to="/portfolio"
                 className="block"
@@ -311,13 +173,13 @@ export const rootRoute = createRootRoute({
               >
                 {({ isActive }) => (
                   <span
-                    className={`block px-4 py-3 rounded-lg font-semibold transition-colors duration-200 ${
+                    className={`block px-4 py-3 rounded-lg font-mono lowercase tracking-[0.06em] transition-colors duration-200 ${
                       isActive
                         ? "text-marker-start bg-chalk/5"
                         : "text-chalk hover:bg-chalk/5"
                     }`}
                   >
-                    Portfolio
+                    the work
                   </span>
                 )}
               </Link>
@@ -329,13 +191,13 @@ export const rootRoute = createRootRoute({
               >
                 {({ isActive }) => (
                   <span
-                    className={`block px-4 py-3 rounded-lg font-semibold transition-colors duration-200 ${
+                    className={`block px-4 py-3 rounded-lg font-mono lowercase tracking-[0.06em] transition-colors duration-200 ${
                       isActive
                         ? "text-marker-start bg-chalk/5"
                         : "text-chalk hover:bg-chalk/5"
                     }`}
                   >
-                    How We Work
+                    process
                   </span>
                 )}
               </Link>
@@ -347,13 +209,13 @@ export const rootRoute = createRootRoute({
               >
                 {({ isActive }) => (
                   <span
-                    className={`block px-4 py-3 rounded-lg font-semibold transition-colors duration-200 ${
+                    className={`block px-4 py-3 rounded-lg font-mono lowercase tracking-[0.06em] transition-colors duration-200 ${
                       isActive
                         ? "text-marker-start bg-chalk/5"
                         : "text-chalk hover:bg-chalk/5"
                     }`}
                   >
-                    Insights
+                    writing
                   </span>
                 )}
               </Link>
@@ -367,7 +229,7 @@ export const rootRoute = createRootRoute({
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <BlueprintButton size="md" className="w-full justify-center">
-                  Get Started
+                  Start a project
                 </BlueprintButton>
               </Link>
             </div>

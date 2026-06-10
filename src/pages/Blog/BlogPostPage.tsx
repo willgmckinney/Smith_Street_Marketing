@@ -34,7 +34,7 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ postId }) => {
           to="/blog"
           className="inline-block mb-cell font-mono text-label-mono lowercase text-chalk/50 transition-colors hover:text-marker-start"
         >
-          ← field notes
+          ← writing
         </Link>
         <p className="font-mono text-label-mono lowercase text-marker-start mb-3">
           {post.category}

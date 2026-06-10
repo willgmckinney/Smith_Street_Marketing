@@ -23,7 +23,7 @@ export const HowWeWorkPage = () => {
           </div>
 
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-chalk font-bold mb-6">
-            How We Work
+            Process
           </h1>
 
           <div className="flex justify-center mb-4">
