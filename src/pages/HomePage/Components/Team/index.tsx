@@ -21,7 +21,7 @@ const teamList = [
     name: "Duncan Meyer",
     bio: "Duncan models data and ships analysis pipelines teams actually use. He works in Python and SQL and turns messy inputs into clear metrics.",
     profilePicture: duncanMeyerProfilePic,
-    role: "ML & Data Science Lead",
+    role: "Data Science Lead",
   },
   {
     name: "Germayne Curry",
