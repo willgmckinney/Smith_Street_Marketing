@@ -34,6 +34,8 @@ const clients: RosterEntry[] = [
 
 const partners: RosterEntry[] = [
   { name: "AWS", descriptor: "cloud partner", logo: `${LOGO}/aws-mono.png`, ar: 633 / 379 },
+  { name: "Westtown Chamber of Commerce", descriptor: "chamber", logo: `${LOGO}/westtown-mono.png`, ar: 196 / 196, capPx: 24 },
+  { name: "Chicagoland Chamber of Commerce", descriptor: "chamber", logo: `${LOGO}/chicagoland-mono.png`, ar: 322 / 129 },
   { name: "M25", descriptor: "venture", logo: `${LOGO}/m25-mono.png`, ar: 211 / 153 },
   { name: "IU Ventures", descriptor: "member", logo: `${LOGO}/iu-ventures-mono.png`, ar: 134 / 167 },
 ];
@@ -67,7 +69,7 @@ const references: Reference[] = [
     quote:
       "Working with Smith Avenue felt more like a partnership than a vendor engagement. Their process was refreshingly low-key and collaborative, and their boutique size kept them attentive and responsive. We are more than pleased with the new site.",
     name: "Cori Rizman",
-    title: "VP of DEA Compliance",
+    title: "VP Compliance",
     client: "Ascent Pharmaceuticals",
   },
 ];
