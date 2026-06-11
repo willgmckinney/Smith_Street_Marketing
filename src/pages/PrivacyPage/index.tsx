@@ -1,15 +1,27 @@
-import { SummitButton } from "../../components/Summit/SummitButton";
+import { BlueprintButton } from "../../components/Blueprint/BlueprintButton";
+import { BlueprintGrid } from "../../components/Blueprint/BlueprintGrid";
+import { CtaSection } from "../../components/Blueprint/CtaSection";
+import { SpecLabel } from "../../components/Blueprint/SpecLabel";
+import { Seo } from "../../components/Seo";
 
 export const PrivacyPage = () => {
   return (
-    <div className="min-h-screen bg-deep-horizon pt-24">
+    <div className="min-h-screen bg-blueprint-base pt-24">
+      <Seo
+        title="Privacy Policy"
+        description="How Smith Avenue Insights collects, uses, and protects your information, the data we gather on this site, and the rights you have over your personal data."
+        path="/privacy"
+      />
+
       {/* Hero Section */}
-      <div className="bg-atmospheric-haze py-20 border-b border-white/5">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-golden-hour-start to-golden-hour-end font-bold mb-6">
-            Privacy Policy
+      <div className="relative overflow-hidden border-b border-chalk/10 bg-drafting-surface py-2cell">
+        <BlueprintGrid opacity={0.55} />
+        <div className="relative z-10 mx-auto max-w-7xl px-cell">
+          <SpecLabel className="mb-cell">legal</SpecLabel>
+          <h1 className="font-display text-display-2 font-extrabold leading-[0.95] text-chalk">
+            Privacy policy.
           </h1>
-          <p className="font-sans text-xl md:text-2xl text-granite max-w-3xl mx-auto leading-relaxed">
+          <p className="mt-cell max-w-2xl font-sans text-body text-chalk/70">
             Your privacy is important to us. Learn how we collect, use, and
             protect your information.
           </p>
@@ -17,15 +29,15 @@ export const PrivacyPage = () => {
       </div>
 
       {/* Main Content */}
-      <div className="py-20">
+      <div className="py-3cell">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto space-y-16">
+          <div className="max-w-4xl space-y-16">
             {/* Introduction */}
             <section>
-              <h2 className="font-display text-3xl md:text-4xl text-white font-bold mb-6">
+              <h2 className="font-display text-3xl md:text-4xl text-chalk font-bold mb-6">
                 Introduction
               </h2>
-              <p className="font-sans text-lg text-granite/80 leading-relaxed mb-4">
+              <p className="font-sans text-lg text-chalk/80 leading-relaxed mb-4">
                 At Smith Avenue Insights, we take your privacy seriously. This
                 Privacy Policy explains how we collect, use, disclose, and
                 safeguard your information when you visit our website or use our
@@ -35,15 +47,15 @@ export const PrivacyPage = () => {
 
             {/* Information Collection */}
             <section>
-              <h2 className="font-display text-3xl md:text-4xl text-white font-bold mb-6">
+              <h2 className="font-display text-3xl md:text-4xl text-chalk font-bold mb-6">
                 Information We Collect
               </h2>
               <div className="space-y-8">
                 <div>
-                  <h3 className="font-display text-xl font-bold text-golden-hour-start mb-4">
+                  <h3 className="font-display text-xl font-bold text-marker-start mb-4">
                     Personal Information
                   </h3>
-                  <ul className="list-disc list-inside font-sans text-lg text-granite/70 space-y-2 ml-4">
+                  <ul className="list-disc list-inside font-sans text-lg text-chalk/70 space-y-2 ml-4">
                     <li>Name and contact information</li>
                     <li>Email address</li>
                     <li>Company information</li>
@@ -51,10 +63,10 @@ export const PrivacyPage = () => {
                   </ul>
                 </div>
                 <div>
-                  <h3 className="font-display text-xl font-bold text-golden-hour-start mb-4">
+                  <h3 className="font-display text-xl font-bold text-marker-start mb-4">
                     Usage Information
                   </h3>
-                  <ul className="list-disc list-inside font-sans text-lg text-granite/70 space-y-2 ml-4">
+                  <ul className="list-disc list-inside font-sans text-lg text-chalk/70 space-y-2 ml-4">
                     <li>Browser type and version</li>
                     <li>Operating system</li>
                     <li>Pages visited</li>
@@ -67,10 +79,10 @@ export const PrivacyPage = () => {
 
             {/* How We Use Information */}
             <section>
-              <h2 className="font-display text-3xl md:text-4xl text-white font-bold mb-6">
+              <h2 className="font-display text-3xl md:text-4xl text-chalk font-bold mb-6">
                 How We Use Your Information
               </h2>
-              <ul className="list-disc list-inside font-sans text-lg text-granite/70 space-y-2 ml-4">
+              <ul className="list-disc list-inside font-sans text-lg text-chalk/70 space-y-2 ml-4">
                 <li>To provide and maintain our services</li>
                 <li>To communicate with you about our services</li>
                 <li>To improve our website and services</li>
@@ -83,10 +95,10 @@ export const PrivacyPage = () => {
 
             {/* Data Protection */}
             <section>
-              <h2 className="font-display text-3xl md:text-4xl text-white font-bold mb-6">
+              <h2 className="font-display text-3xl md:text-4xl text-chalk font-bold mb-6">
                 Data Protection
               </h2>
-              <p className="font-sans text-lg text-granite/80 leading-relaxed mb-4">
+              <p className="font-sans text-lg text-chalk/80 leading-relaxed mb-4">
                 We implement appropriate technical and organizational measures
                 to protect your personal information against unauthorized
                 access, alteration, disclosure, or destruction.
@@ -95,13 +107,13 @@ export const PrivacyPage = () => {
 
             {/* Your Rights */}
             <section>
-              <h2 className="font-display text-3xl md:text-4xl text-white font-bold mb-6">
+              <h2 className="font-display text-3xl md:text-4xl text-chalk font-bold mb-6">
                 Your Rights
               </h2>
-              <p className="font-sans text-lg text-granite/80 leading-relaxed mb-4">
+              <p className="font-sans text-lg text-chalk/80 leading-relaxed mb-4">
                 You have the right to:
               </p>
-              <ul className="list-disc list-inside font-sans text-lg text-granite/70 space-y-2 ml-4">
+              <ul className="list-disc list-inside font-sans text-lg text-chalk/70 space-y-2 ml-4">
                 <li>Access your personal information</li>
                 <li>Correct inaccurate information</li>
                 <li>Request deletion of your information</li>
@@ -111,11 +123,11 @@ export const PrivacyPage = () => {
             </section>
 
             {/* Contact Section */}
-            <section className="text-center">
-              <h2 className="font-display text-3xl md:text-4xl text-white font-bold mb-6">
+            <section>
+              <h2 className="font-display text-3xl md:text-4xl text-chalk font-bold mb-6">
                 Contact Us
               </h2>
-              <p className="font-sans text-lg text-granite/80 leading-relaxed mb-8">
+              <p className="font-sans text-lg text-chalk/80 leading-relaxed mb-8 max-w-2xl">
                 If you have any questions about this Privacy Policy or our data
                 practices, please contact us:
               </p>
@@ -123,12 +135,17 @@ export const PrivacyPage = () => {
                 href="mailto:privacy@smithavenueinsights.com"
                 className="inline-block"
               >
-                <SummitButton>Contact Privacy Team</SummitButton>
+                <BlueprintButton>Contact Privacy Team</BlueprintButton>
               </a>
             </section>
           </div>
         </div>
       </div>
+
+      <CtaSection
+        headline="Have a project in mind?"
+        body="Most engagements start with a 30-minute scoping call. No commitment required."
+      />
     </div>
   );
 };

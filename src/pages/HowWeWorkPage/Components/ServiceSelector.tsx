@@ -37,7 +37,7 @@ export const ServiceSelector = ({
   ][];
 
   return (
-    <div className="sticky top-[72px] z-30 bg-deep-horizon/90 backdrop-blur-lg border-b border-white/10">
+    <div className="sticky top-[72px] z-30 bg-blueprint-base border-b border-chalk/10">
       <div className="container mx-auto px-4">
         <nav
           className="flex items-center justify-center gap-2 py-3"
@@ -56,19 +56,19 @@ export const ServiceSelector = ({
                 className={`
                   relative flex items-center gap-2 px-4 py-2.5 rounded-xl
                   font-display font-semibold text-sm md:text-base
-                  transition-all duration-300 ease-bouncy
-                  focus:outline-none focus-visible:ring-2 focus-visible:ring-alpine-ice/50
+                  transition-all duration-300 ease-spec
+                  focus:outline-none focus-visible:ring-2 focus-visible:ring-grid-line/50
                   ${
                     isActive
-                      ? "text-deep-horizon"
-                      : "text-granite/60 hover:text-granite hover:bg-white/5"
+                      ? "text-drafting-surface"
+                      : "text-chalk/60 hover:text-chalk hover:bg-chalk/5"
                   }
                 `}
               >
                 {isActive && (
                   <motion.div
                     layoutId="activeServiceBg"
-                    className="absolute inset-0 bg-gradient-to-r from-golden-hour-start to-golden-hour-end rounded-xl"
+                    className="absolute inset-0 bg-gradient-to-r from-marker-start to-marker-end rounded-xl"
                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
                   />
                 )}

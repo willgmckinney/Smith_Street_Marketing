@@ -1,92 +1,96 @@
-import { useEffect, useRef, useState } from "react";
-import goatVideo from "../../../../assets/Animated_Goat_Climbs_Mountain_Sunrise.mp4";
+import { Link } from "@tanstack/react-router";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { BlueprintButton } from "../../../../components/Blueprint/BlueprintButton";
+import { BlueprintGrid } from "../../../../components/Blueprint/BlueprintGrid";
+import { ArchitectureCycle } from "../../../../components/Blueprint/ArchitectureCycle";
+
+const recentBuilds = ["Airbus", "Ascent Pharma", "Kontinued"];
+
+const column: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.5 } },
+};
+
+const rise: Variants = {
+  hidden: { opacity: 0, y: 8 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.2, ease: [0.2, 0, 0, 1] },
+  },
+};
 
 export const HeroBanner = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [visibleWords, setVisibleWords] = useState<boolean[]>([
-    false,
-    false,
-    false,
-  ]);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    // Ensure video is muted for mobile autoplay
-    video.muted = true;
-
-    // Attempt to play if it hasn't started
-    const playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        // Auto-play was prevented
-        console.log("Autoplay prevented");
-      });
-    }
-
-    const handleTimeUpdate = () => {
-      if (video.currentTime >= 6.0) {
-        video.pause();
-
-        // Fade in words one at a time with delays
-        setTimeout(() => setVisibleWords([true, false, false]), 0);
-        setTimeout(() => setVisibleWords([true, true, false]), 600);
-        setTimeout(() => setVisibleWords([true, true, true]), 1200);
-      }
-    };
-
-    video.addEventListener("timeupdate", handleTimeUpdate);
-
-    return () => {
-      video.removeEventListener("timeupdate", handleTimeUpdate);
-    };
-  }, []);
-
-  const words = ["Climb", "New", "Peaks"];
+  const prefersReducedMotion = useReducedMotion();
+  const active = !prefersReducedMotion;
 
   return (
-    <div className="relative flex flex-col items-center justify-center h-screen w-full overflow-hidden bg-deep-horizon">
-      {/* Video Background */}
-      <video
-        ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover z-0"
-        autoPlay
-        muted
-        playsInline
-        loop={false}
-      >
-        <source src={goatVideo} type="video/mp4" />
-      </video>
+    <div className="relative flex items-center min-h-screen w-full overflow-hidden bg-blueprint-base">
+      <BlueprintGrid animate />
 
-      {/* Gradient Overlay (Bottom-up, subtle dark gradient) */}
-      <div className="absolute inset-0 bg-gradient-to-t from-deep-horizon via-deep-horizon/40 to-transparent z-1 pointer-events-none" />
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-cell py-2cell">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.25fr] gap-cell lg:gap-2cell items-center">
+          {/* Left: editorial copy */}
+          <motion.div
+            variants={column}
+            initial={active ? "hidden" : false}
+            animate={active ? "visible" : false}
+            className="relative z-10"
+          >
+            <motion.p
+              variants={rise}
+              className="font-mono text-label-mono text-marker-start lowercase mb-cell"
+            >
+              software · data · cloud
+            </motion.p>
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center space-y-8 sm:space-y-12 px-4">
-        <h1
-          className="font-display font-extrabold text-granite text-center leading-tight drop-shadow-2xl"
-          style={{
-            textShadow: "0 4px 20px rgba(0,0,0,0.5)", // Soft, deep shadow
-          }}
-        >
-          <div className="text-[3.5rem] sm:text-[5rem] md:text-[7rem] lg:text-[10rem] flex flex-wrap justify-center gap-x-4 gap-y-2">
-            {words.map((word, index) => (
-              <span
-                key={index}
-                className={`transition-all duration-1000 ease-bouncy ${
-                  visibleWords[index]
-                    ? "opacity-100 translate-y-0 scale-100"
-                    : "opacity-0 translate-y-10 scale-90"
-                }`}
-              >
-                {word}
-              </span>
-            ))}
-          </div>
-        </h1>
+            <motion.h1
+              variants={rise}
+              className="font-display font-extrabold text-chalk text-display-1"
+            >
+              General contractors
+              <br />
+              for your tech.
+            </motion.h1>
 
-        {/* Subtitle / Additional Text could go here to enhance the "Expansive" feel */}
+            <motion.p
+              variants={rise}
+              className="font-sans text-body text-chalk/70 max-w-xl mt-cell"
+            >
+              Software and data infrastructure that helps your business grow
+              instead of holding it back. We take on the hard problems and build
+              what you actually need.
+            </motion.p>
+
+            <motion.div variants={rise} className="flex flex-col sm:flex-row gap-4 mt-cell">
+              <Link to="/demo">
+                <BlueprintButton size="lg">Start a project</BlueprintButton>
+              </Link>
+              <Link to="/portfolio">
+                <BlueprintButton variant="outline" size="lg">
+                  See the work
+                </BlueprintButton>
+              </Link>
+            </motion.div>
+
+            <motion.div
+              variants={rise}
+              className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-2cell font-mono text-label-mono text-chalk/60"
+            >
+              <span className="text-chalk/40">recent builds</span>
+              {recentBuilds.map((client) => (
+                <span key={client} className="text-chalk">
+                  {client}
+                </span>
+              ))}
+            </motion.div>
+          </motion.div>
+
+          {/* Right: six reference architectures cycle through a shared hinge.
+              On desktop it bleeds to the right edge of the viewport, twice the
+              old size; on mobile it stacks under the copy. */}
+          <ArchitectureCycle className="hidden lg:block w-full max-w-md mx-auto mt-cell lg:mt-0 lg:absolute lg:top-1/2 lg:right-[calc((100%-100vw)/2)] lg:z-0 lg:mx-0 lg:w-[58vw] lg:max-w-[1200px] lg:-translate-y-1/2" />
+        </div>
       </div>
     </div>
   );

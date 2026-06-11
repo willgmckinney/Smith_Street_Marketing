@@ -11,7 +11,6 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as TaxCompanyDashboardImport } from './routes/tax-company-dashboard'
 import { Route as SupportImport } from './routes/support'
 import { Route as ShopifyProfitRecoveryImport } from './routes/shopify-profit-recovery'
 import { Route as SecuritySchedulingDashboardImport } from './routes/security-scheduling-dashboard'
@@ -24,18 +23,13 @@ import { Route as ConstructionDashboardImport } from './routes/construction-dash
 import { Route as CompanyImport } from './routes/company'
 import { Route as AscentPharmaceuticalsLandingImport } from './routes/ascent-pharmaceuticals-landing'
 import { Route as AgenticBiImport } from './routes/agentic-bi'
+import { Route as AcmeLifecycleImport } from './routes/acme-lifecycle'
 import { Route as AccessibilityImport } from './routes/accessibility'
 import { Route as IndexImport } from './routes/index'
 import { Route as BlogIndexImport } from './routes/blog/index'
 import { Route as BlogPostIdImport } from './routes/blog/$postId'
 
 // Create/Update Routes
-
-const TaxCompanyDashboardRoute = TaxCompanyDashboardImport.update({
-  id: '/tax-company-dashboard',
-  path: '/tax-company-dashboard',
-  getParentRoute: () => rootRoute,
-} as any)
 
 const SupportRoute = SupportImport.update({
   id: '/support',
@@ -111,6 +105,12 @@ const AgenticBiRoute = AgenticBiImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const AcmeLifecycleRoute = AcmeLifecycleImport.update({
+  id: '/acme-lifecycle',
+  path: '/acme-lifecycle',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const AccessibilityRoute = AccessibilityImport.update({
   id: '/accessibility',
   path: '/accessibility',
@@ -151,6 +151,13 @@ declare module '@tanstack/react-router' {
       path: '/accessibility'
       fullPath: '/accessibility'
       preLoaderRoute: typeof AccessibilityImport
+      parentRoute: typeof rootRoute
+    }
+    '/acme-lifecycle': {
+      id: '/acme-lifecycle'
+      path: '/acme-lifecycle'
+      fullPath: '/acme-lifecycle'
+      preLoaderRoute: typeof AcmeLifecycleImport
       parentRoute: typeof rootRoute
     }
     '/agentic-bi': {
@@ -237,13 +244,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SupportImport
       parentRoute: typeof rootRoute
     }
-    '/tax-company-dashboard': {
-      id: '/tax-company-dashboard'
-      path: '/tax-company-dashboard'
-      fullPath: '/tax-company-dashboard'
-      preLoaderRoute: typeof TaxCompanyDashboardImport
-      parentRoute: typeof rootRoute
-    }
     '/blog/$postId': {
       id: '/blog/$postId'
       path: '/blog/$postId'
@@ -266,6 +266,7 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/accessibility': typeof AccessibilityRoute
+  '/acme-lifecycle': typeof AcmeLifecycleRoute
   '/agentic-bi': typeof AgenticBiRoute
   '/ascent-pharmaceuticals-landing': typeof AscentPharmaceuticalsLandingRoute
   '/company': typeof CompanyRoute
@@ -278,7 +279,6 @@ export interface FileRoutesByFullPath {
   '/security-scheduling-dashboard': typeof SecuritySchedulingDashboardRoute
   '/shopify-profit-recovery': typeof ShopifyProfitRecoveryRoute
   '/support': typeof SupportRoute
-  '/tax-company-dashboard': typeof TaxCompanyDashboardRoute
   '/blog/$postId': typeof BlogPostIdRoute
   '/blog': typeof BlogIndexRoute
 }
@@ -286,6 +286,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/accessibility': typeof AccessibilityRoute
+  '/acme-lifecycle': typeof AcmeLifecycleRoute
   '/agentic-bi': typeof AgenticBiRoute
   '/ascent-pharmaceuticals-landing': typeof AscentPharmaceuticalsLandingRoute
   '/company': typeof CompanyRoute
@@ -298,7 +299,6 @@ export interface FileRoutesByTo {
   '/security-scheduling-dashboard': typeof SecuritySchedulingDashboardRoute
   '/shopify-profit-recovery': typeof ShopifyProfitRecoveryRoute
   '/support': typeof SupportRoute
-  '/tax-company-dashboard': typeof TaxCompanyDashboardRoute
   '/blog/$postId': typeof BlogPostIdRoute
   '/blog': typeof BlogIndexRoute
 }
@@ -307,6 +307,7 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/accessibility': typeof AccessibilityRoute
+  '/acme-lifecycle': typeof AcmeLifecycleRoute
   '/agentic-bi': typeof AgenticBiRoute
   '/ascent-pharmaceuticals-landing': typeof AscentPharmaceuticalsLandingRoute
   '/company': typeof CompanyRoute
@@ -319,7 +320,6 @@ export interface FileRoutesById {
   '/security-scheduling-dashboard': typeof SecuritySchedulingDashboardRoute
   '/shopify-profit-recovery': typeof ShopifyProfitRecoveryRoute
   '/support': typeof SupportRoute
-  '/tax-company-dashboard': typeof TaxCompanyDashboardRoute
   '/blog/$postId': typeof BlogPostIdRoute
   '/blog/': typeof BlogIndexRoute
 }
@@ -329,6 +329,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/accessibility'
+    | '/acme-lifecycle'
     | '/agentic-bi'
     | '/ascent-pharmaceuticals-landing'
     | '/company'
@@ -341,13 +342,13 @@ export interface FileRouteTypes {
     | '/security-scheduling-dashboard'
     | '/shopify-profit-recovery'
     | '/support'
-    | '/tax-company-dashboard'
     | '/blog/$postId'
     | '/blog'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/accessibility'
+    | '/acme-lifecycle'
     | '/agentic-bi'
     | '/ascent-pharmaceuticals-landing'
     | '/company'
@@ -360,13 +361,13 @@ export interface FileRouteTypes {
     | '/security-scheduling-dashboard'
     | '/shopify-profit-recovery'
     | '/support'
-    | '/tax-company-dashboard'
     | '/blog/$postId'
     | '/blog'
   id:
     | '__root__'
     | '/'
     | '/accessibility'
+    | '/acme-lifecycle'
     | '/agentic-bi'
     | '/ascent-pharmaceuticals-landing'
     | '/company'
@@ -379,7 +380,6 @@ export interface FileRouteTypes {
     | '/security-scheduling-dashboard'
     | '/shopify-profit-recovery'
     | '/support'
-    | '/tax-company-dashboard'
     | '/blog/$postId'
     | '/blog/'
   fileRoutesById: FileRoutesById
@@ -388,6 +388,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AccessibilityRoute: typeof AccessibilityRoute
+  AcmeLifecycleRoute: typeof AcmeLifecycleRoute
   AgenticBiRoute: typeof AgenticBiRoute
   AscentPharmaceuticalsLandingRoute: typeof AscentPharmaceuticalsLandingRoute
   CompanyRoute: typeof CompanyRoute
@@ -400,7 +401,6 @@ export interface RootRouteChildren {
   SecuritySchedulingDashboardRoute: typeof SecuritySchedulingDashboardRoute
   ShopifyProfitRecoveryRoute: typeof ShopifyProfitRecoveryRoute
   SupportRoute: typeof SupportRoute
-  TaxCompanyDashboardRoute: typeof TaxCompanyDashboardRoute
   BlogPostIdRoute: typeof BlogPostIdRoute
   BlogIndexRoute: typeof BlogIndexRoute
 }
@@ -408,6 +408,7 @@ export interface RootRouteChildren {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AccessibilityRoute: AccessibilityRoute,
+  AcmeLifecycleRoute: AcmeLifecycleRoute,
   AgenticBiRoute: AgenticBiRoute,
   AscentPharmaceuticalsLandingRoute: AscentPharmaceuticalsLandingRoute,
   CompanyRoute: CompanyRoute,
@@ -420,7 +421,6 @@ const rootRouteChildren: RootRouteChildren = {
   SecuritySchedulingDashboardRoute: SecuritySchedulingDashboardRoute,
   ShopifyProfitRecoveryRoute: ShopifyProfitRecoveryRoute,
   SupportRoute: SupportRoute,
-  TaxCompanyDashboardRoute: TaxCompanyDashboardRoute,
   BlogPostIdRoute: BlogPostIdRoute,
   BlogIndexRoute: BlogIndexRoute,
 }
@@ -437,6 +437,7 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/accessibility",
+        "/acme-lifecycle",
         "/agentic-bi",
         "/ascent-pharmaceuticals-landing",
         "/company",
@@ -449,7 +450,6 @@ export const routeTree = rootRoute
         "/security-scheduling-dashboard",
         "/shopify-profit-recovery",
         "/support",
-        "/tax-company-dashboard",
         "/blog/$postId",
         "/blog/"
       ]
@@ -459,6 +459,9 @@ export const routeTree = rootRoute
     },
     "/accessibility": {
       "filePath": "accessibility.tsx"
+    },
+    "/acme-lifecycle": {
+      "filePath": "acme-lifecycle.tsx"
     },
     "/agentic-bi": {
       "filePath": "agentic-bi.tsx"
@@ -495,9 +498,6 @@ export const routeTree = rootRoute
     },
     "/support": {
       "filePath": "support.tsx"
-    },
-    "/tax-company-dashboard": {
-      "filePath": "tax-company-dashboard.tsx"
     },
     "/blog/$postId": {
       "filePath": "blog/$postId.tsx"

@@ -4,57 +4,69 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Summit Prime Palette
-        "golden-hour-start": "#00c484",
-        "golden-hour-end": "#32e875",
-        "rim-light": "#FFECC2",
-        "deep-horizon": "#0F172A",
-        "atmospheric-haze": "#1E293B",
-        granite: "#F8FAFC",
-        "alpine-flora": "#10B981",
+        // Blueprint Prime Palette — light sheet, single green marking accent
+        "marker-start": "#129A6A",
+        "marker-end": "#1FB97E",
+        "marker-ink": "#052E20",
+        caution: "#FFECC2",
+        "blueprint-base": "#F4F3EF",
+        "drafting-surface": "#FFFFFF",
+        chalk: "#1E293B",
+        verified: "#129A6A",
 
-        // Mountaineering palette
-        "cliff-dark": "#2A2D34",
-        "cliff-mid": "#3D4451",
-        "cliff-light": "#5C6370",
-        "alpine-ice": "#A8D8EA",
-        "sunrise-amber": "#64B5F6",
-        "rope-gold": "#5BA4D9",
-        "rope-tan": "#4A8DB7",
-        "rock-deep": "#4A4238",
-        "rock-mid": "#6B5B4E",
-        "rock-light": "#8B7865",
-
-        // Legacy colors (keeping to prevent immediate breakage, but should be phased out)
-        "primary-color-1": "var(--primary-color-Cyan)",
-        "primary-color-2": "var(--primary-color-Green)",
-        "secondary-color-1": "var(--secondary-color-deep-teal)",
-        "secondary-color-2": "var(--secondary-color-sky-blue)",
-        "neutral-color-1": "var(--neutral-color-charcol-gray)",
-        "neutral-color-2": "var(--neutral-color-light-gray)",
-        "accent-color-1": "var(--accent-color-vibrant-blue)",
-        "accent-color-2": "var(--accent-color-lime-green)",
-        "tirtiary-color": "var(--tirtiary-color-gray)",
+        // Blueprint sheet palette (secondary UI on light backgrounds)
+        "sheet-dark": "#CBD5E1",
+        "sheet-mid": "#E2E8F0",
+        "sheet-light": "#64748B",
+        "grid-line": "#129A6A",
+        "annotation-blue": "#129A6A",
+        "beam-line": "#129A6A",
+        "beam-fill": "#0E7C55",
+        "station-deep": "#94A3B8",
+        "station-mid": "#CBD5E1",
+        "station-light": "#64748B",
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
-        display: ["Poppins", "sans-serif"],
+        display: ["Archivo", "sans-serif"],
+        mono: ["Spline Sans Mono", "ui-monospace", "monospace"],
       },
-      boxShadow: {
-        "rim-card":
-        "inset 0 1px 0 0 rgba(255, 255, 255, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
-        "rim-card-inner": "inset 0 1px 0 0 rgba(255, 255, 255, 0.2)",
-        "button-glow": "0 10px 20px -10px #32e875",
+      // Single editorial type scale. Use only these steps.
+      fontSize: {
+        "display-1": [
+          "clamp(3.5rem, 8vw, 6rem)",
+          { lineHeight: "0.95", letterSpacing: "-0.02em" },
+        ],
+        "display-2": [
+          "clamp(2.5rem, 5vw, 4rem)",
+          { lineHeight: "1.0", letterSpacing: "-0.015em" },
+        ],
+        h: ["1.75rem", { lineHeight: "1.2", letterSpacing: "-0.01em" }],
+        body: ["1.125rem", { lineHeight: "1.6" }],
+        "label-mono": ["0.8125rem", { lineHeight: "1", letterSpacing: "0.16em" }],
+      },
+      // Spacing unit equals the visible 32px grid cell.
+      spacing: {
+        cell: "32px",
+        "2cell": "64px",
+        "3cell": "96px",
+        "4cell": "128px",
       },
       borderRadius: {
-        card: "24px",
+        card: "6px",
+        spec: "4px",
         pill: "9999px",
       },
       transitionTimingFunction: {
-        bouncy: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+        spec: "cubic-bezier(0.2, 0, 0, 1)",
       },
       backgroundImage: {
-        "golden-gradient": "linear-gradient(to right, #32e875, #00c484)",
+        // Flat accent kept as a token alias; no gradient sheen
+        "marker-gradient": "linear-gradient(to right, #129A6A, #129A6A)",
+        "blueprint-grid":
+          "linear-gradient(rgba(18, 154, 106, 0.11) 1px, transparent 1px), linear-gradient(90deg, rgba(18, 154, 106, 0.09) 1px, transparent 1px)",
+        "blueprint-grid-dense":
+          "linear-gradient(rgba(18, 154, 106, 0.11) 1px, transparent 1px), linear-gradient(90deg, rgba(18, 154, 106, 0.09) 1px, transparent 1px)",
       },
     },
   },

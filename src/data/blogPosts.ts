@@ -21,7 +21,7 @@ export const blogPosts: BlogPost[] = [
     id: "building-cost-efficient-aws-architectures",
     title: "Designing Cost-Efficient AWS Architectures at Scale",
     excerpt:
-      "Cost optimization in AWS is not about cutting corners — it's about intentional architecture, visibility, and disciplined automation.",
+      "Cost optimization in AWS is not about cutting corners, it's about intentional architecture, visibility, and disciplined automation.",
     content: `
       <p>One of the most persistent misconceptions about AWS is that high cloud bills are inevitable at scale. In reality, the majority of excessive AWS spend stems from architectural decisions made early, left unexamined as systems evolve.</p>
   
@@ -35,7 +35,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Data Transfer: The Silent Budget Killer</h2>
       <p>Many organizations focus exclusively on compute costs while ignoring data transfer. Cross-AZ traffic, inter-region replication, and NAT Gateway egress charges can quietly surpass EC2 costs in distributed systems.</p>
   
-      <p>Architectures that colocate tightly coupled services within the same Availability Zone, leverage VPC endpoints, and minimize unnecessary cross-region chatter can dramatically reduce network spend without sacrificing resilience.</p>
+      <p>Architectures that colocate tightly coupled services within the same Availability Zone, use VPC endpoints, and minimize unnecessary cross-region chatter can dramatically reduce network spend without sacrificing resilience.</p>
   
       <h2>Storage Tiering and Lifecycle Automation</h2>
       <p>S3 is often perceived as "cheap," but storing all data in S3 Standard indefinitely is rarely optimal. Intelligent-Tiering, lifecycle rules, and archival into Glacier or Glacier Deep Archive should be default design considerations, not afterthoughts.</p>
@@ -45,7 +45,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Cost Visibility as an Engineering Metric</h2>
       <p>High-performing cloud teams treat cost as a first-class engineering concern. Enforcing resource tagging, setting up AWS Budgets with alerting, and exposing cost dashboards to engineering teams creates accountability and faster feedback loops.</p>
   
-      <p>Cost efficiency is not about spending less — it is about ensuring every dollar spent is directly tied to delivered business value.</p>
+      <p>Cost efficiency is not about spending less, it is about ensuring every dollar spent is directly tied to delivered business value.</p>
     `,
     author: "William McKinney",
     date: "Nov 8, 2025",
@@ -67,7 +67,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Choosing the Right Event Backbone</h2>
       <p>AWS provides multiple eventing primitives, each with distinct trade-offs. SNS excels at fan-out messaging, SQS provides durability and backpressure handling, and EventBridge offers schema-aware routing and cross-account event buses.</p>
   
-      <p>Misusing these services — such as treating SNS as a queue or overloading EventBridge with high-throughput data streams — can lead to performance bottlenecks and unexpected costs.</p>
+      <p>Misusing these services, such as treating SNS as a queue or overloading EventBridge with high-throughput data streams, can lead to performance bottlenecks and unexpected costs.</p>
   
       <h2>Idempotency and Exactly-Once Illusions</h2>
       <p>AWS services generally provide at-least-once delivery. Designing consumers to be idempotent is not optional. This often requires explicit deduplication strategies using DynamoDB, conditional writes, or application-level request tracking.</p>
@@ -82,7 +82,7 @@ export const blogPosts: BlogPost[] = [
       <h2>When Event-Driven Is the Wrong Choice</h2>
       <p>Not every system benefits from EDA. Low-latency request-response flows, simple CRUD applications, and tightly coupled business logic are often better served by synchronous APIs.</p>
   
-      <p>Event-driven architecture is a powerful tool — but like all powerful tools, it demands expertise, restraint, and strong operational practices.</p>
+      <p>Event-driven architecture is a powerful tool, but like all powerful tools, it demands expertise, restraint, and strong operational practices.</p>
     `,
     author: "William McKinney",
     date: "Nov 23, 2025",
@@ -94,7 +94,7 @@ export const blogPosts: BlogPost[] = [
     id: "securing-aws-multi-account-environments",
     title: "Securing Multi-Account AWS Environments Without Slowing Teams Down",
     excerpt:
-      "Strong security and developer velocity are not opposing forces — they are architectural outcomes.",
+      "Strong security and developer velocity are not opposing forces, they are architectural outcomes.",
     content: `
       <p>As organizations mature on AWS, a single-account strategy quickly becomes unmanageable. Multi-account environments are essential for security, billing isolation, and blast-radius containment.</p>
   
@@ -103,7 +103,7 @@ export const blogPosts: BlogPost[] = [
       <h2>Organizations and SCPs as Guardrails</h2>
       <p>AWS Organizations allows central governance through Service Control Policies (SCPs). The key is to use SCPs as guardrails, not straightjackets.</p>
   
-      <p>Effective SCPs restrict only truly dangerous actions — such as disabling CloudTrail or modifying shared networking — while leaving room for teams to innovate within safe boundaries.</p>
+      <p>Effective SCPs restrict only truly dangerous actions, such as disabling CloudTrail or modifying shared networking, while leaving room for teams to innovate within safe boundaries.</p>
   
       <h2>Centralized Identity with Decentralized Execution</h2>
       <p>Centralizing identity via AWS IAM Identity Center (formerly SSO) simplifies access management and auditing. Engineers should authenticate centrally but assume roles into workload accounts with clearly defined permissions.</p>
@@ -116,7 +116,7 @@ export const blogPosts: BlogPost[] = [
       <p>Clear ownership boundaries, infrastructure-as-code enforcement, and automated provisioning pipelines prevent networking teams from becoming blockers.</p>
   
       <h2>Security as an Enabler</h2>
-      <p>When security controls are automated, visible, and predictable, they accelerate delivery rather than slow it down. Security failures in AWS environments are rarely due to missing tools — they are due to inconsistent implementation.</p>
+      <p>When security controls are automated, visible, and predictable, they accelerate delivery rather than slow it down. Security failures in AWS environments are rarely due to missing tools, they are due to inconsistent implementation.</p>
   
       <p>The goal is not maximal restriction, but maximal confidence that systems behave as intended under failure and attack.</p>
     `,
@@ -130,14 +130,14 @@ export const blogPosts: BlogPost[] = [
     id: "cloud-platforms-pharma-smb-aws-azure-gcp",
     title: "Cloud Platforms for Pharma SMB Websites: AWS vs. Azure vs. GCP",
     excerpt:
-      "Small pharmaceutical businesses must weigh price, compliance, performance, tooling, ecosystem, support, and security when choosing a cloud provider. A comprehensive comparison of AWS, Azure, and GCP.",
+      "Small pharmaceutical businesses must weigh price, compliance, performance, tooling, ecosystem, support, and security when choosing a cloud provider. A detailed comparison of AWS, Azure, and GCP.",
     content: `
       <h2>Executive Summary</h2>
       <p>Small pharmaceutical businesses building a website must weigh price, compliance, performance, tooling, ecosystem, support, and security when choosing a cloud provider. AWS, Microsoft Azure, and Google Cloud Platform (GCP) each offer pay‑as‑you‑go pricing with free trial credits ($100–$300) and always‑free tiers. Azure often advertises the lowest on‑demand rates (especially for Microsoft-centric organizations), AWS provides the broadest service portfolio and flexible reservation options (spot instances and Savings Plans up to ~72% off), and GCP emphasizes transparent pricing with automatic sustained-use discounts. All three support healthcare/pharma compliance (HIPAA, HITRUST, GxP) with Business Associate Agreements and extensive certifications. They each offer regional controls for data residency (AWS GovCloud/EU, Azure GovCloud/EU Data Boundaries, GCP Assured Workloads/Data Boundaries).</p>
 
-      <p>In performance, all can auto-scale globally (EC2/VMs/Kubernetes/Serverless). AWS has massive compute capacity and "gold-standard" reliability; GCP leverages Google's global fiber network and excels at containers; Azure offers seamless hybrid scalability, especially for Windows/.NET workloads. Developer tooling varies: AWS Code services, Azure DevOps/Visual Studio integration, and GCP's container-native tools each appeal to different teams. Ecosystem integrations are strong all around: Azure tightly integrates with Microsoft Office/Dynamics, AWS and GCP integrate with a broad partner Marketplace and third‑party tools (e.g. AWS AppFlow with Salesforce, GCP connectors for marketing data).</p>
+      <p>In performance, all can auto-scale globally (EC2/VMs/Kubernetes/Serverless). AWS has massive compute capacity and "gold-standard" reliability; GCP uses Google's global fiber network and excels at containers; Azure offers smooth hybrid scalability, especially for Windows/.NET workloads. Developer tooling varies: AWS Code services, Azure DevOps/Visual Studio integration, and GCP's container-native tools each appeal to different teams. Ecosystem integrations are strong all around: Azure tightly integrates with Microsoft Office/Dynamics, AWS and GCP integrate with a broad partner Marketplace and third‑party tools (e.g. AWS AppFlow with Salesforce, GCP connectors for marketing data).</p>
 
-      <p>Support SLAs are similar (typically ~99.95% uptime, with paid plans offering 24×7 support and 15‑minute response for critical issues). Security is robust everywhere: all provide IAM, encryption, firewalls, DDoS protection, monitoring (AWS GuardDuty/Shield, Azure Security Center/Sentinel, GCP Security Command Center/Cloud Armor).</p>
+      <p>Support SLAs are similar (typically ~99.95% uptime, with paid plans offering 24×7 support and 15‑minute response for critical issues). Security is strong everywhere: all provide IAM, encryption, firewalls, DDoS protection, monitoring (AWS GuardDuty/Shield, Azure Security Center/Sentinel, GCP Security Command Center/Cloud Armor).</p>
 
       <p>In summary, AWS offers the most mature platform and broad services, Azure leads in hybrid/Microsoft integration and enterprise compliance, and GCP shines in data/AI and transparent pricing. The ideal choice depends on an SMB's existing tech stack, regulatory needs, and budget.</p>
 
@@ -156,33 +156,33 @@ export const blogPosts: BlogPost[] = [
       <div class="overflow-x-auto my-8">
         <table class="w-full border-collapse">
           <thead>
-            <tr class="border-b border-white/20">
-              <th class="text-left p-4 font-bold text-white">Feature</th>
-              <th class="text-left p-4 font-bold text-white">AWS</th>
-              <th class="text-left p-4 font-bold text-white">Azure</th>
-              <th class="text-left p-4 font-bold text-white">GCP</th>
+            <tr class="border-b border-chalk/20">
+              <th class="text-left p-4 font-bold text-chalk">Feature</th>
+              <th class="text-left p-4 font-bold text-chalk">AWS</th>
+              <th class="text-left p-4 font-bold text-chalk">Azure</th>
+              <th class="text-left p-4 font-bold text-chalk">GCP</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Free Trial & Tier</td>
               <td class="p-4">$200 credit (6mo), 30+ always-free services</td>
               <td class="p-4">$200 credit (30d), 12mo free on 20+ services, 65+ always-free</td>
               <td class="p-4">$300 credit (91d), 20+ always-free products</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Billing Granularity</td>
               <td class="p-4">Per-second (Linux), hourly (some services)</td>
               <td class="p-4">Per-minute (VMs)</td>
               <td class="p-4">Per-second on nearly all VMs</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Discounts</td>
               <td class="p-4">Reserved Instances, Savings Plans (up to ~72%); Spot instances</td>
               <td class="p-4">Reserved VMs, Azure Hybrid Benefit (license reuse)</td>
               <td class="p-4">Sustained-use discounts (auto), Committed Use Discounts (flexible across VM types)</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Egress/Data costs</td>
               <td class="p-4">Varies by region; tiered</td>
               <td class="p-4">Varies by region; tiered</td>
@@ -227,7 +227,7 @@ export const blogPosts: BlogPost[] = [
       <p>GCP (Google) built Kubernetes, so GCP's GKE is a leader in managed Kubernetes ease and scalability. Azure's AKS and AWS's EKS/ECS also provide strong container support. A cloud-native SMB with microservices may prefer GCP or AWS for container tooling, though Azure's AKS is quickly catching up.</p>
 
       <h3>Networking & CDN</h3>
-      <p>AWS CloudFront, Azure CDN, and Google Cloud CDN all distribute global content. Google's Cloud CDN leverages the Google edge network, which can benefit web assets' delivery speed. All providers offer content load balancing and global traffic routing (AWS Global Accelerator, Azure Traffic Manager, Google Cloud Load Balancing).</p>
+      <p>AWS CloudFront, Azure CDN, and Google Cloud CDN all distribute global content. Google's Cloud CDN uses the Google edge network, which can benefit web assets' delivery speed. All providers offer content load balancing and global traffic routing (AWS Global Accelerator, Azure Traffic Manager, Google Cloud Load Balancing).</p>
 
       <h3>Analytics & Big Data</h3>
       <p>Google is traditionally strong in high-throughput data analytics (BigQuery, Dataflow) and machine learning, which could benefit pharma use cases (e.g. analytics of research data). AWS and Azure also offer extensive analytics stacks (Amazon Redshift, Azure Synapse, etc.).</p>
@@ -241,7 +241,7 @@ export const blogPosts: BlogPost[] = [
       <p>A survey of dev teams notes: "AWS leads market share…its mature DevOps technologies (CloudFormation, Elastic Beanstalk, CodePipeline) provide a wide ecosystem and integrations". Azure "streamlines CI/CD" for shops already using Microsoft tech via Azure Pipelines, Boards, and Repos. GCP "shines in container/Kubernetes and ML workflows" with Cloud Build and Kubernetes-native CI/CD. In practice, a team already using Visual Studio/.NET or GitHub might lean Azure; a team heavy in Linux/OSS might use AWS; a team focused on containers might prefer GCP or AWS.</p>
 
       <h3>Management & Monitoring</h3>
-      <p>All clouds include integrated dashboards, CLIs (AWS CLI, Azure CLI, gcloud), and SDKs. AWS CloudWatch, Azure Monitor/Application Insights, and GCP Cloud Monitoring offer logging/metrics. Azure's portal and tools are rated easiest for those in a Microsoft shop; GCP's Console is known for usability; AWS's CloudWatch is extremely comprehensive but can be complex.</p>
+      <p>All clouds include integrated dashboards, CLIs (AWS CLI, Azure CLI, gcloud), and SDKs. AWS CloudWatch, Azure Monitor/Application Insights, and GCP Cloud Monitoring offer logging/metrics. Azure's portal and tools are rated easiest for those in a Microsoft shop; GCP's Console is known for usability; AWS's CloudWatch is extremely detailed but can be complex.</p>
 
       <h3>Business & Productivity Tools</h3>
       <p>Azure naturally meshes with Microsoft 365/Office tools (Active Directory, SharePoint, Dynamics 365 CRM). AWS has partnerships (e.g. Amazon Chime, Alexa or WorkMail). GCP integrates with Google Workspace (Gmail/Drive) and marketing platforms. Each cloud's marketplace provides many third-party SaaS and connectors (e.g. Salesforce, Slack, Datadog). In SMB practice, Azure often wins if the company already uses Microsoft Dynamics CRM or Office365, while AWS/GCP offer broad integration via APIs and services like AWS AppFlow (for Salesforce, SAP, etc.).</p>
@@ -251,9 +251,9 @@ export const blogPosts: BlogPost[] = [
       <p>AWS has the largest marketplace of third-party images and SaaS, with many specialized pharma/healthcare ISVs. Azure Marketplace is similarly extensive, especially for business applications (ERP/CRM) and Microsoft-centric tools. GCP's marketplace is smaller but growing, with a focus on analytics and data tools. All providers offer managed integrations to popular services: for example, AWS provides guidance to connect Google Analytics data into AWS services (enabling cross-platform analytics), Azure Logic Apps can connect to Salesforce or Dynamics, and Google Cloud has Data Transfer/Looker integrations.</p>
 
       <h3>Analytics and Marketing Tools</h3>
-      <p>GCP's strength is obvious with analytics: Google Analytics naturally exports to BigQuery, and Cloud AI tools (TensorFlow, AutoML) are readily available. Azure has Power BI and Machine Learning Studio. AWS offers Amazon QuickSight and SageMaker. For marketing and CRM, AWS and GCP provide machine learning APIs (personalization, contact center AI), and Azure has Dynamics 365 (CRM) and Azure AI Services. All clouds support popular open-source stacks and can host WordPress, Drupal, etc.</p>
+      <p>GCP's strength is obvious with analytics: Google Analytics naturally exports to BigQuery, and Cloud AI tools (TensorFlow, AutoML) are readily available. Azure has Power BI and Machine Learning Studio. AWS offers Amazon quick and SageMaker. For marketing and CRM, AWS and GCP provide machine learning APIs (personalization, contact center AI), and Azure has Dynamics 365 (CRM) and Azure AI Services. All clouds support popular open-source stacks and can host WordPress, Drupal, etc.</p>
 
-      <p>In short, the ecosystems are rich. AWS and Azure tie into vast partner networks, while GCP leverages Google's data/AI services. For an SMB, the choice may hinge on existing vendor relationships (e.g., a company using Office365 might favor Azure, one using Google Ads might favor GCP for easier ad-analytics integration).</p>
+      <p>In short, the ecosystems are rich. AWS and Azure tie into vast partner networks, while GCP uses Google's data/AI services. For an SMB, the choice may hinge on existing vendor relationships (e.g., a company using Office365 might favor Azure, one using Google Ads might favor GCP for easier ad-analytics integration).</p>
 
       <h2>Support Models and SLAs</h2>
       <p>AWS, Azure, and GCP each offer tiered support plans. All provide a Free basic tier (community support, docs, forums). Paid tiers (often called Developer/Standard/Business/Enterprise) ensure 24/7 phone/email support with guaranteed response times (e.g. AWS Enterprise: 15‑minute response for critical issues; Azure Premier: &lt;1 hour for critical). Enterprise plans often include dedicated TAMs and architectural reviews. SMBs rarely need enterprise support, but at minimum each cloud provides rapid response SLAs (e.g. 99.95% uptime SLA on VMs with multi-AZ setup). Major differences are minor: Azure's Premier level is historically expensive, GCP's Premium Support is competitive. All are transparent about SLAs in their documentation.</p>
@@ -278,10 +278,10 @@ export const blogPosts: BlogPost[] = [
       <h3>Compliance Tools</h3>
       <p>Each cloud offers compliance dashboards and policy frameworks. For example, Azure's Policy service includes HIPAA/HITRUST initiatives, AWS has Audit Manager and Artifact for compliance reports, and GCP has compliance "Assured Workloads" configurations and Shielded VMs.</p>
 
-      <p><strong>Summary:</strong> Security posture is excellent on all three, with comparable defenses. AWS historically led in breadth of security services, Azure wins in Windows-centric integration and policy management, and GCP promotes a secure-by-default stance. Each cloud publishes extensive security whitepapers and automated tools. A concise security comparison notes: "AWS leads with robust KMS/S3 encryption… Azure's Key Vault and integration simplify enterprise encryption… GCP encrypts all data at rest by default". Any SMB can meet strict pharma security needs on any of these platforms, though implementation details (e.g. logging, patching) remain the customer's responsibility.</p>
+      <p><strong>Summary:</strong> Security posture is excellent on all three, with comparable defenses. AWS historically led in breadth of security services, Azure wins in Windows-centric integration and policy management, and GCP promotes a secure-by-default stance. Each cloud publishes extensive security whitepapers and automated tools. A concise security comparison notes: "AWS leads with strong KMS/S3 encryption… Azure's Key Vault and integration simplify enterprise encryption… GCP encrypts all data at rest by default". Any SMB can meet strict pharma security needs on any of these platforms, though implementation details (e.g. logging, patching) remain the customer's responsibility.</p>
 
       <h2>Conclusion</h2>
-      <p>In choosing a cloud for a pharmaceutical SMB website, there is no single "best" provider—each major cloud has distinct advantages.</p>
+      <p>In choosing a cloud for a pharmaceutical SMB website, there is no single "best" provider, each major cloud has distinct advantages.</p>
 
       <ul class="list-disc pl-6 space-y-2 my-4">
         <li><strong>AWS</strong> is the market leader with the largest service portfolio and ecosystem. It offers unmatched flexibility and mature security/compliance support. AWS's global infrastructure can scale to virtually any traffic spike. However, its complexity and pricing can be daunting for newcomers. AWS best suits SMBs that want the widest choices and are willing to manage complexity (or work with AWS-savvy consultants).</li>
@@ -294,14 +294,14 @@ export const blogPosts: BlogPost[] = [
       <h2>Sources</h2>
       <p>Authoritative cloud documentation and industry analyses were consulted, including official AWS/Azure/GCP compliance and pricing pages and expert comparisons, to ensure up-to-date and detailed insights.</p>
 
-      <div class="mt-8 p-6 bg-white/5 rounded-lg border border-white/10">
+      <div class="mt-8 p-6 bg-chalk/5 rounded-lg border border-chalk/10">
         <h3 class="text-lg font-bold mb-4">Key References</h3>
-        <ul class="space-y-2 text-sm text-gray-300">
-          <li>• AWS Free Tier: <a href="https://aws.amazon.com/free/" class="text-golden-hour-start hover:underline" target="_blank" rel="noopener noreferrer">aws.amazon.com/free/</a></li>
-          <li>• Azure Free Account: <a href="https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account" class="text-golden-hour-start hover:underline" target="_blank" rel="noopener noreferrer">azure.microsoft.com</a></li>
-          <li>• Google Cloud Free Program: <a href="https://docs.cloud.google.com/free/docs/free-cloud-features" class="text-golden-hour-start hover:underline" target="_blank" rel="noopener noreferrer">docs.cloud.google.com</a></li>
-          <li>• AWS HIPAA Compliance: <a href="https://aws.amazon.com/compliance/hipaa-compliance/" class="text-golden-hour-start hover:underline" target="_blank" rel="noopener noreferrer">aws.amazon.com/compliance/hipaa-compliance/</a></li>
-          <li>• Azure GxP Guidelines: <a href="https://azure.microsoft.com/en-us/blog/new-azure-gxp-guidelines-help-pharmaceutical-and-biotech-customers-build-gxp-solutions/" class="text-golden-hour-start hover:underline" target="_blank" rel="noopener noreferrer">azure.microsoft.com</a></li>
+        <ul class="space-y-2 text-sm text-chalk/70">
+          <li>• AWS Free Tier: <a href="https://aws.amazon.com/free/" class="text-marker-start hover:underline" target="_blank" rel="noopener noreferrer">aws.amazon.com/free/</a></li>
+          <li>• Azure Free Account: <a href="https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account" class="text-marker-start hover:underline" target="_blank" rel="noopener noreferrer">azure.microsoft.com</a></li>
+          <li>• Google Cloud Free Program: <a href="https://docs.cloud.google.com/free/docs/free-cloud-features" class="text-marker-start hover:underline" target="_blank" rel="noopener noreferrer">docs.cloud.google.com</a></li>
+          <li>• AWS HIPAA Compliance: <a href="https://aws.amazon.com/compliance/hipaa-compliance/" class="text-marker-start hover:underline" target="_blank" rel="noopener noreferrer">aws.amazon.com/compliance/hipaa-compliance/</a></li>
+          <li>• Azure GxP Guidelines: <a href="https://azure.microsoft.com/en-us/blog/new-azure-gxp-guidelines-help-pharmaceutical-and-biotech-customers-build-gxp-solutions/" class="text-marker-start hover:underline" target="_blank" rel="noopener noreferrer">azure.microsoft.com</a></li>
           <li>• AWS vs Azure vs GCP Comparisons: BMC Software, DevZero, EffectiveSoft, Jit.io, DEV Community</li>
         </ul>
       </div>
@@ -320,7 +320,7 @@ export const blogPosts: BlogPost[] = [
     content: `
       <p>One of the most persistent challenges in consulting is making recommendations when information is incomplete. Clients expect clear guidance, but real-world decisions often involve ambiguity, missing data, and competing priorities.</p>
 
-      <p>Decision science research provides a framework for navigating uncertainty systematically. By applying these principles deliberately, consultants can make decisions that are defensible—even when information is incomplete.</p>
+      <p>Decision science research provides a framework for navigating uncertainty systematically. By applying these principles deliberately, consultants can make decisions that are defensible, even when information is incomplete.</p>
 
       <h2>Principle 1: Frame the Decision Before You Solve the Problem</h2>
       <p>Before evaluating alternatives, clearly define the type of decision you are making:</p>
@@ -336,11 +336,11 @@ export const blogPosts: BlogPost[] = [
 
       <p>Clear framing prevents a common consulting mistake: over-engineering solutions for poorly articulated problems.</p>
 
-      <div class="mt-6 p-6 bg-white/5 rounded-lg border border-white/10">
+      <div class="mt-6 p-6 bg-chalk/5 rounded-lg border border-chalk/10">
         <h3 class="text-lg font-bold mb-2">Tactical Action:</h3>
         <p class="mb-2">Write a Decision Statement at the start of every engagement document that states the hypothesis you are testing or the problem you are resolving.</p>
         <p class="mt-4"><strong>Example:</strong></p>
-        <p class="italic text-gray-300">"We are selecting a data architecture that balances short-term delivery with mid-term adaptability. We acknowledge current data constraints and define success as aligning extract reliability with measurable business outcomes."</p>
+        <p class="italic text-chalk/70">"We are selecting a data architecture that balances short-term delivery with mid-term adaptability. We acknowledge current data constraints and define success as aligning extract reliability with measurable business outcomes."</p>
       </div>
 
       <h2>Principle 2: Surface and Document Assumptions</h2>
@@ -348,21 +348,21 @@ export const blogPosts: BlogPost[] = [
 
       <p>Research on organizational decision-making shows that effective execution under uncertainty involves clearly identifying what you know, what you don't know, and the assumptions bridging those gaps.</p>
 
-      <div class="mt-6 p-6 bg-white/5 rounded-lg border border-white/10">
+      <div class="mt-6 p-6 bg-chalk/5 rounded-lg border border-chalk/10">
         <h3 class="text-lg font-bold mb-2">Tactical Action:</h3>
         <p class="mb-4">For every major decision point, create a table with:</p>
         <div class="overflow-x-auto my-4">
           <table class="w-full border-collapse">
             <thead>
-              <tr class="border-b border-white/20">
-                <th class="text-left p-4 font-bold text-white">Assumption</th>
-                <th class="text-left p-4 font-bold text-white">Source</th>
-                <th class="text-left p-4 font-bold text-white">Confidence Level</th>
-                <th class="text-left p-4 font-bold text-white">Test Plan</th>
+              <tr class="border-b border-chalk/20">
+                <th class="text-left p-4 font-bold text-chalk">Assumption</th>
+                <th class="text-left p-4 font-bold text-chalk">Source</th>
+                <th class="text-left p-4 font-bold text-chalk">Confidence Level</th>
+                <th class="text-left p-4 font-bold text-chalk">Test Plan</th>
               </tr>
             </thead>
             <tbody>
-              <tr class="border-b border-white/10">
+              <tr class="border-b border-chalk/10">
                 <td class="p-4">…</td>
                 <td class="p-4">…</td>
                 <td class="p-4">…</td>
@@ -381,12 +381,12 @@ export const blogPosts: BlogPost[] = [
 
       <p>This is exactly what good consultants do intuitively: break down decisions into smaller steps that clarify unknowns as part of solution delivery.</p>
 
-      <div class="mt-6 p-6 bg-white/5 rounded-lg border border-white/10">
+      <div class="mt-6 p-6 bg-chalk/5 rounded-lg border border-chalk/10">
         <h3 class="text-lg font-bold mb-2">Tactical Action:</h3>
         <p class="mb-4">Split decisions between:</p>
         <ul class="list-disc pl-6 space-y-2">
-          <li><strong>Exploratory Decisions</strong> — hypotheses to test (two-way doors)</li>
-          <li><strong>Commitment Decisions</strong> — bounded by known constraints (one-way doors)</li>
+          <li><strong>Exploratory Decisions</strong>, hypotheses to test (two-way doors)</li>
+          <li><strong>Commitment Decisions</strong>, bounded by known constraints (one-way doors)</li>
         </ul>
         <p class="mt-4">Then sequence work so exploratory decisions feed information into commitment decisions.</p>
       </div>
@@ -396,7 +396,7 @@ export const blogPosts: BlogPost[] = [
 
       <p>Your job is to make risk and uncertainty understandable and communicable. Clients struggle most not with risk itself, but with ambiguity, situations where they can't see the contours of uncertainty.</p>
 
-      <div class="mt-6 p-6 bg-white/5 rounded-lg border border-white/10">
+      <div class="mt-6 p-6 bg-chalk/5 rounded-lg border border-chalk/10">
         <h3 class="text-lg font-bold mb-2">Tactical Action:</h3>
         <p class="mb-4">When presenting options, tie them to risks in plain language:</p>
         <ul class="list-disc pl-6 space-y-2">
@@ -408,12 +408,12 @@ export const blogPosts: BlogPost[] = [
         <p class="mt-4">This both builds trust and reduces anxiety around decisions that must be made without perfect certainty.</p>
       </div>
 
-      <h2>Principle 5: Leverage Heuristics and Simple Decision Tools</h2>
+      <h2>Principle 5: Use Heuristics and Simple Decision Tools</h2>
       <p>When probabilistic data is unavailable, heuristics, simple decision rules based on experience, can be useful. While they are not perfect, they provide structure in ambiguity.</p>
 
       <p>In cognitive psychology research, heuristics are recognized as effective rules of thumb when full information is unavailable and speed is necessary.</p>
 
-      <div class="mt-6 p-6 bg-white/5 rounded-lg border border-white/10">
+      <div class="mt-6 p-6 bg-chalk/5 rounded-lg border border-chalk/10">
         <h3 class="text-lg font-bold mb-2">Tactical Actions:</h3>
         <ul class="list-disc pl-6 space-y-2">
           <li><strong>Pareto Prioritization:</strong> Focus first on components contributing ~80% of observed impacts</li>
@@ -424,7 +424,7 @@ export const blogPosts: BlogPost[] = [
       </div>
 
       <h2>Principle 6: Align Decision Style With Decision Context</h2>
-      <p>Decision science research shows that different types of tasks and uncertainty require different decision styles—analytical, intuitive, or blended.</p>
+      <p>Decision science research shows that different types of tasks and uncertainty require different decision styles, analytical, intuitive, or blended.</p>
 
       <p>As a consultant, you should be explicit about your decision style and why you chose it.</p>
 
@@ -446,21 +446,21 @@ export const blogPosts: BlogPost[] = [
         <li>Match decision style to context</li>
       </ol>
 
-      <p>By approaching uncertainty deliberately and transparently, you make decisions that are defensible—even when information is incomplete.</p>
+      <p>By approaching uncertainty deliberately and transparently, you make decisions that are defensible, even when information is incomplete.</p>
 
       <h2>Recommended Reading</h2>
       <p>If you'd like to go deeper into how humans and organizations make better decisions under uncertainty, these sources are valuable starting points:</p>
 
       <ul class="list-disc pl-6 space-y-2 my-4">
         <li>Daniel Ellsberg's work on ambiguity aversion, showing people prefer calculable risks over ambiguous ones.</li>
-        <li><strong>Farsighted: How We Make the Decisions That Matter the Most</strong> — explores decision processes in high-stakes contexts.</li>
-        <li><strong>The Journal of Risk and Uncertainty</strong> — a longstanding venue on risk and decision science.</li>
+        <li><strong>Farsighted: How We Make the Decisions That Matter the Most</strong>, explores decision processes in high-stakes contexts.</li>
+        <li><strong>The Journal of Risk and Uncertainty</strong>, a longstanding venue on risk and decision science.</li>
       </ul>
 
-      <div class="mt-8 p-6 bg-white/5 rounded-lg border border-white/10">
+      <div class="mt-8 p-6 bg-chalk/5 rounded-lg border border-chalk/10">
         <h3 class="text-lg font-bold mb-4">Sources</h3>
-        <p class="mb-4 text-sm text-gray-300">This article draws from research in decision science, organizational behavior, and consulting practice. Key references include:</p>
-        <ul class="space-y-2 text-sm text-gray-300">
+        <p class="mb-4 text-sm text-chalk/70">This article draws from research in decision science, organizational behavior, and consulting practice. Key references include:</p>
+        <ul class="space-y-2 text-sm text-chalk/70">
           <li>Springer Link: Uncertainty, Risk, and Decision-Making</li>
           <li>ScienceDirect: Making Evidence-Based Organizational Decisions in an Uncertain World</li>
           <li>OUP Academic: Decision-Making with Uncertainty</li>
@@ -485,7 +485,7 @@ export const blogPosts: BlogPost[] = [
     content: `
       <p>The global e-commerce landscape in 2025 and 2026 is characterized by a fundamental tension between the convenience of managed Software-as-a-Service (SaaS) platforms and the economic imperative of margin preservation. As digital storefronts mature, the initial velocity provided by platforms like Shopify often transitions into a structural bottleneck, both financially and technically. The concept of <strong>profit recovery</strong>, as articulated by strategic analysts, suggests that high-volume merchants can reclaim significant portions of their gross merchandise value (GMV) by transitioning from a "rental" model to an "ownership" model hosted on cloud-native infrastructure such as Amazon Web Services (AWS).</p>
 
-      <p>This transition is not merely a change in hosting but a comprehensive re-architecting of the business's digital foundation, aimed at eliminating the platform "tax," reducing the performance drag of third-party dependencies, and establishing total data sovereignty.</p>
+      <p>This transition is not merely a change in hosting but a detailed re-architecting of the business's digital foundation, aimed at eliminating the platform "tax," reducing the performance drag of third-party dependencies, and establishing total data sovereignty.</p>
 
       <h2>The Structural Inefficiencies of Managed SaaS</h2>
       <p>The economic model of Shopify is designed to capture value across the entire lifecycle of a merchant's growth. While the entry-level costs appear low, the platform implements a multi-tiered fee structure that scales with volume, often outstripping the actual cost of the underlying infrastructure it provides. For an enterprise-level merchant, these costs manifest in several distinct categories: subscription fees, transaction slippage, app ecosystem overhead, and currency conversion penalties.</p>
@@ -496,27 +496,27 @@ export const blogPosts: BlogPost[] = [
       <div class="overflow-x-auto my-8">
         <table class="w-full border-collapse">
           <thead>
-            <tr class="border-b border-white/20">
-              <th class="text-left p-4 font-bold text-white">Shopify Plan Tier</th>
-              <th class="text-left p-4 font-bold text-white">Monthly Subscription (Annual)</th>
-              <th class="text-left p-4 font-bold text-white">Online Card Rates (Est. 2025)</th>
-              <th class="text-left p-4 font-bold text-white">Third-Party Transaction Fee</th>
+            <tr class="border-b border-chalk/20">
+              <th class="text-left p-4 font-bold text-chalk">Shopify Plan Tier</th>
+              <th class="text-left p-4 font-bold text-chalk">Monthly Subscription (Annual)</th>
+              <th class="text-left p-4 font-bold text-chalk">Online Card Rates (Est. 2025)</th>
+              <th class="text-left p-4 font-bold text-chalk">Third-Party Transaction Fee</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Basic</td>
               <td class="p-4">$29</td>
               <td class="p-4">2.9% + 30¢</td>
               <td class="p-4">2.0%</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Grow</td>
               <td class="p-4">$79</td>
               <td class="p-4">2.7% + 30¢</td>
               <td class="p-4">1.0%</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Advanced</td>
               <td class="p-4">$299</td>
               <td class="p-4">2.5% + 30¢</td>
@@ -535,7 +535,7 @@ export const blogPosts: BlogPost[] = [
       <p>These fees constitute a <strong>regressive tax on growth</strong>. As a merchant's volume increases, the operational cost of the platform does not scale linearly with the value captured by Shopify through these transaction-based fees. This inefficiency is the primary driver for the "profit recovery" narrative, which posits that by owning the transactional infrastructure on AWS, a merchant can cap their infrastructure costs while their revenue continues to scale.</p>
 
       <h3>The App Ecosystem as a Regressive Performance Tax</h3>
-      <p>The second major inefficiency is the dependency on the Shopify App Store. While the core platform provides essential commerce functions, any advanced functionality—such as sophisticated loyalty programs, complex upselling logic, multi-warehouse inventory routing, or deep behavioral analytics—requires the installation of third-party applications. These apps typically operate on a monthly recurring revenue (MRR) model, with costs ranging from $10 to several hundred dollars per month. A mature enterprise store may easily accumulate 20 to 30 active apps, adding <strong>$1,000 to $5,000 in monthly overhead</strong>.</p>
+      <p>The second major inefficiency is the dependency on the Shopify App Store. While the core platform provides essential commerce functions, any advanced functionality, such as sophisticated loyalty programs, complex upselling logic, multi-warehouse inventory routing, or deep behavioral analytics, requires the installation of third-party applications. These apps typically operate on a monthly recurring revenue (MRR) model, with costs ranging from $10 to several hundred dollars per month. A mature enterprise store may easily accumulate 20 to 30 active apps, adding <strong>$1,000 to $5,000 in monthly overhead</strong>.</p>
 
       <p>Beyond the direct financial cost, these applications introduce a <strong>performance tax</strong>. Most Shopify apps function by injecting JavaScript into the storefront's theme. Because the merchant has no control over how these external scripts are delivered, they often block the main thread, delay the Largest Contentful Paint (LCP), and degrade the Interaction to Next Paint (INP). This degradation is not a minor technicality; it directly impacts conversion rates. Industry data indicates that every 100ms delay in page load time can lead to a <strong>7% reduction in conversions</strong>.</p>
 
@@ -550,29 +550,29 @@ export const blogPosts: BlogPost[] = [
       <div class="overflow-x-auto my-8">
         <table class="w-full border-collapse">
           <thead>
-            <tr class="border-b border-white/20">
-              <th class="text-left p-4 font-bold text-white">AWS Service</th>
-              <th class="text-left p-4 font-bold text-white">Unit of Cost</th>
-              <th class="text-left p-4 font-bold text-white">Estimated Monthly Cost (10k DAU)</th>
+            <tr class="border-b border-chalk/20">
+              <th class="text-left p-4 font-bold text-chalk">AWS Service</th>
+              <th class="text-left p-4 font-bold text-chalk">Unit of Cost</th>
+              <th class="text-left p-4 font-bold text-chalk">Estimated Monthly Cost (10k DAU)</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">AWS Amplify (Hosting)</td>
               <td class="p-4">Build min + GB Served</td>
               <td class="p-4">$8.08 – $65.98</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">AWS Lambda (Logic)</td>
               <td class="p-4">Requests + Duration</td>
               <td class="p-4">$20.00 – $106.41</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Amazon DynamoDB (Data)</td>
               <td class="p-4">Read/Write Units + Storage</td>
               <td class="p-4">$15.00 – $45.00</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Amazon CloudFront (CDN)</td>
               <td class="p-4">Data Transfer Out</td>
               <td class="p-4">Included (Free tier/Standard)</td>
@@ -591,7 +591,7 @@ export const blogPosts: BlogPost[] = [
       <h3>The Role of Data Sovereignty in Maximizing Lifetime Value</h3>
       <p>Profit recovery extends into the realm of marketing efficiency and Customer Lifetime Value (CLV). On a managed platform, the merchant's ability to access and manipulate granular behavioral data is often limited by the platform's APIs. This creates an "attribution gap" where merchants struggle to connect top-of-funnel activity with long-term customer behavior.</p>
 
-      <p>By owning the data layer on AWS (using Amazon Redshift or a custom Data Lake on S3), a merchant can implement the "EAGLES" metrics framework—tracking CLV, Customer Acquisition Cost (CAC), and cohort-based retention with 100% accuracy.</p>
+      <p>By owning the data layer on AWS (using Amazon Redshift or a custom Data Lake on S3), a merchant can implement the "EAGLES" metrics framework, tracking CLV, Customer Acquisition Cost (CAC), and cohort-based retention with 100% accuracy.</p>
 
       <p>This data sovereignty allows for the recovery of profit currently lost to inefficient ad spend. With direct access to transaction logs and behavioral events, a merchant can build custom machine learning models on <strong>Amazon SageMaker</strong> to predict churn or optimize personalized product recommendations. These capabilities, which are often "locked" behind enterprise-tier app subscriptions or proprietary platform tools, become native features of the custom AWS architecture, driving revenue growth that is unencumbered by platform fees.</p>
 
@@ -606,29 +606,29 @@ export const blogPosts: BlogPost[] = [
       <div class="overflow-x-auto my-8">
         <table class="w-full border-collapse">
           <thead>
-            <tr class="border-b border-white/20">
-              <th class="text-left p-4 font-bold text-white">Infrastructure Component</th>
-              <th class="text-left p-4 font-bold text-white">Role in E-Commerce</th>
-              <th class="text-left p-4 font-bold text-white">Benefit Over Shopify</th>
+            <tr class="border-b border-chalk/20">
+              <th class="text-left p-4 font-bold text-chalk">Infrastructure Component</th>
+              <th class="text-left p-4 font-bold text-chalk">Role in E-Commerce</th>
+              <th class="text-left p-4 font-bold text-chalk">Benefit Over Shopify</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">AWS Lambda</td>
               <td class="p-4">Checkout & Business Logic</td>
               <td class="p-4">Infinite scaling; pay-per-request</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Amazon DynamoDB</td>
               <td class="p-4">Product & Order Storage</td>
               <td class="p-4">Consistent latency; NoSQL flexibility</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Amazon EventBridge</td>
               <td class="p-4">Orchestration (Email, ERP)</td>
               <td class="p-4">Reliable, asynchronous processing</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Amazon Cognito</td>
               <td class="p-4">Customer Authentication</td>
               <td class="p-4">Secure, scalable identity management</td>
@@ -671,29 +671,29 @@ export const blogPosts: BlogPost[] = [
       <div class="overflow-x-auto my-8">
         <table class="w-full border-collapse">
           <thead>
-            <tr class="border-b border-white/20">
-              <th class="text-left p-4 font-bold text-white">Data Entity</th>
-              <th class="text-left p-4 font-bold text-white">Migration Strategy</th>
-              <th class="text-left p-4 font-bold text-white">AWS/Medusa Equivalent</th>
+            <tr class="border-b border-chalk/20">
+              <th class="text-left p-4 font-bold text-chalk">Data Entity</th>
+              <th class="text-left p-4 font-bold text-chalk">Migration Strategy</th>
+              <th class="text-left p-4 font-bold text-chalk">AWS/Medusa Equivalent</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Products</td>
               <td class="p-4">API-driven sync via Plugin</td>
               <td class="p-4">Medusa Product Module</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Customers</td>
               <td class="p-4">Export/Import with Password Hash Migrator</td>
               <td class="p-4">Medusa Customer Module</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Orders</td>
               <td class="p-4">Historical Import for Analytics</td>
               <td class="p-4">Amazon Redshift / S3 Data Lake</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Metafields</td>
               <td class="p-4">Mapping to Custom Attributes</td>
               <td class="p-4">Medusa Metadata Fields</td>
@@ -712,7 +712,7 @@ export const blogPosts: BlogPost[] = [
       <h3>Phase 3: SEO Preservation and URL Architecture</h3>
       <p>The most common point of failure in e-commerce migration is the loss of organic search rankings. Shopify's URL structure is rigid (e.g., <code>/products/product-name</code>), whereas a custom AWS site offers total flexibility. While this flexibility is a long-term benefit, the immediate transition requires a 1:1 redirect map.</p>
 
-      <p>A robust SEO preservation strategy involves:</p>
+      <p>A strong SEO preservation strategy involves:</p>
 
       <ul class="list-disc pl-6 space-y-2 my-4">
         <li>Implementing permanent <strong>301 redirects</strong> for every product, collection, and blog URL.</li>
@@ -735,29 +735,29 @@ export const blogPosts: BlogPost[] = [
       <div class="overflow-x-auto my-8">
         <table class="w-full border-collapse">
           <thead>
-            <tr class="border-b border-white/20">
-              <th class="text-left p-4 font-bold text-white">Expense Category</th>
-              <th class="text-left p-4 font-bold text-white">Shopify (Managed)</th>
-              <th class="text-left p-4 font-bold text-white">AWS (Custom/Headless)</th>
+            <tr class="border-b border-chalk/20">
+              <th class="text-left p-4 font-bold text-chalk">Expense Category</th>
+              <th class="text-left p-4 font-bold text-chalk">Shopify (Managed)</th>
+              <th class="text-left p-4 font-bold text-chalk">AWS (Custom/Headless)</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Software/Hosting</td>
               <td class="p-4">$2,300 – $10,000+</td>
               <td class="p-4">$100 – $500</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Transaction Fees</td>
               <td class="p-4">0.5% – 2% (Platform Tax)</td>
               <td class="p-4">0% (Direct Gateway)</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">App Subscriptions</td>
               <td class="p-4">$500 – $5,000</td>
               <td class="p-4">$0 (Native Features)</td>
             </tr>
-            <tr class="border-b border-white/10">
+            <tr class="border-b border-chalk/10">
               <td class="p-4 font-semibold">Developer Ops</td>
               <td class="p-4">Minimal</td>
               <td class="p-4">$5,000 – $15,000/mo</td>
@@ -781,17 +781,17 @@ export const blogPosts: BlogPost[] = [
       <h2>Conclusion: The Strategic Imperative of Cloud-Native Commerce</h2>
       <p>The move from Shopify to AWS is more than a technical migration; it is a <strong>declaration of operational independence</strong>. For the "Profit Recovery" framework to succeed, the transition must be viewed through the lens of long-term asset building. By owning the infrastructure, the data layer, and the frontend experience, a merchant transforms their e-commerce store from a rented storefront into a proprietary technology asset.</p>
 
-      <p>The economic benefits—eliminating transaction slippage, shedding the app-middleware tax, and maximizing marketing efficiency through data sovereignty—are compelling for high-volume merchants. However, the success of this strategy hinges on the merchant's readiness to embrace a "Product, not Project" mindset. A custom AWS site requires continuous iteration and professional cloud management to ensure that the initial performance and profit gains are maintained as the business scales.</p>
+      <p>The economic benefits, eliminating transaction slippage, shedding the app-middleware tax, and maximizing marketing efficiency through data sovereignty, are compelling for high-volume merchants. However, the success of this strategy hinges on the merchant's readiness to embrace a "Product, not Project" mindset. A custom AWS site requires continuous iteration and professional cloud management to ensure that the initial performance and profit gains are maintained as the business scales.</p>
 
       <p>Ultimately, the merchants who successfully navigate this migration are those who recognize that at a certain scale, their digital platform <em>is</em> their business. Recovering the margins currently surrendered to platform "taxes" provides the capital necessary to out-invest competitors in customer experience, performance, and long-term brand equity in the 2026 digital economy.</p>
 
-      <div class="mt-8 p-6 bg-white/5 rounded-lg border border-white/10">
+      <div class="mt-8 p-6 bg-chalk/5 rounded-lg border border-chalk/10">
         <h3 class="text-lg font-bold mb-4">Key Takeaways</h3>
-        <ul class="space-y-2 text-sm text-gray-300">
+        <ul class="space-y-2 text-sm text-chalk/70">
           <li>• <strong>Transaction Fee Recovery:</strong> Merchants processing $50M+ GMV can save over $500,000 annually by eliminating platform surcharges and negotiating direct gateway rates.</li>
           <li>• <strong>Performance Gains:</strong> Migrating from Liquid to headless Next.js on AWS can improve Time to Interactive by 20–45% and boost mobile organic traffic by up to 300%.</li>
           <li>• <strong>Data Sovereignty:</strong> Owning the data layer enables custom ML models, precise attribution, and marketing optimizations unavailable on managed platforms.</li>
-          <li>• <strong>Phased Migration:</strong> A five-phase roadmap—from functional audit through dark launch—mitigates risk to SEO, data integrity, and operational continuity.</li>
+          <li>• <strong>Phased Migration:</strong> A five-phase roadmap, from functional audit through dark launch, mitigates risk to SEO, data integrity, and operational continuity.</li>
           <li>• <strong>TCO Realism:</strong> AWS hosting costs can be as low as $65–$150/month, but engineering talent ($5k–$15k/month) must be factored into the total cost of ownership.</li>
         </ul>
       </div>

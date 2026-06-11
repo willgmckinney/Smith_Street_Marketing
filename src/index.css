@@ -2,21 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  /* Legacy vars - keeping for safety */
-  --primary-color-Cyan: #00d8ff;
-  --primary-color-Green: #00c484;
-  --secondary-color-deep-teal: #007c66;
-  --secondary-color-sky-blue: #a6f7ff;
-  --neutral-color-charcol-gray: #f5f5f5;
-  --neutral-color-light-gray: #f5f5f5;
-  --tirtiary-color-gray: #232325;
-  --accent-color-vibrant-blue: #0091ff;
-  --accent-color-lime-green: #32e875;
+html {
+  /* Firefox */
+  scrollbar-width: none;
+  /* legacy Edge / IE */
+  -ms-overflow-style: none;
 }
 
 body {
-  @apply bg-deep-horizon text-granite font-sans antialiased;
+  @apply bg-blueprint-base text-chalk font-sans antialiased;
   overflow-x: hidden;
 }
 
@@ -24,58 +18,116 @@ h1, h2, h3, h4, h5, h6 {
   @apply font-display font-bold;
 }
 
-/* Scrollbar styling for that premium feel */
-::-webkit-scrollbar {
-  width: 10px;
+/* Hide the native scrollbar site-wide; scrolling still works.
+   The custom ScrollRule on the left serves as the progress indicator. */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background: transparent;
 }
 
-::-webkit-scrollbar-track {
-  @apply bg-deep-horizon;
+/* Blueprint timeline animations */
+@keyframes grid-draw {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-::-webkit-scrollbar-thumb {
-  @apply bg-atmospheric-haze rounded-full border-2 border-deep-horizon;
+@keyframes line-extend {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
 }
 
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-slate-600;
+@keyframes station-set {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(18, 154, 106, 0.45); }
+  50% { box-shadow: 0 0 12px 4px rgba(18, 154, 106, 0); }
 }
 
-/* Mountaineering timeline animations */
-@keyframes piton-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(168, 216, 234, 0.4); }
-  50% { box-shadow: 0 0 20px 10px rgba(168, 216, 234, 0); }
+@keyframes sheet-reveal {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes rope-sway {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(3px); }
+.animate-grid-draw {
+  animation: grid-draw 1.2s cubic-bezier(0.2, 0, 0, 1) forwards;
 }
 
-@keyframes snow-fall {
-  0% { transform: translateY(-10px) rotate(0deg); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+.animate-line-extend {
+  animation: line-extend 0.8s cubic-bezier(0.2, 0, 0, 1) forwards;
 }
 
-@keyframes wind-drift {
-  0%, 100% { transform: translateX(0) scaleX(1); }
-  50% { transform: translateX(10px) scaleX(1.05); }
+.animate-station-set {
+  animation: station-set 2s ease-in-out infinite;
 }
 
-.animate-piton-pulse {
-  animation: piton-pulse 2s ease-in-out infinite;
+.animate-sheet-reveal {
+  animation: sheet-reveal 0.6s cubic-bezier(0.2, 0, 0, 1) forwards;
 }
 
-.animate-rope-sway {
-  animation: rope-sway 3s ease-in-out infinite;
-}
-
-/* Reduced motion support for mountaineering timeline */
+/* Reduced motion support for blueprint timeline */
 @media (prefers-reduced-motion: reduce) {
-  .animate-piton-pulse,
-  .animate-rope-sway {
+  .animate-grid-draw,
+  .animate-line-extend,
+  .animate-station-set,
+  .animate-sheet-reveal {
     animation: none !important;
+  }
+}
+
+/* Clients & partners roster: monochrome logo wall, hover/focus to green */
+.logo-cell {
+  transition: transform 0.18s ease, border-color 0.18s ease;
+}
+.logo-cell:hover,
+.logo-cell:focus-visible {
+  outline: none;
+  transform: translateY(-2px);
+  border-color: #129a6a;
+}
+.logo-mask {
+  background-color: #1e293b;
+  -webkit-mask: var(--logo-src) no-repeat center / contain;
+  mask: var(--logo-src) no-repeat center / contain;
+  transition: background-color 0.18s ease;
+}
+.logo-cell:hover .logo-mask,
+.logo-cell:focus-visible .logo-mask {
+  background-color: #129a6a;
+}
+/* static identifier logo (reference card header), no hover behavior */
+.logo-mask-static {
+  background-color: #1e293b;
+  -webkit-mask: var(--logo-src) no-repeat center / contain;
+  mask: var(--logo-src) no-repeat center / contain;
+}
+
+/* Opt-in marquee mode (off by default) */
+@keyframes roster-marquee-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes roster-marquee-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+.roster-marquee {
+  -webkit-mask: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.roster-track {
+  display: flex;
+  width: max-content;
+}
+.roster-track-left { animation: roster-marquee-left 45s linear infinite; }
+.roster-track-right { animation: roster-marquee-right 45s linear infinite; }
+.roster-marquee:hover .roster-track-left,
+.roster-marquee:hover .roster-track-right {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .roster-track-left,
+  .roster-track-right {
+    animation: none;
   }
 }

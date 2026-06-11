@@ -19,7 +19,7 @@ import { realEstateDashboardRoute } from "./routes/real-estate-dashboard";
 import { securitySchedulingDashboardRoute } from "./routes/security-scheduling-dashboard";
 import { shopifyProfitRecoveryRoute } from "./routes/shopify-profit-recovery";
 import { supportRoute } from "./routes/support";
-import { taxCompanyDashboardRoute } from "./routes/tax-company-dashboard";
+import { acmeLifecycleRoute } from "./routes/acme-lifecycle";
 
 const routeTree = rootRoute.addChildren([
   indexRoute,
@@ -35,8 +35,8 @@ const routeTree = rootRoute.addChildren([
   supportRoute,
   accessibilityRoute,
   privacyRoute,
-  taxCompanyDashboardRoute,
   ascentPharmaceuticalsLandingRoute,
+  acmeLifecycleRoute,
   blogRoute,
   blogPostRoute,
 ]);

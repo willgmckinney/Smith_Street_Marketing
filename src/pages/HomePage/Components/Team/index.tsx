@@ -2,76 +2,87 @@ import duncanMeyerProfilePic from "../../../../assets/duncanMeyerProfile.jpg";
 import dylanMorozowskiProfilePic from "../../../../assets/dylanMorozowskiProfile.jpg";
 import GermayneCurryProfilePic from "../../../../assets/GermayneCurryProfile.jpg";
 import willMcKinneyProfilePic from "../../../../assets/willMckinneyProfile.jpg";
-import { SummitCard } from "../../../../components/Summit/SummitCard";
+import { BlueprintCard } from "../../../../components/Blueprint/BlueprintCard";
+import { SpecLabel } from "../../../../components/Blueprint/SpecLabel";
 
 const teamList = [
   {
     name: "William McKinney",
-    bio: "William brings extensive expertise in software development and consulting, with a strong focus on building scalable solutions. His experience spans across full-stack development, cloud architecture, and technical leadership.",
+    bio: "William leads backend and cloud delivery: APIs on ECS Fargate, Postgres, and the AWS CDK that ships them.",
     profilePicture: willMcKinneyProfilePic,
-    role: "Technical Lead", // Added for context if needed, or just display name
+    role: "Technical Lead",
   },
   {
     name: "Dylan Morozowski",
-    bio: "Dylan is a seasoned software developer and AWS certified professional, specializing in cloud architecture and data analytics. He helps organizations optimize their data infrastructure and implement cutting-edge analytics solutions.",
+    bio: "Dylan built the satellite imagery lakehouse for Airbus on Glue and Redshift. AWS certified, he designs the data infrastructure that reporting runs on.",
     profilePicture: dylanMorozowskiProfilePic,
     role: "Cloud Architect",
   },
   {
     name: "Duncan Meyer",
-    bio: "Duncan is a skilled software engineer with a proven track record in developing robust applications and leading teams. His expertise in modern development practices and agile methodologies drives business growth.",
+    bio: "Duncan models data and ships analysis pipelines teams actually use. He works in Python and SQL and turns messy inputs into clear metrics.",
     profilePicture: duncanMeyerProfilePic,
-    role: "Software Engineer",
+    role: "Data Science Lead",
   },
   {
     name: "Germayne Curry",
-    bio: "Germayne connects businesses with tailored software solutions that help them move faster and operate smarter. His unique blend of background and skills allows him to understand complex problems and deliver impactful solutions.",
+    bio: "Germayne runs sales and brings engagements from first conversation to signed scope. He matches the problem to the right team and keeps delivery aligned with what the client needs.",
     profilePicture: GermayneCurryProfilePic,
-    role: "Solutions Architect",
+    role: "Head of Sales",
   },
 ];
 
 export const Team = () => {
   return (
-    <section className="bg-deep-horizon py-20 sm:py-32 px-4 sm:px-8 relative">
+    <section className="bg-blueprint-base py-3cell px-cell relative">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-20 space-y-4">
-          <h2 className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl text-white">
-            The Team
+        <div className="mb-2cell">
+          <SpecLabel className="mb-cell">the team</SpecLabel>
+          <h2 className="font-display font-extrabold text-display-2 text-chalk leading-[0.95]">
+            The
+            <br />
+            crew
           </h2>
-          <p className="text-xl text-granite/70 max-w-2xl mx-auto">
-            Expert climbers guiding your ascent.
+          <p className="text-body text-chalk/70 mt-4 max-w-xl">
+            Every engagement is staffed by the same people you see here. No
+            offshore handoffs. No bait and switch.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-cell">
           {teamList.map((teamMember) => (
-            <SummitCard
+            <BlueprintCard
               key={teamMember.name}
-              className="flex flex-col items-center text-center p-6 h-full hover:bg-atmospheric-haze/90 transition-colors"
+              className="flex flex-col p-6 h-full"
             >
-              <div className="w-32 h-32 mb-6 rounded-full p-1 bg-white shadow-lg">
+              <div className="group relative aspect-square mb-6 overflow-hidden rounded-spec border border-chalk/15 bg-blueprint-base">
                 <img
                   src={teamMember.profilePicture}
-                  alt={teamMember.name}
+                  alt={`${teamMember.name}, ${teamMember.role}, Smith Avenue Insights`}
                   loading="eager"
-                  className={`w-full h-full object-cover rounded-full border-4 border-deep-horizon ${
+                  className={`w-full h-full object-cover grayscale contrast-[1.05] transition duration-300 group-hover:grayscale-0 group-hover:contrast-100 ${
                     teamMember.name === "Germayne Curry"
-                      ? "object-[center_10%]"
-                      : "object-center"
+                      ? "object-[center_15%]"
+                      : "object-[center_top]"
                   }`}
+                />
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 bg-marker-start opacity-0 mix-blend-color transition-opacity duration-300 group-hover:opacity-30"
                 />
               </div>
 
-              <h3 className="font-display font-bold text-xl text-white mb-2">
+              <h3 className="font-display font-bold text-h text-chalk mb-1">
                 {teamMember.name}
               </h3>
-              {/* <p className="text-golden-hour-start text-sm font-bold uppercase tracking-wider mb-4">{teamMember.role}</p> */}
+              <p className="font-mono text-label-mono text-marker-start lowercase mb-3">
+                {teamMember.role}
+              </p>
 
-              <p className="font-sans text-sm text-granite/70 leading-relaxed">
+              <p className="font-sans text-sm text-chalk/70 leading-relaxed">
                 {teamMember.bio}
               </p>
-            </SummitCard>
+            </BlueprintCard>
           ))}
         </div>
       </div>

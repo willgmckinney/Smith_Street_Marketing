@@ -1,48 +1,43 @@
-import Skyline from "../../assets/Skyline.jpg";
+import { BlueprintGrid } from "../../components/Blueprint/BlueprintGrid";
+import { SpecLabel } from "../../components/Blueprint/SpecLabel";
+import { Seo } from "../../components/Seo";
 import { ApolloContactForm } from "./Components/ApolloContactForm";
 
 export const DemoPage = () => {
   return (
-    <div className="min-h-screen bg-deep-horizon pt-24 relative overflow-hidden">
-      {/* Background Overlay */}
-      <div
-        className="absolute inset-0 z-0 opacity-20"
-        style={{
-          pointerEvents: "none",
-          backgroundImage: `url(${Skyline})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
+    <div className="min-h-screen bg-blueprint-base pt-24 relative overflow-hidden">
+      <Seo
+        title="Start a project"
+        description="Scope your next build with Smith Avenue Insights. Most engagements start with a 30-minute call. We send a written scope with timeline and cost."
+        path="/demo"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-deep-horizon via-transparent to-deep-horizon z-0 pointer-events-none" />
+      <BlueprintGrid opacity={0.55} />
+      <div className="absolute inset-0 bg-gradient-to-b from-blueprint-base via-transparent to-blueprint-base z-0 pointer-events-none" />
 
       <div className="container mx-auto px-4 py-16 relative z-10">
         <div className="flex flex-col lg:flex-row items-start gap-12 lg:gap-20">
-          {/* Left content section */}
           <div className="lg:w-1/2 pt-8">
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-white leading-tight">
-              Let's discuss your{" "}
-              <span className="text-golden-hour-start">
-                unique requirements
-              </span>
+            <SpecLabel className="mb-6">consultation</SpecLabel>
+            <h1 className="font-display text-display-2 font-extrabold mb-8 text-chalk">
+              Let's scope your{" "}
+              <span className="text-marker-start">next build</span>
             </h1>
 
             <div className="space-y-10">
-              <h2 className="font-display text-2xl font-semibold text-white/90">
+              <h2 className="font-display text-h font-medium text-chalk/90">
                 What to expect from your consultation:
               </h2>
 
               <ul className="space-y-6">
                 {[
-                  "Tailored discussion of your specific needs and goals",
-                  "Explore flexible engagement models that work for you",
-                  "Learn about our enterprise-grade support options",
+                  "A straight discussion of your requirements and goals",
+                  "Engagement models that fit the scope of the job",
+                  "Enterprise-grade support options when you need them",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start">
-                    <div className="bg-golden-gradient p-1 rounded-full mr-4 mt-1">
+                    <div className="bg-marker-start p-1 rounded-spec mr-4 mt-1">
                       <svg
-                        className="w-4 h-4 text-deep-horizon"
+                        className="w-4 h-4 text-drafting-surface"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -55,7 +50,7 @@ export const DemoPage = () => {
                         />
                       </svg>
                     </div>
-                    <span className="text-xl text-granite/80 font-sans">
+                    <span className="text-body text-chalk/80 font-sans">
                       {item}
                     </span>
                   </li>
@@ -64,8 +59,7 @@ export const DemoPage = () => {
             </div>
           </div>
 
-          {/* Right contact form section */}
-          <div className="lg:w-1/2 w-full bg-white rounded-card shadow-2xl p-0 border border-white/10 overflow-hidden">
+          <div className="lg:w-1/2 w-full bg-drafting-surface rounded-card border border-chalk/10 p-0 overflow-hidden">
             <ApolloContactForm />
           </div>
         </div>

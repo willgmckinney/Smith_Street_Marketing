@@ -5,20 +5,18 @@ import {
   useLocation,
 } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import logo from "../assets/logo.png";
 import Footer from "../components/Footer";
-import { SummitButton } from "../components/Summit/SummitButton";
+import { BlueprintButton } from "../components/Blueprint/BlueprintButton";
+import { GoatMark } from "../components/Blueprint/GoatMark";
+import { ScrollRule } from "../components/Blueprint/ScrollRule";
 
 export const rootRoute = createRootRoute({
   component: () => {
     const [scrolled, setScrolled] = useState(false);
-    const [solutionsOpen, setSolutionsOpen] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [mobileSolutionsOpen, setMobileSolutionsOpen] = useState(false);
     const location = useLocation();
-    const isShopifyPage = location.pathname === "/shopify-profit-recovery";
-    const isAgenticBIPage = location.pathname === "/agentic-bi";
-    const isSolutionsPage = isShopifyPage || isAgenticBIPage;
+    const isAcmeLifecycle = location.pathname === "/acme-lifecycle";
+    const isFullPageDemo = isAcmeLifecycle;
 
     useEffect(() => {
       const handleScroll = () => {
@@ -32,7 +30,6 @@ export const rootRoute = createRootRoute({
     // Close mobile menu on route change
     useEffect(() => {
       setMobileMenuOpen(false);
-      setMobileSolutionsOpen(false);
     }, [location.pathname]);
 
     // Lock body scroll when mobile menu is open
@@ -47,149 +44,88 @@ export const rootRoute = createRootRoute({
       };
     }, [mobileMenuOpen]);
 
-    useEffect(() => {
-      const handleClickOutside = (event: MouseEvent) => {
-        const target = event.target as HTMLElement;
-        if (!target.closest(".solutions-dropdown")) {
-          setSolutionsOpen(false);
-        }
-      };
-
-      if (solutionsOpen) {
-        document.addEventListener("mousedown", handleClickOutside);
-      }
-
-      return () => {
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, [solutionsOpen]);
-
     return (
-      <div className="flex flex-col min-h-screen bg-deep-horizon text-granite font-sans">
+      <div className={`flex flex-col min-h-screen bg-blueprint-base text-chalk font-sans ${isFullPageDemo ? "bg-transparent" : ""}`}>
+        {!isFullPageDemo && <ScrollRule />}
+        {!isFullPageDemo && (
+        <>
         <header
           className={`
             fixed top-0 left-0 right-0 z-50 transition-all duration-300
             px-4 sm:px-6 lg:px-8 py-4
             flex items-center justify-between
-            ${scrolled || mobileMenuOpen ? "bg-deep-horizon/80 backdrop-blur-md border-b border-white/10 shadow-lg" : "bg-transparent"}
+            ${scrolled || mobileMenuOpen ? "bg-blueprint-base border-b border-chalk/10" : "bg-transparent"}
           `}
         >
           <Link to="/" className="flex flex-row items-center gap-3 group">
-            <img
-              src={logo}
-              className="h-10 sm:h-12 w-auto transition-transform duration-300 group-hover:scale-110"
-              alt="Smith Avenue Insights Logo"
+            <GoatMark
+              size={44}
+              alt=""
+              className="transition-transform duration-300 group-hover:-translate-y-px"
             />
-            <p className="font-display font-bold text-lg sm:text-xl md:text-2xl text-white hidden sm:block tracking-tight">
+            <p className="font-display font-bold text-lg sm:text-xl md:text-2xl text-chalk hidden sm:block tracking-tight">
               Smith Avenue Insights
             </p>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-2 sm:gap-4">
-            <div className="relative solutions-dropdown">
-              <SummitButton
-                variant="secondary"
-                size="sm"
-                className={`bg-transparent border-transparent shadow-none hover:bg-white/10 ${
-                  isSolutionsPage ? "text-golden-hour-start" : "text-granite"
-                }`}
-                onClick={() => setSolutionsOpen(!solutionsOpen)}
-                onMouseEnter={() => setSolutionsOpen(true)}
-              >
-                Solutions
-                <svg
-                  className={`ml-1 h-4 w-4 inline-block transition-transform duration-200 ${
-                    solutionsOpen ? "rotate-180" : ""
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+            <Link to="/company">
+              {({ isActive }) => (
+                <BlueprintButton
+                  variant="secondary"
+                  size="sm"
+                  className={`bg-transparent border-transparent shadow-none hover:bg-chalk/10 font-mono font-normal lowercase tracking-[0.08em] ${isActive ? "text-marker-start" : "text-chalk"}`}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </SummitButton>
-
-              {solutionsOpen && (
-                <div
-                  className="absolute top-full left-0 mt-2 w-56 bg-atmospheric-haze rounded-lg border border-white/10 shadow-lg overflow-hidden z-50"
-                  onMouseLeave={() => setSolutionsOpen(false)}
-                >
-                  <Link
-                    to="/shopify-profit-recovery"
-                    className={`block px-4 py-3 transition-colors duration-200 ${
-                      isShopifyPage
-                        ? "bg-white/10 text-golden-hour-start"
-                        : "text-granite hover:bg-white/10 hover:text-golden-hour-start"
-                    }`}
-                    onClick={() => setSolutionsOpen(false)}
-                  >
-                    Shopify Profit Recovery
-                  </Link>
-                  <Link
-                    to="/agentic-bi"
-                    className={`block px-4 py-3 transition-colors duration-200 ${
-                      isAgenticBIPage
-                        ? "bg-white/10 text-golden-hour-start"
-                        : "text-granite hover:bg-white/10 hover:text-golden-hour-start"
-                    }`}
-                    onClick={() => setSolutionsOpen(false)}
-                  >
-                    Agentic BI Migration
-                  </Link>
-                </div>
+                  about
+                </BlueprintButton>
               )}
-            </div>
+            </Link>
 
             <Link to="/portfolio">
               {({ isActive }) => (
-                <SummitButton
+                <BlueprintButton
                   variant="secondary"
                   size="sm"
-                  className={`bg-transparent border-transparent shadow-none hover:bg-white/10 ${isActive ? "text-golden-hour-start" : "text-granite"}`}
+                  className={`bg-transparent border-transparent shadow-none hover:bg-chalk/10 font-mono font-normal lowercase tracking-[0.08em] ${isActive ? "text-marker-start" : "text-chalk"}`}
                 >
-                  Portfolio
-                </SummitButton>
+                  the work
+                </BlueprintButton>
               )}
             </Link>
 
             <Link to="/how-we-work">
               {({ isActive }) => (
-                <SummitButton
+                <BlueprintButton
                   variant="secondary"
                   size="sm"
-                  className={`bg-transparent border-transparent shadow-none hover:bg-white/10 ${isActive ? "text-golden-hour-start" : "text-granite"}`}
+                  className={`bg-transparent border-transparent shadow-none hover:bg-chalk/10 font-mono font-normal lowercase tracking-[0.08em] ${isActive ? "text-marker-start" : "text-chalk"}`}
                 >
-                  How We Work
-                </SummitButton>
+                  process
+                </BlueprintButton>
               )}
             </Link>
 
             <Link to="/blog">
               {({ isActive }) => (
-                <SummitButton
+                <BlueprintButton
                   variant="secondary"
                   size="sm"
-                  className={`bg-transparent border-transparent shadow-none hover:bg-white/10 ${isActive ? "text-golden-hour-start" : "text-granite"}`}
+                  className={`bg-transparent border-transparent shadow-none hover:bg-chalk/10 font-mono font-normal lowercase tracking-[0.08em] ${isActive ? "text-marker-start" : "text-chalk"}`}
                 >
-                  Insights
-                </SummitButton>
+                  writing
+                </BlueprintButton>
               )}
             </Link>
 
             <Link to="/demo">
-              <SummitButton size="sm">Get Started</SummitButton>
+              <BlueprintButton size="sm">Start a project</BlueprintButton>
             </Link>
           </nav>
 
           {/* Mobile Hamburger Button */}
           <button
-            className="md:hidden relative z-50 p-2 rounded-lg text-white hover:bg-white/10 transition-colors duration-200"
+            className="md:hidden relative z-50 p-2 rounded-lg text-chalk hover:bg-chalk/10 transition-colors duration-200"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
@@ -227,7 +163,7 @@ export const rootRoute = createRootRoute({
         >
           {/* Backdrop */}
           <div
-            className="absolute inset-0 bg-deep-horizon/60 backdrop-blur-sm"
+            className="absolute inset-0 bg-chalk/40"
             onClick={() => setMobileMenuOpen(false)}
           />
 
@@ -235,7 +171,7 @@ export const rootRoute = createRootRoute({
           <nav
             className={`
               absolute top-0 right-0 h-full w-72 max-w-[80vw]
-              bg-deep-horizon border-l border-white/10 shadow-2xl
+              bg-blueprint-base border-l border-chalk/10 shadow-2xl
               pt-24 pb-8 px-6
               transition-transform duration-300 ease-in-out
               ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"}
@@ -243,61 +179,23 @@ export const rootRoute = createRootRoute({
             `}
           >
             <div className="flex flex-col gap-1">
-              {/* Solutions Accordion */}
-              <button
-                className={`flex items-center justify-between w-full px-4 py-3 rounded-lg text-left font-semibold transition-colors duration-200 ${
-                  isSolutionsPage
-                    ? "text-golden-hour-start bg-white/5"
-                    : "text-white hover:bg-white/5"
-                }`}
-                onClick={() => setMobileSolutionsOpen(!mobileSolutionsOpen)}
+              <Link
+                to="/company"
+                className="block"
+                onClick={() => setMobileMenuOpen(false)}
               >
-                Solutions
-                <svg
-                  className={`h-4 w-4 transition-transform duration-200 ${
-                    mobileSolutionsOpen ? "rotate-180" : ""
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-
-              <div
-                className={`overflow-hidden transition-all duration-200 ${
-                  mobileSolutionsOpen ? "max-h-40" : "max-h-0"
-                }`}
-              >
-                <Link
-                  to="/shopify-profit-recovery"
-                  className={`block pl-8 pr-4 py-2.5 rounded-lg text-sm transition-colors duration-200 ${
-                    isShopifyPage
-                      ? "text-golden-hour-start bg-white/5"
-                      : "text-granite hover:text-white hover:bg-white/5"
-                  }`}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Shopify Profit Recovery
-                </Link>
-                <Link
-                  to="/agentic-bi"
-                  className={`block pl-8 pr-4 py-2.5 rounded-lg text-sm transition-colors duration-200 ${
-                    isAgenticBIPage
-                      ? "text-golden-hour-start bg-white/5"
-                      : "text-granite hover:text-white hover:bg-white/5"
-                  }`}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Agentic BI Migration
-                </Link>
-              </div>
+                {({ isActive }) => (
+                  <span
+                    className={`block px-4 py-3 rounded-lg font-mono lowercase tracking-[0.06em] transition-colors duration-200 ${
+                      isActive
+                        ? "text-marker-start bg-chalk/5"
+                        : "text-chalk hover:bg-chalk/5"
+                    }`}
+                  >
+                    about
+                  </span>
+                )}
+              </Link>
 
               <Link
                 to="/portfolio"
@@ -306,13 +204,13 @@ export const rootRoute = createRootRoute({
               >
                 {({ isActive }) => (
                   <span
-                    className={`block px-4 py-3 rounded-lg font-semibold transition-colors duration-200 ${
+                    className={`block px-4 py-3 rounded-lg font-mono lowercase tracking-[0.06em] transition-colors duration-200 ${
                       isActive
-                        ? "text-golden-hour-start bg-white/5"
-                        : "text-white hover:bg-white/5"
+                        ? "text-marker-start bg-chalk/5"
+                        : "text-chalk hover:bg-chalk/5"
                     }`}
                   >
-                    Portfolio
+                    the work
                   </span>
                 )}
               </Link>
@@ -324,13 +222,13 @@ export const rootRoute = createRootRoute({
               >
                 {({ isActive }) => (
                   <span
-                    className={`block px-4 py-3 rounded-lg font-semibold transition-colors duration-200 ${
+                    className={`block px-4 py-3 rounded-lg font-mono lowercase tracking-[0.06em] transition-colors duration-200 ${
                       isActive
-                        ? "text-golden-hour-start bg-white/5"
-                        : "text-white hover:bg-white/5"
+                        ? "text-marker-start bg-chalk/5"
+                        : "text-chalk hover:bg-chalk/5"
                     }`}
                   >
-                    How We Work
+                    process
                   </span>
                 )}
               </Link>
@@ -342,40 +240,44 @@ export const rootRoute = createRootRoute({
               >
                 {({ isActive }) => (
                   <span
-                    className={`block px-4 py-3 rounded-lg font-semibold transition-colors duration-200 ${
+                    className={`block px-4 py-3 rounded-lg font-mono lowercase tracking-[0.06em] transition-colors duration-200 ${
                       isActive
-                        ? "text-golden-hour-start bg-white/5"
-                        : "text-white hover:bg-white/5"
+                        ? "text-marker-start bg-chalk/5"
+                        : "text-chalk hover:bg-chalk/5"
                     }`}
                   >
-                    Insights
+                    writing
                   </span>
                 )}
               </Link>
 
               {/* Divider */}
-              <div className="my-3 border-t border-white/10" />
+              <div className="my-3 border-t border-chalk/10" />
 
               <Link
                 to="/demo"
                 className="block"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                <SummitButton size="md" className="w-full justify-center">
-                  Get Started
-                </SummitButton>
+                <BlueprintButton size="md" className="w-full justify-center">
+                  Start a project
+                </BlueprintButton>
               </Link>
             </div>
           </nav>
         </div>
+        </>
+        )}
 
-        <main className="flex-grow relative z-10">
+        <main className={`flex-grow relative z-10 ${isFullPageDemo ? "flex-grow-0" : ""}`}>
           <Outlet />
         </main>
 
+        {!isFullPageDemo && (
         <div className="relative z-10">
           <Footer />
         </div>
+        )}
       </div>
     );
   },
