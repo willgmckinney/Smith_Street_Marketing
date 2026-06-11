@@ -70,17 +70,30 @@ const Footer = () => {
             <p className="mt-4 font-mono text-label-mono lowercase tracking-[0.08em] text-chalk/45">
               332 s michigan ave, suite 900, chicago, il 60604
             </p>
-            <a
-              href="https://www.linkedin.com/company/smith-avenue-insights"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Smith Avenue Insights on LinkedIn"
-              className="mt-4 inline-flex h-9 w-9 items-center justify-center rounded-spec border border-chalk/15 text-chalk/60 transition-colors hover:border-marker-start hover:text-marker-start"
-            >
-              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden>
-                <path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM.25 8.25h4.5V24h-4.5V8.25zM8.25 8.25h4.31v2.15h.06c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9V24h-4.5v-6.99c0-1.67-.03-3.81-2.32-3.81-2.33 0-2.68 1.82-2.68 3.69V24h-4.5V8.25z" />
-              </svg>
-            </a>
+            <div className="mt-4 flex items-center gap-3">
+              <a
+                href="https://www.linkedin.com/company/smith-avenue-insights"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Smith Avenue Insights on LinkedIn"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-spec border border-chalk/15 text-chalk/60 transition-colors hover:border-marker-start hover:text-marker-start"
+              >
+                <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden>
+                  <path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM.25 8.25h4.5V24h-4.5V8.25zM8.25 8.25h4.31v2.15h.06c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9V24h-4.5v-6.99c0-1.67-.03-3.81-2.32-3.81-2.33 0-2.68 1.82-2.68 3.69V24h-4.5V8.25z" />
+                </svg>
+              </a>
+              <a
+                href="https://www.youtube.com/channel/UCRwpnmz8YzfWGcm_WjPs_4A"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Smith Avenue Insights on YouTube"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-spec border border-chalk/15 text-chalk/60 transition-colors hover:border-marker-start hover:text-marker-start"
+              >
+                <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden>
+                  <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.8zM9.75 15.02V8.98L15.5 12l-5.75 3.02z" />
+                </svg>
+              </a>
+            </div>
           </div>
 
           <h3 className="font-display font-bold text-xl text-marker-start mb-6">

@@ -152,7 +152,8 @@ const Redshift = (k: Kit) => (
 
 const Containers = (k: Kit) => (
   // stacked cubes => ecs fargate (slate unless this frame's accent)
-  <g>
+  // drawn tall above origin; shift down so the stack isn't clipped by stage fit
+  <g transform="translate(0, 14)">
     <Box a={0.6} b={0.6} h={20} z0={0} ramp={k.ramp} edge={k.edge} />
     <Box a={0.52} b={0.52} h={18} z0={20} ramp={k.ramp} edge={k.edge} />
     <Box a={0.44} b={0.44} h={16} z0={38} ramp={k.ramp} edge={k.edge} />
@@ -244,7 +245,7 @@ const Lambda = (k: Kit) => (
 
 const LoadBalancer = (k: Kit) => (
   // splitter: one input fanning to three outputs
-  <g>
+  <g transform="translate(8, 0)">
     <Box a={0.5} b={0.5} h={26} cx={-30} cy={8} ramp={k.ramp} edge={k.edge} />
     {[-18, 0, 18].map((dy, i) => (
       <g key={i}>
