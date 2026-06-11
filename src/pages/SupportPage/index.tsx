@@ -1,90 +1,110 @@
 import { Link } from "@tanstack/react-router";
 import { BlueprintButton } from "../../components/Blueprint/BlueprintButton";
 import { BlueprintCard } from "../../components/Blueprint/BlueprintCard";
+import { BlueprintGrid } from "../../components/Blueprint/BlueprintGrid";
+import { DimensionLine } from "../../components/Blueprint/DimensionLine";
+import { SpecLabel } from "../../components/Blueprint/SpecLabel";
+import { Seo } from "../../components/Seo";
+
+const faqItems = [
+  {
+    question: "What do you build?",
+    answer:
+      "Data systems, custom software, and cloud infrastructure. On the data side that means pipelines, warehouses, and analytics layers. On the software side it means web applications, APIs, and internal tools. On the cloud side it means AWS architecture, migrations, and cost optimization.",
+  },
+  {
+    question: "How does an engagement start?",
+    answer:
+      "With a scoping call. We spend 30 minutes understanding your project, then send a written scope with timeline and cost. Most engagements run on a fixed-scope model. We also take on retainer and hourly work for ongoing needs.",
+  },
+  {
+    question: "How big is the team?",
+    answer:
+      "Three founders plus a network of trusted specialists we pull in for specific needs. You work directly with Will, Dylan, and Duncan. There is no offshore layer, no account manager between you and the people building.",
+  },
+  {
+    question: "Do you sign NDAs?",
+    answer:
+      "Yes. We sign before any scoping conversation where proprietary information is involved. Standard mutual NDA, no negotiation required for typical terms.",
+  },
+  {
+    question: "How fast can you start?",
+    answer:
+      "Typically within two weeks of a signed scope. If you have an urgent timeline, say so on the call and we will tell you honestly whether we can accommodate it.",
+  },
+  {
+    question: "Can you work as a subcontractor under a prime?",
+    answer:
+      "Yes. We have done this with federal and state engagements. We can work under your paper or bring our own.",
+  },
+];
 
 export const SupportPage = () => {
-  const faqItems = [
-    {
-      question: "What services do you offer?",
-      answer:
-        "We offer data analysis and business intelligence, cloud integration and migration, website development and maintenance, and custom software development services.",
-    },
-    {
-      question: "How do I get started with your services?",
-      answer:
-        "You can get started by scheduling a consultation through our demo page. We'll discuss your needs and create a tailored solution for your business.",
-    },
-    {
-      question: "What is your typical project timeline?",
-      answer:
-        "Project timelines vary based on scope and complexity. Our Data Analytics Jumpstart Package typically takes 2 weeks, while our Full-Stack Application MVP Accelerator takes 30 days.",
-    },
-    {
-      question: "Do you offer ongoing support?",
-      answer:
-        "Yes, we provide ongoing support and maintenance for all our services. We offer different support tiers to meet your specific needs.",
-    },
-  ];
-
   return (
     <div className="min-h-screen bg-blueprint-base pt-24">
-      {/* Hero Section */}
-      <div className="bg-drafting-surface py-20 border-b border-chalk/5">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-chalk font-bold mb-6">
-            Support Center
+      <Seo
+        title="FAQ"
+        description="Answers to what buyers usually ask Smith Avenue Insights before reaching out: what we build, how engagements start, team size, NDAs, and timelines."
+        path="/support"
+      />
+
+      {/* Hero */}
+      <div className="relative overflow-hidden border-b border-chalk/10 bg-drafting-surface py-2cell">
+        <BlueprintGrid opacity={0.55} />
+        <div className="relative z-10 mx-auto max-w-7xl px-cell">
+          <SpecLabel className="mb-cell">faq</SpecLabel>
+          <h1 className="font-display text-display-2 font-extrabold leading-[0.95] text-chalk">
+            Common questions.
           </h1>
-          <p className="font-sans text-xl md:text-2xl text-chalk max-w-3xl mx-auto leading-relaxed">
-            Find answers to common questions and get the support you need to
-            succeed.
+          <DimensionLine reveal label="before you reach out" className="my-cell max-w-md" />
+          <p className="max-w-2xl font-sans text-body text-chalk/70">
+            Answers to what buyers usually ask before reaching out.
           </p>
         </div>
       </div>
 
-      {/* FAQ Section */}
-      <div className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="font-display text-3xl md:text-4xl text-chalk font-bold mb-12 text-center">
-              Frequently Asked Questions
-            </h2>
-            <div className="space-y-6">
-              {faqItems.map((item, index) => (
-                <BlueprintCard key={index} className="p-8">
-                  <h3 className="font-display text-xl font-bold text-marker-start mb-4">
-                    {item.question}
-                  </h3>
-                  <p className="font-sans text-chalk/70 leading-relaxed">
-                    {item.answer}
-                  </p>
-                </BlueprintCard>
-              ))}
-            </div>
-          </div>
+      {/* FAQ */}
+      <div className="mx-auto max-w-4xl px-cell py-3cell">
+        <div className="space-y-cell">
+          {faqItems.map((item, index) => (
+            <BlueprintCard key={index} className="p-8">
+              <div className="mb-3 flex items-baseline gap-3">
+                <span className="font-mono text-label-mono text-marker-start">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h2 className="font-display text-h font-bold text-chalk">
+                  {item.question}
+                </h2>
+              </div>
+              <p className="pl-9 font-sans text-chalk/70 leading-relaxed">
+                {item.answer}
+              </p>
+            </BlueprintCard>
+          ))}
         </div>
       </div>
 
-      {/* Contact Support Section */}
-      <div className="bg-drafting-surface py-20 border-t border-chalk/5">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="font-display text-3xl md:text-4xl text-chalk font-bold mb-8">
-              Need More Help?
-            </h2>
-            <p className="font-sans text-lg md:text-xl text-chalk/80 mb-10 leading-relaxed">
-              Our support team is here to help you with any questions or
-              concerns.
-            </p>
-            <div className="flex flex-col md:flex-row gap-6 justify-center">
-              <Link to="/demo">
-                <BlueprintButton size="lg">Schedule a Consultation</BlueprintButton>
-              </Link>
-              <a href="mailto:support@smithavenueinsights.com">
-                <BlueprintButton size="lg" variant="secondary">
-                  Email Support
-                </BlueprintButton>
-              </a>
-            </div>
+      {/* Need more help */}
+      <div className="relative overflow-hidden border-t border-chalk/10 bg-drafting-surface px-cell py-3cell">
+        <BlueprintGrid opacity={0.5} />
+        <div className="relative z-10 mx-auto max-w-7xl">
+          <DimensionLine reveal label="next step" className="mb-cell max-w-xs" />
+          <h2 className="font-display text-display-2 font-extrabold leading-[0.95] text-chalk">
+            Need more help?
+          </h2>
+          <p className="mt-cell max-w-2xl font-sans text-body text-chalk/70">
+            If your question is not answered here, the fastest path is a direct
+            email.
+          </p>
+          <div className="mt-2cell flex flex-col gap-4 sm:flex-row">
+            <Link to="/demo">
+              <BlueprintButton size="lg">Start a project</BlueprintButton>
+            </Link>
+            <a href="mailto:will@smithaveinsights.com">
+              <BlueprintButton size="lg" variant="secondary">
+                Email us
+              </BlueprintButton>
+            </a>
           </div>
         </div>
       </div>

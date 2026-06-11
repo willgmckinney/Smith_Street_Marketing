@@ -1,12 +1,19 @@
 import { blogPosts } from "../../data/blogPosts";
 import { BlueprintGrid } from "../../components/Blueprint/BlueprintGrid";
+import { CtaSection } from "../../components/Blueprint/CtaSection";
 import { DimensionLine } from "../../components/Blueprint/DimensionLine";
 import { SpecLabel } from "../../components/Blueprint/SpecLabel";
+import { Seo } from "../../components/Seo";
 import { BlogCard } from "./Components/BlogCard";
 
 export default function BlogPage() {
   return (
     <div className="min-h-screen bg-blueprint-base pt-24">
+      <Seo
+        title="Writing"
+        description="Field notes from Smith Avenue Insights on data systems, cloud architecture, cost optimization, and building software that lasts in production."
+        path="/blog"
+      />
       <div className="relative bg-drafting-surface py-2cell border-b border-chalk/10 overflow-hidden">
         <BlueprintGrid opacity={0.55} />
         <div className="max-w-7xl mx-auto px-cell relative z-10">
@@ -43,6 +50,11 @@ export default function BlogPage() {
           ))}
         </div>
       </div>
+
+      <CtaSection
+        headline="Have a problem worth writing about?"
+        body="If something here maps to what you are building, let us scope it. Most engagements start with a 30-minute call."
+      />
     </div>
   );
 }

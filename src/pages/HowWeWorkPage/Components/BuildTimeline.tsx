@@ -133,7 +133,7 @@ export const BuildTimeline = ({ activeService }: BuildTimelineProps) => {
         className="relative z-10 container mx-auto px-4 md:px-8"
       >
         <motion.div
-          className="text-center pt-12 pb-16 md:pt-16 md:pb-24"
+          className="text-center pt-8 pb-10 md:pt-10 md:pb-14"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -171,7 +171,7 @@ export const BuildTimeline = ({ activeService }: BuildTimelineProps) => {
                 <div
                   key={milestone.id}
                   className="relative"
-                  style={{ minHeight: "55vh" }}
+                  style={{ minHeight: "36vh" }}
                 >
                   <MilestoneSection
                     milestone={milestone}
@@ -195,7 +195,7 @@ export const BuildTimeline = ({ activeService }: BuildTimelineProps) => {
 
                   <div
                     className="flex items-center pt-16 md:pt-0"
-                    style={{ minHeight: "55vh" }}
+                    style={{ minHeight: "36vh" }}
                   >
                     <div className="w-full flex px-2 md:px-8">
                       <HighlightCard
@@ -214,7 +214,7 @@ export const BuildTimeline = ({ activeService }: BuildTimelineProps) => {
         </AnimatePresence>
 
         <motion.div
-          className="text-center py-24 md:py-32"
+          className="text-center py-16 md:py-20"
           initial={{ opacity: 0 }}
           animate={{
             opacity: scrollProgress > 85 ? 1 : 0.2,
@@ -235,7 +235,7 @@ export const BuildTimeline = ({ activeService }: BuildTimelineProps) => {
 
           <div className="flex justify-center">
             <Link to="/demo">
-              <BlueprintButton size="lg">Start a Project</BlueprintButton>
+              <BlueprintButton size="lg">Start a project</BlueprintButton>
             </Link>
           </div>
         </motion.div>

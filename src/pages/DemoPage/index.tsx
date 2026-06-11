@@ -1,10 +1,16 @@
 import { BlueprintGrid } from "../../components/Blueprint/BlueprintGrid";
 import { SpecLabel } from "../../components/Blueprint/SpecLabel";
+import { Seo } from "../../components/Seo";
 import { ApolloContactForm } from "./Components/ApolloContactForm";
 
 export const DemoPage = () => {
   return (
     <div className="min-h-screen bg-blueprint-base pt-24 relative overflow-hidden">
+      <Seo
+        title="Start a project"
+        description="Scope your next build with Smith Avenue Insights. Most engagements start with a 30-minute call. We send a written scope with timeline and cost."
+        path="/demo"
+      />
       <BlueprintGrid opacity={0.55} />
       <div className="absolute inset-0 bg-gradient-to-b from-blueprint-base via-transparent to-blueprint-base z-0 pointer-events-none" />
 

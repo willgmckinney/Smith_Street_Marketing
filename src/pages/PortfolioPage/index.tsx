@@ -1,6 +1,8 @@
 import { DimensionLine } from "../../components/Blueprint/DimensionLine";
 import { SpecLabel } from "../../components/Blueprint/SpecLabel";
 import { BlueprintGrid } from "../../components/Blueprint/BlueprintGrid";
+import { CtaSection } from "../../components/Blueprint/CtaSection";
+import { Seo } from "../../components/Seo";
 import { AssetFrame } from "../../components/Blueprint/AssetFrame";
 import {
   LakehouseDiagram,
@@ -136,6 +138,11 @@ const demos: Entry[] = [
 export const PortfolioPage = () => {
   return (
     <div className="min-h-screen bg-blueprint-base pt-24">
+      <Seo
+        title="The work"
+        description="Production systems Smith Avenue Insights has shipped: a satellite imagery lakehouse for Airbus, a geospatial platform for Apollo Mapping, and more."
+        path="/portfolio"
+      />
       <div className="relative bg-drafting-surface py-2cell border-b border-chalk/10 overflow-hidden">
         <BlueprintGrid opacity={0.55} />
         <div className="max-w-7xl mx-auto px-cell relative z-10">
@@ -186,6 +193,11 @@ export const PortfolioPage = () => {
           />
         ))}
       </div>
+
+      <CtaSection
+        headline="Want results like these?"
+        body="Tell us what you are building. Most engagements start with a 30-minute scoping call, no commitment required."
+      />
     </div>
   );
 };

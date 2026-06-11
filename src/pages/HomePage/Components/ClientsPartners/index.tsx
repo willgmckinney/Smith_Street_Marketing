@@ -125,7 +125,7 @@ const LogoCell = ({ entry }: { entry: RosterEntry }) => (
   <motion.div
     variants={cellItem}
     tabIndex={0}
-    aria-label={entry.name}
+    aria-label={`${entry.name} logo`}
     className="logo-cell flex h-20 flex-col items-center justify-center gap-2 border border-chalk/15 bg-drafting-surface px-3 text-center"
   >
     {entry.logo ? (
@@ -183,7 +183,7 @@ const MarqueeRow = ({
             key={`${e.name}-${i}`}
             className="logo-cell mx-1.5 flex h-20 w-40 shrink-0 flex-col items-center justify-center gap-2 border border-chalk/15 bg-drafting-surface px-3 text-center"
           >
-            <span className="logo-mask block w-auto" style={logoStyle(e)} aria-label={e.name} role="img" />
+            <span className="logo-mask block w-auto" style={logoStyle(e)} aria-label={`${e.name} logo`} role="img" />
             <span className="font-mono text-[0.625rem] uppercase tracking-[0.16em] text-chalk/45">
               {e.descriptor}
             </span>
@@ -239,7 +239,7 @@ const ReferenceCard = ({ reference, animate }: { reference: Reference; animate: 
             className="logo-mask-static ml-auto block w-auto opacity-80"
             style={logoStyle(client, 16)}
             role="img"
-            aria-label={client.name}
+            aria-label={`${client.name} logo`}
           />
         )}
       </figcaption>

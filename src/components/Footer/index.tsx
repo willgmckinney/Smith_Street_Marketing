@@ -60,11 +60,27 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row">
         {/* Contact Form Section */}
         <div className="w-full lg:w-1/2 p-8 sm:p-12 border-b lg:border-b-0 lg:border-r border-chalk/10">
-          <div className="flex items-center gap-4 mb-8">
-            <GoatMark size={44} />
-            <span className="font-display font-bold text-2xl text-chalk">
-              Smith Avenue Insights
-            </span>
+          <div className="mb-8">
+            <div className="flex items-center gap-4">
+              <GoatMark size={44} alt="" />
+              <span className="font-display font-bold text-2xl text-chalk">
+                Smith Avenue Insights
+              </span>
+            </div>
+            <p className="mt-4 font-mono text-label-mono lowercase tracking-[0.08em] text-chalk/45">
+              332 s michigan ave, suite 900, chicago, il 60604
+            </p>
+            <a
+              href="https://www.linkedin.com/company/smith-avenue-insights"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Smith Avenue Insights on LinkedIn"
+              className="mt-4 inline-flex h-9 w-9 items-center justify-center rounded-spec border border-chalk/15 text-chalk/60 transition-colors hover:border-marker-start hover:text-marker-start"
+            >
+              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden>
+                <path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM.25 8.25h4.5V24h-4.5V8.25zM8.25 8.25h4.31v2.15h.06c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9V24h-4.5v-6.99c0-1.67-.03-3.81-2.32-3.81-2.33 0-2.68 1.82-2.68 3.69V24h-4.5V8.25z" />
+              </svg>
+            </a>
           </div>
 
           <h3 className="font-display font-bold text-xl text-marker-start mb-6">
@@ -133,29 +149,65 @@ const Footer = () => {
 
         {/* Navigation Section */}
         <div className="w-full lg:w-1/2 p-8 sm:p-12 bg-blueprint-base/50">
-          <h3 className="font-display font-bold text-xl text-chalk mb-8">
-            Menu
-          </h3>
-          <nav className="flex flex-col space-y-4">
-            {[
-              { to: "/company", label: "Company" },
-              { to: "/support", label: "Support" },
-              { to: "/accessibility", label: "Accessibility Statement" },
-              { to: "/privacy", label: "Privacy Policy" },
-            ].map((link) => (
-              <Link
-                key={link.to}
-                to={link.to}
-                className="text-lg text-chalk/70 hover:text-marker-start hover:translate-x-2 transition-all duration-300 w-fit"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
+          <div className="grid grid-cols-2 gap-8">
+            <nav>
+              <h3 className="mb-6 font-mono text-label-mono lowercase tracking-[0.16em] text-chalk/45">
+                navigate
+              </h3>
+              <ul className="flex flex-col space-y-4">
+                {[
+                  { to: "/portfolio", label: "the work" },
+                  { to: "/how-we-work", label: "process" },
+                  { to: "/blog", label: "writing" },
+                  { to: "/demo", label: "start a project" },
+                ].map((link) => (
+                  <li key={link.to}>
+                    <Link
+                      to={link.to}
+                      className="w-fit font-mono lowercase tracking-[0.04em] text-chalk/70 transition-all duration-300 hover:translate-x-1 hover:text-marker-start"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
 
-          <div className="mt-16 pt-8 border-t border-chalk/10 text-sm text-chalk/40">
-            &copy; {new Date().getFullYear()} Smith Avenue Insights. All rights
-            reserved.
+            <nav>
+              <h3 className="mb-6 font-mono text-label-mono lowercase tracking-[0.16em] text-chalk/45">
+                more
+              </h3>
+              <ul className="flex flex-col space-y-4">
+                {[
+                  { to: "/company", label: "about" },
+                  { to: "/support", label: "support" },
+                  { to: "/accessibility", label: "accessibility" },
+                  { to: "/privacy", label: "privacy policy" },
+                ].map((link) => (
+                  <li key={link.to}>
+                    <Link
+                      to={link.to}
+                      className="w-fit font-mono lowercase tracking-[0.04em] text-chalk/70 transition-all duration-300 hover:translate-x-1 hover:text-marker-start"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
+
+          {/* AWS partner badge (official mark from Partner Central, not recolored) */}
+          <div className="mt-12">
+            <img
+              src="/logos/aws-partner-badge.png"
+              alt="Amazon Web Services Partner network badge"
+              className="h-14 w-auto"
+            />
+          </div>
+
+          <div className="mt-12 border-t border-chalk/10 pt-8 text-sm text-chalk/40">
+            &copy; 2026 Smith Avenue Insights. Chicago, IL.
           </div>
         </div>
       </div>

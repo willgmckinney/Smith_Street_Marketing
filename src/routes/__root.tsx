@@ -60,6 +60,7 @@ export const rootRoute = createRootRoute({
           <Link to="/" className="flex flex-row items-center gap-3 group">
             <GoatMark
               size={44}
+              alt=""
               className="transition-transform duration-300 group-hover:-translate-y-px"
             />
             <p className="font-display font-bold text-lg sm:text-xl md:text-2xl text-chalk hidden sm:block tracking-tight">
@@ -69,6 +70,18 @@ export const rootRoute = createRootRoute({
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-2 sm:gap-4">
+            <Link to="/company">
+              {({ isActive }) => (
+                <BlueprintButton
+                  variant="secondary"
+                  size="sm"
+                  className={`bg-transparent border-transparent shadow-none hover:bg-chalk/10 font-mono font-normal lowercase tracking-[0.08em] ${isActive ? "text-marker-start" : "text-chalk"}`}
+                >
+                  about
+                </BlueprintButton>
+              )}
+            </Link>
+
             <Link to="/portfolio">
               {({ isActive }) => (
                 <BlueprintButton
@@ -166,6 +179,24 @@ export const rootRoute = createRootRoute({
             `}
           >
             <div className="flex flex-col gap-1">
+              <Link
+                to="/company"
+                className="block"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {({ isActive }) => (
+                  <span
+                    className={`block px-4 py-3 rounded-lg font-mono lowercase tracking-[0.06em] transition-colors duration-200 ${
+                      isActive
+                        ? "text-marker-start bg-chalk/5"
+                        : "text-chalk hover:bg-chalk/5"
+                    }`}
+                  >
+                    about
+                  </span>
+                )}
+              </Link>
+
               <Link
                 to="/portfolio"
                 className="block"

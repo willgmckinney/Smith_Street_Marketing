@@ -2,7 +2,9 @@ import { Link } from "@tanstack/react-router";
 import React from "react";
 import { BlueprintButton } from "../../components/Blueprint/BlueprintButton";
 import { AssetFrame } from "../../components/Blueprint/AssetFrame";
+import { CtaSection } from "../../components/Blueprint/CtaSection";
 import { getBlogFigure } from "../../components/Blueprint/BlogDiagrams";
+import { Seo } from "../../components/Seo";
 import { blogPosts } from "../../data/blogPosts";
 
 interface BlogPostPageProps {
@@ -25,9 +27,12 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ postId }) => {
   }
 
   const { Figure, caption } = getBlogFigure(post.id);
+  const metaDescription =
+    post.excerpt.length > 160 ? `${post.excerpt.slice(0, 157)}...` : post.excerpt;
 
   return (
     <article className="min-h-screen pt-24 pb-20">
+      <Seo title={post.title} description={metaDescription} path={`/blog/${post.id}`} />
       {/* Editorial header + framed figure (the portfolio asset treatment) */}
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mb-cell">
         <Link
@@ -72,9 +77,16 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({ postId }) => {
         {/* Footer of the article */}
         <div className="mt-16 pt-8 border-t border-chalk/10">
           <Link to="/blog">
-            <BlueprintButton variant="secondary">← Back to All Posts</BlueprintButton>
+            <BlueprintButton variant="secondary">← back to writing</BlueprintButton>
           </Link>
         </div>
+      </div>
+
+      <div className="mt-2cell">
+        <CtaSection
+          headline="Building something like this?"
+          body="If this maps to a problem you have, let us scope it. Most engagements start with a 30-minute call, no commitment required."
+        />
       </div>
     </article>
   );

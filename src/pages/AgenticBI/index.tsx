@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { BlueprintButton } from "../../components/Blueprint/BlueprintButton";
+import { Seo } from "../../components/Seo";
 import { ApolloContactForm } from "../DemoPage/Components/ApolloContactForm";
 
 // Tableau Tax Calculator Component
@@ -774,6 +775,12 @@ export const AgenticBI = () => {
 
   return (
     <div className="min-h-screen bg-blueprint-base text-chalk">
+      <Seo
+        title="Agentic BI"
+        description="Stop building dashboards. Start building agents. Cut BI costs and surface the data your legacy tools miss, with analytics delivered in natural language."
+        path="/agentic-bi"
+        image="https://smithaveinsights.com/og-agentic-bi.png"
+      />
       {/* Grid Background Pattern */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div

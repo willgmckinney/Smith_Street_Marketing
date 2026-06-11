@@ -14,13 +14,78 @@ const SITE = "https://smithaveinsights.com";
  * dist/index.html (keeping its hashed asset tags current) and only swap the
  * <head> meta, so the SPA still boots normally for real visitors.
  */
+const DEFAULT_IMAGE = `${SITE}/og-default.png`;
+
 const routes = [
   {
     path: "agentic-bi",
-    title: "Agentic BI — Smith Avenue Insights",
+    title: "Agentic BI | Smith Avenue Insights",
     description:
-      "Stop building dashboards. Start building agents. Slash BI costs by 60% and index the 80% of data your legacy tools can't see.",
+      "Stop building dashboards. Start building agents. Cut BI costs and surface the data your legacy tools miss, with analytics delivered in natural language.",
     image: `${SITE}/og-agentic-bi.png`,
+  },
+  {
+    path: "company",
+    title: "About | Smith Avenue Insights",
+    description:
+      "Smith Avenue Insights is a Chicago-based software and data consultancy. We scope honestly, build for production, and hand off so your team can run it.",
+    image: DEFAULT_IMAGE,
+  },
+  {
+    path: "portfolio",
+    title: "The work | Smith Avenue Insights",
+    description:
+      "Production systems Smith Avenue Insights has shipped: a satellite imagery lakehouse for Airbus, a geospatial platform for Apollo Mapping, and more.",
+    image: DEFAULT_IMAGE,
+  },
+  {
+    path: "how-we-work",
+    title: "Process | Smith Avenue Insights",
+    description:
+      "How a Smith Avenue Insights engagement runs, from scoping call to production handoff: the phases, the crew, and what your team owns at the end.",
+    image: DEFAULT_IMAGE,
+  },
+  {
+    path: "blog",
+    title: "Writing | Smith Avenue Insights",
+    description:
+      "Field notes from Smith Avenue Insights on data systems, cloud architecture, cost optimization, and building software that lasts in production.",
+    image: DEFAULT_IMAGE,
+  },
+  {
+    path: "support",
+    title: "FAQ | Smith Avenue Insights",
+    description:
+      "Answers to what buyers usually ask Smith Avenue Insights before reaching out: what we build, how engagements start, team size, NDAs, and timelines.",
+    image: DEFAULT_IMAGE,
+  },
+  {
+    path: "demo",
+    title: "Start a project | Smith Avenue Insights",
+    description:
+      "Scope your next build with Smith Avenue Insights. Most engagements start with a 30-minute call. We send a written scope with timeline and cost.",
+    image: DEFAULT_IMAGE,
+  },
+  {
+    path: "accessibility",
+    title: "Accessibility | Smith Avenue Insights",
+    description:
+      "Smith Avenue Insights builds to WCAG 2.1 AA: keyboard navigation, screen reader support, high contrast, and reduced-motion safe interfaces across the site.",
+    image: DEFAULT_IMAGE,
+  },
+  {
+    path: "privacy",
+    title: "Privacy Policy | Smith Avenue Insights",
+    description:
+      "How Smith Avenue Insights collects, uses, and protects your information, the data we gather on this site, and the rights you have over your personal data.",
+    image: DEFAULT_IMAGE,
+  },
+  {
+    path: "shopify-profit-recovery",
+    title: "Shopify Profit Recovery | Smith Avenue Insights",
+    description:
+      "Recover margin leaking out of your Shopify store. Smith Avenue Insights finds the hidden costs and rebuilds the data so you can see true profit per order.",
+    image: DEFAULT_IMAGE,
   },
 ];
 

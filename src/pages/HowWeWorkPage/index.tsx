@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { SpecLabel } from "../../components/Blueprint/SpecLabel";
+import { Seo } from "../../components/Seo";
 import { BuildTimeline } from "./Components/BuildTimeline";
 import { ServiceSelector } from "./Components/ServiceSelector";
 import type { ServiceType } from "./data/timelineContent";
@@ -9,6 +10,11 @@ export const HowWeWorkPage = () => {
 
   return (
     <div className="min-h-screen bg-blueprint-base">
+      <Seo
+        title="Process"
+        description="How a Smith Avenue Insights engagement runs, from scoping call to production handoff: the phases, the crew, and what your team owns at the end."
+        path="/how-we-work"
+      />
       <div className="relative z-20 pt-24 pb-8 md:pt-28 md:pb-12 overflow-hidden border-b border-chalk/10">
         <div
           className="absolute inset-0 bg-blueprint-grid bg-[length:32px_32px] opacity-50"

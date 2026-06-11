@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BlueprintButton } from "../../components/Blueprint/BlueprintButton";
+import { Seo } from "../../components/Seo";
 import { ApolloContactForm } from "../DemoPage/Components/ApolloContactForm";
 
 export const ShopifyProfitRecovery = () => {
@@ -68,6 +69,11 @@ export const ShopifyProfitRecovery = () => {
 
   return (
     <div className="min-h-screen bg-blueprint-base text-chalk">
+      <Seo
+        title="Shopify Profit Recovery"
+        description="Recover margin leaking out of your Shopify store. Smith Avenue Insights finds the hidden costs and rebuilds the data so you can see true profit per order."
+        path="/shopify-profit-recovery"
+      />
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-24 pb-20 overflow-hidden border-b border-marker-start/20">
         <div className="absolute inset-0 bg-blueprint-grid bg-[length:32px_32px] opacity-50" />

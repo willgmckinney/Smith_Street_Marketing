@@ -3,6 +3,7 @@ import dylanMorozowskiProfilePic from "../../../../assets/dylanMorozowskiProfile
 import GermayneCurryProfilePic from "../../../../assets/GermayneCurryProfile.jpg";
 import willMcKinneyProfilePic from "../../../../assets/willMckinneyProfile.jpg";
 import { BlueprintCard } from "../../../../components/Blueprint/BlueprintCard";
+import { SpecLabel } from "../../../../components/Blueprint/SpecLabel";
 
 const teamList = [
   {
@@ -35,20 +36,17 @@ export const Team = () => {
   return (
     <section className="bg-blueprint-base py-3cell px-cell relative">
       <div className="max-w-7xl mx-auto">
-        <div className="flex items-start gap-4 sm:gap-cell mb-2cell">
-          <span className="font-mono text-label-mono text-marker-start mt-2">
-            02
-          </span>
-          <div>
-            <h2 className="font-display font-extrabold text-display-2 text-chalk leading-[0.95]">
-              The
-              <br />
-              crew
-            </h2>
-            <p className="text-body text-chalk/70 mt-4">
-              The people who build it.
-            </p>
-          </div>
+        <div className="mb-2cell">
+          <SpecLabel className="mb-cell">the team</SpecLabel>
+          <h2 className="font-display font-extrabold text-display-2 text-chalk leading-[0.95]">
+            The
+            <br />
+            crew
+          </h2>
+          <p className="text-body text-chalk/70 mt-4 max-w-xl">
+            Every engagement is staffed by the same people you see here. No
+            offshore handoffs. No bait and switch.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-cell">
@@ -57,16 +55,20 @@ export const Team = () => {
               key={teamMember.name}
               className="flex flex-col p-6 h-full"
             >
-              <div className="aspect-square mb-6 overflow-hidden rounded-spec border border-chalk/15 bg-blueprint-base">
+              <div className="group relative aspect-square mb-6 overflow-hidden rounded-spec border border-chalk/15 bg-blueprint-base">
                 <img
                   src={teamMember.profilePicture}
-                  alt={teamMember.name}
+                  alt={`${teamMember.name}, ${teamMember.role}, Smith Avenue Insights`}
                   loading="eager"
-                  className={`w-full h-full object-cover grayscale contrast-[1.05] ${
+                  className={`w-full h-full object-cover grayscale contrast-[1.05] transition duration-300 group-hover:grayscale-[0.5] ${
                     teamMember.name === "Germayne Curry"
                       ? "object-[center_15%]"
                       : "object-[center_top]"
                   }`}
+                />
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 bg-marker-start opacity-0 mix-blend-color transition-opacity duration-300 group-hover:opacity-30"
                 />
               </div>
 

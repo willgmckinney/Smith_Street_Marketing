@@ -1,15 +1,27 @@
 import { BlueprintButton } from "../../components/Blueprint/BlueprintButton";
+import { BlueprintGrid } from "../../components/Blueprint/BlueprintGrid";
+import { CtaSection } from "../../components/Blueprint/CtaSection";
+import { SpecLabel } from "../../components/Blueprint/SpecLabel";
+import { Seo } from "../../components/Seo";
 
 export const AccessibilityPage = () => {
   return (
     <div className="min-h-screen bg-blueprint-base pt-24">
+      <Seo
+        title="Accessibility"
+        description="Smith Avenue Insights builds to WCAG 2.1 AA: keyboard navigation, screen reader support, high contrast, and reduced-motion safe interfaces across the site."
+        path="/accessibility"
+      />
+
       {/* Hero Section */}
-      <div className="bg-drafting-surface py-20 border-b border-chalk/5">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-chalk font-bold mb-6">
-            Accessibility Statement
+      <div className="relative overflow-hidden border-b border-chalk/10 bg-drafting-surface py-2cell">
+        <BlueprintGrid opacity={0.55} />
+        <div className="relative z-10 mx-auto max-w-7xl px-cell">
+          <SpecLabel className="mb-cell">accessibility</SpecLabel>
+          <h1 className="font-display text-display-2 font-extrabold leading-[0.95] text-chalk">
+            Accessibility statement.
           </h1>
-          <p className="font-sans text-xl md:text-2xl text-chalk max-w-3xl mx-auto leading-relaxed">
+          <p className="mt-cell max-w-2xl font-sans text-body text-chalk/70">
             We are committed to ensuring digital accessibility for people with
             disabilities.
           </p>
@@ -17,9 +29,9 @@ export const AccessibilityPage = () => {
       </div>
 
       {/* Main Content */}
-      <div className="py-20">
+      <div className="py-3cell">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto space-y-16">
+          <div className="max-w-4xl space-y-16">
             {/* Commitment Section */}
             <section>
               <h2 className="font-display text-3xl md:text-4xl text-chalk font-bold mb-6">
@@ -83,11 +95,11 @@ export const AccessibilityPage = () => {
             </section>
 
             {/* Contact Section */}
-            <section className="text-center">
+            <section>
               <h2 className="font-display text-3xl md:text-4xl text-chalk font-bold mb-6">
                 Contact Us
               </h2>
-              <p className="font-sans text-lg text-chalk/80 leading-relaxed mb-8">
+              <p className="font-sans text-lg text-chalk/80 leading-relaxed mb-8 max-w-2xl">
                 We welcome your feedback on the accessibility of our website.
                 Please let us know if you encounter accessibility barriers or if
                 you need assistance with any part of our site.
@@ -99,6 +111,11 @@ export const AccessibilityPage = () => {
           </div>
         </div>
       </div>
+
+      <CtaSection
+        headline="Have a project in mind?"
+        body="Most engagements start with a 30-minute scoping call. No commitment required."
+      />
     </div>
   );
 };
