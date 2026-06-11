@@ -60,7 +60,7 @@ export const Team = () => {
                   src={teamMember.profilePicture}
                   alt={`${teamMember.name}, ${teamMember.role}, Smith Avenue Insights`}
                   loading="eager"
-                  className={`w-full h-full object-cover grayscale contrast-[1.05] transition duration-300 group-hover:grayscale-[0.5] ${
+                  className={`w-full h-full object-cover grayscale contrast-[1.05] transition duration-300 group-hover:grayscale-0 group-hover:contrast-100 ${
                     teamMember.name === "Germayne Curry"
                       ? "object-[center_15%]"
                       : "object-[center_top]"
