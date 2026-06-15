@@ -114,7 +114,7 @@ const SECRET_USER_MESSAGES = [
   "Can you validate these customer contacts: jlee@northwind.io, ops@partnerlabs.com, sara.kim@contoso.com?",
   "Our aws access key is AKIAIOSFODNN7EXAMPLE in the old terraform state. How do we rotate without downtime?",
   "Please redact and rewrite this note: api token ghp_1234567890abcdefghijklmnopqrstuv and send to security.",
-  "Finance asked me to sanity check card 4532 1488 0343 6467 against the expense export format.",
+  "Finance asked me to sanity check card 4111 1111 1111 1111 against the expense export format.",
   "HR file includes ssn 123-45-6789 on the signed form scan. Summarize what we must store vs redact.",
   "Connect to postgres://analytics:SuperSecret123@db.internal.local:5432/warehouse and run a row count sanity check.",
   "Call prep list: michael.reyes@vendor.com, +1 (312) 555-0198, and cc procurement@buyer.com on the follow up.",
@@ -136,14 +136,15 @@ function topicForIndex(): TopicBucket {
 }
 
 function userPromptForConversation(seed: number, turn: number, topic: TopicBucket): string {
-  if (seed % 61 === 0 && turn === 1) {
+  // User messages land on even turns (0, 2, 4, ...).
+  if (seed % 61 === 0 && turn === 0) {
     return SECRET_USER_MESSAGES[Math.floor(seed / 61) % SECRET_USER_MESSAGES.length];
   }
 
   const base = pick(USER_PROMPTS[topic]);
-  if (turn === 1) return base;
-  if (turn === 3) return `${base} Keep the answer concise and production ready.`;
-  if (turn === 5) return `Follow up on the previous answer. What would you change for a larger team?`;
+  if (turn === 0) return base;
+  if (turn === 2) return `${base} Keep the answer concise and production ready.`;
+  if (turn === 4) return `Follow up on the previous answer. What would you change for a larger team?`;
   return pick(USER_PROMPTS[topic]);
 }
 
