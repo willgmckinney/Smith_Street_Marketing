@@ -15,6 +15,7 @@ import { Route as SupportImport } from './routes/support'
 import { Route as ShopifyProfitRecoveryImport } from './routes/shopify-profit-recovery'
 import { Route as SecuritySchedulingDashboardImport } from './routes/security-scheduling-dashboard'
 import { Route as RealEstateDashboardImport } from './routes/real-estate-dashboard'
+import { Route as QuickEmbedImport } from './routes/quick-embed'
 import { Route as PrivacyImport } from './routes/privacy'
 import { Route as PortfolioImport } from './routes/portfolio'
 import { Route as HowWeWorkImport } from './routes/how-we-work'
@@ -53,6 +54,12 @@ const SecuritySchedulingDashboardRoute =
 const RealEstateDashboardRoute = RealEstateDashboardImport.update({
   id: '/real-estate-dashboard',
   path: '/real-estate-dashboard',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const QuickEmbedRoute = QuickEmbedImport.update({
+  id: '/quick-embed',
+  path: '/quick-embed',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -216,6 +223,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyImport
       parentRoute: typeof rootRoute
     }
+    '/quick-embed': {
+      id: '/quick-embed'
+      path: '/quick-embed'
+      fullPath: '/quick-embed'
+      preLoaderRoute: typeof QuickEmbedImport
+      parentRoute: typeof rootRoute
+    }
     '/real-estate-dashboard': {
       id: '/real-estate-dashboard'
       path: '/real-estate-dashboard'
@@ -275,6 +289,7 @@ export interface FileRoutesByFullPath {
   '/how-we-work': typeof HowWeWorkRoute
   '/portfolio': typeof PortfolioRoute
   '/privacy': typeof PrivacyRoute
+  '/quick-embed': typeof QuickEmbedRoute
   '/real-estate-dashboard': typeof RealEstateDashboardRoute
   '/security-scheduling-dashboard': typeof SecuritySchedulingDashboardRoute
   '/shopify-profit-recovery': typeof ShopifyProfitRecoveryRoute
@@ -295,6 +310,7 @@ export interface FileRoutesByTo {
   '/how-we-work': typeof HowWeWorkRoute
   '/portfolio': typeof PortfolioRoute
   '/privacy': typeof PrivacyRoute
+  '/quick-embed': typeof QuickEmbedRoute
   '/real-estate-dashboard': typeof RealEstateDashboardRoute
   '/security-scheduling-dashboard': typeof SecuritySchedulingDashboardRoute
   '/shopify-profit-recovery': typeof ShopifyProfitRecoveryRoute
@@ -316,6 +332,7 @@ export interface FileRoutesById {
   '/how-we-work': typeof HowWeWorkRoute
   '/portfolio': typeof PortfolioRoute
   '/privacy': typeof PrivacyRoute
+  '/quick-embed': typeof QuickEmbedRoute
   '/real-estate-dashboard': typeof RealEstateDashboardRoute
   '/security-scheduling-dashboard': typeof SecuritySchedulingDashboardRoute
   '/shopify-profit-recovery': typeof ShopifyProfitRecoveryRoute
@@ -338,6 +355,7 @@ export interface FileRouteTypes {
     | '/how-we-work'
     | '/portfolio'
     | '/privacy'
+    | '/quick-embed'
     | '/real-estate-dashboard'
     | '/security-scheduling-dashboard'
     | '/shopify-profit-recovery'
@@ -357,6 +375,7 @@ export interface FileRouteTypes {
     | '/how-we-work'
     | '/portfolio'
     | '/privacy'
+    | '/quick-embed'
     | '/real-estate-dashboard'
     | '/security-scheduling-dashboard'
     | '/shopify-profit-recovery'
@@ -376,6 +395,7 @@ export interface FileRouteTypes {
     | '/how-we-work'
     | '/portfolio'
     | '/privacy'
+    | '/quick-embed'
     | '/real-estate-dashboard'
     | '/security-scheduling-dashboard'
     | '/shopify-profit-recovery'
@@ -397,6 +417,7 @@ export interface RootRouteChildren {
   HowWeWorkRoute: typeof HowWeWorkRoute
   PortfolioRoute: typeof PortfolioRoute
   PrivacyRoute: typeof PrivacyRoute
+  QuickEmbedRoute: typeof QuickEmbedRoute
   RealEstateDashboardRoute: typeof RealEstateDashboardRoute
   SecuritySchedulingDashboardRoute: typeof SecuritySchedulingDashboardRoute
   ShopifyProfitRecoveryRoute: typeof ShopifyProfitRecoveryRoute
@@ -417,6 +438,7 @@ const rootRouteChildren: RootRouteChildren = {
   HowWeWorkRoute: HowWeWorkRoute,
   PortfolioRoute: PortfolioRoute,
   PrivacyRoute: PrivacyRoute,
+  QuickEmbedRoute: QuickEmbedRoute,
   RealEstateDashboardRoute: RealEstateDashboardRoute,
   SecuritySchedulingDashboardRoute: SecuritySchedulingDashboardRoute,
   ShopifyProfitRecoveryRoute: ShopifyProfitRecoveryRoute,
@@ -446,6 +468,7 @@ export const routeTree = rootRoute
         "/how-we-work",
         "/portfolio",
         "/privacy",
+        "/quick-embed",
         "/real-estate-dashboard",
         "/security-scheduling-dashboard",
         "/shopify-profit-recovery",
@@ -486,6 +509,9 @@ export const routeTree = rootRoute
     },
     "/privacy": {
       "filePath": "privacy.tsx"
+    },
+    "/quick-embed": {
+      "filePath": "quick-embed.tsx"
     },
     "/real-estate-dashboard": {
       "filePath": "real-estate-dashboard.tsx"
