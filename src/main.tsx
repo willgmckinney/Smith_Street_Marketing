@@ -20,6 +20,7 @@ import { securitySchedulingDashboardRoute } from "./routes/security-scheduling-d
 import { shopifyProfitRecoveryRoute } from "./routes/shopify-profit-recovery";
 import { supportRoute } from "./routes/support";
 import { acmeLifecycleRoute } from "./routes/acme-lifecycle";
+import { quickEmbedRoute } from "./routes/quick-embed";
 
 const routeTree = rootRoute.addChildren([
   indexRoute,
@@ -37,6 +38,7 @@ const routeTree = rootRoute.addChildren([
   privacyRoute,
   ascentPharmaceuticalsLandingRoute,
   acmeLifecycleRoute,
+  quickEmbedRoute,
   blogRoute,
   blogPostRoute,
 ]);
