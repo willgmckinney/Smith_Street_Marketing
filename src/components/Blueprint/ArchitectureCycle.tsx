@@ -16,13 +16,63 @@ interface ArchitectureCycleProps {
 const GUX = 60; // horizontal px per grid step
 const GUY = 24; // vertical px per grid step
 const ORIGIN = { x: 430, y: 48 };
-const ICON_SCALE = 0.7; // symbols are drawn large; shrink them for clearance
+const ICON_SCALE = 1; // symbols drawn at native size; stage fit handles clearance
 type Pt = { x: number; y: number };
+
+/** Fixed stage every architecture is fitted into (centered, uniform width). */
+const STAGE = { w: 1280, h: 680, pad: 28, targetW: 1120 };
+const LABEL_DY = 38;
 
 const project = ([gx, gy]: [number, number]): Pt => ({
   x: ORIGIN.x + (gx - gy) * GUX,
   y: ORIGIN.y + (gx + gy) * GUY,
 });
+
+type FitBoundsPad = { left?: number; right?: number; top?: number; bottom?: number };
+
+/** Bounding box of a diagram in projected space (symbols + labels). */
+const archBounds = (nodes: ArchNode[], pad?: FitBoundsPad) => {
+  const symbolPad = 52;
+  const labelPad = LABEL_DY + 14;
+  let minX = Infinity;
+  let minY = Infinity;
+  let maxX = -Infinity;
+  let maxY = -Infinity;
+
+  for (const n of nodes) {
+    const p = project(n.grid);
+    minX = Math.min(minX, p.x - symbolPad);
+    maxX = Math.max(maxX, p.x + symbolPad);
+    minY = Math.min(minY, p.y - symbolPad);
+    maxY = Math.max(maxY, p.y + labelPad);
+  }
+
+  if (pad) {
+    minX -= pad.left ?? 0;
+    maxX += pad.right ?? 0;
+    minY -= pad.top ?? 0;
+    maxY += pad.bottom ?? 0;
+  }
+
+  const w = maxX - minX;
+  const h = maxY - minY;
+  return { minX, minY, w, h, cx: (minX + maxX) / 2, cy: (minY + maxY) / 2 };
+};
+
+/** Scale to a shared content width and center in the stage. */
+const fitTransform = (
+  nodes: ArchNode[],
+  fitScale = 1,
+  fitBoundsPad?: FitBoundsPad,
+): string => {
+  const b = archBounds(nodes, fitBoundsPad);
+  const scaleX = STAGE.targetW / b.w;
+  const scaleY = (STAGE.h - STAGE.pad * 2) / b.h;
+  const s = Math.min(scaleX, scaleY) * fitScale;
+  const tx = STAGE.w / 2 - b.cx * s;
+  const ty = STAGE.h / 2 - b.cy * s;
+  return `translate(${tx},${ty}) scale(${s})`;
+};
 
 const trim = (from: Pt, to: Pt, r: number): Pt => {
   const dx = to.x - from.x;
@@ -34,7 +84,6 @@ const trim = (from: Pt, to: Pt, r: number): Pt => {
 const SPEC = [0.2, 0, 0, 1] as const;
 const HOLD = 4000;
 const TRANS = 900;
-const LABEL_DY = 30;
 
 /* ------------------------------------------------------------------ */
 /* Edge                                                                */
@@ -79,7 +128,7 @@ type NodeRole = "hingeIn" | "hingeOut" | "plain";
 
 // Label with a background knockout so connectors always read behind the text.
 const Label = ({ text, accent }: { text: string; accent: boolean }) => {
-  const w = text.length * 5.8 + 10;
+  const w = text.length * 6.6 + 12;
   return (
     <g>
       <rect x={-w / 2} y={LABEL_DY - 10} width={w} height={14} rx={2.5} className="fill-blueprint-base" />
@@ -87,7 +136,7 @@ const Label = ({ text, accent }: { text: string; accent: boolean }) => {
         x={0}
         y={LABEL_DY}
         textAnchor="middle"
-        className={`font-mono [font-size:9.5px] lowercase ${accent ? "fill-marker-start" : "fill-chalk/55"}`}
+        className={`font-mono [font-size:11px] lowercase ${accent ? "fill-marker-start" : "fill-chalk/55"}`}
       >
         {text}
       </text>
@@ -191,6 +240,11 @@ export const ArchitectureCycle = ({ className = "" }: ArchitectureCycleProps) =>
 
   // draw back-to-front by screen depth so nearer nodes overlap farther ones
   const drawNodes = [...arch.nodes].sort((a, b) => project(a.grid).y - project(b.grid).y);
+  const stageTransform = fitTransform(
+    arch.nodes,
+    arch.fitScale ?? 1,
+    arch.fitBoundsPad,
+  );
 
   return (
     <div
@@ -201,9 +255,10 @@ export const ArchitectureCycle = ({ className = "" }: ArchitectureCycleProps) =>
       onBlurCapture={() => setPaused(false)}
     >
       <svg
-        viewBox="195 80 660 250"
+        viewBox={`0 0 ${STAGE.w} ${STAGE.h}`}
         fill="none"
-        className="w-full"
+        className="mx-auto w-full"
+        preserveAspectRatio="xMidYMid meet"
         role="img"
         aria-label={`${arch.name}: ${arch.useCase}. One of six reference architectures cycling through a shared hinge node.`}
       >
@@ -229,42 +284,45 @@ export const ArchitectureCycle = ({ className = "" }: ArchitectureCycleProps) =>
           </marker>
         </defs>
 
-        <AnimatePresence>
-          {arch.edges.map((e) => {
-            const a = posById[e.from];
-            const b = posById[e.to];
-            if (!a || !b) return null;
-            const ra = (SYMBOL_RADIUS[arch.nodes.find((n) => n.id === e.from)?.symbol ?? ""] ?? 30) * ICON_SCALE + 6;
-            const rb = (SYMBOL_RADIUS[arch.nodes.find((n) => n.id === e.to)?.symbol ?? ""] ?? 30) * ICON_SCALE + 6;
-            return (
-              <Edge
-                key={`${step}:${e.from}-${e.to}`}
-                p1={trim(a, b, ra)}
-                p2={trim(b, a, rb)}
-                dashed={e.style === "dashed"}
+        <g transform={stageTransform}>
+          <AnimatePresence>
+            {arch.edges.map((e) => {
+              const a = posById[e.from];
+              const b = posById[e.to];
+              if (!a || !b) return null;
+              const inset = arch.edgeInset ?? 6;
+              const ra = (SYMBOL_RADIUS[arch.nodes.find((n) => n.id === e.from)?.symbol ?? ""] ?? 30) * ICON_SCALE + inset;
+              const rb = (SYMBOL_RADIUS[arch.nodes.find((n) => n.id === e.to)?.symbol ?? ""] ?? 30) * ICON_SCALE + inset;
+              return (
+                <Edge
+                  key={`${step}:${e.from}-${e.to}`}
+                  p1={trim(a, b, ra)}
+                  p2={trim(b, a, rb)}
+                  dashed={e.style === "dashed"}
+                  reduced={reduced}
+                />
+              );
+            })}
+          </AnimatePresence>
+
+          <AnimatePresence>
+            {drawNodes.map((n, i) => (
+              <Node
+                key={keyFor(n)}
+                node={n}
+                pos={posById[n.id]}
+                role={roleFor(n)}
+                accent={n.id === hingeOutId}
+                index={i}
                 reduced={reduced}
               />
-            );
-          })}
-        </AnimatePresence>
-
-        <AnimatePresence>
-          {drawNodes.map((n, i) => (
-            <Node
-              key={keyFor(n)}
-              node={n}
-              pos={posById[n.id]}
-              role={roleFor(n)}
-              accent={n.id === hingeOutId}
-              index={i}
-              reduced={reduced}
-            />
-          ))}
-        </AnimatePresence>
+            ))}
+          </AnimatePresence>
+        </g>
       </svg>
 
-      {/* use-case caption, styled like a drawing's notes block, pinned to the right */}
-      <div className="mt-cell flex min-h-[5rem] justify-end px-1 pr-10 sm:pr-16 lg:pr-24">
+      {/* use-case caption — margin notes, bottom-right of the sheet */}
+      <div className="mt-3 flex min-h-[4.5rem] justify-end">
         <AnimatePresence mode="wait">
           <motion.div
             key={step}
@@ -272,7 +330,7 @@ export const ArchitectureCycle = ({ className = "" }: ArchitectureCycleProps) =>
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: reduced ? 0.2 : 0.3 }}
-            className="w-full max-w-xs border-t border-chalk/15 pt-2 text-right"
+            className="w-max max-w-full border-t border-chalk/15 pt-2 text-left"
           >
             <p className="font-mono text-label-mono lowercase tracking-wide">
               <span className="text-chalk/40">notes · </span>
@@ -281,7 +339,9 @@ export const ArchitectureCycle = ({ className = "" }: ArchitectureCycleProps) =>
               </span>
             </p>
             <p className="mt-1 font-display font-semibold leading-tight text-chalk">{arch.name}</p>
-            <p className="mt-1 font-mono text-xs lowercase text-chalk/55">// {arch.useCase}</p>
+            <p className="mt-1 font-mono text-xs lowercase text-chalk/55 whitespace-nowrap">
+              // {arch.useCase}
+            </p>
           </motion.div>
         </AnimatePresence>
       </div>

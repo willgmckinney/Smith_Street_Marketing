@@ -16,7 +16,10 @@ export const rootRoute = createRootRoute({
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const location = useLocation();
     const isAcmeLifecycle = location.pathname === "/acme-lifecycle";
-    const isFullPageDemo = isAcmeLifecycle;
+    const isAiSnapshotFocused =
+      location.pathname === "/ai-snapshot/dashboard" ||
+      location.pathname === "/ai-snapshot/report";
+    const isFullPageDemo = isAcmeLifecycle || isAiSnapshotFocused;
 
     useEffect(() => {
       const handleScroll = () => {

@@ -148,6 +148,12 @@ const staticRoutes = [
     description:
       "Interactive demo of a security crew scheduling dashboard built by Smith Avenue Insights.",
   },
+  {
+    path: "ai-snapshot",
+    title: "AI Usage Snapshot | Smith Avenue Insights",
+    description:
+      "Export your ChatGPT data and get an instant browser-side dashboard of AI usage and exposure risk. Nothing is uploaded.",
+  },
 ];
 
 const blogPosts = parseBlogPosts();

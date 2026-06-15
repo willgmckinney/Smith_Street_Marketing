@@ -25,11 +25,11 @@ export const HeroBanner = () => {
   const active = !prefersReducedMotion;
 
   return (
-    <div className="relative flex items-center min-h-screen w-full overflow-hidden bg-blueprint-base">
+    <div className="relative flex items-center min-h-screen w-full bg-blueprint-base">
       <BlueprintGrid animate />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-cell py-2cell">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.25fr] gap-cell lg:gap-2cell items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] xl:grid-cols-[5fr_8fr] gap-cell lg:gap-cell items-center">
           {/* Left: editorial copy */}
           <motion.div
             variants={column}
@@ -86,10 +86,8 @@ export const HeroBanner = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right: six reference architectures cycle through a shared hinge.
-              On desktop it bleeds to the right edge of the viewport, twice the
-              old size; on mobile it stacks under the copy. */}
-          <ArchitectureCycle className="hidden lg:block w-full max-w-md mx-auto mt-cell lg:mt-0 lg:absolute lg:top-1/2 lg:right-[calc((100%-100vw)/2)] lg:z-0 lg:mx-0 lg:w-[58vw] lg:max-w-[1200px] lg:-translate-y-1/2" />
+          {/* Right: six reference architectures cycle through a shared hinge. */}
+          <ArchitectureCycle className="hidden lg:block w-full min-w-0" />
         </div>
       </div>
     </div>

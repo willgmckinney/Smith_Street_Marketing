@@ -1,0 +1,64 @@
+const STORAGE_KEY = "sai-ai-snapshot-v1";
+const CONTACT_KEY = "sai-ai-snapshot-contact-v1";
+
+export type SnapshotContact = {
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  company?: string;
+  role?: string;
+};
+
+export function encodeContactToken(email: string): string {
+  return btoa(email.trim().toLowerCase());
+}
+
+export function decodeContactToken(token: string | null | undefined): SnapshotContact {
+  if (!token) return {};
+  try {
+    const email = atob(decodeURIComponent(token));
+    if (!email.includes("@")) return {};
+    return { email };
+  } catch {
+    return {};
+  }
+}
+
+export function withContactToken(path: string, token: string | null | undefined): string {
+  if (!token) return path;
+  const separator = path.includes("?") ? "&" : "?";
+  return `${path}${separator}c=${encodeURIComponent(token)}`;
+}
+
+export function loadStoredAnalytics(): import("../analytics").SnapshotAnalytics | null {
+  try {
+    const raw = sessionStorage.getItem(STORAGE_KEY);
+    if (!raw) return null;
+    return JSON.parse(raw);
+  } catch {
+    return null;
+  }
+}
+
+export function saveStoredAnalytics(data: import("../analytics").SnapshotAnalytics): void {
+  sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+export function loadStoredContact(): SnapshotContact {
+  try {
+    const raw = sessionStorage.getItem(CONTACT_KEY);
+    if (!raw) return {};
+    return JSON.parse(raw);
+  } catch {
+    return {};
+  }
+}
+
+export function saveStoredContact(contact: SnapshotContact): void {
+  sessionStorage.setItem(CONTACT_KEY, JSON.stringify(contact));
+}
+
+export function clearSnapshotStorage(): void {
+  sessionStorage.removeItem(STORAGE_KEY);
+  sessionStorage.removeItem(CONTACT_KEY);
+}
