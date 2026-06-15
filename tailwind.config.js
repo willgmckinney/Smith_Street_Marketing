@@ -13,6 +13,11 @@ export default {
         "drafting-surface": "#FFFFFF",
         chalk: "#1E293B",
         verified: "#129A6A",
+        "accent-green": "#2F9E6A",
+        muted: "#6E7680",
+        redline: "#C2402E",
+        "redline-wash": "#F4E0DC",
+        "redline-deep": "#8E2E22",
 
         // Blueprint sheet palette (secondary UI on light backgrounds)
         "sheet-dark": "#CBD5E1",

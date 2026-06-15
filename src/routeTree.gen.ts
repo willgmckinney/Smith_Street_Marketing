@@ -23,12 +23,17 @@ import { Route as DemoImport } from './routes/demo'
 import { Route as ConstructionDashboardImport } from './routes/construction-dashboard'
 import { Route as CompanyImport } from './routes/company'
 import { Route as AscentPharmaceuticalsLandingImport } from './routes/ascent-pharmaceuticals-landing'
+import { Route as AiSnapshotImport } from './routes/ai-snapshot'
 import { Route as AgenticBiImport } from './routes/agentic-bi'
 import { Route as AcmeLifecycleImport } from './routes/acme-lifecycle'
 import { Route as AccessibilityImport } from './routes/accessibility'
 import { Route as IndexImport } from './routes/index'
 import { Route as BlogIndexImport } from './routes/blog/index'
 import { Route as BlogPostIdImport } from './routes/blog/$postId'
+import { Route as AiSnapshotUploadImport } from './routes/ai-snapshot.upload'
+import { Route as AiSnapshotReportImport } from './routes/ai-snapshot.report'
+import { Route as AiSnapshotGuideImport } from './routes/ai-snapshot.guide'
+import { Route as AiSnapshotDashboardImport } from './routes/ai-snapshot.dashboard'
 
 // Create/Update Routes
 
@@ -106,6 +111,12 @@ const AscentPharmaceuticalsLandingRoute =
     getParentRoute: () => rootRoute,
   } as any)
 
+const AiSnapshotRoute = AiSnapshotImport.update({
+  id: '/ai-snapshot',
+  path: '/ai-snapshot',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const AgenticBiRoute = AgenticBiImport.update({
   id: '/agentic-bi',
   path: '/agentic-bi',
@@ -142,6 +153,30 @@ const BlogPostIdRoute = BlogPostIdImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const AiSnapshotUploadRoute = AiSnapshotUploadImport.update({
+  id: '/upload',
+  path: '/upload',
+  getParentRoute: () => AiSnapshotRoute,
+} as any)
+
+const AiSnapshotReportRoute = AiSnapshotReportImport.update({
+  id: '/report',
+  path: '/report',
+  getParentRoute: () => AiSnapshotRoute,
+} as any)
+
+const AiSnapshotGuideRoute = AiSnapshotGuideImport.update({
+  id: '/guide',
+  path: '/guide',
+  getParentRoute: () => AiSnapshotRoute,
+} as any)
+
+const AiSnapshotDashboardRoute = AiSnapshotDashboardImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AiSnapshotRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -172,6 +207,13 @@ declare module '@tanstack/react-router' {
       path: '/agentic-bi'
       fullPath: '/agentic-bi'
       preLoaderRoute: typeof AgenticBiImport
+      parentRoute: typeof rootRoute
+    }
+    '/ai-snapshot': {
+      id: '/ai-snapshot'
+      path: '/ai-snapshot'
+      fullPath: '/ai-snapshot'
+      preLoaderRoute: typeof AiSnapshotImport
       parentRoute: typeof rootRoute
     }
     '/ascent-pharmaceuticals-landing': {
@@ -258,6 +300,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SupportImport
       parentRoute: typeof rootRoute
     }
+    '/ai-snapshot/dashboard': {
+      id: '/ai-snapshot/dashboard'
+      path: '/dashboard'
+      fullPath: '/ai-snapshot/dashboard'
+      preLoaderRoute: typeof AiSnapshotDashboardImport
+      parentRoute: typeof AiSnapshotImport
+    }
+    '/ai-snapshot/guide': {
+      id: '/ai-snapshot/guide'
+      path: '/guide'
+      fullPath: '/ai-snapshot/guide'
+      preLoaderRoute: typeof AiSnapshotGuideImport
+      parentRoute: typeof AiSnapshotImport
+    }
+    '/ai-snapshot/report': {
+      id: '/ai-snapshot/report'
+      path: '/report'
+      fullPath: '/ai-snapshot/report'
+      preLoaderRoute: typeof AiSnapshotReportImport
+      parentRoute: typeof AiSnapshotImport
+    }
+    '/ai-snapshot/upload': {
+      id: '/ai-snapshot/upload'
+      path: '/upload'
+      fullPath: '/ai-snapshot/upload'
+      preLoaderRoute: typeof AiSnapshotUploadImport
+      parentRoute: typeof AiSnapshotImport
+    }
     '/blog/$postId': {
       id: '/blog/$postId'
       path: '/blog/$postId'
@@ -277,11 +347,30 @@ declare module '@tanstack/react-router' {
 
 // Create and export the route tree
 
+interface AiSnapshotRouteChildren {
+  AiSnapshotDashboardRoute: typeof AiSnapshotDashboardRoute
+  AiSnapshotGuideRoute: typeof AiSnapshotGuideRoute
+  AiSnapshotReportRoute: typeof AiSnapshotReportRoute
+  AiSnapshotUploadRoute: typeof AiSnapshotUploadRoute
+}
+
+const AiSnapshotRouteChildren: AiSnapshotRouteChildren = {
+  AiSnapshotDashboardRoute: AiSnapshotDashboardRoute,
+  AiSnapshotGuideRoute: AiSnapshotGuideRoute,
+  AiSnapshotReportRoute: AiSnapshotReportRoute,
+  AiSnapshotUploadRoute: AiSnapshotUploadRoute,
+}
+
+const AiSnapshotRouteWithChildren = AiSnapshotRoute._addFileChildren(
+  AiSnapshotRouteChildren,
+)
+
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/accessibility': typeof AccessibilityRoute
   '/acme-lifecycle': typeof AcmeLifecycleRoute
   '/agentic-bi': typeof AgenticBiRoute
+  '/ai-snapshot': typeof AiSnapshotRouteWithChildren
   '/ascent-pharmaceuticals-landing': typeof AscentPharmaceuticalsLandingRoute
   '/company': typeof CompanyRoute
   '/construction-dashboard': typeof ConstructionDashboardRoute
@@ -294,6 +383,10 @@ export interface FileRoutesByFullPath {
   '/security-scheduling-dashboard': typeof SecuritySchedulingDashboardRoute
   '/shopify-profit-recovery': typeof ShopifyProfitRecoveryRoute
   '/support': typeof SupportRoute
+  '/ai-snapshot/dashboard': typeof AiSnapshotDashboardRoute
+  '/ai-snapshot/guide': typeof AiSnapshotGuideRoute
+  '/ai-snapshot/report': typeof AiSnapshotReportRoute
+  '/ai-snapshot/upload': typeof AiSnapshotUploadRoute
   '/blog/$postId': typeof BlogPostIdRoute
   '/blog': typeof BlogIndexRoute
 }
@@ -303,6 +396,7 @@ export interface FileRoutesByTo {
   '/accessibility': typeof AccessibilityRoute
   '/acme-lifecycle': typeof AcmeLifecycleRoute
   '/agentic-bi': typeof AgenticBiRoute
+  '/ai-snapshot': typeof AiSnapshotRouteWithChildren
   '/ascent-pharmaceuticals-landing': typeof AscentPharmaceuticalsLandingRoute
   '/company': typeof CompanyRoute
   '/construction-dashboard': typeof ConstructionDashboardRoute
@@ -315,6 +409,10 @@ export interface FileRoutesByTo {
   '/security-scheduling-dashboard': typeof SecuritySchedulingDashboardRoute
   '/shopify-profit-recovery': typeof ShopifyProfitRecoveryRoute
   '/support': typeof SupportRoute
+  '/ai-snapshot/dashboard': typeof AiSnapshotDashboardRoute
+  '/ai-snapshot/guide': typeof AiSnapshotGuideRoute
+  '/ai-snapshot/report': typeof AiSnapshotReportRoute
+  '/ai-snapshot/upload': typeof AiSnapshotUploadRoute
   '/blog/$postId': typeof BlogPostIdRoute
   '/blog': typeof BlogIndexRoute
 }
@@ -325,6 +423,7 @@ export interface FileRoutesById {
   '/accessibility': typeof AccessibilityRoute
   '/acme-lifecycle': typeof AcmeLifecycleRoute
   '/agentic-bi': typeof AgenticBiRoute
+  '/ai-snapshot': typeof AiSnapshotRouteWithChildren
   '/ascent-pharmaceuticals-landing': typeof AscentPharmaceuticalsLandingRoute
   '/company': typeof CompanyRoute
   '/construction-dashboard': typeof ConstructionDashboardRoute
@@ -337,6 +436,10 @@ export interface FileRoutesById {
   '/security-scheduling-dashboard': typeof SecuritySchedulingDashboardRoute
   '/shopify-profit-recovery': typeof ShopifyProfitRecoveryRoute
   '/support': typeof SupportRoute
+  '/ai-snapshot/dashboard': typeof AiSnapshotDashboardRoute
+  '/ai-snapshot/guide': typeof AiSnapshotGuideRoute
+  '/ai-snapshot/report': typeof AiSnapshotReportRoute
+  '/ai-snapshot/upload': typeof AiSnapshotUploadRoute
   '/blog/$postId': typeof BlogPostIdRoute
   '/blog/': typeof BlogIndexRoute
 }
@@ -348,6 +451,7 @@ export interface FileRouteTypes {
     | '/accessibility'
     | '/acme-lifecycle'
     | '/agentic-bi'
+    | '/ai-snapshot'
     | '/ascent-pharmaceuticals-landing'
     | '/company'
     | '/construction-dashboard'
@@ -360,6 +464,10 @@ export interface FileRouteTypes {
     | '/security-scheduling-dashboard'
     | '/shopify-profit-recovery'
     | '/support'
+    | '/ai-snapshot/dashboard'
+    | '/ai-snapshot/guide'
+    | '/ai-snapshot/report'
+    | '/ai-snapshot/upload'
     | '/blog/$postId'
     | '/blog'
   fileRoutesByTo: FileRoutesByTo
@@ -368,6 +476,7 @@ export interface FileRouteTypes {
     | '/accessibility'
     | '/acme-lifecycle'
     | '/agentic-bi'
+    | '/ai-snapshot'
     | '/ascent-pharmaceuticals-landing'
     | '/company'
     | '/construction-dashboard'
@@ -380,6 +489,10 @@ export interface FileRouteTypes {
     | '/security-scheduling-dashboard'
     | '/shopify-profit-recovery'
     | '/support'
+    | '/ai-snapshot/dashboard'
+    | '/ai-snapshot/guide'
+    | '/ai-snapshot/report'
+    | '/ai-snapshot/upload'
     | '/blog/$postId'
     | '/blog'
   id:
@@ -388,6 +501,7 @@ export interface FileRouteTypes {
     | '/accessibility'
     | '/acme-lifecycle'
     | '/agentic-bi'
+    | '/ai-snapshot'
     | '/ascent-pharmaceuticals-landing'
     | '/company'
     | '/construction-dashboard'
@@ -400,6 +514,10 @@ export interface FileRouteTypes {
     | '/security-scheduling-dashboard'
     | '/shopify-profit-recovery'
     | '/support'
+    | '/ai-snapshot/dashboard'
+    | '/ai-snapshot/guide'
+    | '/ai-snapshot/report'
+    | '/ai-snapshot/upload'
     | '/blog/$postId'
     | '/blog/'
   fileRoutesById: FileRoutesById
@@ -410,6 +528,7 @@ export interface RootRouteChildren {
   AccessibilityRoute: typeof AccessibilityRoute
   AcmeLifecycleRoute: typeof AcmeLifecycleRoute
   AgenticBiRoute: typeof AgenticBiRoute
+  AiSnapshotRoute: typeof AiSnapshotRouteWithChildren
   AscentPharmaceuticalsLandingRoute: typeof AscentPharmaceuticalsLandingRoute
   CompanyRoute: typeof CompanyRoute
   ConstructionDashboardRoute: typeof ConstructionDashboardRoute
@@ -431,6 +550,7 @@ const rootRouteChildren: RootRouteChildren = {
   AccessibilityRoute: AccessibilityRoute,
   AcmeLifecycleRoute: AcmeLifecycleRoute,
   AgenticBiRoute: AgenticBiRoute,
+  AiSnapshotRoute: AiSnapshotRouteWithChildren,
   AscentPharmaceuticalsLandingRoute: AscentPharmaceuticalsLandingRoute,
   CompanyRoute: CompanyRoute,
   ConstructionDashboardRoute: ConstructionDashboardRoute,
@@ -461,6 +581,7 @@ export const routeTree = rootRoute
         "/accessibility",
         "/acme-lifecycle",
         "/agentic-bi",
+        "/ai-snapshot",
         "/ascent-pharmaceuticals-landing",
         "/company",
         "/construction-dashboard",
@@ -488,6 +609,15 @@ export const routeTree = rootRoute
     },
     "/agentic-bi": {
       "filePath": "agentic-bi.tsx"
+    },
+    "/ai-snapshot": {
+      "filePath": "ai-snapshot.tsx",
+      "children": [
+        "/ai-snapshot/dashboard",
+        "/ai-snapshot/guide",
+        "/ai-snapshot/report",
+        "/ai-snapshot/upload"
+      ]
     },
     "/ascent-pharmaceuticals-landing": {
       "filePath": "ascent-pharmaceuticals-landing.tsx"
@@ -524,6 +654,22 @@ export const routeTree = rootRoute
     },
     "/support": {
       "filePath": "support.tsx"
+    },
+    "/ai-snapshot/dashboard": {
+      "filePath": "ai-snapshot.dashboard.tsx",
+      "parent": "/ai-snapshot"
+    },
+    "/ai-snapshot/guide": {
+      "filePath": "ai-snapshot.guide.tsx",
+      "parent": "/ai-snapshot"
+    },
+    "/ai-snapshot/report": {
+      "filePath": "ai-snapshot.report.tsx",
+      "parent": "/ai-snapshot"
+    },
+    "/ai-snapshot/upload": {
+      "filePath": "ai-snapshot.upload.tsx",
+      "parent": "/ai-snapshot"
     },
     "/blog/$postId": {
       "filePath": "blog/$postId.tsx"

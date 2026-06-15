@@ -2,10 +2,16 @@ import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+import { SnapshotProvider } from "./lib/state/snapshotContext";
 import { indexRoute } from "./routes";
 import { rootRoute } from "./routes/__root";
 import { accessibilityRoute } from "./routes/accessibility";
 import { agenticBIRoute } from "./routes/agentic-bi";
+import { aiSnapshotRoute } from "./routes/ai-snapshot";
+import { aiSnapshotDashboardRoute } from "./routes/ai-snapshot.dashboard";
+import { aiSnapshotGuideRoute } from "./routes/ai-snapshot.guide";
+import { aiSnapshotReportRoute } from "./routes/ai-snapshot.report";
+import { aiSnapshotUploadRoute } from "./routes/ai-snapshot.upload";
 import { ascentPharmaceuticalsLandingRoute } from "./routes/ascent-pharmaceuticals-landing";
 import { blogRoute } from "./routes/blog";
 import { blogPostRoute } from "./routes/blog/$postId";
@@ -39,6 +45,11 @@ const routeTree = rootRoute.addChildren([
   ascentPharmaceuticalsLandingRoute,
   acmeLifecycleRoute,
   quickEmbedRoute,
+  aiSnapshotRoute,
+  aiSnapshotGuideRoute,
+  aiSnapshotUploadRoute,
+  aiSnapshotDashboardRoute,
+  aiSnapshotReportRoute,
   blogRoute,
   blogPostRoute,
 ]);
@@ -59,7 +70,9 @@ if (!rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
     <StrictMode>
-      <RouterProvider router={router} />
+      <SnapshotProvider>
+        <RouterProvider router={router} />
+      </SnapshotProvider>
     </StrictMode>,
   );
 }
