@@ -1,12 +1,15 @@
 const STORAGE_KEY = "sai-ai-snapshot-v1";
 const CONTACT_KEY = "sai-ai-snapshot-contact-v1";
 
+import type { AiProvider } from "../aiProviders";
+
 export type SnapshotContact = {
   firstName?: string;
   lastName?: string;
   email?: string;
   company?: string;
   role?: string;
+  aiProviders?: AiProvider[];
 };
 
 export function encodeContactToken(email: string): string {
