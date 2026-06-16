@@ -17,6 +17,8 @@ type ChatGPTMappingNode = {
 
 type ChatGPTConversation = {
   title?: string;
+  conversation_id?: string;
+  id?: string;
   create_time?: number;
   update_time?: number;
   current_node?: string;
@@ -31,6 +33,8 @@ const TEXT_CONTENT_TYPES = new Set([
   "tether_browsing_display",
   "user_editable_context",
 ]);
+
+const CONVERSATION_JSON_RE = /(?:^|\/)conversations(?:-(\d+))?\.json$/i;
 
 function normalizeRole(role: string | undefined): MessageRole | null {
   if (role === "user" || role === "assistant" || role === "system" || role === "tool") {
@@ -100,12 +104,45 @@ function nodeToMessage(
   };
 }
 
-function findRootIds(mapping: Record<string, ChatGPTMappingNode>): string[] {
-  const childIds = new Set<string>();
-  for (const node of Object.values(mapping)) {
-    for (const child of node.children ?? []) {
-      childIds.add(child);
+/** Build child lists from parent pointers when the export omits `children` (newer format). */
+function getChildrenMap(mapping: Record<string, ChatGPTMappingNode>): Map<string, string[]> {
+  const hasExplicitChildren = Object.values(mapping).some((node) => node.children?.length);
+  const childrenMap = new Map<string, string[]>();
+
+  if (hasExplicitChildren) {
+    for (const [nodeId, node] of Object.entries(mapping)) {
+      if (node.children?.length) childrenMap.set(nodeId, [...node.children]);
     }
+    return childrenMap;
+  }
+
+  for (const [nodeId, node] of Object.entries(mapping)) {
+    const parentId = node.parent;
+    if (!parentId || !mapping[parentId]) continue;
+    const siblings = childrenMap.get(parentId) ?? [];
+    siblings.push(nodeId);
+    childrenMap.set(parentId, siblings);
+  }
+
+  for (const [parentId, childIds] of childrenMap) {
+    childIds.sort((a, b) => {
+      const timeA = mapping[a]?.message?.create_time ?? 0;
+      const timeB = mapping[b]?.message?.create_time ?? 0;
+      return timeA - timeB;
+    });
+    childrenMap.set(parentId, childIds);
+  }
+
+  return childrenMap;
+}
+
+function findRootIds(
+  mapping: Record<string, ChatGPTMappingNode>,
+  childrenMap: Map<string, string[]>,
+): string[] {
+  const childIds = new Set<string>();
+  for (const children of childrenMap.values()) {
+    for (const childId of children) childIds.add(childId);
   }
 
   const explicitRoots = Object.entries(mapping)
@@ -120,8 +157,10 @@ function findRootIds(mapping: Record<string, ChatGPTMappingNode>): string[] {
 
 function walkConversation(conversation: ChatGPTConversation, index: number): FlatMessage[] {
   const mapping = conversation.mapping ?? {};
-  const conversationId = `conv-${index}`;
+  const conversationId =
+    conversation.conversation_id ?? conversation.id ?? `conv-${index}`;
   const conversationTitle = conversation.title?.trim() || "Untitled conversation";
+  const childrenMap = getChildrenMap(mapping);
   const messages: FlatMessage[] = [];
   const visited = new Set<string>();
 
@@ -135,16 +174,15 @@ function walkConversation(conversation: ChatGPTConversation, index: number): Fla
     const flat = nodeToMessage(node, conversation, conversationId, conversationTitle);
     if (flat) messages.push(flat);
 
-    for (const childId of node.children ?? []) {
+    for (const childId of childrenMap.get(nodeId) ?? []) {
       visit(childId);
     }
   };
 
-  for (const rootId of findRootIds(mapping)) {
+  for (const rootId of findRootIds(mapping, childrenMap)) {
     visit(rootId);
   }
 
-  // Catch orphaned branches not reachable from declared roots.
   for (const nodeId of Object.keys(mapping)) {
     if (!visited.has(nodeId)) visit(nodeId);
   }
@@ -152,10 +190,78 @@ function walkConversation(conversation: ChatGPTConversation, index: number): Fla
   return messages;
 }
 
+function parseConversationJson(text: string): ChatGPTConversation[] {
+  let raw: unknown;
+  try {
+    raw = JSON.parse(text);
+  } catch {
+    throw new Error("Could not parse JSON. Make sure this is a ChatGPT conversations export file.");
+  }
+
+  if (!Array.isArray(raw)) {
+    throw new Error("Expected conversation export JSON to be an array of conversations.");
+  }
+
+  return raw as ChatGPTConversation[];
+}
+
+function sortConversationJsonPaths(paths: string[]): string[] {
+  return [...paths].sort((a, b) => {
+    const norm = (path: string) => path.replace(/\\/g, "/");
+    const na = norm(a);
+    const nb = norm(b);
+
+    const ma = na.match(/conversations-(\d+)\.json$/i);
+    const mb = nb.match(/conversations-(\d+)\.json$/i);
+    if (ma && mb) return Number(ma[1]) - Number(mb[1]);
+    if (/conversations\.json$/i.test(na)) return -1;
+    if (/conversations\.json$/i.test(nb)) return 1;
+    return na.localeCompare(nb);
+  });
+}
+
+function findConversationJsonPaths(zipFiles: Record<string, { dir?: boolean }>): string[] {
+  const paths = Object.keys(zipFiles).filter((path) => {
+    const entry = zipFiles[path];
+    if (entry.dir) return false;
+    return CONVERSATION_JSON_RE.test(path.replace(/\\/g, "/"));
+  });
+
+  return sortConversationJsonPaths(paths);
+}
+
+async function loadConversationsFromZip(zip: {
+  files: Record<string, { dir?: boolean }>;
+  file: (path: string) => { async: (type: "text") => Promise<string> } | null;
+}): Promise<ChatGPTConversation[]> {
+  const paths = findConversationJsonPaths(zip.files);
+
+  if (paths.length === 0) {
+    throw new Error(
+      "Could not find conversation data in this zip. Look for conversations.json or conversations-000.json inside your ChatGPT export.",
+    );
+  }
+
+  const conversations: ChatGPTConversation[] = [];
+
+  for (const path of paths) {
+    const entry = zip.file(path);
+    if (!entry) continue;
+    const text = await entry.async("text");
+    conversations.push(...parseConversationJson(text));
+  }
+
+  if (conversations.length === 0) {
+    throw new Error("No conversations found in this ChatGPT export.");
+  }
+
+  return conversations;
+}
+
 export class ChatGPTAdapter implements ExportAdapter {
   parse(raw: unknown): FlatMessage[] {
     if (!Array.isArray(raw)) {
-      throw new Error("Expected conversations.json to be an array of conversations.");
+      throw new Error("Expected conversation export JSON to be an array of conversations.");
     }
 
     const conversations = raw as ChatGPTConversation[];
@@ -177,49 +283,29 @@ export async function parseChatGPTExportFile(file: File): Promise<ParsedExport> 
   const lowerName = file.name.toLowerCase();
 
   if (lowerName.endsWith(".json")) {
-    const text = await file.text();
-    let raw: unknown;
-    try {
-      raw = JSON.parse(text);
-    } catch {
-      throw new Error("Could not parse JSON. Make sure you selected conversations.json from your ChatGPT export.");
-    }
-    const messages = adapter.parse(raw);
+    const conversations = parseConversationJson(await file.text());
+    const messages = adapter.parse(conversations);
     return {
       messages,
-      conversationCount: Array.isArray(raw) ? raw.length : 0,
+      conversationCount: conversations.length,
     };
   }
 
   if (!lowerName.endsWith(".zip")) {
-    throw new Error("Please upload your ChatGPT export .zip or a conversations.json file.");
+    throw new Error("Please upload your ChatGPT export .zip or a conversations JSON file.");
   }
 
   if (file.size > 250 * 1024 * 1024) {
-    throw new Error("This file is very large. Try uploading conversations.json directly from inside the zip.");
+    throw new Error("This file is very large. Try uploading the conversations JSON files from inside the zip.");
   }
 
   const JSZip = (await import("jszip")).default;
   const zip = await JSZip.loadAsync(file);
-  const jsonEntry =
-    zip.file("conversations.json") ??
-    Object.values(zip.files).find((entry) => entry.name.endsWith("conversations.json") && !entry.dir);
+  const conversations = await loadConversationsFromZip(zip);
+  const messages = adapter.parse(conversations);
 
-  if (!jsonEntry) {
-    throw new Error("Could not find conversations.json inside the zip. Export again from ChatGPT settings.");
-  }
-
-  const text = await jsonEntry.async("text");
-  let raw: unknown;
-  try {
-    raw = JSON.parse(text);
-  } catch {
-    throw new Error("conversations.json inside the zip could not be parsed.");
-  }
-
-  const messages = adapter.parse(raw);
   return {
     messages,
-    conversationCount: Array.isArray(raw) ? raw.length : 0,
+    conversationCount: conversations.length,
   };
 }

@@ -19,7 +19,7 @@ export function UploadPage() {
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
   const { token } = useContactToken();
-  const { processMessages } = useSnapshot();
+  const { processMessages, clearAnalytics } = useSnapshot();
 
   useEffect(() => {
     trackSnapshotEvent("upload", { token });
@@ -33,21 +33,29 @@ export function UploadPage() {
     );
 
     const messages = getDummySnapshotMessages();
-    processMessages(messages, DUMMY_CONVERSATION_COUNT);
+    clearAnalytics();
+    processMessages(messages, DUMMY_CONVERSATION_COUNT, "sample");
     trackSnapshotEvent("upload", { token, dummy: true });
     navigate({ to: withContactToken("/ai-snapshot/dashboard", token) });
-  }, [navigate, processMessages, token]);
+  }, [clearAnalytics, navigate, processMessages, token]);
 
   const handleFile = useCallback(
     async (file: File) => {
       setError(null);
       setProcessing(true);
+      clearAnalytics();
       setStatus("Reading export file...");
 
       try {
         const parsed = await parseChatGPTExportFile(file);
         setStatus(`Parsing ${parsed.conversationCount.toLocaleString()} conversations, all in your browser.`);
-        processMessages(parsed.messages, parsed.conversationCount);
+        const result = processMessages(parsed.messages, parsed.conversationCount, "upload");
+        trackSnapshotEvent("upload", {
+          token,
+          source: "upload",
+          conversations: result.overview.totalConversations,
+          userMessages: result.overview.userMessages,
+        });
         navigate({ to: withContactToken("/ai-snapshot/dashboard", token) });
       } catch (err) {
         setError(err instanceof Error ? err.message : "Could not process this file.");
@@ -55,7 +63,7 @@ export function UploadPage() {
         setStatus(null);
       }
     },
-    [navigate, processMessages, token],
+    [clearAnalytics, navigate, processMessages, token],
   );
 
   const onDrop = (event: React.DragEvent<HTMLLabelElement>) => {
@@ -69,7 +77,7 @@ export function UploadPage() {
     <div className="relative min-h-screen bg-blueprint-base pt-24">
       <Seo
         title="Upload export"
-        description="Upload your ChatGPT export zip or conversations.json. Parsed entirely in your browser."
+        description="Upload your ChatGPT export zip or conversations JSON. Parsed entirely in your browser."
         path="/ai-snapshot/upload"
       />
       <BlueprintGrid opacity={0.35} />
@@ -87,7 +95,7 @@ export function UploadPage() {
             className={`block cursor-pointer px-8 py-16 text-center transition-colors ${dragging ? "bg-marker-start/5" : "bg-drafting-surface"}`}
           >
             <p className="font-display text-2xl font-semibold text-chalk">Drop your ChatGPT export here</p>
-            <p className="mt-3 text-sm text-chalk/70">Accepts .zip or conversations.json</p>
+            <p className="mt-3 text-sm text-chalk/70">Accepts .zip or conversations JSON from your export</p>
             <input
               id="ai-export-file"
               type="file"

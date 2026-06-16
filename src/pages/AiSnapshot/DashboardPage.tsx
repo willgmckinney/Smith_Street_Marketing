@@ -1,5 +1,5 @@
 import { useNavigate } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Seo } from "../../components/Seo";
 import { formatCount } from "../../lib/format";
 import { buildPdfFilename, exportReportPdf, PDF_EXPORT_WIDTH_PX } from "../../lib/pdf/export";
@@ -18,18 +18,26 @@ import { ReportDocument } from "./components/ReportDocument";
 import { useContactToken } from "./hooks/useContactToken";
 
 export function DashboardPage() {
-  const { analytics } = useSnapshot();
+  const { analytics, syncFromStorage } = useSnapshot();
   const navigate = useNavigate();
   const { token } = useContactToken();
   const [downloading, setDownloading] = useState(false);
   const pdfSourceRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    syncFromStorage();
+  }, [syncFromStorage]);
 
   useEffect(() => {
     if (!analytics) {
       navigate({ to: withContactToken("/ai-snapshot/upload", token) });
       return;
     }
-    trackSnapshotEvent("dashboard", { token });
+    trackSnapshotEvent("dashboard", {
+      token,
+      source: analytics.source,
+      conversations: analytics.overview.totalConversations,
+    });
   }, [analytics, navigate, token]);
 
   if (!analytics) return null;
@@ -69,6 +77,7 @@ export function DashboardPage() {
         <div className="mx-auto max-w-6xl">
           <p className="font-mono text-xs uppercase tracking-[0.14em] text-drafting-surface/60">
             ai usage & exposure snapshot
+            {analytics.source === "sample" ? " · sample data" : " · your export"}
           </p>
           <div className="mt-6 grid gap-8 lg:grid-cols-[1fr_1.1fr]">
             <div>
