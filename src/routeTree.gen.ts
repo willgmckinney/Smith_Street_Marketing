@@ -34,6 +34,7 @@ import { Route as AiSnapshotUploadImport } from './routes/ai-snapshot.upload'
 import { Route as AiSnapshotReportImport } from './routes/ai-snapshot.report'
 import { Route as AiSnapshotGuideImport } from './routes/ai-snapshot.guide'
 import { Route as AiSnapshotDashboardImport } from './routes/ai-snapshot.dashboard'
+import { Route as AiSnapshotComingSoonImport } from './routes/ai-snapshot.coming-soon'
 
 // Create/Update Routes
 
@@ -177,6 +178,12 @@ const AiSnapshotDashboardRoute = AiSnapshotDashboardImport.update({
   getParentRoute: () => AiSnapshotRoute,
 } as any)
 
+const AiSnapshotComingSoonRoute = AiSnapshotComingSoonImport.update({
+  id: '/coming-soon',
+  path: '/coming-soon',
+  getParentRoute: () => AiSnapshotRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -300,6 +307,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SupportImport
       parentRoute: typeof rootRoute
     }
+    '/ai-snapshot/coming-soon': {
+      id: '/ai-snapshot/coming-soon'
+      path: '/coming-soon'
+      fullPath: '/ai-snapshot/coming-soon'
+      preLoaderRoute: typeof AiSnapshotComingSoonImport
+      parentRoute: typeof AiSnapshotImport
+    }
     '/ai-snapshot/dashboard': {
       id: '/ai-snapshot/dashboard'
       path: '/dashboard'
@@ -348,6 +362,7 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 interface AiSnapshotRouteChildren {
+  AiSnapshotComingSoonRoute: typeof AiSnapshotComingSoonRoute
   AiSnapshotDashboardRoute: typeof AiSnapshotDashboardRoute
   AiSnapshotGuideRoute: typeof AiSnapshotGuideRoute
   AiSnapshotReportRoute: typeof AiSnapshotReportRoute
@@ -355,6 +370,7 @@ interface AiSnapshotRouteChildren {
 }
 
 const AiSnapshotRouteChildren: AiSnapshotRouteChildren = {
+  AiSnapshotComingSoonRoute: AiSnapshotComingSoonRoute,
   AiSnapshotDashboardRoute: AiSnapshotDashboardRoute,
   AiSnapshotGuideRoute: AiSnapshotGuideRoute,
   AiSnapshotReportRoute: AiSnapshotReportRoute,
@@ -383,6 +399,7 @@ export interface FileRoutesByFullPath {
   '/security-scheduling-dashboard': typeof SecuritySchedulingDashboardRoute
   '/shopify-profit-recovery': typeof ShopifyProfitRecoveryRoute
   '/support': typeof SupportRoute
+  '/ai-snapshot/coming-soon': typeof AiSnapshotComingSoonRoute
   '/ai-snapshot/dashboard': typeof AiSnapshotDashboardRoute
   '/ai-snapshot/guide': typeof AiSnapshotGuideRoute
   '/ai-snapshot/report': typeof AiSnapshotReportRoute
@@ -409,6 +426,7 @@ export interface FileRoutesByTo {
   '/security-scheduling-dashboard': typeof SecuritySchedulingDashboardRoute
   '/shopify-profit-recovery': typeof ShopifyProfitRecoveryRoute
   '/support': typeof SupportRoute
+  '/ai-snapshot/coming-soon': typeof AiSnapshotComingSoonRoute
   '/ai-snapshot/dashboard': typeof AiSnapshotDashboardRoute
   '/ai-snapshot/guide': typeof AiSnapshotGuideRoute
   '/ai-snapshot/report': typeof AiSnapshotReportRoute
@@ -436,6 +454,7 @@ export interface FileRoutesById {
   '/security-scheduling-dashboard': typeof SecuritySchedulingDashboardRoute
   '/shopify-profit-recovery': typeof ShopifyProfitRecoveryRoute
   '/support': typeof SupportRoute
+  '/ai-snapshot/coming-soon': typeof AiSnapshotComingSoonRoute
   '/ai-snapshot/dashboard': typeof AiSnapshotDashboardRoute
   '/ai-snapshot/guide': typeof AiSnapshotGuideRoute
   '/ai-snapshot/report': typeof AiSnapshotReportRoute
@@ -464,6 +483,7 @@ export interface FileRouteTypes {
     | '/security-scheduling-dashboard'
     | '/shopify-profit-recovery'
     | '/support'
+    | '/ai-snapshot/coming-soon'
     | '/ai-snapshot/dashboard'
     | '/ai-snapshot/guide'
     | '/ai-snapshot/report'
@@ -489,6 +509,7 @@ export interface FileRouteTypes {
     | '/security-scheduling-dashboard'
     | '/shopify-profit-recovery'
     | '/support'
+    | '/ai-snapshot/coming-soon'
     | '/ai-snapshot/dashboard'
     | '/ai-snapshot/guide'
     | '/ai-snapshot/report'
@@ -514,6 +535,7 @@ export interface FileRouteTypes {
     | '/security-scheduling-dashboard'
     | '/shopify-profit-recovery'
     | '/support'
+    | '/ai-snapshot/coming-soon'
     | '/ai-snapshot/dashboard'
     | '/ai-snapshot/guide'
     | '/ai-snapshot/report'
@@ -613,6 +635,7 @@ export const routeTree = rootRoute
     "/ai-snapshot": {
       "filePath": "ai-snapshot.tsx",
       "children": [
+        "/ai-snapshot/coming-soon",
         "/ai-snapshot/dashboard",
         "/ai-snapshot/guide",
         "/ai-snapshot/report",
@@ -654,6 +677,10 @@ export const routeTree = rootRoute
     },
     "/support": {
       "filePath": "support.tsx"
+    },
+    "/ai-snapshot/coming-soon": {
+      "filePath": "ai-snapshot.coming-soon.tsx",
+      "parent": "/ai-snapshot"
     },
     "/ai-snapshot/dashboard": {
       "filePath": "ai-snapshot.dashboard.tsx",

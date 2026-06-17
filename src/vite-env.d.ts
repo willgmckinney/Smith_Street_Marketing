@@ -3,6 +3,8 @@
 interface ImportMetaEnv {
   readonly VITE_HUBSPOT_PORTAL_ID?: string;
   readonly VITE_HUBSPOT_FORM_ID?: string;
+  readonly VITE_HUBSPOT_REGION?: string;
+  readonly VITE_HUBSPOT_AI_APPLICATIONS_FIELD?: string;
 }
 
 interface ImportMeta {

@@ -4,6 +4,7 @@ import { BlueprintGrid } from "../../components/Blueprint/BlueprintGrid";
 import { BlueprintCard } from "../../components/Blueprint/BlueprintCard";
 import { SpecLabel } from "../../components/Blueprint/SpecLabel";
 import { Seo } from "../../components/Seo";
+import { normalizeAiProviders } from "../../lib/aiProviders";
 import {
   encodeContactToken,
   saveStoredContact,
@@ -13,95 +14,153 @@ import { useSnapshot } from "../../lib/state/snapshotContext";
 import { trackSnapshotEvent } from "../../lib/tracking";
 import { PrivacyBanner } from "./components/PrivacyBanner";
 
+type FieldValue = string | string[] | number | boolean | null | undefined;
+type HubSpotFormField = { name: string; value: FieldValue };
+
+type HubSpotFormV4Instance = {
+  getFormId: () => string;
+  getFormFieldValues: () => Promise<HubSpotFormField[]>;
+};
+
 declare global {
   interface Window {
-    hbspt?: {
-      forms: {
-        create: (options: {
-          portalId: string;
-          formId: string;
-          target: string;
-          onFormSubmitted?: ($form: HTMLFormElement) => void;
-        }) => void;
-      };
+    HubSpotFormsV4?: {
+      getFormFromEvent: (event: Event) => HubSpotFormV4Instance | null;
     };
   }
 }
 
-const HUBSPOT_PORTAL = import.meta.env.VITE_HUBSPOT_PORTAL_ID;
-const HUBSPOT_FORM = import.meta.env.VITE_HUBSPOT_FORM_ID;
+const HUBSPOT_PORTAL = import.meta.env.VITE_HUBSPOT_PORTAL_ID ?? "245672611";
+const HUBSPOT_FORM = import.meta.env.VITE_HUBSPOT_FORM_ID ?? "02f2722e-8f4a-471e-8f84-a9b2c87893e3";
+const HUBSPOT_REGION = import.meta.env.VITE_HUBSPOT_REGION ?? "na2";
+const HUBSPOT_AI_APPLICATIONS_FIELD =
+  import.meta.env.VITE_HUBSPOT_AI_APPLICATIONS_FIELD ?? "agentic_ai_applications";
+
+const HUBSPOT_EMBED_SRC = `https://js-${HUBSPOT_REGION}.hsforms.net/forms/embed/${HUBSPOT_PORTAL}.js`;
+
+function ensureHubspotEmbed(): void {
+  if (typeof document === "undefined") return;
+  if (document.querySelector<HTMLScriptElement>(`script[src="${HUBSPOT_EMBED_SRC}"]`)) {
+    return;
+  }
+  const script = document.createElement("script");
+  script.src = HUBSPOT_EMBED_SRC;
+  script.defer = true;
+  document.body.appendChild(script);
+}
+
+/**
+ * V4 form field names are namespaced like "0-1/firstname". Match by exact
+ * name or suffix so we don't have to hardcode the section index.
+ */
+function findField(fields: HubSpotFormField[], ...names: string[]): FieldValue {
+  for (const name of names) {
+    const match = fields.find(
+      (field) => field.name === name || field.name.endsWith(`/${name}`),
+    );
+    if (match) return match.value;
+  }
+  return undefined;
+}
+
+function toString(value: FieldValue): string {
+  if (typeof value === "string") return value.trim();
+  if (typeof value === "number" || typeof value === "boolean") return String(value);
+  if (Array.isArray(value)) {
+    return value.map((part) => String(part).trim()).filter(Boolean).join("; ");
+  }
+  return "";
+}
+
+function toArray(value: FieldValue): string[] {
+  if (Array.isArray(value)) {
+    return value.map((part) => String(part).trim()).filter(Boolean);
+  }
+  if (typeof value === "string" && value.trim()) {
+    return value
+      .split(/[;,]/)
+      .map((part) => part.trim())
+      .filter(Boolean);
+  }
+  return [];
+}
+
+type SubmissionEventDetail = { formId?: string; instanceId?: string };
 
 export function EntryPage() {
   const navigate = useNavigate();
   const { setContact } = useSnapshot();
-  const formRef = useRef<HTMLDivElement>(null);
-  const hubspotLoaded = useRef(false);
+  const navigateRef = useRef(navigate);
+  const setContactRef = useRef(setContact);
+  const handledRef = useRef(false);
+
+  navigateRef.current = navigate;
+  setContactRef.current = setContact;
 
   useEffect(() => {
     trackSnapshotEvent("entry");
   }, []);
 
   useEffect(() => {
-    if (!HUBSPOT_PORTAL || !HUBSPOT_FORM || !formRef.current || hubspotLoaded.current) return;
+    ensureHubspotEmbed();
 
-    const mountForm = () => {
-      if (!window.hbspt || !formRef.current) return;
-      hubspotLoaded.current = true;
-      window.hbspt.forms.create({
-        portalId: HUBSPOT_PORTAL,
-        formId: HUBSPOT_FORM,
-        target: "#ai-snapshot-hubspot-form",
-        onFormSubmitted: ($form) => {
-          const email =
-            ($form.querySelector('input[name="email"]') as HTMLInputElement | null)?.value ?? "";
-          const firstName =
-            ($form.querySelector('input[name="firstname"]') as HTMLInputElement | null)?.value ?? "";
-          const lastName =
-            ($form.querySelector('input[name="lastname"]') as HTMLInputElement | null)?.value ?? "";
-          const company =
-            ($form.querySelector('input[name="company"]') as HTMLInputElement | null)?.value ?? "";
-          const role =
-            ($form.querySelector('input[name="jobtitle"]') as HTMLInputElement | null)?.value ?? "";
+    const handleSuccess = (event: Event) => {
+      if (handledRef.current) return;
 
-          const contact = { email, firstName, lastName, company, role };
+      const detail = (event as CustomEvent<SubmissionEventDetail>).detail;
+      if (detail?.formId && detail.formId !== HUBSPOT_FORM) return;
+
+      const formApi = window.HubSpotFormsV4?.getFormFromEvent(event);
+      if (!formApi) {
+        console.warn("[ai-snapshot] HubSpotFormsV4 unavailable on submission event");
+        return;
+      }
+
+      handledRef.current = true;
+
+      void formApi
+        .getFormFieldValues()
+        .then((fields) => {
+          const email = toString(findField(fields, "email"));
+          if (!email) {
+            handledRef.current = false;
+            return;
+          }
+
+          const providers = normalizeAiProviders(
+            toArray(findField(fields, HUBSPOT_AI_APPLICATIONS_FIELD)),
+          );
+
+          const contact = {
+            email,
+            firstName: toString(findField(fields, "firstname")),
+            lastName: toString(findField(fields, "lastname")),
+            company: toString(findField(fields, "company", "name")),
+            role: toString(findField(fields, "jobtitle")),
+            aiProviders: providers,
+          };
+
           saveStoredContact(contact);
-          setContact(contact);
+          setContactRef.current(contact);
+
           const token = encodeContactToken(email);
-          navigate({ to: withContactToken("/ai-snapshot/guide", token) });
-        },
-      });
+          const destination = providers.includes("chatgpt")
+            ? "/ai-snapshot/guide"
+            : "/ai-snapshot/coming-soon";
+
+          navigateRef.current({ to: withContactToken(destination, token) });
+        })
+        .catch((err) => {
+          handledRef.current = false;
+          console.error("[ai-snapshot] failed to read HubSpot form fields", err);
+        });
     };
 
-    if (window.hbspt) {
-      mountForm();
-      return;
-    }
-
-    const script = document.createElement("script");
-    script.src = "https://js.hsforms.net/forms/embed/v2.js";
-    script.async = true;
-    script.onload = mountForm;
-    document.body.appendChild(script);
-  }, [navigate, setContact]);
-
-  const handleFallbackSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const email = String(formData.get("email") ?? "").trim();
-    const contact = {
-      firstName: String(formData.get("firstName") ?? "").trim(),
-      lastName: String(formData.get("lastName") ?? "").trim(),
-      email,
-      company: String(formData.get("company") ?? "").trim(),
-      role: String(formData.get("role") ?? "").trim(),
+    window.addEventListener("hs-form-event:on-submission:success", handleSuccess);
+    return () => {
+      window.removeEventListener("hs-form-event:on-submission:success", handleSuccess);
     };
-
-    if (!email) return;
-    saveStoredContact(contact);
-    setContact(contact);
-    const token = encodeContactToken(email);
-    navigate({ to: withContactToken("/ai-snapshot/guide", token) });
-  };
+  }, []);
 
   return (
     <div className="relative min-h-screen bg-blueprint-base pt-24">
@@ -122,59 +181,13 @@ export function EntryPage() {
         </p>
 
         <BlueprintCard className="mt-10 p-8">
-          {HUBSPOT_PORTAL && HUBSPOT_FORM ? (
-            <div id="ai-snapshot-hubspot-form" ref={formRef} />
-          ) : (
-            <form className="space-y-4" onSubmit={handleFallbackSubmit}>
-              <p className="font-mono text-xs uppercase tracking-[0.12em] text-muted">
-                Development intake form (set VITE_HUBSPOT_* for production HubSpot embed)
-              </p>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <input
-                  name="firstName"
-                  placeholder="First name"
-                  required
-                  className="w-full rounded-spec border border-chalk/15 bg-blueprint-base px-4 py-3 text-chalk"
-                />
-                <input
-                  name="lastName"
-                  placeholder="Last name"
-                  required
-                  className="w-full rounded-spec border border-chalk/15 bg-blueprint-base px-4 py-3 text-chalk"
-                />
-              </div>
-              <input
-                name="email"
-                type="email"
-                placeholder="Work email"
-                required
-                className="w-full rounded-spec border border-chalk/15 bg-blueprint-base px-4 py-3 text-chalk"
-              />
-              <input
-                name="company"
-                placeholder="Company"
-                required
-                className="w-full rounded-spec border border-chalk/15 bg-blueprint-base px-4 py-3 text-chalk"
-              />
-              <input
-                name="role"
-                placeholder="Role"
-                required
-                className="w-full rounded-spec border border-chalk/15 bg-blueprint-base px-4 py-3 text-chalk"
-              />
-              <button
-                type="submit"
-                className="w-full rounded-spec bg-marker-start px-6 py-3 font-display font-bold text-marker-ink"
-              >
-                Continue to export guide
-              </button>
-            </form>
-          )}
+          <div
+            className="hs-form-frame"
+            data-region={HUBSPOT_REGION}
+            data-form-id={HUBSPOT_FORM}
+            data-portal-id={HUBSPOT_PORTAL}
+          />
         </BlueprintCard>
-
-        <div className="mt-6">
-          <PrivacyBanner />
-        </div>
       </div>
     </div>
   );
