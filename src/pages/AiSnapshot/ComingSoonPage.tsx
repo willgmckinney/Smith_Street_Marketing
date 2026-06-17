@@ -34,7 +34,7 @@ export function ComingSoonPage() {
 
   const handleViewDemo = () => {
     const messages = getDummySnapshotMessages();
-    processMessages(messages, DUMMY_CONVERSATION_COUNT);
+    processMessages(messages, DUMMY_CONVERSATION_COUNT, "sample");
     trackSnapshotEvent("dashboard", { token, dummy: true, source: "coming_soon" });
     navigate({ to: withContactToken("/ai-snapshot/dashboard", token) });
   };
