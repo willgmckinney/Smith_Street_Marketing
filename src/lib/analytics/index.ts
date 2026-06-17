@@ -9,6 +9,8 @@ import { computeTopics } from "./topics";
 import { computeUsageOverTime, computeUsageTrend } from "./timeseries";
 
 export type SnapshotAnalytics = {
+  source: "upload" | "sample";
+  processedAt: number;
   overview: ReturnType<typeof computeOverview>;
   usageOverTime: ReturnType<typeof computeUsageOverTime>;
   usageTrend: ReturnType<typeof computeUsageTrend>;
@@ -21,7 +23,10 @@ export type SnapshotAnalytics = {
   generatedAt: string;
 };
 
-export function runAnalytics(messages: FlatMessage[]): SnapshotAnalytics {
+export function runAnalytics(
+  messages: FlatMessage[],
+  source: "upload" | "sample" = "upload",
+): SnapshotAnalytics {
   const overview = computeOverview(messages);
   const usageOverTime = computeUsageOverTime(messages, "week");
   const timeOfDay = computeTimeOfDay(messages);
@@ -29,6 +34,8 @@ export function runAnalytics(messages: FlatMessage[]): SnapshotAnalytics {
   const exposure = computeExposure(messages);
 
   return {
+    source,
+    processedAt: Date.now(),
     overview,
     usageOverTime,
     usageTrend: computeUsageTrend(usageOverTime),

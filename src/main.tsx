@@ -8,6 +8,7 @@ import { rootRoute } from "./routes/__root";
 import { accessibilityRoute } from "./routes/accessibility";
 import { agenticBIRoute } from "./routes/agentic-bi";
 import { aiSnapshotRoute } from "./routes/ai-snapshot";
+import { aiSnapshotComingSoonRoute } from "./routes/ai-snapshot.coming-soon";
 import { aiSnapshotDashboardRoute } from "./routes/ai-snapshot.dashboard";
 import { aiSnapshotGuideRoute } from "./routes/ai-snapshot.guide";
 import { aiSnapshotReportRoute } from "./routes/ai-snapshot.report";
@@ -50,6 +51,7 @@ const routeTree = rootRoute.addChildren([
   aiSnapshotUploadRoute,
   aiSnapshotDashboardRoute,
   aiSnapshotReportRoute,
+  aiSnapshotComingSoonRoute,
   blogRoute,
   blogPostRoute,
 ]);

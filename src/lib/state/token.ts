@@ -1,5 +1,7 @@
-const STORAGE_KEY = "sai-ai-snapshot-v1";
+const STORAGE_KEY = "sai-ai-snapshot-v2";
 const CONTACT_KEY = "sai-ai-snapshot-contact-v1";
+
+import type { AiProvider } from "../aiProviders";
 
 export type SnapshotContact = {
   firstName?: string;
@@ -7,6 +9,7 @@ export type SnapshotContact = {
   email?: string;
   company?: string;
   role?: string;
+  aiProviders?: AiProvider[];
 };
 
 export function encodeContactToken(email: string): string {
@@ -40,8 +43,16 @@ export function loadStoredAnalytics(): import("../analytics").SnapshotAnalytics 
   }
 }
 
+export function clearStoredAnalytics(): void {
+  sessionStorage.removeItem(STORAGE_KEY);
+}
+
 export function saveStoredAnalytics(data: import("../analytics").SnapshotAnalytics): void {
-  sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  try {
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  } catch {
+    // sessionStorage full or unavailable; in-memory state still drives this tab
+  }
 }
 
 export function loadStoredContact(): SnapshotContact {
@@ -61,4 +72,6 @@ export function saveStoredContact(contact: SnapshotContact): void {
 export function clearSnapshotStorage(): void {
   sessionStorage.removeItem(STORAGE_KEY);
   sessionStorage.removeItem(CONTACT_KEY);
+  // Drop legacy key from earlier builds so stale demo data cannot reload
+  sessionStorage.removeItem("sai-ai-snapshot-v1");
 }
