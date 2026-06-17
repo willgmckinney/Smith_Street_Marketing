@@ -188,10 +188,6 @@ export function EntryPage() {
             data-portal-id={HUBSPOT_PORTAL}
           />
         </BlueprintCard>
-
-        <div className="mt-6">
-          <PrivacyBanner />
-        </div>
       </div>
     </div>
   );
