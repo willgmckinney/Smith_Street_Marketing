@@ -12,7 +12,6 @@ import {
 } from "../../lib/state/token";
 import { useSnapshot } from "../../lib/state/snapshotContext";
 import { trackSnapshotEvent } from "../../lib/tracking";
-import { PrivacyBanner } from "./components/PrivacyBanner";
 
 type FieldValue = string | string[] | number | boolean | null | undefined;
 type HubSpotFormField = { name: string; value: FieldValue };
