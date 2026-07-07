@@ -29,6 +29,7 @@ import { Route as AcmeLifecycleImport } from './routes/acme-lifecycle'
 import { Route as AccessibilityImport } from './routes/accessibility'
 import { Route as IndexImport } from './routes/index'
 import { Route as BlogIndexImport } from './routes/blog/index'
+import { Route as CaseStudiesActivecampaignImport } from './routes/case-studies/activecampaign'
 import { Route as BlogPostIdImport } from './routes/blog/$postId'
 import { Route as AiSnapshotUploadImport } from './routes/ai-snapshot.upload'
 import { Route as AiSnapshotReportImport } from './routes/ai-snapshot.report'
@@ -145,6 +146,12 @@ const IndexRoute = IndexImport.update({
 const BlogIndexRoute = BlogIndexImport.update({
   id: '/blog/',
   path: '/blog/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const CaseStudiesActivecampaignRoute = CaseStudiesActivecampaignImport.update({
+  id: '/case-studies/activecampaign',
+  path: '/case-studies/activecampaign',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -349,6 +356,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogPostIdImport
       parentRoute: typeof rootRoute
     }
+    '/case-studies/activecampaign': {
+      id: '/case-studies/activecampaign'
+      path: '/case-studies/activecampaign'
+      fullPath: '/case-studies/activecampaign'
+      preLoaderRoute: typeof CaseStudiesActivecampaignImport
+      parentRoute: typeof rootRoute
+    }
     '/blog/': {
       id: '/blog/'
       path: '/blog'
@@ -405,6 +419,7 @@ export interface FileRoutesByFullPath {
   '/ai-snapshot/report': typeof AiSnapshotReportRoute
   '/ai-snapshot/upload': typeof AiSnapshotUploadRoute
   '/blog/$postId': typeof BlogPostIdRoute
+  '/case-studies/activecampaign': typeof CaseStudiesActivecampaignRoute
   '/blog': typeof BlogIndexRoute
 }
 
@@ -432,6 +447,7 @@ export interface FileRoutesByTo {
   '/ai-snapshot/report': typeof AiSnapshotReportRoute
   '/ai-snapshot/upload': typeof AiSnapshotUploadRoute
   '/blog/$postId': typeof BlogPostIdRoute
+  '/case-studies/activecampaign': typeof CaseStudiesActivecampaignRoute
   '/blog': typeof BlogIndexRoute
 }
 
@@ -460,6 +476,7 @@ export interface FileRoutesById {
   '/ai-snapshot/report': typeof AiSnapshotReportRoute
   '/ai-snapshot/upload': typeof AiSnapshotUploadRoute
   '/blog/$postId': typeof BlogPostIdRoute
+  '/case-studies/activecampaign': typeof CaseStudiesActivecampaignRoute
   '/blog/': typeof BlogIndexRoute
 }
 
@@ -489,6 +506,7 @@ export interface FileRouteTypes {
     | '/ai-snapshot/report'
     | '/ai-snapshot/upload'
     | '/blog/$postId'
+    | '/case-studies/activecampaign'
     | '/blog'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -515,6 +533,7 @@ export interface FileRouteTypes {
     | '/ai-snapshot/report'
     | '/ai-snapshot/upload'
     | '/blog/$postId'
+    | '/case-studies/activecampaign'
     | '/blog'
   id:
     | '__root__'
@@ -541,6 +560,7 @@ export interface FileRouteTypes {
     | '/ai-snapshot/report'
     | '/ai-snapshot/upload'
     | '/blog/$postId'
+    | '/case-studies/activecampaign'
     | '/blog/'
   fileRoutesById: FileRoutesById
 }
@@ -564,6 +584,7 @@ export interface RootRouteChildren {
   ShopifyProfitRecoveryRoute: typeof ShopifyProfitRecoveryRoute
   SupportRoute: typeof SupportRoute
   BlogPostIdRoute: typeof BlogPostIdRoute
+  CaseStudiesActivecampaignRoute: typeof CaseStudiesActivecampaignRoute
   BlogIndexRoute: typeof BlogIndexRoute
 }
 
@@ -586,6 +607,7 @@ const rootRouteChildren: RootRouteChildren = {
   ShopifyProfitRecoveryRoute: ShopifyProfitRecoveryRoute,
   SupportRoute: SupportRoute,
   BlogPostIdRoute: BlogPostIdRoute,
+  CaseStudiesActivecampaignRoute: CaseStudiesActivecampaignRoute,
   BlogIndexRoute: BlogIndexRoute,
 }
 
@@ -617,6 +639,7 @@ export const routeTree = rootRoute
         "/shopify-profit-recovery",
         "/support",
         "/blog/$postId",
+        "/case-studies/activecampaign",
         "/blog/"
       ]
     },
@@ -700,6 +723,9 @@ export const routeTree = rootRoute
     },
     "/blog/$postId": {
       "filePath": "blog/$postId.tsx"
+    },
+    "/case-studies/activecampaign": {
+      "filePath": "case-studies/activecampaign.tsx"
     },
     "/blog/": {
       "filePath": "blog/index.tsx"

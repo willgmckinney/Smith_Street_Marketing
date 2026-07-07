@@ -41,6 +41,20 @@ const flagships: Entry[] = [
   },
   {
     index: 2,
+    client: "ActiveCampaign",
+    system: "Reporting Automation",
+    built:
+      "Automated weekly and end-of-month reporting pipelines on Amazon QuickSight, replacing a 30-hour manual PowerPoint build with daily, self-service dashboards.",
+    stack: ["amazon quicksight", "aws", "automated pipelines", "dashboards"],
+    scale:
+      "150 hours per month recovered; weekly report build cut from 30+ hours to 1–2",
+    href: "/case-studies/activecampaign",
+    figure: 2,
+    caption: "automated reporting dashboard",
+    asset: <Wireframe variant="dashboard" className="w-full max-w-md mx-auto" />,
+  },
+  {
+    index: 3,
     client: "Apollo Mapping",
     system: "Geospatial Platform",
     built:
@@ -48,12 +62,12 @@ const flagships: Entry[] = [
     stack: ["react", "aws", "spatial database", "async workers", "object storage"],
     scale: "multi-vendor imagery catalog with async preview delivery",
     href: "https://apollomapping.com/",
-    figure: 2,
+    figure: 3,
     caption: "platform architecture",
     asset: <GeospatialPlatformDiagram className="w-full" />,
   },
   {
-    index: 3,
+    index: 4,
     client: "Ascent Pharmaceuticals",
     system: "Manufacturer Website",
     built:
@@ -61,12 +75,12 @@ const flagships: Entry[] = [
     stack: ["react", "typescript", "vite"],
     scale: "live manufacturer site with product portfolio and partnership paths",
     href: "https://www.ascentpharm.com/",
-    figure: 3,
+    figure: 4,
     caption: "site layout",
     asset: <Wireframe variant="landing" className="w-full max-w-md mx-auto" />,
   },
   {
-    index: 4,
+    index: 5,
     client: "Kontinued",
     system: "Higher-Education Platform",
     built:
@@ -74,7 +88,7 @@ const flagships: Entry[] = [
     stack: ["react", "typescript"],
     scale: "course discovery and enrollment across continuing-ed programs",
     href: "https://kontinued.com/",
-    figure: 4,
+    figure: 5,
     caption: "platform layout",
     asset: <Wireframe variant="landing" className="w-full max-w-md mx-auto" />,
   },
@@ -82,7 +96,7 @@ const flagships: Entry[] = [
 
 const demos: Entry[] = [
   {
-    index: 5,
+    index: 6,
     client: "Construction",
     system: "Site Manager Dashboard",
     built:
@@ -90,12 +104,12 @@ const demos: Entry[] = [
     stack: ["react", "recharts", "typescript"],
     scale: "real-time kpis and productivity tracking across active sites",
     href: "/construction-dashboard",
-    figure: 5,
+    figure: 6,
     caption: "site manager view",
     asset: <Wireframe variant="dashboard" className="w-full max-w-md mx-auto" />,
   },
   {
-    index: 6,
+    index: 7,
     client: "Real Estate",
     system: "Broker Dashboard",
     built:
@@ -103,12 +117,12 @@ const demos: Entry[] = [
     stack: ["react", "recharts", "typescript"],
     scale: "property analytics and pipeline tracking with dynamic filters",
     href: "/real-estate-dashboard",
-    figure: 6,
+    figure: 7,
     caption: "broker map view",
     asset: <Wireframe variant="map" className="w-full max-w-md mx-auto" />,
   },
   {
-    index: 7,
+    index: 8,
     client: "Security",
     system: "Shift Scheduler",
     built:
@@ -116,12 +130,12 @@ const demos: Entry[] = [
     stack: ["react", "typescript"],
     scale: "user and admin views with real-time assignment and export",
     href: "/security-scheduling-dashboard",
-    figure: 7,
+    figure: 8,
     caption: "schedule grid",
     asset: <Wireframe variant="schedule" className="w-full max-w-md mx-auto" />,
   },
   {
-    index: 8,
+    index: 9,
     client: "ACME Group",
     system: "Lifecycle & Opportunity Radar",
     built:
@@ -129,7 +143,7 @@ const demos: Entry[] = [
     stack: ["react", "data viz"],
     scale: "two-sided fleet view and ranked sales opportunities from one dataset",
     href: "/acme-lifecycle",
-    figure: 8,
+    figure: 9,
     caption: "fleet dashboard",
     asset: <Wireframe variant="dashboard" className="w-full max-w-md mx-auto" />,
   },

@@ -83,6 +83,12 @@ const staticRoutes = [
       "Production systems Smith Avenue Insights has shipped: a satellite imagery lakehouse for Airbus, a geospatial platform for Apollo Mapping, and more.",
   },
   {
+    path: "case-studies/activecampaign",
+    title: "ActiveCampaign case study | Smith Avenue Insights",
+    description:
+      "How Smith Avenue Insights turned a 30-hour weekly reporting grind into a daily, automated pipeline for ActiveCampaign: 150 hours recovered, 95% less reporting.",
+  },
+  {
     path: "how-we-work",
     title: "Process | Smith Avenue Insights",
     description:
