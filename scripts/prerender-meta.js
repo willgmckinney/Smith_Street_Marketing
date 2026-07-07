@@ -89,6 +89,12 @@ const staticRoutes = [
       "How Smith Avenue Insights turned a 30-hour weekly reporting grind into a daily, automated pipeline for ActiveCampaign: 150 hours recovered, 95% less reporting.",
   },
   {
+    path: "case-studies/activecampaign/pdf",
+    title: "ActiveCampaign case study (PDF) | Smith Avenue Insights",
+    description:
+      "ActiveCampaign case study PDF: how Smith Avenue Insights turned a 30-hour weekly reporting grind into a daily, automated pipeline.",
+  },
+  {
     path: "how-we-work",
     title: "Process | Smith Avenue Insights",
     description:

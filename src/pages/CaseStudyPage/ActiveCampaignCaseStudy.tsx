@@ -106,6 +106,12 @@ export const ActiveCampaignCaseStudy = () => {
           >
             ← the work
           </Link>
+          <Link
+            to="/case-studies/activecampaign/pdf"
+            className="mb-cell ml-4 inline-block font-mono text-label-mono lowercase text-chalk/50 transition-colors hover:text-marker-start"
+          >
+            view pdf →
+          </Link>
           <SpecLabel className="mb-cell">case study · analytics & reporting</SpecLabel>
           <p className="mb-3 font-mono text-label-mono lowercase text-chalk/45">
             ActiveCampaign · email marketing SaaS · marketing analytics & operations
