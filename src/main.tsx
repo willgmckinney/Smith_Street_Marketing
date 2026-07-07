@@ -28,6 +28,8 @@ import { shopifyProfitRecoveryRoute } from "./routes/shopify-profit-recovery";
 import { supportRoute } from "./routes/support";
 import { acmeLifecycleRoute } from "./routes/acme-lifecycle";
 import { quickEmbedRoute } from "./routes/quick-embed";
+import { activeCampaignCaseStudyRoute } from "./routes/case-studies/activecampaign";
+import { activeCampaignPdfRoute } from "./routes/case-studies/activecampaign.pdf";
 
 const routeTree = rootRoute.addChildren([
   indexRoute,
@@ -54,6 +56,8 @@ const routeTree = rootRoute.addChildren([
   aiSnapshotComingSoonRoute,
   blogRoute,
   blogPostRoute,
+  activeCampaignCaseStudyRoute,
+  activeCampaignPdfRoute,
 ]);
 
 // Create a new router instance
