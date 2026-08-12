@@ -171,6 +171,7 @@ const Footer = () => {
                 {[
                   { to: "/portfolio", label: "the work" },
                   { to: "/how-we-work", label: "process" },
+                  { to: "/solutions", label: "solutions" },
                   { to: "/blog", label: "writing" },
                   { to: "/demo", label: "start a project" },
                 ].map((link) => (
