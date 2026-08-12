@@ -41,14 +41,14 @@ const flagships: Entry[] = [
   },
   {
     index: 2,
-    client: "ActiveCampaign",
+    client: "A Leading Email Marketing Platform",
     system: "Reporting Automation",
     built:
       "Automated weekly and end-of-month reporting pipelines on Amazon QuickSight, replacing a 30-hour manual PowerPoint build with daily, self-service dashboards.",
     stack: ["amazon quicksight", "aws", "automated pipelines", "dashboards"],
     scale:
       "150 hours per month recovered; weekly report build cut from 30+ hours to 1–2",
-    href: "/case-studies/activecampaign",
+    href: "/case-studies/automated-reporting",
     figure: 2,
     caption: "automated reporting dashboard",
     asset: <Wireframe variant="dashboard" className="w-full max-w-md mx-auto" />,
