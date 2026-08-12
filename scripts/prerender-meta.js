@@ -83,6 +83,19 @@ const staticRoutes = [
       "Production systems Smith Avenue Insights has shipped: a satellite imagery lakehouse for Airbus, a geospatial platform for Apollo Mapping, and more.",
   },
   {
+    path: "solutions",
+    title: "Solutions | Smith Avenue Insights",
+    description:
+      "Repeatable AWS offerings from Smith Avenue Insights, built once and deployed consistently: Amazon Quick implementation, rollout, and permissions design.",
+  },
+  {
+    path: "solutions/amazon-quick-implementation",
+    title:
+      "Amazon Quick Implementation and Organization-Wide Rollout | Smith Avenue Insights",
+    description:
+      "Amazon Quick implementation for BI, agentic AI analytics, ad hoc reporting, embedded delivery, and permissions, rolled out by Smith Avenue Insights.",
+  },
+  {
     path: "case-studies/automated-reporting",
     title: "Automated reporting case study | Smith Avenue Insights",
     description:

@@ -28,7 +28,9 @@ import { Route as AgenticBiImport } from './routes/agentic-bi'
 import { Route as AcmeLifecycleImport } from './routes/acme-lifecycle'
 import { Route as AccessibilityImport } from './routes/accessibility'
 import { Route as IndexImport } from './routes/index'
+import { Route as SolutionsIndexImport } from './routes/solutions/index'
 import { Route as BlogIndexImport } from './routes/blog/index'
+import { Route as SolutionsAmazonQuickImplementationImport } from './routes/solutions/amazon-quick-implementation'
 import { Route as CaseStudiesAutomatedReportingImport } from './routes/case-studies/automated-reporting'
 import { Route as BlogPostIdImport } from './routes/blog/$postId'
 import { Route as AiSnapshotUploadImport } from './routes/ai-snapshot.upload'
@@ -143,11 +145,24 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const SolutionsIndexRoute = SolutionsIndexImport.update({
+  id: '/solutions/',
+  path: '/solutions/',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const BlogIndexRoute = BlogIndexImport.update({
   id: '/blog/',
   path: '/blog/',
   getParentRoute: () => rootRoute,
 } as any)
+
+const SolutionsAmazonQuickImplementationRoute =
+  SolutionsAmazonQuickImplementationImport.update({
+    id: '/solutions/amazon-quick-implementation',
+    path: '/solutions/amazon-quick-implementation',
+    getParentRoute: () => rootRoute,
+  } as any)
 
 const CaseStudiesAutomatedReportingRoute =
   CaseStudiesAutomatedReportingImport.update({
@@ -364,11 +379,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CaseStudiesAutomatedReportingImport
       parentRoute: typeof rootRoute
     }
+    '/solutions/amazon-quick-implementation': {
+      id: '/solutions/amazon-quick-implementation'
+      path: '/solutions/amazon-quick-implementation'
+      fullPath: '/solutions/amazon-quick-implementation'
+      preLoaderRoute: typeof SolutionsAmazonQuickImplementationImport
+      parentRoute: typeof rootRoute
+    }
     '/blog/': {
       id: '/blog/'
       path: '/blog'
       fullPath: '/blog'
       preLoaderRoute: typeof BlogIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/solutions/': {
+      id: '/solutions/'
+      path: '/solutions'
+      fullPath: '/solutions'
+      preLoaderRoute: typeof SolutionsIndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -421,7 +450,9 @@ export interface FileRoutesByFullPath {
   '/ai-snapshot/upload': typeof AiSnapshotUploadRoute
   '/blog/$postId': typeof BlogPostIdRoute
   '/case-studies/automated-reporting': typeof CaseStudiesAutomatedReportingRoute
+  '/solutions/amazon-quick-implementation': typeof SolutionsAmazonQuickImplementationRoute
   '/blog': typeof BlogIndexRoute
+  '/solutions': typeof SolutionsIndexRoute
 }
 
 export interface FileRoutesByTo {
@@ -449,7 +480,9 @@ export interface FileRoutesByTo {
   '/ai-snapshot/upload': typeof AiSnapshotUploadRoute
   '/blog/$postId': typeof BlogPostIdRoute
   '/case-studies/automated-reporting': typeof CaseStudiesAutomatedReportingRoute
+  '/solutions/amazon-quick-implementation': typeof SolutionsAmazonQuickImplementationRoute
   '/blog': typeof BlogIndexRoute
+  '/solutions': typeof SolutionsIndexRoute
 }
 
 export interface FileRoutesById {
@@ -478,7 +511,9 @@ export interface FileRoutesById {
   '/ai-snapshot/upload': typeof AiSnapshotUploadRoute
   '/blog/$postId': typeof BlogPostIdRoute
   '/case-studies/automated-reporting': typeof CaseStudiesAutomatedReportingRoute
+  '/solutions/amazon-quick-implementation': typeof SolutionsAmazonQuickImplementationRoute
   '/blog/': typeof BlogIndexRoute
+  '/solutions/': typeof SolutionsIndexRoute
 }
 
 export interface FileRouteTypes {
@@ -508,7 +543,9 @@ export interface FileRouteTypes {
     | '/ai-snapshot/upload'
     | '/blog/$postId'
     | '/case-studies/automated-reporting'
+    | '/solutions/amazon-quick-implementation'
     | '/blog'
+    | '/solutions'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -535,7 +572,9 @@ export interface FileRouteTypes {
     | '/ai-snapshot/upload'
     | '/blog/$postId'
     | '/case-studies/automated-reporting'
+    | '/solutions/amazon-quick-implementation'
     | '/blog'
+    | '/solutions'
   id:
     | '__root__'
     | '/'
@@ -562,7 +601,9 @@ export interface FileRouteTypes {
     | '/ai-snapshot/upload'
     | '/blog/$postId'
     | '/case-studies/automated-reporting'
+    | '/solutions/amazon-quick-implementation'
     | '/blog/'
+    | '/solutions/'
   fileRoutesById: FileRoutesById
 }
 
@@ -586,7 +627,9 @@ export interface RootRouteChildren {
   SupportRoute: typeof SupportRoute
   BlogPostIdRoute: typeof BlogPostIdRoute
   CaseStudiesAutomatedReportingRoute: typeof CaseStudiesAutomatedReportingRoute
+  SolutionsAmazonQuickImplementationRoute: typeof SolutionsAmazonQuickImplementationRoute
   BlogIndexRoute: typeof BlogIndexRoute
+  SolutionsIndexRoute: typeof SolutionsIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -609,7 +652,10 @@ const rootRouteChildren: RootRouteChildren = {
   SupportRoute: SupportRoute,
   BlogPostIdRoute: BlogPostIdRoute,
   CaseStudiesAutomatedReportingRoute: CaseStudiesAutomatedReportingRoute,
+  SolutionsAmazonQuickImplementationRoute:
+    SolutionsAmazonQuickImplementationRoute,
   BlogIndexRoute: BlogIndexRoute,
+  SolutionsIndexRoute: SolutionsIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -641,7 +687,9 @@ export const routeTree = rootRoute
         "/support",
         "/blog/$postId",
         "/case-studies/automated-reporting",
-        "/blog/"
+        "/solutions/amazon-quick-implementation",
+        "/blog/",
+        "/solutions/"
       ]
     },
     "/": {
@@ -728,8 +776,14 @@ export const routeTree = rootRoute
     "/case-studies/automated-reporting": {
       "filePath": "case-studies/automated-reporting.tsx"
     },
+    "/solutions/amazon-quick-implementation": {
+      "filePath": "solutions/amazon-quick-implementation.tsx"
+    },
     "/blog/": {
       "filePath": "blog/index.tsx"
+    },
+    "/solutions/": {
+      "filePath": "solutions/index.tsx"
     }
   }
 }
