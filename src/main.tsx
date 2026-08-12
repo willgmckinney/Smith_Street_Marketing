@@ -29,6 +29,8 @@ import { supportRoute } from "./routes/support";
 import { acmeLifecycleRoute } from "./routes/acme-lifecycle";
 import { quickEmbedRoute } from "./routes/quick-embed";
 import { automatedReportingCaseStudyRoute } from "./routes/case-studies/automated-reporting";
+import { solutionsRoute } from "./routes/solutions";
+import { amazonQuickImplementationRoute } from "./routes/solutions/amazon-quick-implementation";
 
 const routeTree = rootRoute.addChildren([
   indexRoute,
@@ -36,6 +38,8 @@ const routeTree = rootRoute.addChildren([
   demoRoute,
   companyRoute,
   portfolioRoute,
+  solutionsRoute,
+  amazonQuickImplementationRoute,
   constructionDashboardRoute,
   realEstateDashboardRoute,
   securitySchedulingDashboardRoute,

@@ -109,6 +109,18 @@ export const rootRoute = createRootRoute({
               )}
             </Link>
 
+            <Link to="/solutions">
+              {({ isActive }) => (
+                <BlueprintButton
+                  variant="secondary"
+                  size="sm"
+                  className={`bg-transparent border-transparent shadow-none hover:bg-chalk/10 font-mono font-normal lowercase tracking-[0.08em] ${isActive ? "text-marker-start" : "text-chalk"}`}
+                >
+                  solutions
+                </BlueprintButton>
+              )}
+            </Link>
+
             <Link to="/blog">
               {({ isActive }) => (
                 <BlueprintButton
@@ -232,6 +244,24 @@ export const rootRoute = createRootRoute({
                     }`}
                   >
                     process
+                  </span>
+                )}
+              </Link>
+
+              <Link
+                to="/solutions"
+                className="block"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {({ isActive }) => (
+                  <span
+                    className={`block px-4 py-3 rounded-lg font-mono lowercase tracking-[0.06em] transition-colors duration-200 ${
+                      isActive
+                        ? "text-marker-start bg-chalk/5"
+                        : "text-chalk hover:bg-chalk/5"
+                    }`}
+                  >
+                    solutions
                   </span>
                 )}
               </Link>

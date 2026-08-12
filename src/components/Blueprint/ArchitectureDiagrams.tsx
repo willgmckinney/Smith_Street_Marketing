@@ -124,6 +124,55 @@ export const GeospatialPlatformDiagram = ({ className = "" }: DiagramProps) => {
 };
 
 /**
+ * Amazon Quick rollout:
+ * databases / files / direct uploads → amazon quick → dashboards + ai agent
+ */
+export const AmazonQuickDiagram = ({ className = "" }: DiagramProps) => {
+  const W = 130;
+  const SRC_H = 44;
+  const OUT_H = 52;
+  const srcX = 10;
+  const hubX = 250;
+  const outX = 495;
+  const inBus = 195;
+  const outBus = 435;
+  const srcY = [30, 98, 166];
+  const outY = [64, 140];
+  const hubY = 76;
+  const hubH = 88;
+  const hubMid = hubY + hubH / 2;
+
+  return (
+    <svg viewBox="0 0 635 240" fill="none" className={className} role="img"
+      aria-label="Amazon Quick flow: databases, file shares, and direct uploads connect to Amazon Quick, which serves dashboards and an AI agent.">
+      <ArrowMarker />
+      {/* sources gather onto a bus, then into quick */}
+      {srcY.map((y) => (
+        <line key={y} x1={srcX + W} y1={y + SRC_H / 2} x2={inBus} y2={y + SRC_H / 2} className={linkCls} />
+      ))}
+      <line x1={inBus} y1={srcY[0] + SRC_H / 2} x2={inBus} y2={srcY[2] + SRC_H / 2} className={linkCls} />
+      <HConn x1={inBus} x2={hubX} y={hubMid} />
+
+      {/* quick fans out to the two delivery surfaces */}
+      <line x1={hubX + W} y1={hubMid} x2={outBus} y2={hubMid} className={linkCls} />
+      <line x1={outBus} y1={outY[0] + OUT_H / 2} x2={outBus} y2={outY[1] + OUT_H / 2} className={linkCls} />
+      {outY.map((y) => (
+        <HConn key={y} x1={outBus} x2={outX} y={y + OUT_H / 2} />
+      ))}
+
+      <Node x={srcX} y={srcY[0]} w={W} h={SRC_H} label="databases" sub="redshift / aurora" />
+      <Node x={srcX} y={srcY[1]} w={W} h={SRC_H} label="files & folders" sub="sharepoint / drive" />
+      <Node x={srcX} y={srcY[2]} w={W} h={SRC_H} label="direct uploads" sub="csv / pdf" />
+
+      <Node x={hubX} y={hubY} w={W} h={hubH} label="amazon quick" sub="bi + agentic ai" accent />
+
+      <Node x={outX} y={outY[0]} w={W} h={OUT_H} label="dashboards" sub="recurring reporting" />
+      <Node x={outX} y={outY[1]} w={W} h={OUT_H} label="ai agent" sub="plain-language q&a" />
+    </svg>
+  );
+};
+
+/**
  * Design-to-production flow: source design built to production screens.
  */
 export const CheckoutFlowDiagram = ({ className = "" }: DiagramProps) => {
