@@ -29,14 +29,13 @@ import { Route as AcmeLifecycleImport } from './routes/acme-lifecycle'
 import { Route as AccessibilityImport } from './routes/accessibility'
 import { Route as IndexImport } from './routes/index'
 import { Route as BlogIndexImport } from './routes/blog/index'
-import { Route as CaseStudiesActivecampaignImport } from './routes/case-studies/activecampaign'
+import { Route as CaseStudiesAutomatedReportingImport } from './routes/case-studies/automated-reporting'
 import { Route as BlogPostIdImport } from './routes/blog/$postId'
 import { Route as AiSnapshotUploadImport } from './routes/ai-snapshot.upload'
 import { Route as AiSnapshotReportImport } from './routes/ai-snapshot.report'
 import { Route as AiSnapshotGuideImport } from './routes/ai-snapshot.guide'
 import { Route as AiSnapshotDashboardImport } from './routes/ai-snapshot.dashboard'
 import { Route as AiSnapshotComingSoonImport } from './routes/ai-snapshot.coming-soon'
-import { Route as CaseStudiesActivecampaignPdfImport } from './routes/case-studies/activecampaign.pdf'
 
 // Create/Update Routes
 
@@ -150,11 +149,12 @@ const BlogIndexRoute = BlogIndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const CaseStudiesActivecampaignRoute = CaseStudiesActivecampaignImport.update({
-  id: '/case-studies/activecampaign',
-  path: '/case-studies/activecampaign',
-  getParentRoute: () => rootRoute,
-} as any)
+const CaseStudiesAutomatedReportingRoute =
+  CaseStudiesAutomatedReportingImport.update({
+    id: '/case-studies/automated-reporting',
+    path: '/case-studies/automated-reporting',
+    getParentRoute: () => rootRoute,
+  } as any)
 
 const BlogPostIdRoute = BlogPostIdImport.update({
   id: '/blog/$postId',
@@ -191,13 +191,6 @@ const AiSnapshotComingSoonRoute = AiSnapshotComingSoonImport.update({
   path: '/coming-soon',
   getParentRoute: () => AiSnapshotRoute,
 } as any)
-
-const CaseStudiesActivecampaignPdfRoute =
-  CaseStudiesActivecampaignPdfImport.update({
-    id: '/pdf',
-    path: '/pdf',
-    getParentRoute: () => CaseStudiesActivecampaignRoute,
-  } as any)
 
 // Populate the FileRoutesByPath interface
 
@@ -364,11 +357,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogPostIdImport
       parentRoute: typeof rootRoute
     }
-    '/case-studies/activecampaign': {
-      id: '/case-studies/activecampaign'
-      path: '/case-studies/activecampaign'
-      fullPath: '/case-studies/activecampaign'
-      preLoaderRoute: typeof CaseStudiesActivecampaignImport
+    '/case-studies/automated-reporting': {
+      id: '/case-studies/automated-reporting'
+      path: '/case-studies/automated-reporting'
+      fullPath: '/case-studies/automated-reporting'
+      preLoaderRoute: typeof CaseStudiesAutomatedReportingImport
       parentRoute: typeof rootRoute
     }
     '/blog/': {
@@ -377,13 +370,6 @@ declare module '@tanstack/react-router' {
       fullPath: '/blog'
       preLoaderRoute: typeof BlogIndexImport
       parentRoute: typeof rootRoute
-    }
-    '/case-studies/activecampaign/pdf': {
-      id: '/case-studies/activecampaign/pdf'
-      path: '/pdf'
-      fullPath: '/case-studies/activecampaign/pdf'
-      preLoaderRoute: typeof CaseStudiesActivecampaignPdfImport
-      parentRoute: typeof CaseStudiesActivecampaignImport
     }
   }
 }
@@ -410,20 +396,6 @@ const AiSnapshotRouteWithChildren = AiSnapshotRoute._addFileChildren(
   AiSnapshotRouteChildren,
 )
 
-interface CaseStudiesActivecampaignRouteChildren {
-  CaseStudiesActivecampaignPdfRoute: typeof CaseStudiesActivecampaignPdfRoute
-}
-
-const CaseStudiesActivecampaignRouteChildren: CaseStudiesActivecampaignRouteChildren =
-  {
-    CaseStudiesActivecampaignPdfRoute: CaseStudiesActivecampaignPdfRoute,
-  }
-
-const CaseStudiesActivecampaignRouteWithChildren =
-  CaseStudiesActivecampaignRoute._addFileChildren(
-    CaseStudiesActivecampaignRouteChildren,
-  )
-
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/accessibility': typeof AccessibilityRoute
@@ -448,9 +420,8 @@ export interface FileRoutesByFullPath {
   '/ai-snapshot/report': typeof AiSnapshotReportRoute
   '/ai-snapshot/upload': typeof AiSnapshotUploadRoute
   '/blog/$postId': typeof BlogPostIdRoute
-  '/case-studies/activecampaign': typeof CaseStudiesActivecampaignRouteWithChildren
+  '/case-studies/automated-reporting': typeof CaseStudiesAutomatedReportingRoute
   '/blog': typeof BlogIndexRoute
-  '/case-studies/activecampaign/pdf': typeof CaseStudiesActivecampaignPdfRoute
 }
 
 export interface FileRoutesByTo {
@@ -477,9 +448,8 @@ export interface FileRoutesByTo {
   '/ai-snapshot/report': typeof AiSnapshotReportRoute
   '/ai-snapshot/upload': typeof AiSnapshotUploadRoute
   '/blog/$postId': typeof BlogPostIdRoute
-  '/case-studies/activecampaign': typeof CaseStudiesActivecampaignRouteWithChildren
+  '/case-studies/automated-reporting': typeof CaseStudiesAutomatedReportingRoute
   '/blog': typeof BlogIndexRoute
-  '/case-studies/activecampaign/pdf': typeof CaseStudiesActivecampaignPdfRoute
 }
 
 export interface FileRoutesById {
@@ -507,9 +477,8 @@ export interface FileRoutesById {
   '/ai-snapshot/report': typeof AiSnapshotReportRoute
   '/ai-snapshot/upload': typeof AiSnapshotUploadRoute
   '/blog/$postId': typeof BlogPostIdRoute
-  '/case-studies/activecampaign': typeof CaseStudiesActivecampaignRouteWithChildren
+  '/case-studies/automated-reporting': typeof CaseStudiesAutomatedReportingRoute
   '/blog/': typeof BlogIndexRoute
-  '/case-studies/activecampaign/pdf': typeof CaseStudiesActivecampaignPdfRoute
 }
 
 export interface FileRouteTypes {
@@ -538,9 +507,8 @@ export interface FileRouteTypes {
     | '/ai-snapshot/report'
     | '/ai-snapshot/upload'
     | '/blog/$postId'
-    | '/case-studies/activecampaign'
+    | '/case-studies/automated-reporting'
     | '/blog'
-    | '/case-studies/activecampaign/pdf'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -566,9 +534,8 @@ export interface FileRouteTypes {
     | '/ai-snapshot/report'
     | '/ai-snapshot/upload'
     | '/blog/$postId'
-    | '/case-studies/activecampaign'
+    | '/case-studies/automated-reporting'
     | '/blog'
-    | '/case-studies/activecampaign/pdf'
   id:
     | '__root__'
     | '/'
@@ -594,9 +561,8 @@ export interface FileRouteTypes {
     | '/ai-snapshot/report'
     | '/ai-snapshot/upload'
     | '/blog/$postId'
-    | '/case-studies/activecampaign'
+    | '/case-studies/automated-reporting'
     | '/blog/'
-    | '/case-studies/activecampaign/pdf'
   fileRoutesById: FileRoutesById
 }
 
@@ -619,7 +585,7 @@ export interface RootRouteChildren {
   ShopifyProfitRecoveryRoute: typeof ShopifyProfitRecoveryRoute
   SupportRoute: typeof SupportRoute
   BlogPostIdRoute: typeof BlogPostIdRoute
-  CaseStudiesActivecampaignRoute: typeof CaseStudiesActivecampaignRouteWithChildren
+  CaseStudiesAutomatedReportingRoute: typeof CaseStudiesAutomatedReportingRoute
   BlogIndexRoute: typeof BlogIndexRoute
 }
 
@@ -642,7 +608,7 @@ const rootRouteChildren: RootRouteChildren = {
   ShopifyProfitRecoveryRoute: ShopifyProfitRecoveryRoute,
   SupportRoute: SupportRoute,
   BlogPostIdRoute: BlogPostIdRoute,
-  CaseStudiesActivecampaignRoute: CaseStudiesActivecampaignRouteWithChildren,
+  CaseStudiesAutomatedReportingRoute: CaseStudiesAutomatedReportingRoute,
   BlogIndexRoute: BlogIndexRoute,
 }
 
@@ -674,7 +640,7 @@ export const routeTree = rootRoute
         "/shopify-profit-recovery",
         "/support",
         "/blog/$postId",
-        "/case-studies/activecampaign",
+        "/case-studies/automated-reporting",
         "/blog/"
       ]
     },
@@ -759,18 +725,11 @@ export const routeTree = rootRoute
     "/blog/$postId": {
       "filePath": "blog/$postId.tsx"
     },
-    "/case-studies/activecampaign": {
-      "filePath": "case-studies/activecampaign.tsx",
-      "children": [
-        "/case-studies/activecampaign/pdf"
-      ]
+    "/case-studies/automated-reporting": {
+      "filePath": "case-studies/automated-reporting.tsx"
     },
     "/blog/": {
       "filePath": "blog/index.tsx"
-    },
-    "/case-studies/activecampaign/pdf": {
-      "filePath": "case-studies/activecampaign.pdf.tsx",
-      "parent": "/case-studies/activecampaign"
     }
   }
 }
