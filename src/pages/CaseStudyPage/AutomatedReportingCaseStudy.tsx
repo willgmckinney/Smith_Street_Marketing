@@ -87,13 +87,13 @@ const atAGlance = {
   ],
 };
 
-export const ActiveCampaignCaseStudy = () => {
+export const AutomatedReportingCaseStudy = () => {
   return (
     <article className="min-h-screen bg-blueprint-base pt-24">
       <Seo
-        title="ActiveCampaign case study"
-        description="How Smith Avenue Insights turned a 30-hour weekly reporting grind into a daily, automated pipeline for ActiveCampaign: 150 hours recovered, 95% less reporting, zero manual touches."
-        path="/case-studies/activecampaign"
+        title="Automated reporting for marketing analytics & operations case study"
+        description="How Smith Avenue Insights turned a 30-hour weekly reporting grind into a daily, automated pipeline for a leading email marketing platform: 150 hours recovered, 95% less reporting, zero manual touches."
+        path="/case-studies/automated-reporting"
       />
 
       {/* Hero */}
@@ -106,15 +106,9 @@ export const ActiveCampaignCaseStudy = () => {
           >
             ← the work
           </Link>
-          <Link
-            to="/case-studies/activecampaign/pdf"
-            className="mb-cell ml-4 inline-block font-mono text-label-mono lowercase text-chalk/50 transition-colors hover:text-marker-start"
-          >
-            view pdf →
-          </Link>
           <SpecLabel className="mb-cell">case study · analytics & reporting</SpecLabel>
           <p className="mb-3 font-mono text-label-mono lowercase text-chalk/45">
-            ActiveCampaign · email marketing SaaS · marketing analytics & operations
+            Email marketing SaaS · marketing analytics & operations
           </p>
           <h1 className="max-w-4xl font-display text-display-2 font-extrabold leading-[0.95] text-chalk">
             150 hours recovered.
@@ -129,7 +123,7 @@ export const ActiveCampaignCaseStudy = () => {
             className="my-cell max-w-lg"
           />
           <p className="max-w-2xl font-sans text-body text-chalk/70">
-            Smith Avenue Insights partnered with ActiveCampaign to redesign the
+            Smith Avenue Insights partnered with a leading email marketing platform to redesign the
             reporting workflow end to end, removing manual intervention at nearly
             every stage.
           </p>
@@ -235,7 +229,7 @@ export const ActiveCampaignCaseStudy = () => {
           Automated pipelines, a single source of truth
         </h2>
         <p className="mb-2cell max-w-3xl font-sans text-body text-chalk/75">
-          SAI partnered with ActiveCampaign to redesign the reporting workflow
+          SAI redesigned the reporting workflow
           end to end, removing manual intervention at nearly every stage. The
           full implementation was completed in just 2 to 4 weeks.
         </p>
@@ -316,9 +310,7 @@ export const ActiveCampaignCaseStudy = () => {
             work. It's been a meaningful improvement to how we operate."
           </p>
           <footer className="mt-cell font-mono text-label-mono lowercase text-chalk/55">
-            <span className="text-chalk/80">Nick McClanahan</span>
-            <span aria-hidden> · </span>
-            Director of Marketing Analytics & Operations, ActiveCampaign
+            Director of Marketing Analytics & Operations
           </footer>
         </blockquote>
       </div>
