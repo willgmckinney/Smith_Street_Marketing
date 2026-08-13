@@ -209,6 +209,62 @@ export const PartnerApiDiagram = ({ className = "" }: DiagramProps) => {
 };
 
 /**
+ * Multi-source data lakehouse:
+ * source systems → ingestion → governed lakehouse → analytics + applications
+ */
+export const DataLakehouseDiagram = ({ className = "" }: DiagramProps) => {
+  const W = 120;
+  const SRC_H = 44;
+  const OUT_H = 52;
+  const srcX = 10;
+  const ingestX = 180;
+  const lakeX = 350;
+  const outX = 520;
+  const inBus = 155;
+  const outBus = 495;
+  const srcY = [30, 98, 166];
+  const outY = [64, 140];
+  const lakeY = 76;
+  const lakeH = 88;
+  const lakeMid = lakeY + lakeH / 2;
+  const govY = 186;
+  const govH = 44;
+
+  return (
+    <svg viewBox="0 0 650 250" fill="none" className={className} role="img"
+      aria-label="Multi-source data lakehouse: source systems are ingested and normalized into a governed lakehouse on S3 and Redshift, serving analytics and applications, with Lake Formation enforcing field-level access.">
+      <ArrowMarker />
+      {/* sources gather onto a bus, then into ingestion */}
+      {srcY.map((y) => (
+        <line key={y} x1={srcX + W} y1={y + SRC_H / 2} x2={inBus} y2={y + SRC_H / 2} className={linkCls} />
+      ))}
+      <line x1={inBus} y1={srcY[0] + SRC_H / 2} x2={inBus} y2={srcY[2] + SRC_H / 2} className={linkCls} />
+      <HConn x1={inBus} x2={ingestX} y={lakeMid} />
+      <HConn x1={ingestX + W} x2={lakeX} y={lakeMid} />
+
+      {/* lakehouse fans out to consumers, governance applies underneath */}
+      <line x1={lakeX + W} y1={lakeMid} x2={outBus} y2={lakeMid} className={linkCls} />
+      <line x1={outBus} y1={outY[0] + OUT_H / 2} x2={outBus} y2={outY[1] + OUT_H / 2} className={linkCls} />
+      {outY.map((y) => (
+        <HConn key={y} x1={outBus} x2={outX} y={y + OUT_H / 2} />
+      ))}
+      <VConn x={lakeX + W / 2} y1={govY} y2={lakeY + lakeH} />
+
+      <Node x={srcX} y={srcY[0]} w={W} h={SRC_H} label="source systems" sub="apis / databases" />
+      <Node x={srcX} y={srcY[1]} w={W} h={SRC_H} label="event streams" sub="near real time" />
+      <Node x={srcX} y={srcY[2]} w={W} h={SRC_H} label="file transfer" sub="sftp / batch" />
+
+      <Node x={ingestX} y={lakeY + (lakeH - 56) / 2} w={W} h={56} label="ingestion" sub="glue / appflow" />
+      <Node x={lakeX} y={lakeY} w={W} h={lakeH} label="lakehouse" sub="s3 + redshift" accent />
+      <Node x={lakeX} y={govY} w={W} h={govH} label="governance" sub="lake formation" />
+
+      <Node x={outX} y={outY[0]} w={W} h={OUT_H} label="analytics & bi" sub="star schema" />
+      <Node x={outX} y={outY[1]} w={W} h={OUT_H} label="apps & apis" sub="application state" />
+    </svg>
+  );
+};
+
+/**
  * Design-to-production flow: source design built to production screens.
  */
 export const CheckoutFlowDiagram = ({ className = "" }: DiagramProps) => {
