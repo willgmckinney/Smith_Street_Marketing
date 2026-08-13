@@ -30,6 +30,7 @@ import { Route as AccessibilityImport } from './routes/accessibility'
 import { Route as IndexImport } from './routes/index'
 import { Route as SolutionsIndexImport } from './routes/solutions/index'
 import { Route as BlogIndexImport } from './routes/blog/index'
+import { Route as SolutionsSecurePartnerApiPlatformImport } from './routes/solutions/secure-partner-api-platform'
 import { Route as SolutionsAmazonQuickImplementationImport } from './routes/solutions/amazon-quick-implementation'
 import { Route as CaseStudiesAutomatedReportingImport } from './routes/case-studies/automated-reporting'
 import { Route as BlogPostIdImport } from './routes/blog/$postId'
@@ -156,6 +157,13 @@ const BlogIndexRoute = BlogIndexImport.update({
   path: '/blog/',
   getParentRoute: () => rootRoute,
 } as any)
+
+const SolutionsSecurePartnerApiPlatformRoute =
+  SolutionsSecurePartnerApiPlatformImport.update({
+    id: '/solutions/secure-partner-api-platform',
+    path: '/solutions/secure-partner-api-platform',
+    getParentRoute: () => rootRoute,
+  } as any)
 
 const SolutionsAmazonQuickImplementationRoute =
   SolutionsAmazonQuickImplementationImport.update({
@@ -386,6 +394,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SolutionsAmazonQuickImplementationImport
       parentRoute: typeof rootRoute
     }
+    '/solutions/secure-partner-api-platform': {
+      id: '/solutions/secure-partner-api-platform'
+      path: '/solutions/secure-partner-api-platform'
+      fullPath: '/solutions/secure-partner-api-platform'
+      preLoaderRoute: typeof SolutionsSecurePartnerApiPlatformImport
+      parentRoute: typeof rootRoute
+    }
     '/blog/': {
       id: '/blog/'
       path: '/blog'
@@ -451,6 +466,7 @@ export interface FileRoutesByFullPath {
   '/blog/$postId': typeof BlogPostIdRoute
   '/case-studies/automated-reporting': typeof CaseStudiesAutomatedReportingRoute
   '/solutions/amazon-quick-implementation': typeof SolutionsAmazonQuickImplementationRoute
+  '/solutions/secure-partner-api-platform': typeof SolutionsSecurePartnerApiPlatformRoute
   '/blog': typeof BlogIndexRoute
   '/solutions': typeof SolutionsIndexRoute
 }
@@ -481,6 +497,7 @@ export interface FileRoutesByTo {
   '/blog/$postId': typeof BlogPostIdRoute
   '/case-studies/automated-reporting': typeof CaseStudiesAutomatedReportingRoute
   '/solutions/amazon-quick-implementation': typeof SolutionsAmazonQuickImplementationRoute
+  '/solutions/secure-partner-api-platform': typeof SolutionsSecurePartnerApiPlatformRoute
   '/blog': typeof BlogIndexRoute
   '/solutions': typeof SolutionsIndexRoute
 }
@@ -512,6 +529,7 @@ export interface FileRoutesById {
   '/blog/$postId': typeof BlogPostIdRoute
   '/case-studies/automated-reporting': typeof CaseStudiesAutomatedReportingRoute
   '/solutions/amazon-quick-implementation': typeof SolutionsAmazonQuickImplementationRoute
+  '/solutions/secure-partner-api-platform': typeof SolutionsSecurePartnerApiPlatformRoute
   '/blog/': typeof BlogIndexRoute
   '/solutions/': typeof SolutionsIndexRoute
 }
@@ -544,6 +562,7 @@ export interface FileRouteTypes {
     | '/blog/$postId'
     | '/case-studies/automated-reporting'
     | '/solutions/amazon-quick-implementation'
+    | '/solutions/secure-partner-api-platform'
     | '/blog'
     | '/solutions'
   fileRoutesByTo: FileRoutesByTo
@@ -573,6 +592,7 @@ export interface FileRouteTypes {
     | '/blog/$postId'
     | '/case-studies/automated-reporting'
     | '/solutions/amazon-quick-implementation'
+    | '/solutions/secure-partner-api-platform'
     | '/blog'
     | '/solutions'
   id:
@@ -602,6 +622,7 @@ export interface FileRouteTypes {
     | '/blog/$postId'
     | '/case-studies/automated-reporting'
     | '/solutions/amazon-quick-implementation'
+    | '/solutions/secure-partner-api-platform'
     | '/blog/'
     | '/solutions/'
   fileRoutesById: FileRoutesById
@@ -628,6 +649,7 @@ export interface RootRouteChildren {
   BlogPostIdRoute: typeof BlogPostIdRoute
   CaseStudiesAutomatedReportingRoute: typeof CaseStudiesAutomatedReportingRoute
   SolutionsAmazonQuickImplementationRoute: typeof SolutionsAmazonQuickImplementationRoute
+  SolutionsSecurePartnerApiPlatformRoute: typeof SolutionsSecurePartnerApiPlatformRoute
   BlogIndexRoute: typeof BlogIndexRoute
   SolutionsIndexRoute: typeof SolutionsIndexRoute
 }
@@ -654,6 +676,8 @@ const rootRouteChildren: RootRouteChildren = {
   CaseStudiesAutomatedReportingRoute: CaseStudiesAutomatedReportingRoute,
   SolutionsAmazonQuickImplementationRoute:
     SolutionsAmazonQuickImplementationRoute,
+  SolutionsSecurePartnerApiPlatformRoute:
+    SolutionsSecurePartnerApiPlatformRoute,
   BlogIndexRoute: BlogIndexRoute,
   SolutionsIndexRoute: SolutionsIndexRoute,
 }
@@ -688,6 +712,7 @@ export const routeTree = rootRoute
         "/blog/$postId",
         "/case-studies/automated-reporting",
         "/solutions/amazon-quick-implementation",
+        "/solutions/secure-partner-api-platform",
         "/blog/",
         "/solutions/"
       ]
@@ -778,6 +803,9 @@ export const routeTree = rootRoute
     },
     "/solutions/amazon-quick-implementation": {
       "filePath": "solutions/amazon-quick-implementation.tsx"
+    },
+    "/solutions/secure-partner-api-platform": {
+      "filePath": "solutions/secure-partner-api-platform.tsx"
     },
     "/blog/": {
       "filePath": "blog/index.tsx"

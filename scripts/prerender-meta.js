@@ -86,7 +86,7 @@ const staticRoutes = [
     path: "solutions",
     title: "Solutions | Smith Avenue Insights",
     description:
-      "Repeatable AWS offerings from Smith Avenue Insights, built once and deployed consistently: Amazon Quick implementation, rollout, and permissions design.",
+      "Repeatable AWS offerings from Smith Avenue Insights, built once and deployed consistently: Amazon Quick rollouts and secure partner API platforms.",
   },
   {
     path: "solutions/amazon-quick-implementation",
@@ -94,6 +94,13 @@ const staticRoutes = [
       "Amazon Quick Implementation and Organization-Wide Rollout | Smith Avenue Insights",
     description:
       "Amazon Quick implementation for BI, agentic AI analytics, ad hoc reporting, embedded delivery, and permissions, rolled out by Smith Avenue Insights.",
+  },
+  {
+    path: "solutions/secure-partner-api-platform",
+    title:
+      "Secure Partner API Platform: Build and Production Launch on AWS | Smith Avenue Insights",
+    description:
+      "Secure, production-grade partner API builds on AWS, covering infrastructure, authentication, zero-downtime launch, and cost governance.",
   },
   {
     path: "case-studies/automated-reporting",
