@@ -1,6 +1,7 @@
 import { AssetFrame } from "../../components/Blueprint/AssetFrame";
 import {
   AmazonQuickDiagram,
+  DataLakehouseDiagram,
   PartnerApiDiagram,
 } from "../../components/Blueprint/ArchitectureDiagrams";
 import { BlueprintGrid } from "../../components/Blueprint/BlueprintGrid";
@@ -50,6 +51,27 @@ const solutions: SolutionData[] = [
     caption: "partner api platform",
     asset: <PartnerApiDiagram className="w-full max-w-md mx-auto" />,
   },
+  {
+    index: 3,
+    category: "data & analytics",
+    title:
+      "Multi-Source Data Lakehouse: Ingestion, Governance, and Analytics on AWS",
+    includes:
+      "Multi-source ingestion, medallion-architecture storage, field-level governance, and analytics-ready modeling.",
+    delivery: "Professional services",
+    services: [
+      "s3",
+      "redshift",
+      "rds",
+      "opensearch",
+      "elasticache",
+      "lake formation",
+    ],
+    to: "/solutions/data-lakehouse",
+    figure: 3,
+    caption: "lakehouse data flow",
+    asset: <DataLakehouseDiagram className="w-full" />,
+  },
 ];
 
 export const SolutionsPage = () => {
@@ -57,7 +79,7 @@ export const SolutionsPage = () => {
     <div className="min-h-screen bg-blueprint-base pt-24">
       <Seo
         title="Solutions"
-        description="Repeatable AWS offerings from Smith Avenue Insights, built once and deployed consistently: Amazon Quick rollouts and secure partner API platforms."
+        description="Repeatable AWS offerings from Smith Avenue Insights: Amazon Quick rollouts, secure partner API platforms, and governed data lakehouses."
         path="/solutions"
       />
 

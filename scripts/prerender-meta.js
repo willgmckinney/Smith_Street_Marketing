@@ -86,7 +86,7 @@ const staticRoutes = [
     path: "solutions",
     title: "Solutions | Smith Avenue Insights",
     description:
-      "Repeatable AWS offerings from Smith Avenue Insights, built once and deployed consistently: Amazon Quick rollouts and secure partner API platforms.",
+      "Repeatable AWS offerings from Smith Avenue Insights: Amazon Quick rollouts, secure partner API platforms, and governed data lakehouses.",
   },
   {
     path: "solutions/amazon-quick-implementation",
@@ -101,6 +101,13 @@ const staticRoutes = [
       "Secure Partner API Platform: Build and Production Launch on AWS | Smith Avenue Insights",
     description:
       "Secure, production-grade partner API builds on AWS, covering infrastructure, authentication, zero-downtime launch, and cost governance.",
+  },
+  {
+    path: "solutions/data-lakehouse",
+    title:
+      "Multi-Source Data Lakehouse: Ingestion, Governance, and Analytics on AWS | Smith Avenue Insights",
+    description:
+      "Governed data lakehouse builds on AWS: multi-source ingestion, medallion-architecture storage, field-level governance, and analytics-ready modeling.",
   },
   {
     path: "case-studies/automated-reporting",
