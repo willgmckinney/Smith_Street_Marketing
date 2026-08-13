@@ -31,6 +31,7 @@ import { quickEmbedRoute } from "./routes/quick-embed";
 import { automatedReportingCaseStudyRoute } from "./routes/case-studies/automated-reporting";
 import { solutionsRoute } from "./routes/solutions";
 import { amazonQuickImplementationRoute } from "./routes/solutions/amazon-quick-implementation";
+import { securePartnerApiPlatformRoute } from "./routes/solutions/secure-partner-api-platform";
 
 const routeTree = rootRoute.addChildren([
   indexRoute,
@@ -40,6 +41,7 @@ const routeTree = rootRoute.addChildren([
   portfolioRoute,
   solutionsRoute,
   amazonQuickImplementationRoute,
+  securePartnerApiPlatformRoute,
   constructionDashboardRoute,
   realEstateDashboardRoute,
   securitySchedulingDashboardRoute,

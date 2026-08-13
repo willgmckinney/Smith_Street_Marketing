@@ -1,5 +1,8 @@
 import { AssetFrame } from "../../components/Blueprint/AssetFrame";
-import { AmazonQuickDiagram } from "../../components/Blueprint/ArchitectureDiagrams";
+import {
+  AmazonQuickDiagram,
+  PartnerApiDiagram,
+} from "../../components/Blueprint/ArchitectureDiagrams";
 import { BlueprintGrid } from "../../components/Blueprint/BlueprintGrid";
 import { CtaSection } from "../../components/Blueprint/CtaSection";
 import { DimensionLine } from "../../components/Blueprint/DimensionLine";
@@ -27,6 +30,26 @@ const solutions: SolutionData[] = [
     caption: "amazon quick data flow",
     asset: <AmazonQuickDiagram className="w-full" />,
   },
+  {
+    index: 2,
+    category: "cloud architecture",
+    title: "Secure Partner API Platform: Build and Production Launch on AWS",
+    includes:
+      "Infrastructure build, authentication and rate limiting, production cutover, and cost governance.",
+    delivery: "Professional services",
+    services: [
+      "ecs fargate",
+      "rds",
+      "elasticache",
+      "aws waf",
+      "secrets manager",
+      "aws cdk",
+    ],
+    to: "/solutions/secure-partner-api-platform",
+    figure: 2,
+    caption: "partner api platform",
+    asset: <PartnerApiDiagram className="w-full max-w-md mx-auto" />,
+  },
 ];
 
 export const SolutionsPage = () => {
@@ -34,7 +57,7 @@ export const SolutionsPage = () => {
     <div className="min-h-screen bg-blueprint-base pt-24">
       <Seo
         title="Solutions"
-        description="Repeatable AWS offerings from Smith Avenue Insights, built once and deployed consistently: Amazon Quick implementation, rollout, and permissions design."
+        description="Repeatable AWS offerings from Smith Avenue Insights, built once and deployed consistently: Amazon Quick rollouts and secure partner API platforms."
         path="/solutions"
       />
 
