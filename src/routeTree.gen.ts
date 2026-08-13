@@ -31,6 +31,7 @@ import { Route as IndexImport } from './routes/index'
 import { Route as SolutionsIndexImport } from './routes/solutions/index'
 import { Route as BlogIndexImport } from './routes/blog/index'
 import { Route as SolutionsSecurePartnerApiPlatformImport } from './routes/solutions/secure-partner-api-platform'
+import { Route as SolutionsDataLakehouseImport } from './routes/solutions/data-lakehouse'
 import { Route as SolutionsAmazonQuickImplementationImport } from './routes/solutions/amazon-quick-implementation'
 import { Route as CaseStudiesAutomatedReportingImport } from './routes/case-studies/automated-reporting'
 import { Route as BlogPostIdImport } from './routes/blog/$postId'
@@ -164,6 +165,12 @@ const SolutionsSecurePartnerApiPlatformRoute =
     path: '/solutions/secure-partner-api-platform',
     getParentRoute: () => rootRoute,
   } as any)
+
+const SolutionsDataLakehouseRoute = SolutionsDataLakehouseImport.update({
+  id: '/solutions/data-lakehouse',
+  path: '/solutions/data-lakehouse',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const SolutionsAmazonQuickImplementationRoute =
   SolutionsAmazonQuickImplementationImport.update({
@@ -394,6 +401,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SolutionsAmazonQuickImplementationImport
       parentRoute: typeof rootRoute
     }
+    '/solutions/data-lakehouse': {
+      id: '/solutions/data-lakehouse'
+      path: '/solutions/data-lakehouse'
+      fullPath: '/solutions/data-lakehouse'
+      preLoaderRoute: typeof SolutionsDataLakehouseImport
+      parentRoute: typeof rootRoute
+    }
     '/solutions/secure-partner-api-platform': {
       id: '/solutions/secure-partner-api-platform'
       path: '/solutions/secure-partner-api-platform'
@@ -466,6 +480,7 @@ export interface FileRoutesByFullPath {
   '/blog/$postId': typeof BlogPostIdRoute
   '/case-studies/automated-reporting': typeof CaseStudiesAutomatedReportingRoute
   '/solutions/amazon-quick-implementation': typeof SolutionsAmazonQuickImplementationRoute
+  '/solutions/data-lakehouse': typeof SolutionsDataLakehouseRoute
   '/solutions/secure-partner-api-platform': typeof SolutionsSecurePartnerApiPlatformRoute
   '/blog': typeof BlogIndexRoute
   '/solutions': typeof SolutionsIndexRoute
@@ -497,6 +512,7 @@ export interface FileRoutesByTo {
   '/blog/$postId': typeof BlogPostIdRoute
   '/case-studies/automated-reporting': typeof CaseStudiesAutomatedReportingRoute
   '/solutions/amazon-quick-implementation': typeof SolutionsAmazonQuickImplementationRoute
+  '/solutions/data-lakehouse': typeof SolutionsDataLakehouseRoute
   '/solutions/secure-partner-api-platform': typeof SolutionsSecurePartnerApiPlatformRoute
   '/blog': typeof BlogIndexRoute
   '/solutions': typeof SolutionsIndexRoute
@@ -529,6 +545,7 @@ export interface FileRoutesById {
   '/blog/$postId': typeof BlogPostIdRoute
   '/case-studies/automated-reporting': typeof CaseStudiesAutomatedReportingRoute
   '/solutions/amazon-quick-implementation': typeof SolutionsAmazonQuickImplementationRoute
+  '/solutions/data-lakehouse': typeof SolutionsDataLakehouseRoute
   '/solutions/secure-partner-api-platform': typeof SolutionsSecurePartnerApiPlatformRoute
   '/blog/': typeof BlogIndexRoute
   '/solutions/': typeof SolutionsIndexRoute
@@ -562,6 +579,7 @@ export interface FileRouteTypes {
     | '/blog/$postId'
     | '/case-studies/automated-reporting'
     | '/solutions/amazon-quick-implementation'
+    | '/solutions/data-lakehouse'
     | '/solutions/secure-partner-api-platform'
     | '/blog'
     | '/solutions'
@@ -592,6 +610,7 @@ export interface FileRouteTypes {
     | '/blog/$postId'
     | '/case-studies/automated-reporting'
     | '/solutions/amazon-quick-implementation'
+    | '/solutions/data-lakehouse'
     | '/solutions/secure-partner-api-platform'
     | '/blog'
     | '/solutions'
@@ -622,6 +641,7 @@ export interface FileRouteTypes {
     | '/blog/$postId'
     | '/case-studies/automated-reporting'
     | '/solutions/amazon-quick-implementation'
+    | '/solutions/data-lakehouse'
     | '/solutions/secure-partner-api-platform'
     | '/blog/'
     | '/solutions/'
@@ -649,6 +669,7 @@ export interface RootRouteChildren {
   BlogPostIdRoute: typeof BlogPostIdRoute
   CaseStudiesAutomatedReportingRoute: typeof CaseStudiesAutomatedReportingRoute
   SolutionsAmazonQuickImplementationRoute: typeof SolutionsAmazonQuickImplementationRoute
+  SolutionsDataLakehouseRoute: typeof SolutionsDataLakehouseRoute
   SolutionsSecurePartnerApiPlatformRoute: typeof SolutionsSecurePartnerApiPlatformRoute
   BlogIndexRoute: typeof BlogIndexRoute
   SolutionsIndexRoute: typeof SolutionsIndexRoute
@@ -676,6 +697,7 @@ const rootRouteChildren: RootRouteChildren = {
   CaseStudiesAutomatedReportingRoute: CaseStudiesAutomatedReportingRoute,
   SolutionsAmazonQuickImplementationRoute:
     SolutionsAmazonQuickImplementationRoute,
+  SolutionsDataLakehouseRoute: SolutionsDataLakehouseRoute,
   SolutionsSecurePartnerApiPlatformRoute:
     SolutionsSecurePartnerApiPlatformRoute,
   BlogIndexRoute: BlogIndexRoute,
@@ -712,6 +734,7 @@ export const routeTree = rootRoute
         "/blog/$postId",
         "/case-studies/automated-reporting",
         "/solutions/amazon-quick-implementation",
+        "/solutions/data-lakehouse",
         "/solutions/secure-partner-api-platform",
         "/blog/",
         "/solutions/"
@@ -803,6 +826,9 @@ export const routeTree = rootRoute
     },
     "/solutions/amazon-quick-implementation": {
       "filePath": "solutions/amazon-quick-implementation.tsx"
+    },
+    "/solutions/data-lakehouse": {
+      "filePath": "solutions/data-lakehouse.tsx"
     },
     "/solutions/secure-partner-api-platform": {
       "filePath": "solutions/secure-partner-api-platform.tsx"

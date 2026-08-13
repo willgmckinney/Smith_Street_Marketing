@@ -32,6 +32,7 @@ import { automatedReportingCaseStudyRoute } from "./routes/case-studies/automate
 import { solutionsRoute } from "./routes/solutions";
 import { amazonQuickImplementationRoute } from "./routes/solutions/amazon-quick-implementation";
 import { securePartnerApiPlatformRoute } from "./routes/solutions/secure-partner-api-platform";
+import { dataLakehouseRoute } from "./routes/solutions/data-lakehouse";
 
 const routeTree = rootRoute.addChildren([
   indexRoute,
@@ -42,6 +43,7 @@ const routeTree = rootRoute.addChildren([
   solutionsRoute,
   amazonQuickImplementationRoute,
   securePartnerApiPlatformRoute,
+  dataLakehouseRoute,
   constructionDashboardRoute,
   realEstateDashboardRoute,
   securitySchedulingDashboardRoute,
