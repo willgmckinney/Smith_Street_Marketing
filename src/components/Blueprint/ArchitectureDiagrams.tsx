@@ -173,6 +173,42 @@ export const AmazonQuickDiagram = ({ className = "" }: DiagramProps) => {
 };
 
 /**
+ * Secure partner API platform:
+ * internal platform → api layer → partner, with edge security above and
+ * auth / rate limiting below
+ */
+export const PartnerApiDiagram = ({ className = "" }: DiagramProps) => {
+  const W = 130;
+  const NH = 56;
+  const SH = 46;
+  const mainX = [10, 180, 350];
+  const mainY = 90;
+  const midY = mainY + NH / 2;
+  const centerX = mainX[1] + W / 2;
+  const edgeY = 20;
+  const authY = 166;
+
+  return (
+    <svg viewBox="0 0 490 232" fill="none" className={className} role="img"
+      aria-label="Secure partner API platform: an internal platform served through an API layer to an external partner, with edge security and per-client authentication and rate limits applied at the API layer.">
+      <ArrowMarker />
+      <HConn x1={mainX[0] + W} x2={mainX[1]} y={midY} />
+      <HConn x1={mainX[1] + W} x2={mainX[2]} y={midY} />
+      {/* edge security in front of the api, auth and limits enforced at it */}
+      <VConn x={centerX} y1={edgeY + SH} y2={mainY} />
+      <VConn x={centerX} y1={authY} y2={mainY + NH} />
+
+      <Node x={mainX[1]} y={edgeY} w={W} h={SH} label="waf / tls" sub="edge security" />
+      <Node x={mainX[1]} y={authY} w={W} h={SH} label="auth + limits" sub="oauth 2.0 / api keys" />
+
+      <Node x={mainX[0]} y={mainY} w={W} h={NH} label="internal platform" sub="data & services" />
+      <Node x={mainX[1]} y={mainY} w={W} h={NH} label="api layer" sub="ecs fargate" accent />
+      <Node x={mainX[2]} y={mainY} w={W} h={NH} label="partner" sub="external integration" />
+    </svg>
+  );
+};
+
+/**
  * Design-to-production flow: source design built to production screens.
  */
 export const CheckoutFlowDiagram = ({ className = "" }: DiagramProps) => {
