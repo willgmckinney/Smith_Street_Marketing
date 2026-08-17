@@ -86,7 +86,7 @@ const staticRoutes = [
     path: "solutions",
     title: "Solutions | Smith Avenue Insights",
     description:
-      "Repeatable AWS offerings from Smith Avenue Insights: Amazon Quick rollouts, secure partner API platforms, and governed data lakehouses.",
+      "Repeatable AWS offerings from Smith Avenue Insights: Amazon Quick rollouts, partner APIs, data lakehouses, custom applications, and AI agent connectors.",
   },
   {
     path: "solutions/amazon-quick-implementation",
@@ -108,6 +108,20 @@ const staticRoutes = [
       "Multi-Source Data Lakehouse: Ingestion, Governance, and Analytics on AWS | Smith Avenue Insights",
     description:
       "Governed data lakehouse builds on AWS: multi-source ingestion, medallion-architecture storage, field-level governance, and analytics-ready modeling.",
+  },
+  {
+    path: "solutions/custom-application-development",
+    title:
+      "Custom Application Development and Deployment on AWS | Smith Avenue Insights",
+    description:
+      "Custom application development on AWS: front-end and API architecture, federated authentication, permissions, and phased organization-wide rollout.",
+  },
+  {
+    path: "solutions/custom-ai-agent-connectors",
+    title:
+      "Custom AI Agent Connectors: Secure System Access for Amazon Quick | Smith Avenue Insights",
+    description:
+      "Custom AI agent connectors for Amazon Quick, giving agents secure, governed access to real business systems through a repeatable architecture.",
   },
   {
     path: "case-studies/automated-reporting",
