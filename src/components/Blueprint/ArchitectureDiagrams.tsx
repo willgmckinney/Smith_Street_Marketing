@@ -265,6 +265,104 @@ export const DataLakehouseDiagram = ({ className = "" }: DiagramProps) => {
 };
 
 /**
+ * Custom application build:
+ * react front end → api layer → workflows + embedded analytics, with federated
+ * identity above and role-based access below
+ */
+export const CustomApplicationDiagram = ({ className = "" }: DiagramProps) => {
+  const W = 130;
+  const NH = 56;
+  const SH = 46;
+  const OUT_H = 52;
+  const frontX = 10;
+  const apiX = 180;
+  const outX = 400;
+  const outBus = 355;
+  const mainY = 90;
+  const midY = mainY + NH / 2;
+  const centerX = apiX + W / 2;
+  const idY = 20;
+  const accessY = 166;
+  const outY = [62, 138];
+
+  return (
+    <svg viewBox="0 0 540 232" fill="none" className={className} role="img"
+      aria-label="Custom application build: a React front end served through CloudFront calls an API layer that drives approval workflows and embedded dashboards, with federated single sign-on and role-based access enforced at the API.">
+      <ArrowMarker />
+      <HConn x1={frontX + W} x2={apiX} y={midY} />
+      {/* identity in front of the api, access control enforced at it */}
+      <VConn x={centerX} y1={idY + SH} y2={mainY} />
+      <VConn x={centerX} y1={accessY} y2={mainY + NH} />
+      {/* api fans out to the write-back and reporting surfaces */}
+      <line x1={apiX + W} y1={midY} x2={outBus} y2={midY} className={linkCls} />
+      <line x1={outBus} y1={outY[0] + OUT_H / 2} x2={outBus} y2={outY[1] + OUT_H / 2} className={linkCls} />
+      {outY.map((y) => (
+        <HConn key={y} x1={outBus} x2={outX} y={y + OUT_H / 2} />
+      ))}
+
+      <Node x={apiX} y={idY} w={W} h={SH} label="cognito" sub="federated sso" />
+      <Node x={apiX} y={accessY} w={W} h={SH} label="roles + masking" sub="field-level access" />
+
+      <Node x={frontX} y={mainY} w={W} h={NH} label="react front end" sub="s3 + cloudfront" />
+      <Node x={apiX} y={mainY} w={W} h={NH} label="api layer" sub="gateway / fargate" accent />
+
+      <Node x={outX} y={outY[0]} w={W} h={OUT_H} label="step functions" sub="approval workflows" />
+      <Node x={outX} y={outY[1]} w={W} h={OUT_H} label="embedded bi" sub="scoped dashboards" />
+    </svg>
+  );
+};
+
+/**
+ * Custom AI agent connector:
+ * agent → api gateway → translation layer → target systems, with the openapi
+ * contract above and read/write separation below
+ */
+export const AgentConnectorDiagram = ({ className = "" }: DiagramProps) => {
+  const W = 120;
+  const NH = 56;
+  const SH = 46;
+  const OUT_H = 52;
+  const agentX = 10;
+  const gatewayX = 175;
+  const computeX = 340;
+  const outX = 520;
+  const outBus = 490;
+  const mainY = 90;
+  const midY = mainY + NH / 2;
+  const specY = 20;
+  const splitY = 166;
+  const outY = [62, 138];
+
+  return (
+    <svg viewBox="0 0 650 232" fill="none" className={className} role="img"
+      aria-label="Custom AI agent connector: an agent request passes through an API gateway to a translation layer that calls target systems natively, with an OpenAPI contract defining every action and read and write actions built as separate connectors.">
+      <ArrowMarker />
+      <HConn x1={agentX + W} x2={gatewayX} y={midY} />
+      <HConn x1={gatewayX + W} x2={computeX} y={midY} />
+      {/* the spec defines what the gateway exposes, reads and writes stay split */}
+      <VConn x={gatewayX + W / 2} y1={specY + SH} y2={mainY} />
+      <VConn x={computeX + W / 2} y1={splitY} y2={mainY + NH} />
+      {/* translation layer calls each target system natively */}
+      <line x1={computeX + W} y1={midY} x2={outBus} y2={midY} className={linkCls} />
+      <line x1={outBus} y1={outY[0] + OUT_H / 2} x2={outBus} y2={outY[1] + OUT_H / 2} className={linkCls} />
+      {outY.map((y) => (
+        <HConn key={y} x1={outBus} x2={outX} y={y + OUT_H / 2} />
+      ))}
+
+      <Node x={gatewayX} y={specY} w={W} h={SH} label="openapi spec" sub="explicit actions" />
+      <Node x={computeX} y={splitY} w={W} h={SH} label="read / write" sub="split connectors" />
+
+      <Node x={agentX} y={mainY} w={W} h={NH} label="quick agent" sub="plain-language ask" />
+      <Node x={gatewayX} y={mainY} w={W} h={NH} label="api gateway" sub="routing / limits" />
+      <Node x={computeX} y={mainY} w={W} h={NH} label="lambda" sub="translation layer" accent />
+
+      <Node x={outX} y={outY[0]} w={W} h={OUT_H} label="system of record" sub="hr / payroll" />
+      <Node x={outX} y={outY[1]} w={W} h={OUT_H} label="internal tools" sub="tickets / expenses" />
+    </svg>
+  );
+};
+
+/**
  * Design-to-production flow: source design built to production screens.
  */
 export const CheckoutFlowDiagram = ({ className = "" }: DiagramProps) => {

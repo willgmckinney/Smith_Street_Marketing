@@ -32,6 +32,8 @@ import { Route as SolutionsIndexImport } from './routes/solutions/index'
 import { Route as BlogIndexImport } from './routes/blog/index'
 import { Route as SolutionsSecurePartnerApiPlatformImport } from './routes/solutions/secure-partner-api-platform'
 import { Route as SolutionsDataLakehouseImport } from './routes/solutions/data-lakehouse'
+import { Route as SolutionsCustomApplicationDevelopmentImport } from './routes/solutions/custom-application-development'
+import { Route as SolutionsCustomAiAgentConnectorsImport } from './routes/solutions/custom-ai-agent-connectors'
 import { Route as SolutionsAmazonQuickImplementationImport } from './routes/solutions/amazon-quick-implementation'
 import { Route as CaseStudiesAutomatedReportingImport } from './routes/case-studies/automated-reporting'
 import { Route as BlogPostIdImport } from './routes/blog/$postId'
@@ -171,6 +173,20 @@ const SolutionsDataLakehouseRoute = SolutionsDataLakehouseImport.update({
   path: '/solutions/data-lakehouse',
   getParentRoute: () => rootRoute,
 } as any)
+
+const SolutionsCustomApplicationDevelopmentRoute =
+  SolutionsCustomApplicationDevelopmentImport.update({
+    id: '/solutions/custom-application-development',
+    path: '/solutions/custom-application-development',
+    getParentRoute: () => rootRoute,
+  } as any)
+
+const SolutionsCustomAiAgentConnectorsRoute =
+  SolutionsCustomAiAgentConnectorsImport.update({
+    id: '/solutions/custom-ai-agent-connectors',
+    path: '/solutions/custom-ai-agent-connectors',
+    getParentRoute: () => rootRoute,
+  } as any)
 
 const SolutionsAmazonQuickImplementationRoute =
   SolutionsAmazonQuickImplementationImport.update({
@@ -401,6 +417,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SolutionsAmazonQuickImplementationImport
       parentRoute: typeof rootRoute
     }
+    '/solutions/custom-ai-agent-connectors': {
+      id: '/solutions/custom-ai-agent-connectors'
+      path: '/solutions/custom-ai-agent-connectors'
+      fullPath: '/solutions/custom-ai-agent-connectors'
+      preLoaderRoute: typeof SolutionsCustomAiAgentConnectorsImport
+      parentRoute: typeof rootRoute
+    }
+    '/solutions/custom-application-development': {
+      id: '/solutions/custom-application-development'
+      path: '/solutions/custom-application-development'
+      fullPath: '/solutions/custom-application-development'
+      preLoaderRoute: typeof SolutionsCustomApplicationDevelopmentImport
+      parentRoute: typeof rootRoute
+    }
     '/solutions/data-lakehouse': {
       id: '/solutions/data-lakehouse'
       path: '/solutions/data-lakehouse'
@@ -480,6 +510,8 @@ export interface FileRoutesByFullPath {
   '/blog/$postId': typeof BlogPostIdRoute
   '/case-studies/automated-reporting': typeof CaseStudiesAutomatedReportingRoute
   '/solutions/amazon-quick-implementation': typeof SolutionsAmazonQuickImplementationRoute
+  '/solutions/custom-ai-agent-connectors': typeof SolutionsCustomAiAgentConnectorsRoute
+  '/solutions/custom-application-development': typeof SolutionsCustomApplicationDevelopmentRoute
   '/solutions/data-lakehouse': typeof SolutionsDataLakehouseRoute
   '/solutions/secure-partner-api-platform': typeof SolutionsSecurePartnerApiPlatformRoute
   '/blog': typeof BlogIndexRoute
@@ -512,6 +544,8 @@ export interface FileRoutesByTo {
   '/blog/$postId': typeof BlogPostIdRoute
   '/case-studies/automated-reporting': typeof CaseStudiesAutomatedReportingRoute
   '/solutions/amazon-quick-implementation': typeof SolutionsAmazonQuickImplementationRoute
+  '/solutions/custom-ai-agent-connectors': typeof SolutionsCustomAiAgentConnectorsRoute
+  '/solutions/custom-application-development': typeof SolutionsCustomApplicationDevelopmentRoute
   '/solutions/data-lakehouse': typeof SolutionsDataLakehouseRoute
   '/solutions/secure-partner-api-platform': typeof SolutionsSecurePartnerApiPlatformRoute
   '/blog': typeof BlogIndexRoute
@@ -545,6 +579,8 @@ export interface FileRoutesById {
   '/blog/$postId': typeof BlogPostIdRoute
   '/case-studies/automated-reporting': typeof CaseStudiesAutomatedReportingRoute
   '/solutions/amazon-quick-implementation': typeof SolutionsAmazonQuickImplementationRoute
+  '/solutions/custom-ai-agent-connectors': typeof SolutionsCustomAiAgentConnectorsRoute
+  '/solutions/custom-application-development': typeof SolutionsCustomApplicationDevelopmentRoute
   '/solutions/data-lakehouse': typeof SolutionsDataLakehouseRoute
   '/solutions/secure-partner-api-platform': typeof SolutionsSecurePartnerApiPlatformRoute
   '/blog/': typeof BlogIndexRoute
@@ -579,6 +615,8 @@ export interface FileRouteTypes {
     | '/blog/$postId'
     | '/case-studies/automated-reporting'
     | '/solutions/amazon-quick-implementation'
+    | '/solutions/custom-ai-agent-connectors'
+    | '/solutions/custom-application-development'
     | '/solutions/data-lakehouse'
     | '/solutions/secure-partner-api-platform'
     | '/blog'
@@ -610,6 +648,8 @@ export interface FileRouteTypes {
     | '/blog/$postId'
     | '/case-studies/automated-reporting'
     | '/solutions/amazon-quick-implementation'
+    | '/solutions/custom-ai-agent-connectors'
+    | '/solutions/custom-application-development'
     | '/solutions/data-lakehouse'
     | '/solutions/secure-partner-api-platform'
     | '/blog'
@@ -641,6 +681,8 @@ export interface FileRouteTypes {
     | '/blog/$postId'
     | '/case-studies/automated-reporting'
     | '/solutions/amazon-quick-implementation'
+    | '/solutions/custom-ai-agent-connectors'
+    | '/solutions/custom-application-development'
     | '/solutions/data-lakehouse'
     | '/solutions/secure-partner-api-platform'
     | '/blog/'
@@ -669,6 +711,8 @@ export interface RootRouteChildren {
   BlogPostIdRoute: typeof BlogPostIdRoute
   CaseStudiesAutomatedReportingRoute: typeof CaseStudiesAutomatedReportingRoute
   SolutionsAmazonQuickImplementationRoute: typeof SolutionsAmazonQuickImplementationRoute
+  SolutionsCustomAiAgentConnectorsRoute: typeof SolutionsCustomAiAgentConnectorsRoute
+  SolutionsCustomApplicationDevelopmentRoute: typeof SolutionsCustomApplicationDevelopmentRoute
   SolutionsDataLakehouseRoute: typeof SolutionsDataLakehouseRoute
   SolutionsSecurePartnerApiPlatformRoute: typeof SolutionsSecurePartnerApiPlatformRoute
   BlogIndexRoute: typeof BlogIndexRoute
@@ -697,6 +741,9 @@ const rootRouteChildren: RootRouteChildren = {
   CaseStudiesAutomatedReportingRoute: CaseStudiesAutomatedReportingRoute,
   SolutionsAmazonQuickImplementationRoute:
     SolutionsAmazonQuickImplementationRoute,
+  SolutionsCustomAiAgentConnectorsRoute: SolutionsCustomAiAgentConnectorsRoute,
+  SolutionsCustomApplicationDevelopmentRoute:
+    SolutionsCustomApplicationDevelopmentRoute,
   SolutionsDataLakehouseRoute: SolutionsDataLakehouseRoute,
   SolutionsSecurePartnerApiPlatformRoute:
     SolutionsSecurePartnerApiPlatformRoute,
@@ -734,6 +781,8 @@ export const routeTree = rootRoute
         "/blog/$postId",
         "/case-studies/automated-reporting",
         "/solutions/amazon-quick-implementation",
+        "/solutions/custom-ai-agent-connectors",
+        "/solutions/custom-application-development",
         "/solutions/data-lakehouse",
         "/solutions/secure-partner-api-platform",
         "/blog/",
@@ -826,6 +875,12 @@ export const routeTree = rootRoute
     },
     "/solutions/amazon-quick-implementation": {
       "filePath": "solutions/amazon-quick-implementation.tsx"
+    },
+    "/solutions/custom-ai-agent-connectors": {
+      "filePath": "solutions/custom-ai-agent-connectors.tsx"
+    },
+    "/solutions/custom-application-development": {
+      "filePath": "solutions/custom-application-development.tsx"
     },
     "/solutions/data-lakehouse": {
       "filePath": "solutions/data-lakehouse.tsx"
