@@ -1,6 +1,8 @@
 import { AssetFrame } from "../../components/Blueprint/AssetFrame";
 import {
+  AgentConnectorDiagram,
   AmazonQuickDiagram,
+  CustomApplicationDiagram,
   DataLakehouseDiagram,
   PartnerApiDiagram,
 } from "../../components/Blueprint/ArchitectureDiagrams";
@@ -72,6 +74,39 @@ const solutions: SolutionData[] = [
     caption: "lakehouse data flow",
     asset: <DataLakehouseDiagram className="w-full" />,
   },
+  {
+    index: 4,
+    category: "application development",
+    title: "Custom Application Development and Deployment on AWS",
+    includes:
+      "Front-end and API build, federated authentication, permissions, and phased rollout.",
+    delivery: "Professional services",
+    services: [
+      "s3",
+      "cloudfront",
+      "api gateway",
+      "lambda",
+      "ecs fargate",
+      "cognito",
+    ],
+    to: "/solutions/custom-application-development",
+    figure: 4,
+    caption: "application architecture",
+    asset: <CustomApplicationDiagram className="w-full max-w-lg mx-auto" />,
+  },
+  {
+    index: 5,
+    category: "data & analytics · ai agents",
+    title: "Custom AI Agent Connectors: Secure System Access for Amazon Quick",
+    includes:
+      "Connector architecture, OpenAPI specs, authentication design, and governed access for AI agents.",
+    delivery: "Professional services",
+    services: ["amazon quick", "amazon api gateway", "aws lambda"],
+    to: "/solutions/custom-ai-agent-connectors",
+    figure: 5,
+    caption: "agent connector flow",
+    asset: <AgentConnectorDiagram className="w-full" />,
+  },
 ];
 
 export const SolutionsPage = () => {
@@ -79,7 +114,7 @@ export const SolutionsPage = () => {
     <div className="min-h-screen bg-blueprint-base pt-24">
       <Seo
         title="Solutions"
-        description="Repeatable AWS offerings from Smith Avenue Insights: Amazon Quick rollouts, secure partner API platforms, and governed data lakehouses."
+        description="Repeatable AWS offerings from Smith Avenue Insights: Amazon Quick rollouts, partner APIs, data lakehouses, custom applications, and AI agent connectors."
         path="/solutions"
       />
 
