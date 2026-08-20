@@ -35,6 +35,7 @@ import { securePartnerApiPlatformRoute } from "./routes/solutions/secure-partner
 import { dataLakehouseRoute } from "./routes/solutions/data-lakehouse";
 import { customApplicationDevelopmentRoute } from "./routes/solutions/custom-application-development";
 import { customAiAgentConnectorsRoute } from "./routes/solutions/custom-ai-agent-connectors";
+import { amazonConnectAnalyticsRoute } from "./routes/solutions/amazon-connect-analytics";
 
 const routeTree = rootRoute.addChildren([
   indexRoute,
@@ -48,6 +49,7 @@ const routeTree = rootRoute.addChildren([
   dataLakehouseRoute,
   customApplicationDevelopmentRoute,
   customAiAgentConnectorsRoute,
+  amazonConnectAnalyticsRoute,
   constructionDashboardRoute,
   realEstateDashboardRoute,
   securitySchedulingDashboardRoute,

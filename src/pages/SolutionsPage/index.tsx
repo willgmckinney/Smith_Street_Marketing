@@ -2,6 +2,7 @@ import { AssetFrame } from "../../components/Blueprint/AssetFrame";
 import {
   AgentConnectorDiagram,
   AmazonQuickDiagram,
+  ConnectAnalyticsDiagram,
   CustomApplicationDiagram,
   DataLakehouseDiagram,
   PartnerApiDiagram,
@@ -106,6 +107,27 @@ const solutions: SolutionData[] = [
     figure: 5,
     caption: "agent connector flow",
     asset: <AgentConnectorDiagram className="w-full" />,
+  },
+  {
+    index: 6,
+    category: "data & analytics · amazon connect",
+    title:
+      "Amazon Connect Analytics: Deployable Quick Infrastructure and Embedded Portals",
+    includes:
+      "Deployable Quick infrastructure for Connect data, row-level security, and a white-labeled embedded portal.",
+    delivery: "Professional services",
+    services: [
+      "amazon connect",
+      "amazon quick",
+      "lake formation",
+      "kinesis",
+      "glue",
+      "aws cdk",
+    ],
+    to: "/solutions/amazon-connect-analytics",
+    figure: 6,
+    caption: "connect analytics flow",
+    asset: <ConnectAnalyticsDiagram className="w-full" />,
   },
 ];
 

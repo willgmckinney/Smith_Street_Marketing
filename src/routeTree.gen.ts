@@ -35,6 +35,7 @@ import { Route as SolutionsDataLakehouseImport } from './routes/solutions/data-l
 import { Route as SolutionsCustomApplicationDevelopmentImport } from './routes/solutions/custom-application-development'
 import { Route as SolutionsCustomAiAgentConnectorsImport } from './routes/solutions/custom-ai-agent-connectors'
 import { Route as SolutionsAmazonQuickImplementationImport } from './routes/solutions/amazon-quick-implementation'
+import { Route as SolutionsAmazonConnectAnalyticsImport } from './routes/solutions/amazon-connect-analytics'
 import { Route as CaseStudiesAutomatedReportingImport } from './routes/case-studies/automated-reporting'
 import { Route as BlogPostIdImport } from './routes/blog/$postId'
 import { Route as AiSnapshotUploadImport } from './routes/ai-snapshot.upload'
@@ -192,6 +193,13 @@ const SolutionsAmazonQuickImplementationRoute =
   SolutionsAmazonQuickImplementationImport.update({
     id: '/solutions/amazon-quick-implementation',
     path: '/solutions/amazon-quick-implementation',
+    getParentRoute: () => rootRoute,
+  } as any)
+
+const SolutionsAmazonConnectAnalyticsRoute =
+  SolutionsAmazonConnectAnalyticsImport.update({
+    id: '/solutions/amazon-connect-analytics',
+    path: '/solutions/amazon-connect-analytics',
     getParentRoute: () => rootRoute,
   } as any)
 
@@ -410,6 +418,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CaseStudiesAutomatedReportingImport
       parentRoute: typeof rootRoute
     }
+    '/solutions/amazon-connect-analytics': {
+      id: '/solutions/amazon-connect-analytics'
+      path: '/solutions/amazon-connect-analytics'
+      fullPath: '/solutions/amazon-connect-analytics'
+      preLoaderRoute: typeof SolutionsAmazonConnectAnalyticsImport
+      parentRoute: typeof rootRoute
+    }
     '/solutions/amazon-quick-implementation': {
       id: '/solutions/amazon-quick-implementation'
       path: '/solutions/amazon-quick-implementation'
@@ -509,6 +524,7 @@ export interface FileRoutesByFullPath {
   '/ai-snapshot/upload': typeof AiSnapshotUploadRoute
   '/blog/$postId': typeof BlogPostIdRoute
   '/case-studies/automated-reporting': typeof CaseStudiesAutomatedReportingRoute
+  '/solutions/amazon-connect-analytics': typeof SolutionsAmazonConnectAnalyticsRoute
   '/solutions/amazon-quick-implementation': typeof SolutionsAmazonQuickImplementationRoute
   '/solutions/custom-ai-agent-connectors': typeof SolutionsCustomAiAgentConnectorsRoute
   '/solutions/custom-application-development': typeof SolutionsCustomApplicationDevelopmentRoute
@@ -543,6 +559,7 @@ export interface FileRoutesByTo {
   '/ai-snapshot/upload': typeof AiSnapshotUploadRoute
   '/blog/$postId': typeof BlogPostIdRoute
   '/case-studies/automated-reporting': typeof CaseStudiesAutomatedReportingRoute
+  '/solutions/amazon-connect-analytics': typeof SolutionsAmazonConnectAnalyticsRoute
   '/solutions/amazon-quick-implementation': typeof SolutionsAmazonQuickImplementationRoute
   '/solutions/custom-ai-agent-connectors': typeof SolutionsCustomAiAgentConnectorsRoute
   '/solutions/custom-application-development': typeof SolutionsCustomApplicationDevelopmentRoute
@@ -578,6 +595,7 @@ export interface FileRoutesById {
   '/ai-snapshot/upload': typeof AiSnapshotUploadRoute
   '/blog/$postId': typeof BlogPostIdRoute
   '/case-studies/automated-reporting': typeof CaseStudiesAutomatedReportingRoute
+  '/solutions/amazon-connect-analytics': typeof SolutionsAmazonConnectAnalyticsRoute
   '/solutions/amazon-quick-implementation': typeof SolutionsAmazonQuickImplementationRoute
   '/solutions/custom-ai-agent-connectors': typeof SolutionsCustomAiAgentConnectorsRoute
   '/solutions/custom-application-development': typeof SolutionsCustomApplicationDevelopmentRoute
@@ -614,6 +632,7 @@ export interface FileRouteTypes {
     | '/ai-snapshot/upload'
     | '/blog/$postId'
     | '/case-studies/automated-reporting'
+    | '/solutions/amazon-connect-analytics'
     | '/solutions/amazon-quick-implementation'
     | '/solutions/custom-ai-agent-connectors'
     | '/solutions/custom-application-development'
@@ -647,6 +666,7 @@ export interface FileRouteTypes {
     | '/ai-snapshot/upload'
     | '/blog/$postId'
     | '/case-studies/automated-reporting'
+    | '/solutions/amazon-connect-analytics'
     | '/solutions/amazon-quick-implementation'
     | '/solutions/custom-ai-agent-connectors'
     | '/solutions/custom-application-development'
@@ -680,6 +700,7 @@ export interface FileRouteTypes {
     | '/ai-snapshot/upload'
     | '/blog/$postId'
     | '/case-studies/automated-reporting'
+    | '/solutions/amazon-connect-analytics'
     | '/solutions/amazon-quick-implementation'
     | '/solutions/custom-ai-agent-connectors'
     | '/solutions/custom-application-development'
@@ -710,6 +731,7 @@ export interface RootRouteChildren {
   SupportRoute: typeof SupportRoute
   BlogPostIdRoute: typeof BlogPostIdRoute
   CaseStudiesAutomatedReportingRoute: typeof CaseStudiesAutomatedReportingRoute
+  SolutionsAmazonConnectAnalyticsRoute: typeof SolutionsAmazonConnectAnalyticsRoute
   SolutionsAmazonQuickImplementationRoute: typeof SolutionsAmazonQuickImplementationRoute
   SolutionsCustomAiAgentConnectorsRoute: typeof SolutionsCustomAiAgentConnectorsRoute
   SolutionsCustomApplicationDevelopmentRoute: typeof SolutionsCustomApplicationDevelopmentRoute
@@ -739,6 +761,7 @@ const rootRouteChildren: RootRouteChildren = {
   SupportRoute: SupportRoute,
   BlogPostIdRoute: BlogPostIdRoute,
   CaseStudiesAutomatedReportingRoute: CaseStudiesAutomatedReportingRoute,
+  SolutionsAmazonConnectAnalyticsRoute: SolutionsAmazonConnectAnalyticsRoute,
   SolutionsAmazonQuickImplementationRoute:
     SolutionsAmazonQuickImplementationRoute,
   SolutionsCustomAiAgentConnectorsRoute: SolutionsCustomAiAgentConnectorsRoute,
@@ -780,6 +803,7 @@ export const routeTree = rootRoute
         "/support",
         "/blog/$postId",
         "/case-studies/automated-reporting",
+        "/solutions/amazon-connect-analytics",
         "/solutions/amazon-quick-implementation",
         "/solutions/custom-ai-agent-connectors",
         "/solutions/custom-application-development",
@@ -872,6 +896,9 @@ export const routeTree = rootRoute
     },
     "/case-studies/automated-reporting": {
       "filePath": "case-studies/automated-reporting.tsx"
+    },
+    "/solutions/amazon-connect-analytics": {
+      "filePath": "solutions/amazon-connect-analytics.tsx"
     },
     "/solutions/amazon-quick-implementation": {
       "filePath": "solutions/amazon-quick-implementation.tsx"
