@@ -363,6 +363,61 @@ export const AgentConnectorDiagram = ({ className = "" }: DiagramProps) => {
 };
 
 /**
+ * Amazon Connect analytics:
+ * connect → native analytics data lake or custom pipeline → quick → embedded
+ * portal, with row-level security applied at quick
+ */
+export const ConnectAnalyticsDiagram = ({ className = "" }: DiagramProps) => {
+  const W = 120;
+  const PATH_W = 140;
+  const NH = 56;
+  const PATH_H = 52;
+  const SH = 46;
+  const connectX = 10;
+  const pathX = 175;
+  const quickX = 350;
+  const portalX = 520;
+  const inBus = 152;
+  const outBus = 330;
+  const mainY = 90;
+  const midY = mainY + NH / 2;
+  const pathY = [62, 140];
+  const pathMid = pathY.map((y) => y + PATH_H / 2);
+  const rlsY = 180;
+
+  return (
+    <svg viewBox="0 0 650 250" fill="none" className={className} role="img"
+      aria-label="Amazon Connect analytics: Connect data reaches Amazon Quick through either its native Analytics Data Lake or a custom streaming pipeline, with row-level security applied at Quick and dashboards delivered through a white-labeled embedded portal.">
+      <ArrowMarker />
+      {/* connect splits onto the two ingestion paths */}
+      <line x1={connectX + W} y1={midY} x2={inBus} y2={midY} className={linkCls} />
+      <line x1={inBus} y1={pathMid[0]} x2={inBus} y2={pathMid[1]} className={linkCls} />
+      {pathMid.map((y) => (
+        <HConn key={y} x1={inBus} x2={pathX} y={y} />
+      ))}
+      {/* both paths converge on quick */}
+      {pathMid.map((y) => (
+        <line key={y} x1={pathX + PATH_W} y1={y} x2={outBus} y2={y} className={linkCls} />
+      ))}
+      <line x1={outBus} y1={pathMid[0]} x2={outBus} y2={pathMid[1]} className={linkCls} />
+      <HConn x1={outBus} x2={quickX} y={midY} />
+      {/* access rules enforced at quick, delivered through the portal */}
+      <VConn x={quickX + W / 2} y1={rlsY} y2={mainY + NH} />
+      <HConn x1={quickX + W} x2={portalX} y={midY} />
+
+      <Node x={pathX} y={pathY[0]} w={PATH_W} h={PATH_H} label="native data lake" sub="lake formation" />
+      <Node x={pathX} y={pathY[1]} w={PATH_W} h={PATH_H} label="custom pipeline" sub="kinesis / glue" />
+
+      <Node x={connectX} y={mainY} w={W} h={NH} label="amazon connect" sub="ctr / contact lens" />
+      <Node x={quickX} y={mainY} w={W} h={NH} label="amazon quick" sub="spice / dashboards" accent />
+      <Node x={quickX} y={rlsY} w={W} h={SH} label="access rules" sub="row-level security" />
+
+      <Node x={portalX} y={mainY} w={W} h={NH} label="embedded portal" sub="white-labeled" />
+    </svg>
+  );
+};
+
+/**
  * Design-to-production flow: source design built to production screens.
  */
 export const CheckoutFlowDiagram = ({ className = "" }: DiagramProps) => {

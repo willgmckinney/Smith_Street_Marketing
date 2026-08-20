@@ -124,6 +124,13 @@ const staticRoutes = [
       "Custom AI agent connectors for Amazon Quick, giving agents secure, governed access to real business systems through a repeatable architecture.",
   },
   {
+    path: "solutions/amazon-connect-analytics",
+    title:
+      "Amazon Connect Analytics: Deployable Quick Infrastructure and Embedded Portals | Smith Avenue Insights",
+    description:
+      "Deployable Amazon Quick infrastructure for Amazon Connect data, packaged with row-level security and a white-labeled embedded portal for partners and resellers.",
+  },
+  {
     path: "case-studies/automated-reporting",
     title: "Automated reporting case study | Smith Avenue Insights",
     description:
