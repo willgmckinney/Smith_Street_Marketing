@@ -31,6 +31,7 @@ import { Route as IndexImport } from './routes/index'
 import { Route as SolutionsIndexImport } from './routes/solutions/index'
 import { Route as BlogIndexImport } from './routes/blog/index'
 import { Route as SolutionsSecurePartnerApiPlatformImport } from './routes/solutions/secure-partner-api-platform'
+import { Route as SolutionsSalesPipelineIntelligenceImport } from './routes/solutions/sales-pipeline-intelligence'
 import { Route as SolutionsDataLakehouseImport } from './routes/solutions/data-lakehouse'
 import { Route as SolutionsCustomApplicationDevelopmentImport } from './routes/solutions/custom-application-development'
 import { Route as SolutionsCustomAiAgentConnectorsImport } from './routes/solutions/custom-ai-agent-connectors'
@@ -166,6 +167,13 @@ const SolutionsSecurePartnerApiPlatformRoute =
   SolutionsSecurePartnerApiPlatformImport.update({
     id: '/solutions/secure-partner-api-platform',
     path: '/solutions/secure-partner-api-platform',
+    getParentRoute: () => rootRoute,
+  } as any)
+
+const SolutionsSalesPipelineIntelligenceRoute =
+  SolutionsSalesPipelineIntelligenceImport.update({
+    id: '/solutions/sales-pipeline-intelligence',
+    path: '/solutions/sales-pipeline-intelligence',
     getParentRoute: () => rootRoute,
   } as any)
 
@@ -453,6 +461,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SolutionsDataLakehouseImport
       parentRoute: typeof rootRoute
     }
+    '/solutions/sales-pipeline-intelligence': {
+      id: '/solutions/sales-pipeline-intelligence'
+      path: '/solutions/sales-pipeline-intelligence'
+      fullPath: '/solutions/sales-pipeline-intelligence'
+      preLoaderRoute: typeof SolutionsSalesPipelineIntelligenceImport
+      parentRoute: typeof rootRoute
+    }
     '/solutions/secure-partner-api-platform': {
       id: '/solutions/secure-partner-api-platform'
       path: '/solutions/secure-partner-api-platform'
@@ -529,6 +544,7 @@ export interface FileRoutesByFullPath {
   '/solutions/custom-ai-agent-connectors': typeof SolutionsCustomAiAgentConnectorsRoute
   '/solutions/custom-application-development': typeof SolutionsCustomApplicationDevelopmentRoute
   '/solutions/data-lakehouse': typeof SolutionsDataLakehouseRoute
+  '/solutions/sales-pipeline-intelligence': typeof SolutionsSalesPipelineIntelligenceRoute
   '/solutions/secure-partner-api-platform': typeof SolutionsSecurePartnerApiPlatformRoute
   '/blog': typeof BlogIndexRoute
   '/solutions': typeof SolutionsIndexRoute
@@ -564,6 +580,7 @@ export interface FileRoutesByTo {
   '/solutions/custom-ai-agent-connectors': typeof SolutionsCustomAiAgentConnectorsRoute
   '/solutions/custom-application-development': typeof SolutionsCustomApplicationDevelopmentRoute
   '/solutions/data-lakehouse': typeof SolutionsDataLakehouseRoute
+  '/solutions/sales-pipeline-intelligence': typeof SolutionsSalesPipelineIntelligenceRoute
   '/solutions/secure-partner-api-platform': typeof SolutionsSecurePartnerApiPlatformRoute
   '/blog': typeof BlogIndexRoute
   '/solutions': typeof SolutionsIndexRoute
@@ -600,6 +617,7 @@ export interface FileRoutesById {
   '/solutions/custom-ai-agent-connectors': typeof SolutionsCustomAiAgentConnectorsRoute
   '/solutions/custom-application-development': typeof SolutionsCustomApplicationDevelopmentRoute
   '/solutions/data-lakehouse': typeof SolutionsDataLakehouseRoute
+  '/solutions/sales-pipeline-intelligence': typeof SolutionsSalesPipelineIntelligenceRoute
   '/solutions/secure-partner-api-platform': typeof SolutionsSecurePartnerApiPlatformRoute
   '/blog/': typeof BlogIndexRoute
   '/solutions/': typeof SolutionsIndexRoute
@@ -637,6 +655,7 @@ export interface FileRouteTypes {
     | '/solutions/custom-ai-agent-connectors'
     | '/solutions/custom-application-development'
     | '/solutions/data-lakehouse'
+    | '/solutions/sales-pipeline-intelligence'
     | '/solutions/secure-partner-api-platform'
     | '/blog'
     | '/solutions'
@@ -671,6 +690,7 @@ export interface FileRouteTypes {
     | '/solutions/custom-ai-agent-connectors'
     | '/solutions/custom-application-development'
     | '/solutions/data-lakehouse'
+    | '/solutions/sales-pipeline-intelligence'
     | '/solutions/secure-partner-api-platform'
     | '/blog'
     | '/solutions'
@@ -705,6 +725,7 @@ export interface FileRouteTypes {
     | '/solutions/custom-ai-agent-connectors'
     | '/solutions/custom-application-development'
     | '/solutions/data-lakehouse'
+    | '/solutions/sales-pipeline-intelligence'
     | '/solutions/secure-partner-api-platform'
     | '/blog/'
     | '/solutions/'
@@ -736,6 +757,7 @@ export interface RootRouteChildren {
   SolutionsCustomAiAgentConnectorsRoute: typeof SolutionsCustomAiAgentConnectorsRoute
   SolutionsCustomApplicationDevelopmentRoute: typeof SolutionsCustomApplicationDevelopmentRoute
   SolutionsDataLakehouseRoute: typeof SolutionsDataLakehouseRoute
+  SolutionsSalesPipelineIntelligenceRoute: typeof SolutionsSalesPipelineIntelligenceRoute
   SolutionsSecurePartnerApiPlatformRoute: typeof SolutionsSecurePartnerApiPlatformRoute
   BlogIndexRoute: typeof BlogIndexRoute
   SolutionsIndexRoute: typeof SolutionsIndexRoute
@@ -768,6 +790,8 @@ const rootRouteChildren: RootRouteChildren = {
   SolutionsCustomApplicationDevelopmentRoute:
     SolutionsCustomApplicationDevelopmentRoute,
   SolutionsDataLakehouseRoute: SolutionsDataLakehouseRoute,
+  SolutionsSalesPipelineIntelligenceRoute:
+    SolutionsSalesPipelineIntelligenceRoute,
   SolutionsSecurePartnerApiPlatformRoute:
     SolutionsSecurePartnerApiPlatformRoute,
   BlogIndexRoute: BlogIndexRoute,
@@ -808,6 +832,7 @@ export const routeTree = rootRoute
         "/solutions/custom-ai-agent-connectors",
         "/solutions/custom-application-development",
         "/solutions/data-lakehouse",
+        "/solutions/sales-pipeline-intelligence",
         "/solutions/secure-partner-api-platform",
         "/blog/",
         "/solutions/"
@@ -911,6 +936,9 @@ export const routeTree = rootRoute
     },
     "/solutions/data-lakehouse": {
       "filePath": "solutions/data-lakehouse.tsx"
+    },
+    "/solutions/sales-pipeline-intelligence": {
+      "filePath": "solutions/sales-pipeline-intelligence.tsx"
     },
     "/solutions/secure-partner-api-platform": {
       "filePath": "solutions/secure-partner-api-platform.tsx"

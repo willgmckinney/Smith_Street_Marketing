@@ -131,6 +131,12 @@ const staticRoutes = [
       "Deployable Amazon Quick infrastructure for Amazon Connect data, packaged with row-level security and a white-labeled embedded portal for partners and resellers.",
   },
   {
+    path: "solutions/sales-pipeline-intelligence",
+    title: "Sales Pipeline Intelligence on Amazon Quick | Smith Avenue Insights",
+    description:
+      "Consolidate your CRM, outreach, scheduling and enrichment tools into Amazon Quick, so sales teams can query and act on the pipeline in plain language.",
+  },
+  {
     path: "case-studies/automated-reporting",
     title: "Automated reporting case study | Smith Avenue Insights",
     description:

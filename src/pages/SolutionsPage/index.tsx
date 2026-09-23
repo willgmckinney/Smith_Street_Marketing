@@ -6,6 +6,7 @@ import {
   CustomApplicationDiagram,
   DataLakehouseDiagram,
   PartnerApiDiagram,
+  SalesPipelineDiagram,
 } from "../../components/Blueprint/ArchitectureDiagrams";
 import { BlueprintGrid } from "../../components/Blueprint/BlueprintGrid";
 import { CtaSection } from "../../components/Blueprint/CtaSection";
@@ -128,6 +129,19 @@ const solutions: SolutionData[] = [
     figure: 6,
     caption: "connect analytics flow",
     asset: <ConnectAnalyticsDiagram className="w-full" />,
+  },
+  {
+    index: 7,
+    category: "revenue operations · agentic ai",
+    title: "Sales Pipeline Intelligence on Amazon Quick",
+    includes:
+      "Agent layer connected to your CRM and GTM tools, a governed data lake, and cross-channel attribution modeling.",
+    delivery: "Professional services",
+    services: ["amazon quick", "s3", "glue", "athena", "lambda"],
+    to: "/solutions/sales-pipeline-intelligence",
+    figure: 7,
+    caption: "pipeline intelligence flow",
+    asset: <SalesPipelineDiagram className="w-full" />,
   },
 ];
 
