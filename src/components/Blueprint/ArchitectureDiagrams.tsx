@@ -418,6 +418,59 @@ export const ConnectAnalyticsDiagram = ({ className = "" }: DiagramProps) => {
 };
 
 /**
+ * Sales pipeline intelligence:
+ * gtm tools → governed data lake → quick agent layer → dashboards and
+ * automations written back to the stack
+ */
+export const SalesPipelineDiagram = ({ className = "" }: DiagramProps) => {
+  const W = 130;
+  const SRC_H = 44;
+  const OUT_H = 52;
+  const srcX = 10;
+  const lakeX = 190;
+  const quickX = 360;
+  const outX = 545;
+  const inBus = 165;
+  const outBus = 515;
+  const srcY = [30, 98, 166];
+  const outY = [64, 140];
+  const hubY = 88;
+  const hubH = 64;
+  const hubMid = hubY + hubH / 2;
+
+  return (
+    <svg viewBox="0 0 685 240" fill="none" className={className} role="img"
+      aria-label="Sales pipeline intelligence: CRM, outreach, and scheduling tools feed a governed data lake on S3, Glue, and Athena, which feeds the Amazon Quick agent layer serving dashboards and automations that write back to the stack.">
+      <ArrowMarker />
+      {/* gtm tools gather onto a bus, then into the lake */}
+      {srcY.map((y) => (
+        <line key={y} x1={srcX + W} y1={y + SRC_H / 2} x2={inBus} y2={y + SRC_H / 2} className={linkCls} />
+      ))}
+      <line x1={inBus} y1={srcY[0] + SRC_H / 2} x2={inBus} y2={srcY[2] + SRC_H / 2} className={linkCls} />
+      <HConn x1={inBus} x2={lakeX} y={hubMid} />
+      <HConn x1={lakeX + W} x2={quickX} y={hubMid} />
+
+      {/* the agent layer fans out to reporting and action */}
+      <line x1={quickX + W} y1={hubMid} x2={outBus} y2={hubMid} className={linkCls} />
+      <line x1={outBus} y1={outY[0] + OUT_H / 2} x2={outBus} y2={outY[1] + OUT_H / 2} className={linkCls} />
+      {outY.map((y) => (
+        <HConn key={y} x1={outBus} x2={outX} y={y + OUT_H / 2} />
+      ))}
+
+      <Node x={srcX} y={srcY[0]} w={W} h={SRC_H} label="crm" sub="opportunities" />
+      <Node x={srcX} y={srcY[1]} w={W} h={SRC_H} label="outreach" sub="sequences / email" />
+      <Node x={srcX} y={srcY[2]} w={W} h={SRC_H} label="scheduling" sub="meetings" />
+
+      <Node x={lakeX} y={hubY} w={W} h={hubH} label="data lake" sub="s3 / glue / athena" />
+      <Node x={quickX} y={hubY} w={W} h={hubH} label="amazon quick" sub="agent layer" accent />
+
+      <Node x={outX} y={outY[0]} w={W} h={OUT_H} label="dashboards" sub="spice datasets" />
+      <Node x={outX} y={outY[1]} w={W} h={OUT_H} label="automations" sub="crm write-back" />
+    </svg>
+  );
+};
+
+/**
  * Design-to-production flow: source design built to production screens.
  */
 export const CheckoutFlowDiagram = ({ className = "" }: DiagramProps) => {

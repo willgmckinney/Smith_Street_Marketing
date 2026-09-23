@@ -36,6 +36,7 @@ import { dataLakehouseRoute } from "./routes/solutions/data-lakehouse";
 import { customApplicationDevelopmentRoute } from "./routes/solutions/custom-application-development";
 import { customAiAgentConnectorsRoute } from "./routes/solutions/custom-ai-agent-connectors";
 import { amazonConnectAnalyticsRoute } from "./routes/solutions/amazon-connect-analytics";
+import { salesPipelineIntelligenceRoute } from "./routes/solutions/sales-pipeline-intelligence";
 
 const routeTree = rootRoute.addChildren([
   indexRoute,
@@ -50,6 +51,7 @@ const routeTree = rootRoute.addChildren([
   customApplicationDevelopmentRoute,
   customAiAgentConnectorsRoute,
   amazonConnectAnalyticsRoute,
+  salesPipelineIntelligenceRoute,
   constructionDashboardRoute,
   realEstateDashboardRoute,
   securitySchedulingDashboardRoute,
